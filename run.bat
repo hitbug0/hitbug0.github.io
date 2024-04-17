@@ -2,6 +2,7 @@
 
 python ./_programs/make_posts.py
 python ./_programs/make_index.py
+python ./_programs/make_sitemap.py
 
 
 rem set port number
