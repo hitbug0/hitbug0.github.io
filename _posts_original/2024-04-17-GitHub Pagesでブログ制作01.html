@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>2024-04-10-GitHub Pagesでブログ制作0.md</title>
+<title>2024-04-17-GitHub Pagesでブログ制作01.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -366,39 +366,69 @@ code {
     });
   </script>
 <h1 id="github-pages%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E5%88%B6%E4%BD%9C-%E3%81%9D%E3%81%AE1-%E3%81%93%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E5%AE%9F%E8%A3%85%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">GitHub Pagesでブログ制作　その1　このブログの実装について</h1>
-<p><a href="::tags::GitHubPages,HTML,CSS,JavaScript,mermaid,Python,VSCode,%E5%80%8B%E4%BA%BA%E3%83%96%E3%83%AD%E3%82%B0%E5%88%B6%E4%BD%9C"></a></p>
+<p><a href="::tags::GitHubPages,HTML,CSS,JavaScript,mermaid,three.js,Python,VSCode,Web%E5%88%B6%E4%BD%9C"></a></p>
 <hr>
 <p>GitHub Pagesで無料個人ブログを作ってみました！<br>
-それなりに拡張性もあるような気がするので、PythonとHTMLにある程度なじみのある方であれば類似目的に流用できそうとおもっています。<br>
-1つ目の記事は、このブログの実装の紹介です。</p>
-<h2 id="%E3%81%93%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E7%89%B9%E5%BE%B4">このブログの仕組みとしての特徴</h2>
-<h3 id="%E3%82%B5%E3%82%A4%E3%83%88%E9%81%8B%E5%96%B6%E4%B8%8A%E3%81%AE%E7%89%B9%E5%BE%B4">サイト運営上の特徴</h3>
-<p>いいことしかないです！（諸説あります）</p>
+1つ目の記事は、このブログの実装についてです。<br>
+PythonとHTMLにある程度なじみのある方であれば類似目的に流用できそうとおもうので、使えそうだったらぜひ流用してください～</p>
+<h2 id="%E3%81%93%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E5%AE%9F%E8%A3%85%E9%9D%A2%E3%81%AE%E7%89%B9%E5%BE%B4">このブログの実装面の特徴</h2>
+<h3 id="%E6%96%B9%E5%BC%8F%E3%81%AE%E6%A6%82%E8%A6%81">方式の概要</h3>
+<p>ホスティングとかサーバーとかは全部<a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a>に任せていて、ページの中身だけいじればOKの状態になっています。<br>
+記事をHTMLとして成形する部分と、記事をタグでまとめたりする部分は、VSCodeの拡張機能とPythonスクリプトの力を借りてローカルで処理しています。<br>
+静的サイトなので、動的サイト（WordPressとかで作ったサイト）よりも幾分動作が速いかもしれません。</p>
+<h3 id="%E3%81%93%E3%81%AE%E6%96%B9%E5%BC%8F%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88">この方式のメリット</h3>
+<p>個人的なお気に入りポイントが4つあります。</p>
 <ul>
-<li>維持費無料！</li>
-<li>広告収入得られる！（はず！貼れば！）</li>
-<li>めんどくさいサーバーレンタルとかドメイン取得とかしてない！</li>
-<li>Markdownで記事書いてから、ちょいちょいと操作すれば記事を投稿できる！</li>
-<li>Jekyllとか使ってない</li>
+<li>
+<p>サーバーレンタルとかドメイン取得とかしていないので管理が楽</p>
+</li>
+<li>
+<p>Markdownで記事書いてから、ちょいちょいと操作すれば記事を投稿できる</p>
+</li>
+<li>
+<p>維持費無料</p>
+</li>
+<li>
+<p>広告収入得られる（はず。貼れば）</p>
+</li>
 </ul>
-<h3 id="%E6%A9%9F%E8%83%BD">機能</h3>
-<p>必要最低限！（？）</p>
+<h3 id="%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F%E6%A9%9F%E8%83%BD">実装した機能</h3>
+<p>ブログとして必要最低限（？）の機能を実装しました。</p>
 <ul>
-<li>記事のタグ管理</li>
-<li>コードブロック＆コピーボタン</li>
-<li>mermaidでの作図</li>
-<li>3Dモデルの表示</li>
-<li>SNSへのリンク（ウィンドウサイズに応じてハンバーガーメニュー化）</li>
-<li>かわいいアイコン</li>
+<li>
+<p>記事のタグ管理</p>
+</li>
+<li>
+<p>コードブロック＆コピーボタン</p>
+</li>
+<li>
+<p>mermaidでの作図 : VSCodeの拡張機能をリバースエンジニアリングしました...笑</p>
+</li>
+<li>
+<p>画像の表示</p>
+</li>
+<li>
+<p>3Dモデルの表示 : three.jsを使ってます</p>
+</li>
+<li>
+<p>SNSへのリンク（ウィンドウサイズに応じてハンバーガーメニュー化）</p>
+</li>
+<li>
+<p>かわいいアイコン</p>
+</li>
 </ul>
 <h3 id="%E6%8A%95%E7%A8%BF%E6%99%82%E3%81%AE%E6%93%8D%E4%BD%9C">投稿時の操作</h3>
-<p>ちょいちょいっとクリックしたりキーを押すだけです！　書くの含めて5ステップ！<br>
-さらにめんどくさがりの人は、以下のようにすれば3ステップになります</p>
+<p>ちょいちょいっとクリックしたりキーを押すだけです。書くのを含めて5ステップ！<br>
+さらにめんどくさがりの人は、以下のようにすれば3ステップになります。</p>
 <ul>
-<li>表示内容確認を飛ばす</li>
-<li>GitHubへコミットする操作をmake_html.batに書く</li>
+<li>
+<p>表示内容確認を飛ばす</p>
+</li>
+<li>
+<p>GitHubへコミットする操作をmake_html.batに書く</p>
+</li>
 </ul>
-<p>※ <strong>トップページも含めて自動で更新</strong>される仕組みです。</p>
+<p>※ <strong><a href="https://hitbug0.github.io/">トップページ</a>も含めて自動で更新</strong>される仕組みです。</p>
 <pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
 graph TB;
 
@@ -406,152 +436,107 @@ cc(記事を書く) --mdファイル-->
 dd["VSCodeでHTML化<br>(ショートカットキー一発！)"] --HTMLファイル(記事の材料)--> 
 tr1
 subgraph tr[run.batで変換]
-    tr1["make_posts.pyで記事ページ作成(自動)"] --HTMLファイル(記事)--> 
-    tr2["make_index.pyでインデックスページ作成(自動)"] --HTMLファイル(インデックス)--> yy
+    tr1["make_posts.pyで<br>記事ページ作成(自動)"] --HTMLファイル(記事)--> 
+    tr2["make_index.pyで<br>インデックスページ作成(自動)"] --HTMLファイル(インデックス)--> yy
     tr1 --HTMLファイル(記事)--> yy
-    xx("ローカルホスト立ち上げ(自動)") --> yy["Chromeで開く(自動)"]
+    xx("ローカルホストの<br>起動(自動)") --> yy["Chromeで開く(自動)"]
 end
 
 yy --> aa["表示内容確認<br>(optional)"]
 aa --> GitHubへコミット
 GitHubへコミット --> bb("GitHub Pagesによりホスティング(自動)")
 </div></code></pre>
-<h2 id="%E3%81%A9%E3%82%93%E3%81%AA%E5%AE%9F%E8%A3%85%E3%82%82%E3%81%86%E5%B0%91%E3%81%97%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AB">どんな実装？（もう少し具体的に）</h2>
-<h3 id="%E3%83%9B%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0">ホスティング</h3>
-<p>ホスティングに関してはGitHubにコードをコミットすること以外してません。GitHub Pages様様！<br>
-GitHub Pagesの使い方はこのサイトとかご参考ください！</p>
-<h3 id="%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A7%8B%E6%88%90">ファイル構成</h3>
-<p>ファイルの中身はGitHubでご覧ください～</p>
-<ul>
-<li>
-<p><strong>.git</strong> : Gitリポジトリ</p>
-</li>
-<li>
-<p><strong>_posts_original</strong> : VSCodeで作成/編集したmdファイルと、そこから変換されたHTMLファイルが入っている</p>
-</li>
-<li>
-<p><strong>_programs</strong> : ローカルで回すスクリプトが入っている</p>
-<ul>
-<li><strong>make_posts.py</strong> : 記事を作る</li>
-<li><strong>make_index.py</strong> : インデックスページとタグ表示要素を作る</li>
-</ul>
-</li>
-<li>
-<p><strong>_templates</strong> : サイト用HTMLファイルのテンプレートが入っている</p>
-<ul>
-<li><strong>index_template.html</strong></li>
-<li><strong>post_template.html</strong></li>
-<li><strong>tags_template.html</strong></li>
-</ul>
-</li>
-<li>
-<p><strong>posts</strong> : 記事ページのHTMLファイルが入っている</p>
-<ul>
-<li><strong>yyyy-mm-dd-filename.html</strong> : 記事ページのHTMLファイル。スクリプト実行すると、_posts_originalの中のHTMLファイルから自動で作成される。</li>
-</ul>
-</li>
-<li>
-<p><strong>includes</strong> : インクルードファイルが入っている</p>
-<ul>
-<li><strong>icon</strong> : かわいいアイコン画像が入っている</li>
-<li><strong>footer.html</strong> : フッタのHTMLファイル</li>
-<li><strong>header.html</strong> : ヘッダのHTMLファイル</li>
-<li><strong>hamburger-menu.html</strong> : ウィンドウ幅が狭いときのハンバーガーメニューのHTMLファイル</li>
-<li><strong>tags.html</strong> : インデックスページ用のタグ表示要素。記事の内容が反映される</li>
-<li><strong>tags-post.html</strong> : 記事ページ用のタグ表示要素記事の内容が反映される</li>
-<li><strong>style.css</strong> : スタイル</li>
-<li><strong>clipboard-script.js</strong> : コピー機能のスクリプト</li>
-<li><strong>disp_3dmodel.js</strong> : 3Dモデル表示のスクリプト</li>
-<li><strong>hamburger-menu-trigger.js</strong> : ハンバーガーメニューの動作のスクリプト</li>
-</ul>
-</li>
-<li>
-<p><strong>README.md</strong> : GitHub用のドキュメント。ほぼ書いてない</p>
-</li>
-<li>
-<p><strong>run.bat</strong> : サイト用のHTMLファイルを作成し、ローカルでサイトを開くファイル</p>
-</li>
-<li>
-<p><strong>make_html.bat</strong> : _programsフォルダのスクリプトを実行するためのファイル</p>
-</li>
-<li>
-<p><strong>manifest.json</strong> : アプリとしてのメタデータを定義するファイル</p>
-</li>
-<li>
-<p><strong>index.html</strong> : インデックスページのHTMLファイル。記事の内容が反映される</p>
-</li>
-</ul>
-<h2 id="%E3%81%AA%E3%82%93%E3%81%A7%E3%81%93%E3%82%93%E3%81%AA%E9%A2%A8%E3%81%AB%E3%81%97%E3%81%9F%E3%81%AE">なんでこんな風にしたの？</h2>
-<h3 id="%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E3%81%AE%E5%8B%95%E6%A9%9F">そもそもの動機</h3>
-<p>動機は主に以下の4点です。動機の符号は問わないものとします。</p>
-<ul>
-<li>技術ブログやってみたい <s>。書くことあんまりないけど</s></li>
-<li>広告収入ほしい</li>
-<li>めんどくさいサーバーの手続きとかかしたくない</li>
-<li>維持費無料がいい</li>
-</ul>
-<h3 id="%E7%B5%8C%E7%B7%AF">経緯</h3>
-<p>色々調べると、<a href="">GitHub Pages</a>なるものがあるということが分かり、これを使うと無料でWebページが公開できることを知りました。（2年前）<br>
-その後2年ほど、なんだか忙しくなって放置していましたが、少し時間ができたので再度ブログにチャレンジしようと思い再び重い腰を上げました。</p>
-<p>以前作りかけたコードを開き、、、そっ閉じし、楽に書く方法を探した末に<a href="">Jekyll</a>なるものを知りました。<br>
+<h2 id="%E3%81%93%E3%81%AE%E6%96%B9%E5%BC%8F%E3%81%AB%E3%81%97%E3%81%9F%E7%B5%8C%E7%B7%AF">この方式にした経緯</h2>
+<p>無料でWebページを公開する方法を調べる中で<a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a>なるものがあるということを知りました。（2年前）<br>
+その後2年ほど、なんだか忙しくなって作りかけのコードを放置していましたが、少し時間ができたので再度ブログにチャレンジしようと思い再び重い腰を上げました。</p>
+<p>以前作りかけたコードを開き、、、そっ閉じし、楽に書く方法を探した末に<a href="https://jekyllrb-ja.github.io/">Jekyll</a>なるものを知りました。<br>
 Jekyllの特徴をChatGPTに聞くと以下のように返ってきます。</p>
 <ul>
-<li>静的サイトジェネレーター
+<li>
+<p>静的サイトジェネレーター</p>
 <ul>
 <li>Jekyllは静的サイトを生成するためのジェネレーターであり、動的なデータベースやサーバーサイド言語を必要とせず、プレーンなHTML、CSS、JavaScriptファイルを生成します。</li>
 </ul>
 </li>
-<li>Markdownサポート
+<li>
+<p>Markdownサポート</p>
 <ul>
 <li>Markdown形式でコンテンツを書き、それをHTMLに変換してサイトに組み込むことができます。</li>
 <li>これにより、コンテンツの管理が簡素化されます。</li>
 </ul>
 </li>
-<li>テンプレートエンジン
+<li>
+<p>テンプレートエンジン</p>
 <ul>
 <li>Liquidと呼ばれる柔軟なテンプレートエンジンを使用して、再利用可能なテンプレートを作成し、サイトの外観や構造をカスタマイズすることができます。</li>
 </ul>
 </li>
-<li>GitHub Pagesとの統合
+<li>
+<p>GitHub Pagesとの統合</p>
 <ul>
 <li>JekyllはGitHub Pagesにネイティブに統合されており、リポジトリ内のJekyllサイトをホストすることができます。</li>
 <li>これにより、簡単に無料のホスティングとバージョン管理を利用できます。</li>
 </ul>
 </li>
-<li>プラグインのサポート
+<li>
+<p>プラグインのサポート</p>
 <ul>
 <li>Jekyllはプラグインアーキテクチャを備えており、機能の拡張が可能です。</li>
 <li>プラグインを使用することで、自動化やカスタマイズが容易になります。</li>
 </ul>
 </li>
-<li>シンプルなディレクトリ構造
+<li>
+<p>シンプルなディレクトリ構造</p>
 <ul>
 <li>Jekyllのディレクトリ構造はシンプルで直感的であり、新しいプロジェクトのセットアップや管理が容易です。</li>
 </ul>
 </li>
-<li>高速なパフォーマンス
+<li>
+<p>高速なパフォーマンス</p>
 <ul>
 <li>Jekyllが生成するサイトは静的であるため、高速なパフォーマンスを提供します。</li>
 <li>サーバーに負荷をかけることなく、高いスケーラビリティを実現します。</li>
 </ul>
 </li>
 </ul>
-<p><strong>Markdownサポートが便利そう</strong>ということで使ってみようとしましたが、自分には合いませんでした。<br>
-最終的には以下の理由でJekyll使うのやめて、<strong>VSCodeの拡張機能とPythonスクリプトを使ってMarkdownからHTMLへ自動で変換</strong>することにしました。<br>
-Jekyllの他にも似たようなのがあるようですが、折角代替手段思いついたし特に調べてません。</p>
+<p>よさそう！　ということで使ってみようとしましたが、自分には合いませんでした。<br>
+最終的には以下の理由でJekyll使うのやめて、今の方式にしました。</p>
 <ul>
-<li>後々細かいカスタマイズしたくなったときにめんどくさそう
+<li>
+<p>後々細かいカスタマイズしたくなったときにめんどくさそう</p>
 <ul>
-<li>色々しようとすると色んなタイミングで表示崩れが起きるしデバッグしにくかった</li>
+<li>色々しようとすると色んなタイミングで表示崩れが起きるしデバッグしにくかった(漠然)</li>
 </ul>
 </li>
-<li>個人的には、ほぼMarkdownサポートしかメリット感じない
+<li>
+<p>個人的には、ほぼMarkdownサポートしかメリット感じない</p>
 <ul>
-<li>Markdownサポートに関しては、batファイルを作っておいて記事投稿する前にローカルで実行すればよくね？</li>
+<li>Markdownサポートに関しては、batファイルを作っておいて記事投稿する前にローカルで実行すればいいじゃん</li>
 <li>ローカルでスクレイピングをやるような感じですぐスクリプト書けそう</li>
+<li>自分で書いたコードの方が改良しやすそう</li>
 </ul>
 </li>
 </ul>
+<p>Jekyllの他にも似たようなのがあるようですが、代替手段思いついたので特に調べてません。（清々しい表情）</p>
+<h2 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h2>
+<p>このサイトの実装についてざっくり紹介しました。</p>
+<ul>
+<li>
+<p>GitHub Pagesに裏方は全部任せて、表示用のファイルだけ編集すればOK</p>
+</li>
+<li>
+<p>記事のタグ管理とかはローカルで処理している</p>
+</li>
+<li>
+<p>mermaidでの作図や3Dモデルの表示、かわいいアイコンなどといった最低限の機能を実装している</p>
+</li>
+<li>
+<p>Jekyllは挫折しました</p>
+</li>
+</ul>
+<p>PythonとHTMLにある程度なじみのある方であれば類似目的に流用できそうと思っています。<br>
+Pythonスクリプトとstyle.cssは殴り書き状態なので、追々きれいにしようと思います。<br>
+使えそうなところあったらぜひ流用してください～</p>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ from itertools import chain
 from bs4 import BeautifulSoup
 from urllib.parse import unquote
 
+
 # 改行コードを除外する関数(冒頭と末尾のみ除外。中間は残す)
 def remove_newlines(text):
     return re.sub(r"(^\n+)|(\n+$)", "", text)

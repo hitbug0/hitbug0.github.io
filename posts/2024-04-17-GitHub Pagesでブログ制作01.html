@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../includes/style.css">
+    <link rel="icon" href="../includes/icon/icon_black_tr.png">
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+    crossorigin="anonymous"></script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+    <title>GitHub Pagesでブログ制作　その1　このブログの実装について | hitbug</title>
+    <meta name="tag" content="GitHubPages">
+<meta name="tag" content="HTML">
+<meta name="tag" content="CSS">
+<meta name="tag" content="JavaScript">
+<meta name="tag" content="mermaid">
+<meta name="tag" content="three.js">
+<meta name="tag" content="Python">
+<meta name="tag" content="VSCode">
+<meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
+
+  </head>
+
+
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">このブログの実装面の特徴</a></li>
+<li><a href="#section2">この方式にした経緯</a></li>
+<li><a href="#section3">まとめ</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="github-pages%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E5%88%B6%E4%BD%9C-%E3%81%9D%E3%81%AE1-%E3%81%93%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E5%AE%9F%E8%A3%85%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">GitHub Pagesでブログ制作　その1　このブログの実装について</h1>
+<p></p>
+<hr/>
+<p>GitHub Pagesで無料個人ブログを作ってみました！<br/>
+1つ目の記事は、このブログの実装についてです。<br/>
+PythonとHTMLにある程度なじみのある方であれば類似目的に流用できそうとおもうので、使えそうだったらぜひ流用してください～</p>
+<h2 id="section1">このブログの実装面の特徴</h2>
+<h3 id="%E6%96%B9%E5%BC%8F%E3%81%AE%E6%A6%82%E8%A6%81">方式の概要</h3>
+<p>ホスティングとかサーバーとかは全部<a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a>に任せていて、ページの中身だけいじればOKの状態になっています。<br/>
+記事をHTMLとして成形する部分と、記事をタグでまとめたりする部分は、VSCodeの拡張機能とPythonスクリプトの力を借りてローカルで処理しています。<br/>
+静的サイトなので、動的サイト（WordPressとかで作ったサイト）よりも幾分動作が速いかもしれません。</p>
+<h3 id="%E3%81%93%E3%81%AE%E6%96%B9%E5%BC%8F%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88">この方式のメリット</h3>
+<p>個人的なお気に入りポイントが4つあります。</p>
+<ul>
+<li>
+<p>サーバーレンタルとかドメイン取得とかしていないので管理が楽</p>
+</li>
+<li>
+<p>Markdownで記事書いてから、ちょいちょいと操作すれば記事を投稿できる</p>
+</li>
+<li>
+<p>維持費無料</p>
+</li>
+<li>
+<p>広告収入得られる（はず。貼れば）</p>
+</li>
+</ul>
+<h3 id="%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F%E6%A9%9F%E8%83%BD">実装した機能</h3>
+<p>ブログとして必要最低限（？）の機能を実装しました。</p>
+<ul>
+<li>
+<p>記事のタグ管理</p>
+</li>
+<li>
+<p>コードブロック＆コピーボタン</p>
+</li>
+<li>
+<p>mermaidでの作図 : VSCodeの拡張機能をリバースエンジニアリングしました...笑</p>
+</li>
+<li>
+<p>画像の表示</p>
+</li>
+<li>
+<p>3Dモデルの表示 : three.jsを使ってます</p>
+</li>
+<li>
+<p>SNSへのリンク（ウィンドウサイズに応じてハンバーガーメニュー化）</p>
+</li>
+<li>
+<p>かわいいアイコン</p>
+</li>
+</ul>
+<h3 id="%E6%8A%95%E7%A8%BF%E6%99%82%E3%81%AE%E6%93%8D%E4%BD%9C">投稿時の操作</h3>
+<p>ちょいちょいっとクリックしたりキーを押すだけです。書くのを含めて5ステップ！<br/>
+さらにめんどくさがりの人は、以下のようにすれば3ステップになります。</p>
+<ul>
+<li>
+<p>表示内容確認を飛ばす</p>
+</li>
+<li>
+<p>GitHubへコミットする操作をmake_html.batに書く</p>
+</li>
+</ul>
+<p>※ <strong><a href="https://hitbug0.github.io/">トップページ</a>も含めて自動で更新</strong>される仕組みです。</p>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
+graph TB;
+
+cc(記事を書く) --mdファイル--&gt; 
+dd["VSCodeでHTML化<br/>(ショートカットキー一発！)"] --HTMLファイル(記事の材料)--&gt; 
+tr1
+subgraph tr[run.batで変換]
+    tr1["make_posts.pyで<br/>記事ページ作成(自動)"] --HTMLファイル(記事)--&gt; 
+    tr2["make_index.pyで<br/>インデックスページ作成(自動)"] --HTMLファイル(インデックス)--&gt; yy
+    tr1 --HTMLファイル(記事)--&gt; yy
+    xx("ローカルホストの<br/>起動(自動)") --&gt; yy["Chromeで開く(自動)"]
+end
+
+yy --&gt; aa["表示内容確認<br/>(optional)"]
+aa --&gt; GitHubへコミット
+GitHubへコミット --&gt; bb("GitHub Pagesによりホスティング(自動)")
+</div></code></pre>
+<h2 id="section2">この方式にした経緯</h2>
+<p>無料でWebページを公開する方法を調べる中で<a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a>なるものがあるということを知りました。（2年前）<br/>
+その後2年ほど、なんだか忙しくなって作りかけのコードを放置していましたが、少し時間ができたので再度ブログにチャレンジしようと思い再び重い腰を上げました。</p>
+<p>以前作りかけたコードを開き、、、そっ閉じし、楽に書く方法を探した末に<a href="https://jekyllrb-ja.github.io/">Jekyll</a>なるものを知りました。<br/>
+Jekyllの特徴をChatGPTに聞くと以下のように返ってきます。</p>
+<ul>
+<li>
+<p>静的サイトジェネレーター</p>
+<ul>
+<li>Jekyllは静的サイトを生成するためのジェネレーターであり、動的なデータベースやサーバーサイド言語を必要とせず、プレーンなHTML、CSS、JavaScriptファイルを生成します。</li>
+</ul>
+</li>
+<li>
+<p>Markdownサポート</p>
+<ul>
+<li>Markdown形式でコンテンツを書き、それをHTMLに変換してサイトに組み込むことができます。</li>
+<li>これにより、コンテンツの管理が簡素化されます。</li>
+</ul>
+</li>
+<li>
+<p>テンプレートエンジン</p>
+<ul>
+<li>Liquidと呼ばれる柔軟なテンプレートエンジンを使用して、再利用可能なテンプレートを作成し、サイトの外観や構造をカスタマイズすることができます。</li>
+</ul>
+</li>
+<li>
+<p>GitHub Pagesとの統合</p>
+<ul>
+<li>JekyllはGitHub Pagesにネイティブに統合されており、リポジトリ内のJekyllサイトをホストすることができます。</li>
+<li>これにより、簡単に無料のホスティングとバージョン管理を利用できます。</li>
+</ul>
+</li>
+<li>
+<p>プラグインのサポート</p>
+<ul>
+<li>Jekyllはプラグインアーキテクチャを備えており、機能の拡張が可能です。</li>
+<li>プラグインを使用することで、自動化やカスタマイズが容易になります。</li>
+</ul>
+</li>
+<li>
+<p>シンプルなディレクトリ構造</p>
+<ul>
+<li>Jekyllのディレクトリ構造はシンプルで直感的であり、新しいプロジェクトのセットアップや管理が容易です。</li>
+</ul>
+</li>
+<li>
+<p>高速なパフォーマンス</p>
+<ul>
+<li>Jekyllが生成するサイトは静的であるため、高速なパフォーマンスを提供します。</li>
+<li>サーバーに負荷をかけることなく、高いスケーラビリティを実現します。</li>
+</ul>
+</li>
+</ul>
+<p>よさそう！　ということで使ってみようとしましたが、自分には合いませんでした。<br/>
+最終的には以下の理由でJekyll使うのやめて、今の方式にしました。</p>
+<ul>
+<li>
+<p>後々細かいカスタマイズしたくなったときにめんどくさそう</p>
+<ul>
+<li>色々しようとすると色んなタイミングで表示崩れが起きるしデバッグしにくかった(漠然)</li>
+</ul>
+</li>
+<li>
+<p>個人的には、ほぼMarkdownサポートしかメリット感じない</p>
+<ul>
+<li>Markdownサポートに関しては、batファイルを作っておいて記事投稿する前にローカルで実行すればいいじゃん</li>
+<li>ローカルでスクレイピングをやるような感じですぐスクリプト書けそう</li>
+<li>自分で書いたコードの方が改良しやすそう</li>
+</ul>
+</li>
+</ul>
+<p>Jekyllの他にも似たようなのがあるようですが、代替手段思いついたので特に調べてません。（清々しい表情）</p>
+<h2 id="section3">まとめ</h2>
+<p>このサイトの実装についてざっくり紹介しました。</p>
+<ul>
+<li>
+<p>GitHub Pagesに裏方は全部任せて、表示用のファイルだけ編集すればOK</p>
+</li>
+<li>
+<p>記事のタグ管理とかはローカルで処理している</p>
+</li>
+<li>
+<p>mermaidでの作図や3Dモデルの表示、かわいいアイコンなどといった最低限の機能を実装している</p>
+</li>
+<li>
+<p>Jekyllは挫折しました</p>
+</li>
+</ul>
+<p>PythonとHTMLにある程度なじみのある方であれば類似目的に流用できそうと思っています。<br/>
+Pythonスクリプトとstyle.cssは殴り書き状態なので、追々きれいにしようと思います。<br/>
+使えそうなところあったらぜひ流用してください～</p>
+
+                   <script>
+                       const OBJ_INFO=[];
+                    </script>
+                    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+                    <script src="../includes/display-3dmodel.js" type="module"></script>
+    
+                </div>
+                
+                
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+
+            </div>
+            <div id="right-sidebar">
+
+
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    
+    
+    
+    </div>
+    <script src="../includes/clipboard-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+  </body>
+</html>

@@ -410,20 +410,30 @@ header .link:hover{
     height: 250px; /* 子要素の高さを250pxに設定 */
     overflow: hidden; /* 子要素の内容がはみ出た場合に隠す設定 */
     position: relative; /* 孫要素の絶対位置を親要素に対して相対的にする設定 */
+    margin-bottom: 20px;
 }
-
 
 
 #center .photo-list{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 40px;
+    gap: 30px;
+    padding: 10px;
 }
 #center .photo-list a{
     display: block;
+    border-radius: 0px;
+	background-color: rgba(210, 210, 210, 0);
 }
+#center .photo-list a:hover{
+	background-color: rgba(210, 210, 210, 0);
+}
+#center .photo-list a img{
+    border-radius: 3px;
+}
+
+
 #center .post-list{
     display: flex;
     flex-wrap: wrap;
