@@ -8,7 +8,7 @@ def get_last_modified_time(file_path):
     # ファイルの最終更新日時を取得し、指定された形式の文字列に変換する
     modified_time = os.path.getmtime(file_path)
     formatted_time = datetime.fromtimestamp(modified_time).isoformat()
-    return formatted_time.split(".")[0]  # 秒の小数点以下を切り捨てる
+    return formatted_time.split(".")[0]+"+09:00"  # 秒の小数点以下を切り捨てる
 
 def generate_sitemap():
     directory = os.getcwd()
