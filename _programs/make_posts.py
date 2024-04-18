@@ -112,6 +112,23 @@ def remove_newlines(text):
     return re.sub(r"(^\n+)|(\n+$)", "", text)
 
 
+def add_blank_links(html_code):
+    # BeautifulSoupでHTMLをパース
+    soup = BeautifulSoup(html_code, 'html.parser')
+    
+    # <a>タグをすべて取得
+    a_tags = soup.find_all('a')
+    
+    # href属性の値をチェックしてtarget="_blank" rel="noopener noreferrer"を追加
+    for a_tag in a_tags:
+        if 'href' in a_tag.attrs:
+            href_value = a_tag['href']
+            if not href_value.startswith(('https://hitbug0.github.io/', '.', '#')):
+                a_tag['target'] = '_blank'
+                a_tag['rel'] = 'noopener noreferrer'
+
+    # 更新されたHTMLを文字列として返す
+    return str(soup)
 
 # temp.htmlを読み込み
 with open('./_templates/post_template.html', 'r', encoding='utf-8') as f:
@@ -148,7 +165,6 @@ for file in html_files:
         
         # オリジナルの<pre class="hljs">を新しいdivで置き換える
         replace_pre += [(str(pre_tag), str(new_div))]
-
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
@@ -201,6 +217,8 @@ for file in html_files:
     body_content, insert_code = replace_stl_code(body_content, stl_info_list)
     body_content += insert_code
     
+    body_content = add_blank_links(body_content)
+
     # 文字列をtempに挿入
     temp_content = temp_content.replace('::body::', body_content, 1)
     temp_content = temp_content.replace('::date::', date_value, 1)
