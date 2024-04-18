@@ -2,7 +2,6 @@
 [hitbug home page](https://hitbug0.github.io/)
 
 ## ファイル構成
-ファイルの中身はGitHubでご覧ください～
 
 - **.git** : Gitリポジトリ
 - **_posts_original**
@@ -12,10 +11,11 @@
     - `make_posts.py` : 記事を作る
     - `make_index.py` : インデックスページとタグ表示要素を作る
     - `make_sitemap.py` : サイトマップファイルを作る
+    - `modules.py` : 共通の関数
 - **_templates** : サイト用HTMLファイル作成のためののテンプレートが入っている
-    - `index_template.html`
-    - `post_template.html`
-    - `tags_template.html`
+    - `index-temp.html`
+    - `post-temp.html`
+    - `tags-temp.html`
 - **contents**
     - **icon** : かわいいアイコン画像が入っている
     - **img** : 記事に挿入する画像が入っている
@@ -25,11 +25,11 @@
     - `footer.html` : フッタのHTMLファイル
     - `header.html` : ヘッダのHTMLファイル
     - `hamburger-menu.html` : ウィンドウ幅が狭いときのハンバーガーメニューのHTMLファイル
-    - `tags.html` : インデックスページ用のタグ表示要素。スクリプトで自動作成
+    - `tags-index.html` : インデックスページ用のタグ表示要素。スクリプトで自動作成
     - `tags-post.html` : 記事ページ用のタグ表示要素。スクリプトで自動作成
     - `style.css` : スタイル
     - `clipboard-script.js` : コピー機能のスクリプト
-    - `disp_3dmodel.js` : three.jsの中身を呼び出すスクリプト
+    - `display-3dmodel.js` : three.jsの中身を呼び出すスクリプト
     - `hamburger-menu-trigger.js` : ハンバーガーメニューの動作のスクリプト
 - **posts**
     - `yyyy-mm-dd-filename.html` : 記事ページのHTMLファイル。スクリプトで自動作成

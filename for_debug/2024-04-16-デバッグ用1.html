@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../includes/style.css">
+    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+    crossorigin="anonymous"></script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+    <title>デバッグ用1 | hitbug</title>
+    <meta name="tag" content="Python">
+<meta name="tag" content="%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">
+
+  </head>
+
+
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">h2見出し</a></li>
+<li><a href="#section2">code</a></li>
+<li><a href="#section3">mermaid</a></li>
+<li><a href="#section4">画像</a></li>
+<li><a href="#section5">3Dモデル</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E7%94%A81">デバッグ用1</h1>
+<p><a href="::tags::Python,%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92" rel="noopener noreferrer" target="_blank"></a></p>
+<hr/>
+<p>表示確認用のページです</p>
+<h2 id="section1">h2見出し</h2>
+<ul>
+<li>1
+<ul>
+<li>2
+<ul>
+<li>3</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="h3%E8%A6%8B%E5%87%BA%E3%81%97">h3見出し</h3>
+<ol>
+<li>いち</li>
+<li>に</li>
+<li>さん333333333333333333
+33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+3333333333333333333333333333333333333333333333333333</li>
+</ol>
+<h3 id="url">URL</h3>
+<ul>
+<li><a href="../">トップページ</a></li>
+<li><a href="../#Web%E5%88%B6%E4%BD%9C">Web制作関連の記事</a></li>
+<li><a href="https://twitter.com/hitbug0" rel="noopener noreferrer" target="_blank">Twitter</a></li>
+</ul>
+<h2 id="section2">code</h2>
+<p><code>hoge</code>と<code>huga</code><br/>
+<strong>ボールド</strong>, <em>斜体</em>, <s>取り消し線</s><br/>
+<a href="https://hitbug0.github.io/posts/2024-04-10-%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E7%94%A81.html">URL</a></p>
+<h2 id="section3">mermaid</h2>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
+graph TD;
+Start[開始] --&gt; Stop[終了];
+</div></code></pre>
+<h2 id="section4">画像</h2>
+<p><div class="photo-list"><a href="../contents/img/1.jpg"  data-lightbox="group" data-title="one" alt="">
+                                   <img src="../contents/img/1.jpg" height="200px">
+                                </a>
+                             </div>
+<div class="photo-list"><a href="../contents/img/1.jpg"  data-lightbox="group" data-title="one" alt="">
+                                   <img src="../contents/img/1.jpg" height="120px">
+                                </a>
+                             <a href="../contents/img/2.jpg"  data-lightbox="group" data-title="two" alt="">
+                                   <img src="../contents/img/2.jpg" height="120px">
+                                </a>
+                             <a href="../contents/img/3.jpg"  data-lightbox="group" data-title="three" alt="">
+                                   <img src="../contents/img/3.jpg" height="120px">
+                                </a>
+                             </div></p>
+<h2 id="section5">3Dモデル</h2>
+<p><div class="model-container" id="milk_crown-0"></div>
+<div class="model-container" id="chain-1"></div>
+<div class="model-container" id="milk_crown-2"></div></p>
+<script>
+                       const OBJ_INFO=[
+                           [
+                               '../contents/stl/milk_crown.stl',
+                               ['milk_crown-0'],
+                               [[0,-300,150]],
+                               [['orange', 'white']],
+                               [1, 1000]
+                           ],
+                       
+                           [
+                               '../contents/stl/chain.stl',
+                               ['chain-1'],
+                               [[0,-300,150]],
+                               [['orange', 'white']],
+                               [1, 1000]
+                           ],
+                       
+                           [
+                               '../contents/stl/milk_crown.stl',
+                               ['milk_crown-2'],
+                               [[0,300,150]],
+                               [['rainbow', 'white']],
+                               [1, 1000]
+                           ],
+                       ];
+                    </script>
+<script async="" src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+<script src="../includes/display-3dmodel.js" type="module"></script>
+
+                </div>
+                
+                
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+
+            </div>
+            <div id="right-sidebar">
+
+
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    
+    
+    
+    </div>
+    <script src="../includes/clipboard-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+  </body>
+</html>

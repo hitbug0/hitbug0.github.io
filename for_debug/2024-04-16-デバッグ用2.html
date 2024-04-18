@@ -1,45 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<!-- 写真が切り替わる設定 -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
-<script>
-    $(function(){
-        var setImg = '#photo';
-        var fadeSpeed = 1700;
-        var switchDelay = 8000;
-
-        $(setImg).children('img').css({opacity:'0'});
-        $(setImg + ' img:first').stop().animate({opacity:'1',zIndex:'20'},fadeSpeed);
-
-        setInterval(function(){
-            $(setImg + ' :first-child').animate({opacity:'0'},fadeSpeed).next('img').animate({opacity:'1'},fadeSpeed).end().appendTo(setImg);
-        },switchDelay);
-    });
-</script>
-
   <head>
     <!-- 共通: 基本設定-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../includes/style.css">
     <link rel="icon" href="../contents/icon/icon_black_tr.png">
-    
+
     <!-- 共通: フォントの設定-->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
-    
+
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
-    
+
     <!-- 共通: Google AdSenseの設定-->
     <meta name="google-adsense-account" content="ca-pub-5830432592137126">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
     crossorigin="anonymous"></script>
-    
+
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
@@ -50,50 +32,63 @@
     gtag('config', 'G-2NP6QCR05Z');
     </script>
 
-    <!-- iPhoneデバイスの設定-->
-    <link rel="manifest" href="./manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="../contents/icon/icon-180x180.png">
-    
-    <!-- Androidデバイスのアイコン設定 挙動未確認
-    <meta name="theme-color" content="#ffffff">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Web App">
-    <link rel="icon" sizes="192x192" href="../contents/icon/icon.png">
-    -->
-    
-    ::style::
-    
-    <title>hitbug</title>
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+    <title>デバッグ用2 | hitbug</title>
+    <meta name="tag" content="h_o_g-e">
+<meta name="tag" content="hoge">
+<meta name="tag" content="Python">
 
   </head>
+
+
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
     <script>$(function(){$('header').load('../includes/header.html');});</script>
-    
+
     <div id="wrapper">
         <div id="main">
+            <!-- コンテンツ -->
             <div id="hidden-left-sidebar"></div>
             <div id="left-sidebar">
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">xyzあいうえお</a></li>
+                    </ul>
+                </div>
+                <br>
                 <div id="left-sidebar-tags" class="text"></div>
-                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags.html');});</script>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
             </div>
             <div id="center">
                 <div class="text">
-                    <h1 id="posts-title">今までの投稿</h1>
-                    <p></p>
-                    <hr/>
-                    <p>タグごとにまとめてます</p>
                     
-                    ::articles::
-                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E7%94%A82">デバッグ用2</h1>
+<p><a href="::tags::h_o_g-e,hoge,Python" rel="noopener noreferrer" target="_blank"></a></p>
+<hr/>
+<p>表示確認用のページです<br/>
+表示確認用のページです</p>
+<h2 id="section1">xyzあいうえお</h2>
+<p>aaa <code>hoge</code> bbb</p>
+
                 </div>
-            </div>
-            <div id="right-sidebar">
                 
                 
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
                 <script async 
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
                     crossorigin="anonymous">
@@ -111,12 +106,17 @@
                 </script>
 
 
+            </div>
+            <div id="right-sidebar">
+
+
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
 
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
 
-        
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
@@ -124,8 +124,11 @@
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
-    </div>
     
+    
+    
+    </div>
+    <script src="../includes/clipboard-script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
