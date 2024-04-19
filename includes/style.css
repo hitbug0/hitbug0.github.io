@@ -331,6 +331,7 @@ header .link:hover{
     padding-bottom: 0px; /* 下線の高さを設定 */
     text-decoration: none; /* テキストのデフォルトの下線を削除 */
     color: #333; /* テキストの色を設定 */
+    margin-top: 50px; /* 上部の余白を追加 */
 }
 #center h2::after {
     content: ""; /* 擬似要素のコンテンツを設定 */
@@ -342,6 +343,7 @@ header .link:hover{
     background-image: linear-gradient(to top, #eab700, #eab700b0); /* 下線の色をグラデーションに設定 */
     border-radius: 2px; /* 下線の角を丸くする */
     z-index: -1;
+    margin-top: 50px; /* 上部の余白を追加 */
 }
 
 #center .text a{
@@ -363,6 +365,7 @@ header .link:hover{
 	letter-spacing: 0.08em;
 }
 #center h3{
+    margin-top: 20px; /* 上部の余白を追加 */
     scroll-margin-top: 65px;
 }
 

@@ -134,6 +134,13 @@ HTML形式で出力もできて、結構便利で私は仕事で使ったりも�
     C --&gt; E[終了];
     D --&gt; E;
 </div></code></pre>
+<div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div>graph TD;
+    A[開始] --&gt; B{条件};
+    B --&gt;|条件A true| C[アクションA];
+    B --&gt;|条件A false| D[アクションB];
+    C --&gt; E[終了];
+    D --&gt; E;
+</div></code></pre></div></div>
 <pre><code class="language-mermaid"><div class="mermaid">graph TD;
     A[開始] --&gt; B[アクションA];
     B --&gt; C;
@@ -147,6 +154,19 @@ HTML形式で出力もできて、結構便利で私は仕事で使ったりも�
     end
     アクションB-2--&gt; アクションC-1;
 </div></code></pre>
+<div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div>graph TD;
+    A[開始] --&gt; B[アクションA];
+    B --&gt; C;
+    B --&gt; D;
+    D --&gt; E[終了];
+    subgraph D[アクションC]
+        アクションC<span class="hljs-number">-1</span>--&gt; アクションC<span class="hljs-number">-2</span>;
+    end
+    subgraph C[アクションB]
+        アクションB<span class="hljs-number">-1</span>--&gt; アクションB<span class="hljs-number">-2</span>;
+    end
+    アクションB<span class="hljs-number">-2</span>--&gt; アクションC<span class="hljs-number">-1</span>;
+</div></code></pre></div></div>
 <h3 id="%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E5%9B%B3">シーケンス図</h3>
 <p><code>note</code>でコメントを記入できるほか、矢印の形や、実行状態かどうかなども表現できます。</p>
 <pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
@@ -159,6 +179,16 @@ HTML形式で出力もできて、結構便利で私は仕事で使ったりも�
     サーバー --)- クライアント: レスポンス送信
     クライアント --)- 人: レスポンス受信
 </div></code></pre>
+<div class="container"><div id="code-content2"><button class="copy-button" data-clipboard-target="#code-content2">Copy</button><pre class="hljs"><code><div>sequenceDiagram
+    actor 人
+    participant クライアント
+    participant サーバー
+    人 -&gt;&gt;+ クライアント: リクエスト送信
+    クライアント -&gt;&gt;+ サーバー: リクエスト処理
+    note right of サーバー: hoge
+    サーバー --)- クライアント: レスポンス送信
+    クライアント --)- 人: レスポンス受信
+</div></code></pre></div></div>
 <h3 id="%E3%82%AC%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88">ガントチャート</h3>
 <pre><code class="language-mermaid"><div class="mermaid">gantt
     title ガントチャートの例
@@ -170,6 +200,16 @@ HTML形式で出力もできて、結構便利で私は仕事で使ったりも�
     作業2のタスク1 :done, 2024-04-18, 2024-04-22
     作業2のタスク2 :done, 2024-04-23, 2024-04-25
 </div></code></pre>
+<div class="container"><div id="code-content3"><button class="copy-button" data-clipboard-target="#code-content3">Copy</button><pre class="hljs"><code><div>gantt
+    title ガントチャートの例
+    dateFormat  YYYY-MM-DD
+    section 作業<span class="hljs-number">1</span>
+    作業<span class="hljs-number">1</span>のタスク<span class="hljs-number">1</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-10</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-15</span>
+    作業<span class="hljs-number">1</span>のタスク<span class="hljs-number">2</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-15</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-20</span>
+    section 作業<span class="hljs-number">2</span>
+    作業<span class="hljs-number">2</span>のタスク<span class="hljs-number">1</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-18</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-22</span>
+    作業<span class="hljs-number">2</span>のタスク<span class="hljs-number">2</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-23</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-25</span>
+</div></code></pre></div></div>
 <h3 id="er%E5%9B%B3">ER図</h3>
 <pre><code class="language-mermaid"><div class="mermaid">erDiagram
     CUSTOMER ||--o{ ORDER : has
@@ -188,6 +228,24 @@ HTML形式で出力もできて、結構便利で私は仕事で使ったりも�
         decimal price
     }
 </div></code></pre>
+<div class="container"><div id="code-content4"><button class="copy-button" data-clipboard-target="#code-content4">Copy</button><pre class="hljs"><code><div>erDiagram
+    CUSTOMER ||--o{ ORDER : has
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER {
+        string name
+        string address
+        string phone_number
+    }
+    ORDER {
+        string number
+        date    date
+    }
+    LINE-ITEM {
+        number quantity
+        decimal price
+    }
+
+</div></code></pre></div></div>
 <h2 id="section3">色の変更方法</h2>
 <p>こんな感じでテーマの色や図形の色を変えることができます。<br/>
 もちろん
@@ -200,6 +258,13 @@ HTML形式で出力もできて、結構便利で私は仕事で使ったりも�
     C --&gt; E[終了];
     D --&gt; E;
 </div></code></pre>
+<div class="container"><div id="code-content5"><button class="copy-button" data-clipboard-target="#code-content5">Copy</button><pre class="hljs"><code><div>graph LR;
+    A[開始] --&gt; B{条件};
+    B --&gt;|条件A true| C[アクションA];
+    B --&gt;|条件A false| D[アクションB];
+    C --&gt; E[終了];
+    D --&gt; E;
+</div></code></pre></div></div>
 <h3 id="%E5%A4%89%E6%9B%B4%E5%BE%8C">変更後</h3>
 <pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
 graph LR;
@@ -211,6 +276,16 @@ graph LR;
     C --&gt; E[終了]:::c1;
     D --&gt; E;
 </div></code></pre>
+<div class="container"><div id="code-content6"><button class="copy-button" data-clipboard-target="#code-content6">Copy</button><pre class="hljs"><code><div>%%{init: {<span class="hljs-string">'theme'</span>:<span class="hljs-string">'neutral'</span>}}%%
+graph LR;
+    classDef c1 fill:<span class="hljs-comment">#eab700,fill-opacity:0.4</span>
+    classDef c2 fill:<span class="hljs-comment">#eab700,fill-opacity:1</span>
+    A[開始] --&gt; B{条件}:::c1;
+    B --&gt;|条件A true| C[アクションA];
+    B --&gt;|条件A false| D[アクションB]:::c2;
+    C --&gt; E[終了]:::c1;
+    D --&gt; E;
+</div></code></pre></div></div>
 <h2 id="section4">VSCodeでMarkdownに図を入れる具体的な方法</h2>
 <p><a href="../posts/2024-04-19-markdown2html.html">VSCodeでMarkdownをHTML化する方法</a>に記載の初期設定と操作方法で、プレビューと出力ができると思います。</p>
 <h2 id="section5">まとめ</h2>

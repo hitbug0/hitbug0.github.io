@@ -103,7 +103,7 @@ def make_index_page():
     tag_buttons = '&nbsp;&nbsp;\n'.join(tag_buttons)
 
     # タグごとの記事リスト（indexページのメインの内容）を作成する
-    article_info = ""
+    article_info = GOOGLE_AD
     for tag, tag_disp in zip(tags, tags_disp):
         article_info += f"""<br><h1 id="{tag[0]}">{tag_disp}（{tag[1]} 件）</h1>\n"""
         
