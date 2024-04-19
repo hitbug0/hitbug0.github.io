@@ -6,6 +6,17 @@ from modules import remove_newlines, replace_and_write
 
 
 def analyze_code_blocks(soup):
+    """
+    HTML内のコードブロックを分析し、置換すべき箇所と置換後のHTMLコードを作成する関数。
+
+    Args:
+        soup: BeautifulSoupオブジェクト形式のHTMLコンテンツ
+
+    Returns:
+        old_codes (list): 置換対象のコードブロックのHTML文字列のリスト
+        new_codes (list): コンテナとコピーボタンを追加した修正されたコードブロックのHTML文字列のリスト
+    """
+    
     # <pre class="hljs">タグを抽出し、編集
     pre_tags = soup.find_all('pre', class_='hljs')
     old_codes = [str(p) for p in pre_tags]
@@ -25,6 +36,18 @@ def analyze_code_blocks(soup):
 
 
 def analyze_sections(soup):
+    """
+    HTML内における「章」の記載を分析し、置換すべき箇所と置換後のHTMLコードを作成する関数。
+
+    Args:
+        soup: BeautifulSoupオブジェクト形式のHTMLコンテンツ
+
+    Returns:
+        old_section_values (list): 置換対象のセクションのHTML文字列のリスト。
+        new_section_values (list): 更新されたIDを含む修正されたセクションのHTML文字列のリスト。
+        sections (str): サイドバーセクションリンクのHTMLコンテンツを表す文字列。
+    """
+
     # セクションのid変更と左サイドバーにおけるリストの作成
     section_tags = soup.find_all('h2')
     old_section_values = [str(s) for s in section_tags]
@@ -40,6 +63,17 @@ def analyze_sections(soup):
 
 
 def analyze_img_info(html_code):
+    """
+    HTMLコード内の::img{*}::の内容を分析し、置換すべき箇所と置換後のHTMLコードを作成する関数。
+
+    Args:
+        html_code (str): 画像情報を含むHTMLコード。
+
+    Returns:
+        old_codes (list): 置換対象の画像ブロックの文字列のリスト。
+        new_codes (list): 修正された画像ブロックのHTML文字列のリスト。
+    """
+
     # ::img{***}::を抽出
     old_codes = re.findall(r'(::img{.*?}::)', html_code, re.DOTALL) # ""::img{" と "}::" を含める
     blocks    = re.findall(r'::img{(.*?)}::', html_code, re.DOTALL) # ""::img{" と "}::" を含めない
@@ -75,6 +109,17 @@ def analyze_img_info(html_code):
 
 
 def analyze_stl_info(html_code):
+    """
+    HTMLコード内の::stl{*}::の内容を分析し、置換すべき箇所と置換後のHTMLコードを作成する関数。
+
+    Args:
+        html_code (str): 立体形状情報を含むHTMLコード。
+
+    Returns:
+        old_codes (list): 置換対象の立体形状ブロックの文字列のリスト。
+        new_codes (list): 修正された立体形状ブロックのHTML文字列のリスト。
+    """
+
     # ::stl{***}::を抽出
     old_codes = re.findall(r'(::stl{.*?}::)', html_code, re.DOTALL) # ""::stl{" と "}::" を含める
     blocks = re.findall(r'::stl{(.*?)}::', html_code, re.DOTALL) # ""::stl{" と "}::" を含めない
@@ -122,6 +167,16 @@ def analyze_stl_info(html_code):
 
 
 def add_blank_links(html_code):
+    """
+    HTML内のリンクにtarget="_blank" rel="noopener noreferrer"を追加する関数。
+
+    Args:
+        html_code (str): HTMLコード。
+
+    Returns:
+        str: 更新されたHTMLコード。
+    """
+
     # BeautifulSoupでHTMLをパース
     soup = BeautifulSoup(html_code, 'html.parser')
     
@@ -142,6 +197,15 @@ def add_blank_links(html_code):
 
 
 def make_post(post_template, input_file_path, output_dir):
+    """
+    1つの記事HTMLファイルを作成する関数。
+
+    Args:
+        post_template (str): ポストのテンプレートHTMLコード。
+        input_file_path (str): 入力HTMLファイルのパス。
+        output_dir (str): 出力先ディレクトリのパス。
+    """
+
     with open(input_file_path, 'r', encoding='utf-8') as f:
         input_html = f.read()
 
@@ -178,12 +242,26 @@ def make_post(post_template, input_file_path, output_dir):
 
 
 def make_posts(input_dir, output_dir, post_template):
+    """
+    複数の記事HTMLファイルを作成する関数。
+
+    Args:
+        input_dir (str): 入力ディレクトリのパス。
+        output_dir (str): 出力先ディレクトリのパス。
+        post_template (str): ポストのテンプレートHTMLコード。
+    """
+
     input_files = glob.glob(os.path.join(input_dir, '*.html')) # input_dir内のhtmlファイルを検索
     for input_file_path in input_files:
         # htmlファイルを読み込み
         make_post(post_template, input_file_path, output_dir)
 
 def main():
+    """
+    メイン処理。
+    指定したディレクトリ内の全HTMLファイルを元に記事HTMLファイルを作成し、指定した出力先に出力する。
+    """
+
     # テンプレートの読み込み
     with open('./_templates/post-temp.html', 'r', encoding='utf-8') as f:
         post_template = f.read()

@@ -1,7 +1,7 @@
 import os
 import glob
 import pandas as pd
-from itertools import chain
+from collections import Counter
 from bs4 import BeautifulSoup
 from urllib.parse import unquote
 from modules import remove_newlines, replace_and_write
@@ -27,7 +27,12 @@ GOOGLE_AD = """
 
 
 def collect_articles_info():
-    # 記事の情報を集約する
+    """
+    記事の情報を集約する関数。
+    より具体的には、postディレクトリ内のhtmlファイルを解析し、各ファイル(=各記事)の中からindex.hml等で表示すべき情報を抽出する関数。
+    Returns:
+        df: 記事情報をまとめたpandas DataFrame。 
+    """
     data = []
     for file_path in glob.glob("posts/*.html"):
         file_name = os.path.splitext(os.path.basename(file_path))[0] # ファイル名を取得
@@ -70,57 +75,69 @@ def collect_articles_info():
     return df
 
 
-def main():
-    df = collect_articles_info() # 記事の情報を集約する
+def make_index_page():
+    """
+    メイン処理。
+    このコードでやっていることは2つ。
+        1. index-temp.htmlに記事ファイル情報を組み込むことでindex.htmlを作成する
+        2. tags-temp.htmlに記事ファイル情報を組み込むことでtags-*.htmlを作成する
+    """
 
-    # タグのバリエーションを抽出
-    tags = sorted(list(set(list(chain(*list(df['Tags'])))))) # 全タグを1次元のリストにし、重複を除外する
+    # postディレクトリ内で記事ファイルを検索し、記事の情報を集約する
+    df = collect_articles_info()
 
-    # タグごとの記事リスト作成
-    # 記事数が増えたらサイトの作りを変えるつもり
-    tags_at_top = ""
-    sections_for_index = ""
-    sections_for_posts = ""
+    # タグのバリエーションを抽出する
+    all_elements = [element for sublist in df["Tags"] for element in sublist] # タグについて、重複を許して1次元リスト化する
+    element_counts = Counter(all_elements) # 要素の出現回数をカウント
+    tags = sorted(element_counts.items(), key=lambda x: x[1], reverse=True)
+    tags_disp = [unquote(tag[0]) for tag in tags] # URLエンコードを元に戻す
+
+    # タグリスト(左サイドバー)のコードを作成する
+    tags_for_index = [f"""<li><a href="#{tag[0]}">{tag_disp}</a></li>""" for tag, tag_disp in zip(tags, tags_disp)]
+    tags_for_index = '\n'.join(tags_for_index)
+    tags_for_posts = [f"""<li><a href="../#{tag[0]}">{tag_disp}</a></li>""" for tag, tag_disp in zip(tags, tags_disp)]
+    tags_for_posts = '\n'.join(tags_for_posts)
+
+    # indexページの冒頭に表示するタグボタンのを作成する
+    tag_buttons = [f"""<a class="tags" href="#{tag[0]}">{unquote(tag[0])}</a>""" for tag in tags]
+    tag_buttons = '&nbsp;&nbsp;\n'.join(tag_buttons)
+
+    # タグごとの記事リスト（indexページのメインの内容）を作成する
     article_info = ""
-    for tag in tags:
-        tags_at_top += f"""<a class="tags" href="#{tag}">{unquote(tag)}</a>&nbsp;&nbsp;\n"""
-
-        tag_disp = unquote(tag) # URLエンコードを元に戻す
-        sections_for_index += f"""<li><a href="#{tag}">{tag_disp}</a></li>\n"""
-        sections_for_posts += f"""<li><a href="../#{tag}">{tag_disp}</a></li>\n"""
+    for tag, tag_disp in zip(tags, tags_disp):
+        article_info += f"""<br><h1 id="{tag[0]}">{tag_disp}（{tag[1]} 件）</h1>\n"""
         
-        # テンプレートに組み込むコードを作成する
-        filtered_df = df[df['Tags'].apply(lambda tags_: tag in tags_)] # tagが付いた記事のレコードだけを抽出する
-        article_info += f"""<br><h1 id="{tag}">{tag_disp}（{len(filtered_df)} 件）</h1>\n"""
-        
-        for index, row in filtered_df.iterrows():
+        # 記事毎のコードを作成
+        filtered_df = df[df['Tags'].apply(lambda tags_: tag[0] in tags_)] # このtagが付いた記事のレコードだけを抽出する
+        for index, row in filtered_df.iterrows(): 
             article_info += f"""<hr class="articles">
                                 <div class="metadata-date">{row['Date']}</div>
                                 <h3><a class="articles" href="../posts/{row['File Name']}.html">{row['Title']}</a></h3>
                                 <div class="metadata-tags">
                             """
-            # タグを追加
-            for tag in row['Tags']:
-                article_info += f"""<a class="tags" href="#{tag}">{unquote(tag)}</a>&nbsp;&nbsp;\n"""
+            
+            for t_ in row['Tags']: # その記事に含まれるタグの表示
+                article_info += f"""<a class="tags" href="#{t_}">{unquote(t_)}</a>&nbsp;&nbsp;\n"""
 
-            article_info += f"""</div>\n<div class="metadata-abstract"><p>\n{row['Abstract']}\n</p></div>"""
+            article_info += f"""</div>\n<div class="metadata-abstract"><p>\n{row['Abstract']}\n</p></div>""" # 要約
 
         article_info += GOOGLE_AD
         article_info += "<br><br>"
 
-
-    style = f"""<style>#{', #'.join(tags)}""".replace('%', '\%')
+    # 各タグ欄(各章)へのリンク押下時の挙動を設定するstyleコードの作成
+    style = f"""<style>#{', #'.join([t[0] for t in tags])}""".replace('%', '\%')
     style += """{scroll-margin-top: 65px;}</style>"""
 
     # テンプレートの読み込み
     with open('./_templates/index-temp.html', 'r', encoding='utf-8') as f:
         index_template = f.read()
-
     with open('./_templates/tags-temp.html', 'r', encoding='utf-8') as f:
         tags_template = f.read()
 
-    replace_and_write(index_template, ['::articles::', '::style::'], [tags_at_top + article_info, style], 'index.html')
-    replace_and_write(tags_template,  ['::sections::'], [sections_for_index], './includes/tags-index.html')
-    replace_and_write(tags_template,  ['::sections::'], [sections_for_posts], './includes/tags-post.html')
+    # 置換と出力
+    replace_and_write(index_template, ['::articles::', '::style::'], [tag_buttons + article_info, style], 'index.html')
+    replace_and_write(tags_template,  ['::sections::'],              [tags_for_index], './includes/tags-index.html')
+    replace_and_write(tags_template,  ['::sections::'],              [tags_for_posts], './includes/tags-post.html')
 
-main()
+
+make_index_page()

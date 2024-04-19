@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024-04-19-mermaid.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="mermaidmarkdown%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AB%E5%9B%B3%E3%82%92%E6%8F%8F%E3%81%8F%E6%96%B9%E6%B3%95">【mermaid】markdownのドキュメントに図を描く方法</h1>
+<p><a href="::tags::mermaid,markdown,VSCode"></a></p>
+<hr>
+<p>markdownファイル内にテキストで図を描く方法についての記事です。<br>
+図はmermaidという記法を使って作成します。<br>
+HTML形式で出力もできて、結構便利で私は仕事で使ったりもしています。</p>
+<h2 id="mermaid%E3%81%A8%E3%81%AF">mermaidとは</h2>
+<p>mermaidは、テキストで図や表を描画するためのツールです。
+以下のような特徴があります。</p>
+<ul>
+<li>
+<p>シンプルな記法</p>
+<ul>
+<li>mermaidの記法はシンプルで直感的</li>
+<li>専門的なグラフィックススキルがなくても誰でも使い始められる</li>
+</ul>
+</li>
+<li>
+<p>プレーンテキスト形式</p>
+<ul>
+<li>通常のテキストエディタで編集できるため、互換性が高い</li>
+<li>バージョン管理がしやすい</li>
+</ul>
+</li>
+<li>
+<p>様々な種類の図が描ける</p>
+<ul>
+<li>フローチャート、シーケンス図、ガントチャート、ER図、などなど</li>
+<li>色を変えたいなどの場合そのコマンドを記入する</li>
+</ul>
+</li>
+<li>
+<p>自動レイアウト</p>
+<ul>
+<li>自動的に図のレイアウトを調整してくれる</li>
+<li>手動でレイアウトを調整する手間が省け、表現したい内容に集中できる</li>
+</ul>
+</li>
+<li>
+<p>無料</p>
+</li>
+</ul>
+<h2 id="%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E5%9B%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9">基本的な図の書き方</h2>
+<p>シンプルな図とその元となるテキストを書いていきます。<br>
+これらのほかにもカスタマージャーニーズをかけた気がします。</p>
+<h3 id="%E3%83%95%E3%83%AD%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88">フローチャート</h3>
+<p>入れ子になっていても大丈夫です。<br>
+また、<code>graph</code>の後を<code>LR</code>や<code>TB</code>にすることで、フローの向きを変えることもできます。</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD;
+    A[開始] --> B{条件};
+    B -->|条件A true| C[アクションA];
+    B -->|条件A false| D[アクションB];
+    C --> E[終了];
+    D --> E;
+</div></code></pre>
+<pre class="hljs"><code><div>graph TD;
+    A[開始] --&gt; B{条件};
+    B --&gt;|条件A true| C[アクションA];
+    B --&gt;|条件A false| D[アクションB];
+    C --&gt; E[終了];
+    D --&gt; E;
+</div></code></pre>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD;
+    A[開始] --> B[アクションA];
+    B --> C;
+    B --> D;
+    D --> E[終了];
+    subgraph D[アクションC]
+        アクションC-1--> アクションC-2;
+    end
+    subgraph C[アクションB]
+        アクションB-1--> アクションB-2;
+    end
+    アクションB-2--> アクションC-1;
+</div></code></pre>
+<pre class="hljs"><code><div>graph TD;
+    A[開始] --&gt; B[アクションA];
+    B --&gt; C;
+    B --&gt; D;
+    D --&gt; E[終了];
+    subgraph D[アクションC]
+        アクションC<span class="hljs-number">-1</span>--&gt; アクションC<span class="hljs-number">-2</span>;
+    end
+    subgraph C[アクションB]
+        アクションB<span class="hljs-number">-1</span>--&gt; アクションB<span class="hljs-number">-2</span>;
+    end
+    アクションB<span class="hljs-number">-2</span>--&gt; アクションC<span class="hljs-number">-1</span>;
+</div></code></pre>
+<h3 id="%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E5%9B%B3">シーケンス図</h3>
+<p><code>note</code>でコメントを記入できるほか、矢印の形や、実行状態かどうかなども表現できます。</p>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+    actor 人
+    participant クライアント
+    participant サーバー
+    人 ->>+ クライアント: リクエスト送信
+    クライアント ->>+ サーバー: リクエスト処理
+    note right of サーバー: hoge
+    サーバー --)- クライアント: レスポンス送信
+    クライアント --)- 人: レスポンス受信
+</div></code></pre>
+<pre class="hljs"><code><div>sequenceDiagram
+    actor 人
+    participant クライアント
+    participant サーバー
+    人 -&gt;&gt;+ クライアント: リクエスト送信
+    クライアント -&gt;&gt;+ サーバー: リクエスト処理
+    note right of サーバー: hoge
+    サーバー --)- クライアント: レスポンス送信
+    クライアント --)- 人: レスポンス受信
+</div></code></pre>
+<h3 id="%E3%82%AC%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88">ガントチャート</h3>
+<pre><code class="language-mermaid"><div class="mermaid">gantt
+    title ガントチャートの例
+    dateFormat  YYYY-MM-DD
+    section 作業1
+    作業1のタスク1 :done, 2024-04-10, 2024-04-15
+    作業1のタスク2 :done, 2024-04-15, 2024-04-20
+    section 作業2
+    作業2のタスク1 :done, 2024-04-18, 2024-04-22
+    作業2のタスク2 :done, 2024-04-23, 2024-04-25
+</div></code></pre>
+<pre class="hljs"><code><div>gantt
+    title ガントチャートの例
+    dateFormat  YYYY-MM-DD
+    section 作業<span class="hljs-number">1</span>
+    作業<span class="hljs-number">1</span>のタスク<span class="hljs-number">1</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-10</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-15</span>
+    作業<span class="hljs-number">1</span>のタスク<span class="hljs-number">2</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-15</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-20</span>
+    section 作業<span class="hljs-number">2</span>
+    作業<span class="hljs-number">2</span>のタスク<span class="hljs-number">1</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-18</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-22</span>
+    作業<span class="hljs-number">2</span>のタスク<span class="hljs-number">2</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-23</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-25</span>
+</div></code></pre>
+<h3 id="er%E5%9B%B3">ER図</h3>
+<pre><code class="language-mermaid"><div class="mermaid">erDiagram
+    CUSTOMER ||--o{ ORDER : has
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER {
+        string name
+        string address
+        string phone_number
+    }
+    ORDER {
+        string number
+        date    date
+    }
+    LINE-ITEM {
+        number quantity
+        decimal price
+    }
+</div></code></pre>
+<pre class="hljs"><code><div>erDiagram
+    CUSTOMER ||--o{ ORDER : has
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER {
+        string name
+        string address
+        string phone_number
+    }
+    ORDER {
+        string number
+        date    date
+    }
+    LINE-ITEM {
+        number quantity
+        decimal price
+    }
+
+</div></code></pre>
+<h2 id="%E8%89%B2%E3%81%AE%E5%A4%89%E6%9B%B4%E6%96%B9%E6%B3%95">色の変更方法</h2>
+<p>こんな感じでテーマの色や図形の色を変えることができます。<br>
+もちろん
+もっと詳しく知りたい方は、<a href="https://zenn.dev/junkawa/articles/zenn-mermaidjs-theme-config">junkawaさんのページ</a>をはじめ様々なサイトで紹介されてますので、色々見てみてください～</p>
+<h3 id="%E5%A4%89%E6%9B%B4%E5%89%8D">変更前</h3>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR;
+    A[開始] --> B{条件};
+    B -->|条件A true| C[アクションA];
+    B -->|条件A false| D[アクションB];
+    C --> E[終了];
+    D --> E;
+</div></code></pre>
+<pre class="hljs"><code><div>graph LR;
+    A[開始] --&gt; B{条件};
+    B --&gt;|条件A true| C[アクションA];
+    B --&gt;|条件A false| D[アクションB];
+    C --&gt; E[終了];
+    D --&gt; E;
+</div></code></pre>
+<h3 id="%E5%A4%89%E6%9B%B4%E5%BE%8C">変更後</h3>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
+graph LR;
+    classDef c1 fill:#eab700,fill-opacity:0.4
+    classDef c2 fill:#eab700,fill-opacity:1
+    A[開始] --> B{条件}:::c1;
+    B -->|条件A true| C[アクションA];
+    B -->|条件A false| D[アクションB]:::c2;
+    C --> E[終了]:::c1;
+    D --> E;
+</div></code></pre>
+<pre class="hljs"><code><div>%%{init: {<span class="hljs-string">'theme'</span>:<span class="hljs-string">'neutral'</span>}}%%
+graph LR;
+    classDef c1 fill:<span class="hljs-comment">#eab700,fill-opacity:0.4</span>
+    classDef c2 fill:<span class="hljs-comment">#eab700,fill-opacity:1</span>
+    A[開始] --&gt; B{条件}:::c1;
+    B --&gt;|条件A true| C[アクションA];
+    B --&gt;|条件A false| D[アクションB]:::c2;
+    C --&gt; E[終了]:::c1;
+    D --&gt; E;
+</div></code></pre>
+<h2 id="vscode%E3%81%A7markdown%E3%81%AB%E5%9B%B3%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%96%B9%E6%B3%95">VSCodeでMarkdownに図を入れる具体的な方法</h2>
+<p><a href="../posts/2024-04-19-markdown2html.html">VSCodeでMarkdownをHTML化する方法</a>に記載の初期設定と操作方法で、プレビューと出力ができると思います。</p>
+<h2 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h2>
+<p>markdownファイル内にテキストで図を描くためのmermaidという記法について紹介しました。<br>
+シンプルな記法で色々作図できますし、VSCodeを使えば図が組み込まれたmarkdownドキュメントをHTML形式で出力できます！<br>
+結構便利で私は仕事で使ったりもしているので、是非使ってみてください～</p>
+
+</body>
+</html>
