@@ -25,6 +25,9 @@ GOOGLE_AD = """
                 </script>
 """
 
+def format_tag(tag):
+    # tagに記号やスペースがある場合はハイフンに置き換える
+    return tag.replace('.','-').replace('_','-').replace(' ','-').replace(',','-')
 
 def collect_articles_info():
     """
@@ -90,26 +93,26 @@ def make_index_page():
     all_elements = [element for sublist in df["Tags"] for element in sublist] # タグについて、重複を許して1次元リスト化する
     element_counts = Counter(all_elements) # 要素の出現回数をカウント
     tags = sorted(element_counts.items(), key=lambda x: x[1], reverse=True)
-    tags_disp = [unquote(tag[0]) for tag in tags] # URLエンコードを元に戻す
+    tag_info_list = [(tag[0], format_tag(tag[0]), unquote(tag[0]), tag[1]) for tag in tags] # [オリジナル, 記号がある場合は「-」に変更, 表示用にURLエンコードを元に戻したもの, 出現回数]
 
     # タグリスト(左サイドバー)のコードを作成する
-    tags_for_index = [f"""<li><a href="#{tag[0]}">{tag_disp}</a></li>""" for tag, tag_disp in zip(tags, tags_disp)]
+    tags_for_index = [f"""<li><a href="#{tag_info[1]}">{tag_info[2]}</a></li>""" for tag_info in tag_info_list]
     tags_for_index = '\n'.join(tags_for_index)
-    tags_for_posts = [f"""<li><a href="../#{tag[0]}">{tag_disp}</a></li>""" for tag, tag_disp in zip(tags, tags_disp)]
+    tags_for_posts = [f"""<li><a href="../#{tag_info[1]}">{tag_info[2]}</a></li>""" for tag_info in tag_info_list]
     tags_for_posts = '\n'.join(tags_for_posts)
 
     # indexページの冒頭に表示するタグボタンのを作成する
-    tag_buttons = [f"""<a class="tags" href="#{tag[0]}">{unquote(tag[0])}</a>""" for tag in tags]
+    tag_buttons = [f"""<a class="tags" href="#{tag_info[1]}">{tag_info[2]}</a>""" for tag_info in tag_info_list]
     tag_buttons = '&nbsp;&nbsp;\n'.join(tag_buttons)
 
     # タグごとの記事リスト（indexページのメインの内容）を作成する
     article_info = GOOGLE_AD
-    for tag, tag_disp in zip(tags, tags_disp):
-        article_info += f"""<br><h1 id="{tag[0]}">{tag_disp}（{tag[1]} 件）</h1>\n"""
+    for tag_info in tag_info_list:
+        article_info += f"""<br><h1 id="{tag_info[1]}">{tag_info[2]}（{tag_info[3]} 件）</h1>\n"""
         
         # 記事毎のコードを作成
-        filtered_df = df[df['Tags'].apply(lambda tags_: tag[0] in tags_)] # このtagが付いた記事のレコードだけを抽出する
-        for index, row in filtered_df.iterrows(): 
+        filtered_df = df[df['Tags'].apply(lambda tags_: tag_info[0] in tags_)] # このtagが付いた記事のレコードだけを抽出する
+        for _, row in filtered_df.iterrows(): 
             article_info += f"""<hr class="articles">
                                 <div class="metadata-date">{row['Date']}</div>
                                 <h3><a class="articles" href="../posts/{row['File Name']}.html">{row['Title']}</a></h3>
@@ -117,7 +120,7 @@ def make_index_page():
                             """
             
             for t_ in row['Tags']: # その記事に含まれるタグの表示
-                article_info += f"""<a class="tags" href="#{t_}">{unquote(t_)}</a>&nbsp;&nbsp;\n"""
+                article_info += f"""<a class="tags" href="#{format_tag(t_)}">{unquote(t_)}</a>&nbsp;&nbsp;\n"""
 
             article_info += f"""</div>\n<div class="metadata-abstract"><p>\n{row['Abstract']}\n</p></div>""" # 要約
 
@@ -125,7 +128,7 @@ def make_index_page():
         article_info += "<br><br>"
 
     # 各タグ欄(各章)へのリンク押下時の挙動を設定するstyleコードの作成
-    style = f"""<style>#{', #'.join([t[0] for t in tags])}""".replace('%', '\%')
+    style = f"""<style>#{', #'.join([tag_info[1] for tag_info in tag_info_list])}""".replace('%', '\%')
     style += """{scroll-margin-top: 65px;}</style>"""
 
     # テンプレートの読み込み

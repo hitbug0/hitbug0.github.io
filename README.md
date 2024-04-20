@@ -10,7 +10,9 @@
 - **_programs** : ローカルで回すスクリプトが入っている
     - `make_posts.py` : 記事を作る
     - `make_index.py` : インデックスページとタグ表示要素を作る
+    - `add_ad_to_posts.py` : 記事に広告を入れる
     - `make_sitemap.py` : サイトマップファイルを作る
+    - `add_sitemap_to_google.py` : サイトマップファイルをGoogle Search Consoleに送信する(RPA)
     - `modules.py` : 共通の関数
 - **_templates** : サイト用HTMLファイル作成のためののテンプレートが入っている
     - `index-temp.html`
@@ -27,7 +29,7 @@
     - `hamburger-menu.html` : ウィンドウ幅が狭いときのハンバーガーメニューのHTMLファイル
     - `tags-index.html` : インデックスページ用のタグ表示要素。スクリプトで自動作成
     - `tags-post.html` : 記事ページ用のタグ表示要素。スクリプトで自動作成
-    - `style.css` : スタイル
+    - `style.css` : スタイルファイル
     - `clipboard-script.js` : コピー機能のスクリプト
     - `display-3dmodel.js` : three.jsの中身を呼び出すスクリプト
     - `hamburger-menu-trigger.js` : ハンバーガーメニューの動作のスクリプト
@@ -39,6 +41,7 @@
 - `index.html` : インデックスページのHTMLファイル。スクリプトで自動作成
 - `README.md` : このファイル
 - `run.bat` : _programsのスクリプトをローカルで実行するためのファイル
+- `add_sitemap_to_google.bat` : `add_sitemap_to_google.py`をローカルで実行するためのファイル
 - `sitemap.xml` : SEOのためのサイトマップファイル。スクリプトで自動作成
 
 
