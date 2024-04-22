@@ -10,14 +10,17 @@
 - **_programs** : ローカルで回すスクリプトが入っている
     - `make_posts.py` : 記事を作る
     - `make_index.py` : インデックスページとタグ表示要素を作る
+    - `make_make_sort_by_date.py` : 日付降順の記事リストページを作る
     - `add_ad_to_posts.py` : 記事に広告を入れる
     - `make_sitemap.py` : サイトマップファイルを作る
     - `add_sitemap_to_google.py` : サイトマップファイルをGoogle Search Consoleに送信する(RPA)
     - `modules.py` : 共通の関数
 - **_templates** : サイト用HTMLファイル作成のためののテンプレートが入っている
     - `index-temp.html`
+    - `sort-by-date-temp-temp.html`
     - `post-temp.html`
     - `tags-temp.html`
+    - `months-temp.html`
 - **contents**
     - **icon** : かわいいアイコン画像が入っている
     - **img** : 記事に挿入する画像が入っている
@@ -29,6 +32,7 @@
     - `hamburger-menu.html` : ウィンドウ幅が狭いときのハンバーガーメニューのHTMLファイル
     - `tags-index.html` : インデックスページ用のタグ表示要素。スクリプトで自動作成
     - `tags-post.html` : 記事ページ用のタグ表示要素。スクリプトで自動作成
+    - `month.html` : 日付降順の記事リストページ用の月リスト
     - `style.css` : スタイルファイル
     - `clipboard-script.js` : コピー機能のスクリプト
     - `display-3dmodel.js` : three.jsの中身を呼び出すスクリプト
@@ -36,12 +40,13 @@
 - **posts**
     - `yyyy-mm-dd-filename.html` : 記事ページのHTMLファイル。スクリプトで自動作成
 
-- `ads.txt` : Google AdSenseのためのファイル
-- `manifest.json` : アプリとしてのメタデータを定義するファイル
 - `index.html` : インデックスページのHTMLファイル。スクリプトで自動作成
+- `sort-by-date.html` : 日付降順の記事リストページのHTMLファイル。スクリプトで自動作成
+- `manifest.json` : アプリとしてのメタデータを定義するファイル
 - `README.md` : このファイル
-- `run.bat` : _programsのスクリプトをローカルで実行するためのファイル
+- `ads.txt` : Google AdSenseのためのファイル
 - `add_sitemap_to_google.bat` : `add_sitemap_to_google.py`をローカルで実行するためのファイル
+- `run.bat` : _programsのスクリプトをローカルで実行するためのファイル
 - `sitemap.xml` : SEOのためのサイトマップファイル。スクリプトで自動作成
 
 
