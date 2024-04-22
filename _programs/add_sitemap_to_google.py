@@ -61,8 +61,10 @@ def main():
         chrome_window = get_chrome_window()
         time.sleep(0.05)
     move_to_main_screen(chrome_window) # メイン画面で開く
+    time.sleep(0.05)
     win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) # ウィンドウを最大化する
-
+    time.sleep(0.05)
+    
     # URL記入
     pa.hotkey('alt','d')
     time.sleep(0.05)

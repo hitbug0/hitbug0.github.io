@@ -296,6 +296,7 @@ chrome_window = <span class="hljs-literal">None</span> <span class="hljs-comment
     chrome_window = get_chrome_window()
     time.sleep(<span class="hljs-number">0.05</span>)
 move_to_main_screen(chrome_window) <span class="hljs-comment"># メイン画面で開く</span>
+time.sleep(<span class="hljs-number">0.05</span>)
 win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># ウィンドウを最大化する</span>
 
 </div></code></pre></div></div>
@@ -442,7 +443,9 @@ URL = <span class="hljs-string">"https://search.google.com/search-console/sitema
         chrome_window = get_chrome_window()
         time.sleep(<span class="hljs-number">0.05</span>)
     move_to_main_screen(chrome_window) <span class="hljs-comment"># メイン画面で開く</span>
+    time.sleep(<span class="hljs-number">0.05</span>)
     win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># ウィンドウを最大化する</span>
+    time.sleep(<span class="hljs-number">0.05</span>)
     
     <span class="hljs-comment"># URL記入</span>
     pa.hotkey(<span class="hljs-string">'alt'</span>,<span class="hljs-string">'d'</span>)

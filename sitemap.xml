@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>https://hitbug0.github.io/</loc>
-  <lastmod>2024-04-22T21:48:02+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:53+09:00</lastmod>
+</url>
+<url>
+  <loc>https://hitbug0.github.io//sort-by-date.html</loc>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 <url>
   <loc>https://hitbug0.github.io/posts/2024-04-17-MakeBlogSite.html</loc>
-  <lastmod>2024-04-22T21:48:03+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 <url>
   <loc>https://hitbug0.github.io/posts/2024-04-19-MakeSitemap.html</loc>
-  <lastmod>2024-04-22T21:48:03+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 <url>
   <loc>https://hitbug0.github.io/posts/2024-04-19-markdown2html.html</loc>
-  <lastmod>2024-04-22T21:48:03+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 <url>
   <loc>https://hitbug0.github.io/posts/2024-04-19-mermaid.html</loc>
-  <lastmod>2024-04-22T21:48:03+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 <url>
   <loc>https://hitbug0.github.io/posts/2024-04-22-AutoAddSitemap2Google.html</loc>
-  <lastmod>2024-04-22T21:48:03+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 <url>
   <loc>https://hitbug0.github.io/posts/2024-04-22-MakeIconImage.html</loc>
-  <lastmod>2024-04-22T21:48:03+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 <url>
   <loc>https://hitbug0.github.io/posts/2024-04-22-StuckScrewOfDrumPedal.html</loc>
-  <lastmod>2024-04-22T21:48:03+09:00</lastmod>
+  <lastmod>2024-04-22T22:02:54+09:00</lastmod>
 </url>
 </urlset>
