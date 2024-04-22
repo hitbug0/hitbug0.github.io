@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<!-- 写真が切り替わる設定 -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        var setImg = '#photo';
+        var fadeSpeed = 1700;
+        var switchDelay = 8000;
+
+        $(setImg).children('img').css({opacity:'0'});
+        $(setImg + ' img:first').stop().animate({opacity:'1',zIndex:'20'},fadeSpeed);
+
+        setInterval(function(){
+            $(setImg + ' :first-child').animate({opacity:'0'},fadeSpeed).next('img').animate({opacity:'1'},fadeSpeed).end().appendTo(setImg);
+        },switchDelay);
+    });
+</script>
+
+  <head>
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../includes/style.css">
+    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+    
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+    crossorigin="anonymous"></script>
+    
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- iPhoneデバイスの設定-->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../contents/icon/icon-180x180.png">
+    
+    <!-- Androidデバイスのアイコン設定 挙動未確認
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web App">
+    <link rel="icon" sizes="192x192" href="../contents/icon/icon.png">
+    -->
+    
+    <style>#posts-2024-04{scroll-margin-top: 65px;}</style>
+    
+    <title>hitbug</title>
+
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+    
+    <div id="wrapper">
+        <div id="main">
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/month.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+                    <h1 id="posts-title">新着順の記事リスト</h1>
+                    <p></p>
+                    <hr/>
+                    <p>全記事を日付が新しいものから順に並べています。
+                        <a href="../">タグごとにまとめたページはこちら</a>
+                    </p>
+                    
+                    <a class="tags" href="#posts-2024-04">2024 - 04</a>
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<br><h1 id="posts-2024-04">2024 - 04（7 件）</h1>
+<hr class="articles">
+                                <div class="metadata-date">2024 - 04 - 22</div>
+                                <h3><a class="articles" href="../posts/2024-04-22-AutoAddSitemap2Google.html">Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります）</a></h3>
+                                <div class="metadata-tags">
+                            <a class="tags" href="../#RPA">RPA</a>&nbsp;&nbsp;
+<a class="tags" href="../#Python">Python</a>&nbsp;&nbsp;
+<a class="tags" href="../#Web%E5%88%B6%E4%BD%9C">Web制作</a>&nbsp;&nbsp;
+</div>
+<div class="metadata-abstract"><p>
+Pythonで画面操作を自動化する方法を紹介します。<br>今回の題材は「Google Search ConsoleにXMLファイルを登録する」ですが、<br>他の場面でも、例えば「過去の偉人が作ったソフトで毎回同じ操作が必要...」みたいなときに使える方法だと思います。<br>（最近のWindowsを前提にしているので、他のOSや古めのWindowsでは動作しないと思います。ご注意ください...！）
+</p></div><hr class="articles">
+                                <div class="metadata-date">2024 - 04 - 22</div>
+                                <h3><a class="articles" href="../posts/2024-04-22-MakeIconImage.html">簡単な画像処理コードをChatGPTに作ってもらった</a></h3>
+                                <div class="metadata-tags">
+                            <a class="tags" href="../#%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86">画像処理</a>&nbsp;&nbsp;
+<a class="tags" href="../#ChatGPT">ChatGPT</a>&nbsp;&nbsp;
+</div>
+<div class="metadata-abstract"><p>
+手書きの絵をスキャンしたけど、いい感じの画像編集ソフト持ってないし編集できない...<br>そんな人(ぼくです)のために、ChatGPTで画像編集のPythonコードを作成する方法を紹介します。<br>今回は、このサイトのアイコン画像を作成した時の方法を題材にします。
+</p></div><hr class="articles">
+                                <div class="metadata-date">2024 - 04 - 22</div>
+                                <h3><a class="articles" href="../posts/2024-04-22-StuckScrewOfDrumPedal.html">DW9002のネジが回らなかった話（回せるようになりました）</a></h3>
+                                <div class="metadata-tags">
+                            <a class="tags" href="../#%E9%9F%B3%E6%A5%BD">音楽</a>&nbsp;&nbsp;
+<a class="tags" href="../#%E3%83%89%E3%83%A9%E3%83%A0">ドラム</a>&nbsp;&nbsp;
+</div>
+<div class="metadata-abstract"><p>
+ドラムのペダルDW9002のフットボードとチェーンを固定するネジが全然回らなかった話です。<br>力で解決する問題ではなかったので、結局楽器店経由でメーカー対応してもらいました。<br>同じ境遇の方の参考になればと思います。
+</p></div><hr class="articles">
+                                <div class="metadata-date">2024 - 04 - 19</div>
+                                <h3><a class="articles" href="../posts/2024-04-19-MakeSitemap.html">XMLサイトマップの作成をChatGPTに自動化してもらった</a></h3>
+                                <div class="metadata-tags">
+                            <a class="tags" href="../#Web%E5%88%B6%E4%BD%9C">Web制作</a>&nbsp;&nbsp;
+<a class="tags" href="../#Python">Python</a>&nbsp;&nbsp;
+<a class="tags" href="../#ChatGPT">ChatGPT</a>&nbsp;&nbsp;
+<a class="tags" href="../#RPA">RPA</a>&nbsp;&nbsp;
+</div>
+<div class="metadata-abstract"><p>
+ブログをGoogle検索にヒットさせるにはXMLサイトマップを登録するのが必要らしい！<br>しかし、記事を更新するたびにこのファイルを手動で更新するのは面倒...<br>というわけで、XMLサイトマップを自動で更新するスクリプトをChatGPTに書いてもらいました。
+</p></div><hr class="articles">
+                                <div class="metadata-date">2024 - 04 - 19</div>
+                                <h3><a class="articles" href="../posts/2024-04-19-markdown2html.html">VSCodeでMarkdownをHTML化する方法</a></h3>
+                                <div class="metadata-tags">
+                            <a class="tags" href="../#Web%E5%88%B6%E4%BD%9C">Web制作</a>&nbsp;&nbsp;
+<a class="tags" href="../#HTML">HTML</a>&nbsp;&nbsp;
+<a class="tags" href="../#markdown">markdown</a>&nbsp;&nbsp;
+<a class="tags" href="../#VSCode">VSCode</a>&nbsp;&nbsp;
+</div>
+<div class="metadata-abstract"><p>
+VSCodeを使うと、MarkdownファイルをHTML形式に自動変換できます。<br>この記事では、自動変換の意義とVSCodeを利用するメリットについて軽く触れた後で、具体的な利用方法について解説します。
+</p></div><hr class="articles">
+                                <div class="metadata-date">2024 - 04 - 19</div>
+                                <h3><a class="articles" href="../posts/2024-04-19-mermaid.html">【mermaid】markdownのドキュメントに図を描く方法</a></h3>
+                                <div class="metadata-tags">
+                            <a class="tags" href="../#Web%E5%88%B6%E4%BD%9C">Web制作</a>&nbsp;&nbsp;
+<a class="tags" href="../#mermaid">mermaid</a>&nbsp;&nbsp;
+<a class="tags" href="../#markdown">markdown</a>&nbsp;&nbsp;
+<a class="tags" href="../#VSCode">VSCode</a>&nbsp;&nbsp;
+</div>
+<div class="metadata-abstract"><p>
+markdownファイル内にテキストで図を描く方法についての記事です。<br>図はmermaidという記法を使って作成します。<br>HTML形式で出力もできて、結構便利で私は仕事で使ったりもしています。
+</p></div><hr class="articles">
+                                <div class="metadata-date">2024 - 04 - 17</div>
+                                <h3><a class="articles" href="../posts/2024-04-17-MakeBlogSite.html">GitHub Pagesでブログ作った。投稿時の処理の自動化とかもした</a></h3>
+                                <div class="metadata-tags">
+                            <a class="tags" href="../#Web%E5%88%B6%E4%BD%9C">Web制作</a>&nbsp;&nbsp;
+<a class="tags" href="../#GitHubPages">GitHubPages</a>&nbsp;&nbsp;
+</div>
+<div class="metadata-abstract"><p>
+GitHub Pagesで無料個人ブログを作ってみました！<br>この記事では、このブログサイトの仕組みやメリットについて大まかに紹介します。<br>具体的な個々の機能については追々Web制作関連の記事でアップしていきます！<br>コードはGitHubに置いてあるので、使えそうだったらぜひ流用してください～
+</p></div>
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<br><br>
+                    
+                </div>
+            </div>
+            <div id="right-sidebar">
+                
+                
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+
+
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+
+        
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+  </body>
+</html>

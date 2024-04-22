@@ -196,7 +196,22 @@ def add_blank_links(html_code):
     # 更新されたHTMLを文字列として返す
     return str(soup)
 
-
+def wrap_sns_elements(html):
+    # BeautifulSoupを使ってHTMLを解析
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    # title属性が"YouTube video player"の<iframe>要素を抽出して、<div class="photo-list">で囲む
+    for iframe in soup.find_all('iframe', title="YouTube video player"):
+        div_tag = soup.new_tag('div', attrs={'class': 'photo-list'})
+        iframe.wrap(div_tag)
+    
+    # class属性が"twitter-tweet"の<blockquote>要素を抽出して、<div class="photo-list">で囲む
+    for blockquote in soup.find_all('blockquote', class_="twitter-tweet"):
+        div_tag = soup.new_tag('div', attrs={'class': 'photo-list'})
+        blockquote.wrap(div_tag)
+    
+    # 変更を適用したHTMLを返す
+    return str(soup)
 
 def make_post(post_template, input_file_path, output_dir):
     """
@@ -235,6 +250,7 @@ def make_post(post_template, input_file_path, output_dir):
     old_stl_codes, new_stl_codes, insert_code  = analyze_stl_info(body)
     body += insert_code
     body = add_blank_links(body)
+    body = wrap_sns_elements(body)
     
     replace_and_write(post_template, 
                      ['::body::','::date::','::title::', str(old_tags), '::tags::', '::sections::'] + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 

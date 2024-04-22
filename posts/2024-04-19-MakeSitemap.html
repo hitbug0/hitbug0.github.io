@@ -37,10 +37,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
     <title>XMLサイトマップの作成をChatGPTに自動化してもらった | hitbug</title>
-    <meta name="tag" content="HTML">
-<meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
+    <meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
 <meta name="tag" content="Python">
 <meta name="tag" content="ChatGPT">
+<meta name="tag" content="RPA">
 
   </head>
 
@@ -58,10 +58,12 @@
                 <div class="text">
                     <h1>In this article</h1>
                     <ul>
-                        <li><a href="#section1">XMLサイトマップとは</a></li>
-<li><a href="#section2">ChatGPTに書いてもらったコード</a></li>
-<li><a href="#section3">おまけ</a></li>
-<li><a href="#section4">まとめ</a></li>
+                        <li><a href="#section1">この記事でわかること</a></li>
+<li><a href="#section2">XMLサイトマップとは？</a></li>
+<li><a href="#section3">どうやってコードを書いた？ → ChatGPT</a></li>
+<li><a href="#section4">最終的にどんなコードになった？</a></li>
+<li><a href="#section5">おまけ</a></li>
+<li><a href="#section6">まとめ</a></li>
                     </ul>
                 </div>
                 <br>
@@ -80,10 +82,10 @@
     });
   </script>
 <h1 id="xml%E3%82%B5%E3%82%A4%E3%83%88%E3%83%9E%E3%83%83%E3%83%97%E3%81%AE%E4%BD%9C%E6%88%90%E3%82%92chatgpt%E3%81%AB%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%97%E3%81%A6%E3%82%82%E3%82%89%E3%81%A3%E3%81%9F">XMLサイトマップの作成をChatGPTに自動化してもらった</h1>
-<p><a href="::tags::HTML,Web%E5%88%B6%E4%BD%9C,Python,ChatGPT" rel="noopener noreferrer" target="_blank"></a></p>
+<p><a href="::tags::Web%E5%88%B6%E4%BD%9C,Python,ChatGPT,RPA" rel="noopener noreferrer" target="_blank"></a></p>
 <hr/>
 <p>ブログをGoogle検索にヒットさせるにはXMLサイトマップを登録するのが必要らしい！<br/>
-しかし、記事を更新するたびにこのファイルを手動で更新するのは面倒...
+しかし、記事を更新するたびにこのファイルを手動で更新するのは面倒...<br/>
 というわけで、XMLサイトマップを自動で更新するスクリプトをChatGPTに書いてもらいました。</p>
 
                 <script async 
@@ -101,7 +103,36 @@
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-<h2 id="section1">XMLサイトマップとは</h2>
+<h2 id="section1">この記事でわかること</h2>
+<p>以下が分かります。</p>
+<ul>
+<li>
+<p>XMLサイトマップの概要</p>
+</li>
+<li>
+<p>ChatGPTにPythonスクリプトを書いてもらう方法(事例として)</p>
+</li>
+<li>
+<p>XMLサイトマップの自動作成コード</p>
+</li>
+</ul>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section2">XMLサイトマップとは？</h2>
 <p>以下のようなものです。</p>
 <ul>
 <li>個々のウェブサイトに紐づくデータ。
@@ -138,26 +169,52 @@
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-<h2 id="section2">ChatGPTに書いてもらったコード</h2>
-<p>ChatGPTにお願いして、XMLサイトマップを自動作成するPythonコードを書いてもらいました。<br/>
-ChatGPTとのやり取りは<a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b" rel="noopener noreferrer" target="_blank">こんな感じ</a>です。</p>
+<h2 id="section3">どうやってコードを書いた？ → ChatGPT</h2>
+<p>XMLサイトマップを自動作成するPythonコードは、ChatGPTに書いてもらいました。<br/>
+その時のChatGPTとのやり取りは<a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b" rel="noopener noreferrer" target="_blank">こんな感じ</a>です。</p>
 <ol>
 <li>
 <p>XMLサイトマップのフォーマットを例示してもらう</p>
 </li>
 <li>
-<p>「pythonで以下の処理をするコードを書いてください。～～～」みたいにお願いする</p>
+<p>コード作成のお願いをする</p>
+<ul>
+<li>「pythonで以下の処理をするコードを書いてください。～～～」みたいな感じ</li>
+</ul>
 </li>
 <li>
 <p>細かい改良をしてもらう</p>
 <ul>
-<li>最終更新日時を「yyyy-mm-ddTHH:MM:SS+09:00」の形式にしてほしい</li>
-<li>index.htmlにも同じ操作をしてサイトマップに含めてほしい</li>
+<li>
+<p>最終更新日時を「yyyy-mm-ddTHH:MM:SS+09:00」の形式にしてほしい</p>
+</li>
+<li>
+<p>index.htmlにも同じ操作をしてサイトマップに含めてほしい</p>
+</li>
 </ul>
 </li>
 </ol>
-<p>特に、最後の指示は<a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b#:~:text=%E3%81%93%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E4%BB%A5%E4%B8%8B%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E4%BB%98%E3%81%91%E5%8A%A0%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%0A%0A%2D%20index.html%EF%BC%88%E3%81%93%E3%82%8C%E3%81%AFposts%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E3%80%81python%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A8%E5%90%8C%E3%81%98%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AB%E3%81%82%E3%82%8B%EF%BC%89%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%80%81posts%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AE" rel="noopener noreferrer" target="_blank"><strong>間違えて途中までしか打ってない文章を送信した</strong></a><strong>にもかかわらず意図をくみ取ってもらえたので少しびっくりでした</strong>...<br/>
-あとは以下のPythonコード内の<code>https://example.com</code>の部分を変更すれば、割とどなたでも使えるんじゃないかなと思います～</p>
+<p>特に、最後の指示は<a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b#:~:text=%E3%81%93%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E4%BB%A5%E4%B8%8B%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E4%BB%98%E3%81%91%E5%8A%A0%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%0A%0A%2D%20index.html%EF%BC%88%E3%81%93%E3%82%8C%E3%81%AFposts%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E3%80%81python%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%A8%E5%90%8C%E3%81%98%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AB%E3%81%82%E3%82%8B%EF%BC%89%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%80%81posts%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AE" rel="noopener noreferrer" target="_blank"><strong>間違えて途中までしか打ってない文章を送信した</strong></a><strong>にもかかわらず意図をくみ取ってもらえた</strong>ので少しびっくりでした...</p>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section4">最終的にどんなコードになった？</h2>
+<p>最終的に以下のコードを出してくれました。<br/>
+コード内の<code>https://example.com</code>の部分を変更すれば、割とどなたでも使えるんじゃないかなと思います～<br/>
+自分が使った分には問題なく動作しました。</p>
 <div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> glob
 <span class="hljs-keyword">import</span> os
 <span class="hljs-keyword">import</span> urllib.parse
@@ -228,7 +285,7 @@ ChatGPTとのやり取りは<a href="https://chat.openai.com/share/f60f65b1-b84a
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-<h2 id="section3">おまけ</h2>
+<h2 id="section5">おまけ</h2>
 <p>上記のコードを仮に<code>generate_sitemap.py</code>として<code>programs</code>フォルダに入れている場合、<br/>
 以下のようなbatファイルを<code>programs</code>フォルダと同じ階層に作っておけば、<br/>
 このbatファイルをダブルクリックするだけでスクリプトを実行できます。</p>
@@ -250,10 +307,20 @@ ChatGPTとのやり取りは<a href="https://chat.openai.com/share/f60f65b1-b84a
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-<h2 id="section4">まとめ</h2>
-<p>ブログをGoogle検索にヒットさせるために必要なXMLサイトマップを自動作成するスクリプトを、<br/>
-ChatGPTに書いてもらいました。<br/>
-間違えて途中までしか打ってない文章を送信したにもかかわらず意図をくみ取ってもらえたので、少しびっくりでした...！<br/>
+<h2 id="section6">まとめ</h2>
+<p>以下について紹介しました。</p>
+<ul>
+<li>
+<p>XMLサイトマップの概要</p>
+</li>
+<li>
+<p>ChatGPTにPythonスクリプトを書いてもらう方法(事例として)</p>
+</li>
+<li>
+<p>XMLサイトマップの自動作成コード</p>
+</li>
+</ul>
+<p>ChatGPTとのやり取りの中で、間違えて途中までしか打ってない文章を送信したにもかかわらず意図をくみ取ってもらえたのは少しびっくりでした...！<br/>
 同じように自動化したりChatGPTを使ったりするときのご参考になればと思います～</p>
 
                 </div>

@@ -24,7 +24,7 @@ def replace_and_write(text, replaced_markers, replace_contents, output_file_name
         replace_contents: 置換する内容のリスト。replaced_markersと同じ長さである必要あり
         output_file_name: 結果を書き込むファイルの名前
     """
-
+    
     # 置換
     for m,c in zip(replaced_markers, replace_contents):
         text = text.replace(m, c, 1) # mをcで1回だけ置換

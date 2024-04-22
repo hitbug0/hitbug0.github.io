@@ -1,5 +1,5 @@
 # VSCodeでMarkdownをHTML化する方法
-[](::tags::HTML,markdown,VSCode)
+[](::tags::Web制作,HTML,markdown,VSCode)
 
 ---
 

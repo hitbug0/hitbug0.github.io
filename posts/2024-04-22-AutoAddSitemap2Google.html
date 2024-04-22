@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../includes/style.css">
+    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+    crossorigin="anonymous"></script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+    <title>Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります） | hitbug</title>
+    <meta name="tag" content="RPA">
+<meta name="tag" content="Python">
+<meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
+
+  </head>
+
+
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">この記事でわかる事</a></li>
+<li><a href="#section2">何を使ったら自動化できるの？</a></li>
+<li><a href="#section3">どんな操作を自動化できるの？</a></li>
+<li><a href="#section4">今回はどういう操作を自動化したの？</a></li>
+<li><a href="#section5">具体的なコードは？</a></li>
+<li><a href="#section6">実行結果はどんな感じ？</a></li>
+<li><a href="#section7">まとめ</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="python%E3%81%A7%E7%94%BB%E9%9D%A2%E6%93%8D%E4%BD%9C%E3%82%92%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91%E3%81%AE%E8%89%B2%E8%A9%B0%E3%82%81%E5%90%88%E3%82%8F%E3%81%9B%E3%82%B3%E3%83%BC%E3%83%89%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99">Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります）</h1>
+<p><a href="::tags::RPA,Python,Web%E5%88%B6%E4%BD%9C" rel="noopener noreferrer" target="_blank"></a></p>
+<hr/>
+<p>Pythonで画面操作を自動化する方法を紹介します。<br/>
+今回の題材は「Google Search ConsoleにXMLファイルを登録する」ですが、<br/>
+他の場面でも、例えば「過去の偉人が作ったソフトで毎回同じ操作が必要...」みたいなときに使える方法だと思います。<br/>
+（最近のWindowsを前提にしているので、他のOSや古めのWindowsでは動作しないと思います。ご注意ください...！）</p>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section1">この記事でわかる事</h2>
+<ul>
+<li>Pythonを使って画面操作を自動化する方法
+<ul>
+<li>基本的なコマンド</li>
+<li>便利な関数もあるよ</li>
+</ul>
+</li>
+<li>自動化の例: XMLサイトマップをGoogle Search Consoleに登録する操作の自動化
+<ul>
+<li>操作の手順</li>
+<li>自動化のためのコード</li>
+<li>実行結果(動画)</li>
+</ul>
+</li>
+</ul>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section2">何を使ったら自動化できるの？</h2>
+<p>Pythonで色々な操作を自動化できます。<br/>
+今回は以下のようなライブラリを使いました。<br/>
+これだけでも割といろいろできちゃいますが、他にも便利なライブラリはあるかもです。</p>
+<ul>
+<li>
+<p><strong>PyAutoGUI</strong></p>
+<ul>
+<li>マウスの移動やクリック、キーボードの入力など、GUI操作を自動化できます。</li>
+</ul>
+</li>
+<li>
+<p><strong>pyperclip</strong></p>
+<ul>
+<li>クリップボードの読み込みや書き込みができます。</li>
+</ul>
+</li>
+<li>
+<p><strong>subprocess</strong></p>
+<ul>
+<li>外部プロセスを起動し、その入出力を操作できます。</li>
+<li>特に、コマンドプロンプトでの操作をPython内で実行できます。</li>
+<li>Pythonの標準ライブラリなので個別のインストールは不要です。</li>
+</ul>
+</li>
+<li>
+<p><strong>win32gui, win32con, win32api</strong></p>
+<ul>
+<li>WindowsのGUI要素やシステムリソースにアクセスすることができます。</li>
+</ul>
+</li>
+<li>
+<p><strong>time</strong></p>
+<ul>
+<li>時間の取得や一時停止(スリープ)、性能測定、時間表現の変換、時間の演算などができます。</li>
+<li>Pythonの標準ライブラリなので個別のインストールは不要です。</li>
+</ul>
+</li>
+</ul>
+<p>インストールコマンドも置いておきます。<br/>
+win32***はまとめて<code>pywin32</code>でインストールなので注意です！</p>
+<div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div>pip install pyperclip
+pip install pyautogui
+pip install pywin32
+</div></code></pre></div></div>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section3">どんな操作を自動化できるの？</h2>
+<p>自動化コードの簡単な具体例として、今回使ったものをいくつか挙げておきます。<br/>
+ほんの一例なので、他にもたくさんできることありますよ～</p>
+<h3 id="%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%99%E6%93%8D%E4%BD%9C">キーを押す操作</h3>
+<p>PyAutoGUIで、1つ以上のキーを押す操作を自動化できます。<br/>
+もちろん他にも押せるキーはたくさんありますので、詳しくは調べてみてください～</p>
+<div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+
+pa.hotkey(<span class="hljs-string">'alt'</span>,<span class="hljs-string">'d'</span>) <span class="hljs-comment"># GoogleChromeでURL入力欄にカーソルを合わせる</span>
+pa.hotkey(<span class="hljs-string">'f5'</span>) <span class="hljs-comment"># ブラウザ上でページを更新</span>
+</div></code></pre></div></div>
+<h3 id="%E6%96%87%E5%AD%97%E5%85%A5%E5%8A%9B">文字入力</h3>
+<p>PyAutoGUIとpyperclipで、文字を入力することができます。<br/>
+直接タイプすると日本語/英語の切り替えとかで躓きやすいので、「クリップボードにコピーして貼り付け」という方法がよさそうです。</p>
+<div class="container"><div id="code-content2"><button class="copy-button" data-clipboard-target="#code-content2">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+<span class="hljs-keyword">import</span> pyperclip
+
+pyperclip.copy(<span class="hljs-string">"hoge,hoge"</span>) <span class="hljs-comment"># 文字列をクリップボードにコピー</span>
+pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>) <span class="hljs-comment"># 貼り付ける</span>
+</div></code></pre></div></div>
+<h3 id="%E7%94%BB%E9%9D%A2%E5%86%85%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E8%A1%A8%E7%A4%BA%E4%BD%8D%E7%BD%AE%E3%81%AE%E7%89%B9%E5%AE%9A-%E2%86%92-%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF">画面内での画像表示位置の特定　→　クリック</h3>
+<p>PyAutoGUIで、画面内で画像を探すことができます。<br/>
+見つかった場合はその画像が表示されている位置の中央を教えてくれます。</p>
+<div class="container"><div id="code-content3"><button class="copy-button" data-clipboard-target="#code-content3">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+
+position_im = pa.locateOnScreen(img, confidence=<span class="hljs-number">0.8</span>)
+</div></code></pre></div></div>
+<p>今回はこれを使って、表示されるのを待つ動作を<code>wait_disp</code>関数で定義しました。<br/>
+以下のような感じで使っています。</p>
+<div class="container"><div id="code-content4"><button class="copy-button" data-clipboard-target="#code-content4">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wait_disp</span><span class="hljs-params">(img, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># 画像が画面内に表示されるのを待つ。表示されたら画像の表示位置を返す。</span>
+    dt = <span class="hljs-number">0.5</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(wait_time/dt)):
+        position_im = pa.locateOnScreen(img, confidence=<span class="hljs-number">0.8</span>)
+        <span class="hljs-keyword">if</span> position_im:
+            <span class="hljs-keyword">return</span> position_im
+        <span class="hljs-keyword">else</span>:
+            time.sleep(dt)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+position_im = wait_disp(<span class="hljs-string">'./hoge.png'</span>) <span class="hljs-comment"># hoge.png を画面内で探す</span>
+pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>) <span class="hljs-comment"># hoge.png の中央を左クリック</span>
+</div></code></pre></div></div>
+<h3 id="%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E8%B5%B7%E5%8B%95">アプリの起動</h3>
+<p>subprocessを使って、指定したアプリを起動することができます。<br/>
+例えば、Google Chromeならこんな感じのコードで起動できます。</p>
+<div class="container"><div id="code-content5"><button class="copy-button" data-clipboard-target="#code-content5">Copy</button><pre class="hljs"><code><div>chrome_path = <span class="hljs-string">"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"</span>
+subprocess.Popen(chrome_path)
+</div></code></pre></div></div>
+<h3 id="%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E8%A1%A8%E7%A4%BA%E4%BD%8D%E7%BD%AE%E8%A1%A8%E7%A4%BA%E7%94%BB%E9%9D%A2%E3%81%AE%E5%A4%89%E6%9B%B4%E6%9C%80%E5%A4%A7%E5%8C%96%E3%81%AA%E3%81%A9">アプリの表示位置/表示画面の変更、最大化など</h3>
+<p>win32gui, win32con, win32apiを使って、アプリの表示状態を変更できます。<br/>
+ウィンドウが小さすぎたりすると表示されるべきボタンが表示されなかったりするので、ウィンドウのサイズを指定するケースがあります。<br/>
+細かい説明は省略します！</p>
+<div class="container"><div id="code-content6"><button class="copy-button" data-clipboard-target="#code-content6">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> win32gui
+<span class="hljs-keyword">import</span> win32con
+<span class="hljs-keyword">import</span> win32api
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chrome_window</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Chromeのウィンドウのうち直前に開いたもののハンドルを取得する。</span>
+    chrome_windows = []
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">enum_handler</span><span class="hljs-params">(hwnd, lParam)</span>:</span>
+        <span class="hljs-keyword">if</span> win32gui.IsWindowVisible(hwnd) <span class="hljs-keyword">and</span> <span class="hljs-string">'chrome'</span> <span class="hljs-keyword">in</span> win32gui.GetWindowText(hwnd).lower():
+            chrome_windows.append(hwnd)
+    win32gui.EnumWindows(enum_handler, <span class="hljs-literal">None</span>)
+    <span class="hljs-keyword">return</span> chrome_windows[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> chrome_windows <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move_to_main_screen</span><span class="hljs-params">(hwnd, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># 表示するモニターデバイスをメインデバイスに切り替える。</span>
+    dt = <span class="hljs-number">0.5</span>
+    n = wait_time/dt
+    count=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> count&lt;=n:
+        monitor_info = win32api.GetMonitorInfo(
+            win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST)
+            )
+        main_monitor_info = win32api.GetMonitorInfo(
+            win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY)
+            )
+        <span class="hljs-keyword">if</span> monitor_info[<span class="hljs-string">'Device'</span>] == main_monitor_info[<span class="hljs-string">'Device'</span>]:
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># hwndを表示するモニターを切り替える</span>
+            win32gui.MoveWindow(hwnd, 
+                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
+                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
+                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">2</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
+                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">3</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
+                <span class="hljs-literal">True</span>)
+            time.sleep(dt) 
+            count +=<span class="hljs-number">1</span>
+
+chrome_window = <span class="hljs-literal">None</span> <span class="hljs-comment"># Chromeのハンドルの初期化</span>
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> chrome_window: <span class="hljs-comment"># ハンドルに値が入るまで get_chrome_window() をトライする</span>
+    chrome_window = get_chrome_window()
+    time.sleep(<span class="hljs-number">0.05</span>)
+move_to_main_screen(chrome_window) <span class="hljs-comment"># メイン画面で開く</span>
+win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># ウィンドウを最大化する</span>
+
+</div></code></pre></div></div>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section4">今回はどういう操作を自動化したの？</h2>
+<p>今回自動化するのは、XMLサイトマップをGoogle Search Consoleに登録する操作です。<br/>
+具体的には、以下のような操作手順になります。</p>
+<ol>
+<li>
+<p>Google Chromeを起動する</p>
+</li>
+<li>
+<p>表示ウィンドウを調整する</p>
+<ul>
+<li>メインウィンドウで開く</li>
+<li>ウィンドウを最大化する</li>
+</ul>
+</li>
+<li>
+<p>Google ChromeのURL欄にGoogle Search ConsoleのURLを記入し、<code>Enter</code>キーを押す</p>
+</li>
+<li>
+<p>Google Search Consoleの画面が開いたことを確認する</p>
+<ul>
+<li>画面内で <code>sitemap1.png</code> を見つける</li>
+</ul>
+</li>
+<li>
+<p>ファイル名(sitemap.xml)を所定の欄に入力する</p>
+<ul>
+<li>入力欄にカーソルを合わせるために、 <code>sitemap1.png</code> をクリックした後で<code>Tab</code>キーを押す</li>
+<li>カーソルがあっている状態でファイル名をクリップボードにコピーしてペーストする</li>
+</ul>
+</li>
+<li>
+<p>送信ボタン(<code>sitemap2.png</code>)を押す</p>
+</li>
+<li>
+<p>送信処理が終わったことを確認し、ページを更新する</p>
+<ul>
+<li><code>sitemap3.png</code> (送信完了のポップアップを閉じるボタン)が表示されたら、これをクリックする</li>
+<li>少し待ってから<code>F5</code>キーを押す</li>
+</ul>
+</li>
+</ol>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section5">具体的なコードは？</h2>
+<p>こんな感じです！<br/>
+少なくとも冒頭のURLの部分はご自身のものに書き換えてくださいね！</p>
+<div class="container"><div id="code-content7"><button class="copy-button" data-clipboard-target="#code-content7">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+<span class="hljs-keyword">import</span> pyperclip
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> subprocess
+<span class="hljs-keyword">import</span> win32gui
+<span class="hljs-keyword">import</span> win32con
+<span class="hljs-keyword">import</span> win32api
+
+URL = <span class="hljs-string">"https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fhitbug0.github.io%2F"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wait_disp</span><span class="hljs-params">(img, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># 画像が画面内に表示されるのを待つ。表示されたら画像の表示位置を返す。</span>
+    dt = <span class="hljs-number">0.5</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(wait_time/dt)):
+        position_im = pa.locateOnScreen(img, confidence=<span class="hljs-number">0.8</span>)
+        <span class="hljs-keyword">if</span> position_im:
+            <span class="hljs-keyword">return</span> position_im
+        <span class="hljs-keyword">else</span>:
+            time.sleep(dt)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chrome_window</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Chromeのウィンドウのうち直前に開いたもののハンドルを取得する。</span>
+    chrome_windows = []
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">enum_handler</span><span class="hljs-params">(hwnd, lParam)</span>:</span>
+        <span class="hljs-keyword">if</span> win32gui.IsWindowVisible(hwnd) <span class="hljs-keyword">and</span> <span class="hljs-string">'chrome'</span> <span class="hljs-keyword">in</span> win32gui.GetWindowText(hwnd).lower():
+            chrome_windows.append(hwnd)
+    win32gui.EnumWindows(enum_handler, <span class="hljs-literal">None</span>)
+    <span class="hljs-keyword">return</span> chrome_windows[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> chrome_windows <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move_to_main_screen</span><span class="hljs-params">(hwnd, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># 表示するモニターデバイスをメインデバイスに切り替える。</span>
+    dt = <span class="hljs-number">0.5</span>
+    n = wait_time/dt
+    count=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> count&lt;=n:
+        monitor_info = win32api.GetMonitorInfo(
+            win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST)
+            )
+        main_monitor_info = win32api.GetMonitorInfo(
+            win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY)
+            )
+        <span class="hljs-keyword">if</span> monitor_info[<span class="hljs-string">'Device'</span>] == main_monitor_info[<span class="hljs-string">'Device'</span>]:
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># hwndを表示するモニターを切り替える</span>
+            win32gui.MoveWindow(hwnd, 
+                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
+                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
+                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">2</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
+                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">3</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
+                <span class="hljs-literal">True</span>)
+            time.sleep(dt) 
+            count +=<span class="hljs-number">1</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># コマンドを実行してGoogle Chromeを起動</span>
+    chrome_path = <span class="hljs-string">"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"</span>
+    subprocess.Popen(chrome_path)
+    
+    <span class="hljs-comment"># 表示ウィンドウの調整</span>
+    time.sleep(<span class="hljs-number">0.5</span>)  <span class="hljs-comment"># Chromeの起動待ち時間</span>
+    chrome_window = <span class="hljs-literal">None</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> chrome_window:
+        chrome_window = get_chrome_window()
+        time.sleep(<span class="hljs-number">0.05</span>)
+    move_to_main_screen(chrome_window) <span class="hljs-comment"># メイン画面で開く</span>
+    win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># ウィンドウを最大化する</span>
+    
+    <span class="hljs-comment"># URL記入</span>
+    pa.hotkey(<span class="hljs-string">'alt'</span>,<span class="hljs-string">'d'</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    pyperclip.copy(URL)
+    pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    pa.hotkey(<span class="hljs-string">'enter'</span>)
+
+    <span class="hljs-comment"># sitemap1.pngを画面内で見つけてクリック</span>
+    time.sleep(<span class="hljs-number">2</span>)
+    position_im = wait_disp(<span class="hljs-string">'./contents/img/sitemap1.png'</span>)
+    pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>)
+    
+    <span class="hljs-comment"># ファイル名を入力して送信</span>
+    pa.hotkey(<span class="hljs-string">'tab'</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    pyperclip.copy(<span class="hljs-string">"sitemap.xml"</span>)
+    pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    position_im = wait_disp(<span class="hljs-string">'./contents/img/sitemap2.png'</span>)
+    pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>)
+    
+    <span class="hljs-comment"># 送信処理が終わったらページを更新</span>
+    position_im = wait_disp(<span class="hljs-string">'./contents/img/sitemap3.png'</span>, wait_time=<span class="hljs-number">40</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>)
+    time.sleep(<span class="hljs-number">1</span>)
+    pa.hotkey(<span class="hljs-string">'f5'</span>)
+
+main()
+</div></code></pre></div></div>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section6">実行結果はどんな感じ？</h2>
+<p>今度動画とって載せます！</p>
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<h2 id="section7">まとめ</h2>
+<p>「Google Search ConsoleにXMLファイルを登録する」という操作を題材に、
+Pythonで画面操作を自動化する方法を紹介しました。<br/>
+例えば「過去の偉人が作ったソフトで毎回同じ操作が必要...」
+みたいなときに使える方法だと思います。<br/>
+私自身仕事で何度か使っていますので、使えそうな場面があったらぜひ使ってみてください～</p>
+
+                </div>
+                
+                
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+                <script async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+                    crossorigin="anonymous">
+                </script>
+                <!-- disp1 -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-5830432592137126"
+                    data-ad-slot="4558728851"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+
+            </div>
+            <div id="right-sidebar">
+
+
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    
+    
+    
+    </div>
+    <script src="../includes/clipboard-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+  </body>
+</html>

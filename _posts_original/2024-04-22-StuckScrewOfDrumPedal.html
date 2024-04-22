@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024-04-22-StuckScrewOfDrumPedal.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="dw9002%E3%81%AE%E3%83%8D%E3%82%B8%E3%81%8C%E5%9B%9E%E3%82%89%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1%E5%9B%9E%E3%81%9B%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F">DW9002のネジが回らなかった話（回せるようになりました）</h1>
+<p><a href="::tags::%E9%9F%B3%E6%A5%BD,%E3%83%89%E3%83%A9%E3%83%A0"></a></p>
+<hr>
+<p>ドラムのペダルDW9002のフットボードとチェーンを固定するネジが全然回らなかった話です。<br>
+力で解決する問題ではなかったので、結局楽器店経由でメーカー対応してもらいました。<br>
+同じ境遇の方の参考になればと思います。</p>
+<h2 id="%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8B%E3%81%93%E3%81%A8">この記事でわかること</h2>
+<ul>
+<li>
+<p>ドラムペダルDW9002は、ロットによってはフットボードとチェーンを固定するネジが接着剤で固定されているケースがある</p>
+<ul>
+<li>固定されていない製品もある</li>
+</ul>
+</li>
+<li>
+<p>同じ症状の人はメーカーに対応してもらうのがよさそう</p>
+</li>
+<li>
+<p>費用</p>
+<ul>
+<li>ネジを外すだけでよい場合は 4400 円くらい</li>
+<li>楽器店からメーカーにペダルを送ってもらったが、送料とかはかからなかった</li>
+<li>自分の場合は不足パーツ追加をお願いしたので多めにかかった</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E3%83%8D%E3%82%B8%E3%82%92%E5%9B%9E%E3%81%97%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF%E3%81%AA%E3%81%9C%E3%81%8B">ネジを回したかったのはなぜか？</h2>
+<p>中村一太さんがXでペダルのセッティングを公開されていて、自分も操作感や音の違いを試してみたいな～と思ったからです。<br>
+それだけ！</p>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">DW9000<br><br>　plentyのドラムを叩いていた時代に購入。日本からベルリンに持ってきた唯一のドラム機材。こっちに来てからは持ち運びやすいDW6000を頻繁に使っていたのだが、また戻ってきている。 <a href="https://t.co/VxrDWJ49rx">pic.twitter.com/VxrDWJ49rx</a></p>&mdash; Itta Nakamura 中村一太 (@itta1120) <a href="https://twitter.com/itta1120/status/1756949315803873339?ref_src=twsrc%5Etfw">February 12, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="%E3%81%A9%E3%81%93%E3%81%AE%E3%83%8D%E3%82%B8%E3%81%8C%E5%9B%9E%E3%82%89%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%8B">どこのネジが回らなかったのか？</h2>
+<p>フットボードとチェーンを固定するネジです。画像参照。<br>
+::img{
+file{
+drumpedal_screw.jpg: フットボードとチェーンを固定するネジ(まるつけたところ);
+}
+height: 250px;
+}::</p>
+<p>Tomo Drum CH. さんの動画でも「ここだけは外れませんでした」とのことです。笑</p>
+<iframe width="400" height="225" src="https://www.youtube.com/embed/2KZwzuoUyY0?si=NMsJUuet698p5XM0&amp;start=330" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<h2 id="%E5%9B%9E%E3%81%99%E3%81%9F%E3%82%81%E3%81%AB%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8%E3%81%AF">回すためにやったことは？</h2>
+<p>楽器店に相談しました。4軒くらいに電話し、結局2軒回りました。</p>
+<h3 id="1%E8%BB%92%E7%9B%AE">1軒目</h3>
+<p>電話したら「多分1000円くらいでできますよ！」と二つ返事でOKしてくれたお店に持っていきましたが、やっぱり回りませんでした。<br>
+<br>
+店員さん「メーカー対応になりますね...我々素人が触るべきところじゃないみたいです」<br>
+ぼく「（´-`）.｡oO（素人なのか...）」<br>
+<br>
+DWの代理店がRolandにかわってから程ないということもあり、店員さんが「担当者に連絡しても前の人も今の人もわからないみたいですね...」と大変そうでした。<br>
+どんな対応になるかわかり次第連絡をもらうことにし、後日メールで以下のようにご連絡をいただきました。</p>
+<ul>
+<li>ネジを外す作業自体には 4400 円かかる</li>
+<li>ネジ穴がつぶれるなど状況によっては 13200 円かかる</li>
+</ul>
+<p>（メールいただいたときにはすでに2軒目のお店に出してしまっていました...）</p>
+<h3 id="2%E8%BB%92%E7%9B%AE">2軒目</h3>
+<p>電話で「他の店でメーカー対応になりますといわれたのですが、見積とか出せたりしますか？」と他のお店に連絡。<br>
+すると、「見積料金が2000~3000円くらい発生しますが、修理(?)するかはそのあとでご判断いただけますよ」とのことだったので、1軒目を出た後に直行しました。<br>
+店で軽く見てもらい、やっぱり回らないのでメーカーに見てもらうことに。<br>
+ついでにシャフトのネジもなくしたり、純正じゃないものを使っているっぽかったので、せっかくだし揃えてくださいとお願いしました。<br>
+あと、TOEストッパーも試したかったので、ついでに着けてもらうことにしました。</p>
+<h2 id="%E7%B5%90%E6%9E%9C%E3%81%A9%E3%81%86%E3%81%AA%E3%81%A3%E3%81%9F">結果どうなった？</h2>
+<p>「すぐにはペダル返ってこないですけど大丈夫ですか？」と言われましたが、そこまで長くはかかりませんでした。<br>
+見積結果が出るまでが10日弱、そこから修理が終わるまでが1週間弱でした。<br>
+料金は合計 9240 円でした。内訳は以下の通り。<br>
+送料とかも特にかかりませんでした。</p>
+<ul>
+<li>見積 : 0 円</li>
+<li>ネジを外す作業自体 : 4400 円</li>
+<li>パーツ補充
+<ul>
+<li>インペダルシャフト用のネジ5本 : 2090 円</li>
+<li>スウィベルパッド3個 : 2750 円</li>
+</ul>
+</li>
+</ul>
+<br>
+<p>（´-`）.｡oO（スウィベルパッドって何？）<br>
+→ バスドラにペダルを固定するときの接触部分のゴムパーツです。<br>
+下側に2つ、上側に1つついているのですが、上側はなくなっていたようです。<br>
+また、下側についていたものも返送されてきたのですが、見ると2つとも割れが入っていました。</p>
+<p>::img{
+file{
+drumpedal_report.png: 修理報告書(主要部分抜粋);
+drumpedal_swivelpad.jpg: スウィベルパッド;
+}
+height: 250px;
+}::</p>
+<p>見積代はふたを開けてみるとゼロ。おそらくキャンセル料的な扱いなのかと思います。<br>
+出費をできるだけ抑えたい方は「ネジを外せる状態にする以外は何もしないでください！」と伝えておくとよいかもしれません。笑<br>
+何はともあれ、ネジが回るようになって帰ってきたので良かったです！</p>
+<p>::img{
+file{
+drumpedal_after1.jpg: メンテ後ペダル(拡大);
+drumpedal_after2.jpg: メンテ後ペダル(全体);
+}
+height: 250px;
+}::</p>
+<h2 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h2>
+<p>ドラムのペダルDW9002のフットボードとチェーンを固定するネジが全然回らなかったことについて、実際の対処を紹介しました。<br>
+まさかダブルチェーンをベルトに変えようとするだけでこんなに骨が折れるとは...<br>
+同じ境遇の方の参考になればと思います。<br>
+ダブルチェーンからベルトに変えてどう変わったかについても後日投稿したいと思います！</p>
+
+</body>
+</html>
