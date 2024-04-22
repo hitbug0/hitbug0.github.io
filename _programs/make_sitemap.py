@@ -35,7 +35,7 @@ def make_sitemap():
     
     # sort-by-date.htmlに対する処理
     lastmod = get_last_modified_time("sort-by-date.html") # 最終更新日時を取得
-    sitemap.append(f"<url>\n  <loc>{ROOT_URL}/sort-by-date.html</loc>\n  <lastmod>{lastmod}</lastmod>\n</url>\n") # sitemap.xmlへの記載内容に追加
+    sitemap.append(f"<url>\n  <loc>{ROOT_URL}sort-by-date.html</loc>\n  <lastmod>{lastmod}</lastmod>\n</url>\n") # sitemap.xmlへの記載内容に追加
     
     # postディレクトリ内のHTMLファイルに対する処理
     for file_path in glob.glob("posts/*.html"):

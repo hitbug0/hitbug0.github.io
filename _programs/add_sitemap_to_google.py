@@ -44,7 +44,7 @@ def move_to_main_screen(hwnd, wait_time=10):
             break
         else:
             # hwndを表示するモニターを切り替える
-            win32gui.MoveWindow(hwnd, main_monitor_info['Monitor'][0], main_monitor_info['Monitor'][1], monitor_info['Monitor'][2]-monitor_info['Monitor'][0], monitor_info['Monitor'][3]-monitor_info['Monitor'][1], True)
+            win32gui.MoveWindow(hwnd, 0, 0, 500, 500, True) # 左上隅から500*500の範囲にウィンドウを配置
             time.sleep(dt) 
             count +=1
 
@@ -59,22 +59,24 @@ def main():
     chrome_window = None
     while not chrome_window:
         chrome_window = get_chrome_window()
-        time.sleep(0.05)
+        time.sleep(0.5)
+    
     move_to_main_screen(chrome_window) # メイン画面で開く
-    time.sleep(0.05)
+    time.sleep(0.5)
+    
     win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) # ウィンドウを最大化する
-    time.sleep(0.05)
+    time.sleep(0.5)
     
     # URL記入
     pa.hotkey('alt','d')
-    time.sleep(0.05)
+    time.sleep(2)
     pyperclip.copy(URL)
     pa.hotkey('ctrl','v')
     time.sleep(0.05)
     pa.hotkey('enter')
 
     # sitemap1.pngを画面内で見つけてクリック
-    time.sleep(2)
+    time.sleep(0.05)
     position_im = wait_disp('./contents/img/sitemap1.png')
     pa.click(position_im, button='left', clicks=1)
     

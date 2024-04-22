@@ -69,7 +69,7 @@ PyAutoGUIとpyperclipで、文字を入力することができます。
 import pyautogui as pa
 import pyperclip
 
-pyperclip.copy("hoge,hoge") # 文字列をクリップボードにコピー
+pyperclip.copy("hoge, hoge") # 文字列をクリップボードにコピー
 pa.hotkey('ctrl','v') # 貼り付ける
 ```
 
@@ -130,40 +130,33 @@ def get_chrome_window():
     win32gui.EnumWindows(enum_handler, None)
     return chrome_windows[0] if chrome_windows else None
 
-
 def move_to_main_screen(hwnd, wait_time=10):
     # 表示するモニターデバイスをメインデバイスに切り替える。
     dt = 0.5
     n = wait_time/dt
     count=0
     while count<=n:
-        monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST)
-            )
-        main_monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(0, win32con.MONITOR_DEFAULTTOPRIMARY)
-            )
+        monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST))
+        main_monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(0, win32con.MONITOR_DEFAULTTOPRIMARY))
         if monitor_info['Device'] == main_monitor_info['Device']:
             break
         else:
             # hwndを表示するモニターを切り替える
-            win32gui.MoveWindow(hwnd, 
-                main_monitor_info['Monitor'][0], 
-                main_monitor_info['Monitor'][1], 
-                monitor_info['Monitor'][2]-monitor_info['Monitor'][0], 
-                monitor_info['Monitor'][3]-monitor_info['Monitor'][1], 
-                True)
+            win32gui.MoveWindow(hwnd, 0, 0, 500, 500, True) # 左上隅から500*500の範囲にウィンドウを配置
             time.sleep(dt) 
             count +=1
 
-chrome_window = None # Chromeのハンドルの初期化
-while not chrome_window: # ハンドルに値が入るまで get_chrome_window() をトライする
-    chrome_window = get_chrome_window()
-    time.sleep(0.05)
-move_to_main_screen(chrome_window) # メイン画面で開く
-time.sleep(0.05)
-win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) # ウィンドウを最大化する
 
+# 表示ウィンドウの調整
+chrome_window = None
+while not chrome_window:
+    chrome_window = get_chrome_window()
+    time.sleep(0.5)
+
+move_to_main_screen(chrome_window) # メイン画面で開く
+time.sleep(0.5)
+
+win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) # ウィンドウを最大化する
 ```
 
 
@@ -229,22 +222,13 @@ def move_to_main_screen(hwnd, wait_time=10):
     n = wait_time/dt
     count=0
     while count<=n:
-        monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST)
-            )
-        main_monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(0, win32con.MONITOR_DEFAULTTOPRIMARY)
-            )
+        monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST))
+        main_monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(0, win32con.MONITOR_DEFAULTTOPRIMARY))
         if monitor_info['Device'] == main_monitor_info['Device']:
             break
         else:
             # hwndを表示するモニターを切り替える
-            win32gui.MoveWindow(hwnd, 
-                main_monitor_info['Monitor'][0], 
-                main_monitor_info['Monitor'][1], 
-                monitor_info['Monitor'][2]-monitor_info['Monitor'][0], 
-                monitor_info['Monitor'][3]-monitor_info['Monitor'][1], 
-                True)
+            win32gui.MoveWindow(hwnd, 0, 0, 500, 500, True) # 左上隅から500*500の範囲にウィンドウを配置
             time.sleep(dt) 
             count +=1
 
@@ -258,22 +242,24 @@ def main():
     chrome_window = None
     while not chrome_window:
         chrome_window = get_chrome_window()
-        time.sleep(0.05)
+        time.sleep(0.5)
+    
     move_to_main_screen(chrome_window) # メイン画面で開く
-    time.sleep(0.05)
+    time.sleep(0.5)
+    
     win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) # ウィンドウを最大化する
-    time.sleep(0.05)
+    time.sleep(0.5)
     
     # URL記入
     pa.hotkey('alt','d')
-    time.sleep(0.05)
+    time.sleep(2)
     pyperclip.copy(URL)
     pa.hotkey('ctrl','v')
     time.sleep(0.05)
     pa.hotkey('enter')
 
     # sitemap1.pngを画面内で見つけてクリック
-    time.sleep(2)
+    time.sleep(0.05)
     position_im = wait_disp('./contents/img/sitemap1.png')
     pa.click(position_im, button='left', clicks=1)
     
