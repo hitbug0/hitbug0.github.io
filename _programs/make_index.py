@@ -7,23 +7,8 @@ from urllib.parse import unquote
 from modules import remove_newlines, replace_and_write
 
 
-GOOGLE_AD = """
-                <script async 
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-                    crossorigin="anonymous">
-                </script>
-                <!-- disp1 -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-5830432592137126"
-                    data-ad-slot="4558728851"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true">
-                </ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-"""
+GOOGLE_AD = """"""
+
 
 def format_tag(tag):
     # tagに記号やスペースがある場合はハイフンに置き換える
