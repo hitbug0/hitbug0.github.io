@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../includes/style.css">
+    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+    crossorigin="anonymous"></script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+    <title>ルンバのエラーでハマった 【接続できませんでした (BF0B12)】 | hitbug</title>
+    <meta name="tag" content="%E3%83%AB%E3%83%B3%E3%83%90">
+
+  </head>
+
+
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">この記事でわかること</a></li>
+<li><a href="#section2">結論</a></li>
+<li><a href="#section3">他の不具合の対処法を調べる方法</a></li>
+<li><a href="#section4">おまけ</a></li>
+<li><a href="#section5">まとめ</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E3%83%AB%E3%83%B3%E3%83%90%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%A7%E3%83%8F%E3%83%9E%E3%81%A3%E3%81%9F-%E6%8E%A5%E7%B6%9A%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93%E3%81%A7%E3%81%97%E3%81%9F-bf0b12">ルンバのエラーでハマった 【接続できませんでした (BF0B12)】</h1>
+<p><a href="::tags::%E3%83%AB%E3%83%B3%E3%83%90" rel="noopener noreferrer" target="_blank"></a></p>
+<hr/>
+<p>ルンバj7+を使っていて、正攻法では解決しないエラーにぶち当たったので紹介します。<br/>
+エラーコードは「接続できませんでした (BF0B12)」で、症状は「アプリとルンバがほとんど通信できなくなる」です。<br/>
+結局サポートセンターに電話しましたが、それでも30分間解決策がつかめなかったという中々の強敵具合でした...</p>
+<h2 id="section1">この記事でわかること</h2>
+<p>ルンバのエラーコード「接続できませんでした (BF0B12)」を解決する方法がわかるかもしれません。<br/>
+また、他の不具合の場合も含めて、対処法を調べる順番としてよさそうなものを紹介します。<br/>
+（ルンバの他機種やブラーバは考慮できてないので別手段になる気がします。ご留意ください。）</p>
+<h2 id="section2">結論</h2>
+<h3 id="%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88">ポイント</h3>
+<p>初期設定からやり直し、<strong>接続するWi-Fiを2.4GHzの方ではなく5GHzの方にする</strong>ことで解決しました。<br/>
+<br/>
+（´-`）.｡oO（ なんでそれで通信できるようになるの...？ ）<br/>
+<br/>
+という感じですが、電話対応してくださった方もよくわかりませんとのことでした...<br/>
+集合住宅なので他の部屋のWi-Fiが干渉しているとかあるかもです。<br/>
+5GHzだと壁とかで遮断されやすいし大丈夫かな... と最初は不安でしたが、ここ3カ月間はきちんと動いてくれています。</p>
+<h3 id="%E6%89%8B%E9%A0%86">手順</h3>
+<p>正確に書こうと思ったんですが、サポートセンターに電話したときのメモを紛失しました！　ごめんなさい<br/>
+記憶の限りで手順を書くと、ルンバが十分に充電された状態で</p>
+<ul>
+<li>Wi-Fiルーターを再起動する</li>
+<li>スマホからアプリをアンインストールする</li>
+<li>ルンバ本体を工場出荷時に戻す（ここが記憶怪しいです... ここでは<a href="https://reviews.irobot-jp.com/vivr/manuals/4798372_OG_c755860.pdf" rel="noopener noreferrer" target="_blank">ルンバj7+取扱説明書</a>の方法を記載しています）
+<ul>
+<li>ロボットを工場出荷時の状態に初期化するには、ダスト容器を取り外してCLEANボタンを7秒間長押し</li>
+<li>初期化が完了すると、音が鳴る</li>
+<li>CLEANボタンを再度押して、確定します。
+といった感じですべてを最初の状態に戻した後、初期設定を進める中で接続するWi-Fiを5GHzの方にする、です。<br/>
+正確な方法を知りたい方は問い合わせ窓口やサービスセンターできいていただきたいです... このページのもう少し下にURLを貼っています。<br/>
+上の方法を試す場合はあくまで自己責任でお願いします！</li>
+</ul>
+</li>
+</ul>
+<h2 id="section3">他の不具合の対処法を調べる方法</h2>
+<p>おそらく以下の順で試すのがよさそうです。2は飛ばしてもいいかも。</p>
+<ol>
+<li>
+<p><a href="https://service.irobot-jp.com/1/roomba.html" rel="noopener noreferrer" target="_blank">iRobot公式のFAQページ</a></p>
+<ul>
+<li>よくある不具合がリストアップされていて、これに該当する場合はまず試せばよさそうです</li>
+<li>機器側の不具合多めのラインナップという印象です</li>
+</ul>
+</li>
+<li>
+<p><a href="https://www.youtube.com/playlist?list=PLwHGLclWEkXjSXZm-EMxhxWGOb0wyYeg8" rel="noopener noreferrer" target="_blank">ルンバ相談室</a></p>
+<ul>
+<li>こちらも機器側の不具合多めのラインナップという印象です</li>
+<li>iRobot Japan がルンバの不具合全般について動画を公開しています</li>
+<li>動画で見るほうがわかりやすいという方にはおすすめです</li>
+</ul>
+</li>
+<li>
+<p>エラーコードでググる</p>
+<ul>
+<li>エラーコードが出る不具合なら、ググれば大抵の場合はヒットするのではと思います。</li>
+<li>ほとんどヒットしない場合は次へどうぞ！</li>
+</ul>
+</li>
+<li>
+<p><a href="https://service.irobot-jp.com/1/inquiry" rel="noopener noreferrer" target="_blank">iRobot公式の問い合わせ窓口</a></p>
+<ul>
+<li>購入店ごとに問い合わせ先があります</li>
+<li>急ぎでない場合は電話せず、問い合わせフォームから連絡とることをおすすめします</li>
+</ul>
+</li>
+<li>
+<p><a href="https://answers.irobot.com/ja/article?urlName=200" rel="noopener noreferrer" target="_blank">アイロボットサービスセンター</a></p>
+<ul>
+<li>連絡先電話番号が書いてあります</li>
+<li>電話はかなりつながりにくいです</li>
+<li>電話する前に製品番号などを準備しておきましょう（準備すべきことはページに記載されています）</li>
+</ul>
+</li>
+</ol>
+<h2 id="section4">おまけ</h2>
+<p>iRobot公式のFAQページに<a href="https://service.irobot-jp.com/1/roomba_answer11" rel="noopener noreferrer" target="_blank">アプリを使った工場出荷状態への初期化方法</a>がありました。<br/>
+よくわからない不調に対して効きそうなので、参考情報として貼っておきます。<br/>
+ページ内でルンバ相談室の再生リストには入っていないルンバ相談室動画が貼ってあったので、<br/>
+もしかすると他にも再生リストには入ってないものがあるかもですね。<br/>
+（ちなみにBF0B12に対しては使えなさそうです。アプリからルンバに通信できないというエラーなので...）</p>
+<h2 id="section5">まとめ</h2>
+<p>ルンバj7+のエラーコード「接続できませんでした (BF0B12)」を解決するかもしれない方法を紹介しました。<br/>
+また、他の不具合の場合も含めて、対処法を調べる順番としてよさそうなものを紹介しました。<br/>
+同じエラーに遭遇した人の参考になればと思います。</p>
+
+                </div>
+                
+                
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+            </div>
+            <div id="right-sidebar">
+
+
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    
+    
+    
+    </div>
+    <script src="../includes/clipboard-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+  </body>
+</html>

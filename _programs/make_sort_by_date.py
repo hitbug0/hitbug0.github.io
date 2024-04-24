@@ -22,7 +22,7 @@ def collect_articles_info():
         df: 記事情報をまとめたpandas DataFrame。 
     """
     data = []
-    for file_path in glob.glob("posts/*.html"):
+    for file_path in glob.glob("posts/20*.html"):
         file_name = os.path.splitext(os.path.basename(file_path))[0] # ファイル名を取得
         date = ' - '.join(file_name.split('-')[:3]) # ファイル名から日付を取得
         month = ' - '.join(file_name.split('-')[:2])
