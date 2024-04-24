@@ -214,7 +214,7 @@ pa.hotkey(<span class="hljs-string">'f5'</span>) <span class="hljs-comment"># �
 <div class="container"><div id="code-content2"><button class="copy-button" data-clipboard-target="#code-content2">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
 <span class="hljs-keyword">import</span> pyperclip
 
-pyperclip.copy(<span class="hljs-string">"hoge,hoge"</span>) <span class="hljs-comment"># 文字列をクリップボードにコピー</span>
+pyperclip.copy(<span class="hljs-string">"hoge, hoge"</span>) <span class="hljs-comment"># 文字列をクリップボードにコピー</span>
 pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>) <span class="hljs-comment"># 貼り付ける</span>
 </div></code></pre></div></div>
 <h3 id="%E7%94%BB%E9%9D%A2%E5%86%85%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E8%A1%A8%E7%A4%BA%E4%BD%8D%E7%BD%AE%E3%81%AE%E7%89%B9%E5%AE%9A-%E2%86%92-%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF">画面内での画像表示位置の特定　→　クリック</h3>
@@ -265,40 +265,33 @@ subprocess.Popen(chrome_path)
     win32gui.EnumWindows(enum_handler, <span class="hljs-literal">None</span>)
     <span class="hljs-keyword">return</span> chrome_windows[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> chrome_windows <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
 
-
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move_to_main_screen</span><span class="hljs-params">(hwnd, wait_time=<span class="hljs-number">10</span>)</span>:</span>
     <span class="hljs-comment"># 表示するモニターデバイスをメインデバイスに切り替える。</span>
     dt = <span class="hljs-number">0.5</span>
     n = wait_time/dt
     count=<span class="hljs-number">0</span>
     <span class="hljs-keyword">while</span> count&lt;=n:
-        monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST)
-            )
-        main_monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY)
-            )
+        monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST))
+        main_monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY))
         <span class="hljs-keyword">if</span> monitor_info[<span class="hljs-string">'Device'</span>] == main_monitor_info[<span class="hljs-string">'Device'</span>]:
             <span class="hljs-keyword">break</span>
         <span class="hljs-keyword">else</span>:
             <span class="hljs-comment"># hwndを表示するモニターを切り替える</span>
-            win32gui.MoveWindow(hwnd, 
-                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
-                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
-                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">2</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
-                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">3</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
-                <span class="hljs-literal">True</span>)
+            win32gui.MoveWindow(hwnd, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">500</span>, <span class="hljs-number">500</span>, <span class="hljs-literal">True</span>) <span class="hljs-comment"># 左上隅から500*500の範囲にウィンドウを配置</span>
             time.sleep(dt) 
             count +=<span class="hljs-number">1</span>
 
-chrome_window = <span class="hljs-literal">None</span> <span class="hljs-comment"># Chromeのハンドルの初期化</span>
-<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> chrome_window: <span class="hljs-comment"># ハンドルに値が入るまで get_chrome_window() をトライする</span>
-    chrome_window = get_chrome_window()
-    time.sleep(<span class="hljs-number">0.05</span>)
-move_to_main_screen(chrome_window) <span class="hljs-comment"># メイン画面で開く</span>
-time.sleep(<span class="hljs-number">0.05</span>)
-win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># ウィンドウを最大化する</span>
 
+<span class="hljs-comment"># 表示ウィンドウの調整</span>
+chrome_window = <span class="hljs-literal">None</span>
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> chrome_window:
+    chrome_window = get_chrome_window()
+    time.sleep(<span class="hljs-number">0.5</span>)
+
+move_to_main_screen(chrome_window) <span class="hljs-comment"># メイン画面で開く</span>
+time.sleep(<span class="hljs-number">0.5</span>)
+
+win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># ウィンドウを最大化する</span>
 </div></code></pre></div></div>
 
                 <script async 
@@ -412,22 +405,13 @@ URL = <span class="hljs-string">"https://search.google.com/search-console/sitema
     n = wait_time/dt
     count=<span class="hljs-number">0</span>
     <span class="hljs-keyword">while</span> count&lt;=n:
-        monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST)
-            )
-        main_monitor_info = win32api.GetMonitorInfo(
-            win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY)
-            )
+        monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST))
+        main_monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY))
         <span class="hljs-keyword">if</span> monitor_info[<span class="hljs-string">'Device'</span>] == main_monitor_info[<span class="hljs-string">'Device'</span>]:
             <span class="hljs-keyword">break</span>
         <span class="hljs-keyword">else</span>:
             <span class="hljs-comment"># hwndを表示するモニターを切り替える</span>
-            win32gui.MoveWindow(hwnd, 
-                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
-                main_monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
-                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">2</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">0</span>], 
-                monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">3</span>]-monitor_info[<span class="hljs-string">'Monitor'</span>][<span class="hljs-number">1</span>], 
-                <span class="hljs-literal">True</span>)
+            win32gui.MoveWindow(hwnd, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">500</span>, <span class="hljs-number">500</span>, <span class="hljs-literal">True</span>) <span class="hljs-comment"># 左上隅から500*500の範囲にウィンドウを配置</span>
             time.sleep(dt) 
             count +=<span class="hljs-number">1</span>
 
@@ -441,22 +425,24 @@ URL = <span class="hljs-string">"https://search.google.com/search-console/sitema
     chrome_window = <span class="hljs-literal">None</span>
     <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> chrome_window:
         chrome_window = get_chrome_window()
-        time.sleep(<span class="hljs-number">0.05</span>)
+        time.sleep(<span class="hljs-number">0.5</span>)
+    
     move_to_main_screen(chrome_window) <span class="hljs-comment"># メイン画面で開く</span>
-    time.sleep(<span class="hljs-number">0.05</span>)
+    time.sleep(<span class="hljs-number">0.5</span>)
+    
     win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># ウィンドウを最大化する</span>
-    time.sleep(<span class="hljs-number">0.05</span>)
+    time.sleep(<span class="hljs-number">0.5</span>)
     
     <span class="hljs-comment"># URL記入</span>
     pa.hotkey(<span class="hljs-string">'alt'</span>,<span class="hljs-string">'d'</span>)
-    time.sleep(<span class="hljs-number">0.05</span>)
+    time.sleep(<span class="hljs-number">2</span>)
     pyperclip.copy(URL)
     pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>)
     time.sleep(<span class="hljs-number">0.05</span>)
     pa.hotkey(<span class="hljs-string">'enter'</span>)
 
     <span class="hljs-comment"># sitemap1.pngを画面内で見つけてクリック</span>
-    time.sleep(<span class="hljs-number">2</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
     position_im = wait_disp(<span class="hljs-string">'./contents/img/sitemap1.png'</span>)
     pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>)
     

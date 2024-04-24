@@ -3,7 +3,6 @@
 
 ## ファイル構成
 
-- **.git** : Gitリポジトリ
 - **_posts_original**
     - `yyyy-mm-dd-filename.md` : 記事ページのソースファイル
     - `yyyy-mm-dd-filename.html` : 記事ページのHTMLファイル（中間ファイル）。VSCodeの拡張機能でmdファイルから自動作成
