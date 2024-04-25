@@ -74,7 +74,7 @@ code {
 	font-size: 1em;
 	line-height: 1.357em;
     background-color: #eab70075;
-    border-radius: 10%;
+    border-radius: 3px;
 }
 body.wordWrap pre {
 	white-space: pre-wrap;
@@ -351,7 +351,7 @@ header .link:hover{
 	background-color: rgba(210, 210, 210, 1);
     z-index: 1000;
     overflow:hidden;
-    border-radius: 7%;
+    border-radius: 3px;
 }
 #center .text a:hover{
 	background-color: #333;

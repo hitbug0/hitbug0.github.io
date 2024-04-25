@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../includes/style.css">
+    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+    crossorigin="anonymous"></script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+    <title>COEIROINKでAI音声合成する方法（V2対応）【簡単＆無料＆商用利用可】 | hitbug</title>
+    <meta name="tag" content="%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90">
+<meta name="tag" content="COEIROINK">
+
+  </head>
+
+
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">この記事でわかること</a></li>
+<li><a href="#section2">まえおき</a></li>
+<li><a href="#section3">商用利用について</a></li>
+<li><a href="#section4">初期設定</a></li>
+<li><a href="#section5">基本的な使い方</a></li>
+<li><a href="#section6">まとめ</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="coeiroink%E3%81%A7ai%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95v2%E5%AF%BE%E5%BF%9C%E7%B0%A1%E5%8D%98%EF%BC%86%E7%84%A1%E6%96%99%EF%BC%86%E5%95%86%E7%94%A8%E5%88%A9%E7%94%A8%E5%8F%AF">COEIROINKでAI音声合成する方法（V2対応）【簡単＆無料＆商用利用可】</h1>
+<p><a href="::tags::%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90,COEIROINK" rel="noopener noreferrer" target="_blank"></a></p>
+<hr/>
+<p>COEIROINKで音声合成する方法を具体的に紹介します。<br/>
+無料、簡単な初期設定、直感的な操作、商用利用可(※条件付き)、など、非常におすすめのソフトです！<br/>
+（商用利用に関しては早合点しないでちゃんと記事読んでね。あと、将来的に規約変わるかもだから、使うタイミングでもう一回確認してね）</p>
+<h2 id="section1">この記事でわかること</h2>
+<p>「使い方だけ見せて！」という人は<a href="#section4">初期設定</a>以降をご覧ください。</p>
+<ul>
+<li>
+<p>そもそもAI音声合成とは何か（ざっくり）</p>
+</li>
+<li>
+<p>音声合成を使うメリット</p>
+</li>
+<li>
+<p>商用利用について（2024年4月現在）</p>
+</li>
+<li>
+<p>COEIROINKの使い方（具体的に）</p>
+<ul>
+<li>初期設定</li>
+<li>基本的な使い方</li>
+</ul>
+</li>
+</ul>
+<h2 id="section2">まえおき</h2>
+<h3 id="ai%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90%E3%81%A3%E3%81%A6%E4%BD%95">AI音声合成って何？</h3>
+<p>AIを使ってテキストデータから音声を合成する技術のことです。<br/>
+こんな感じの音声が作れます。</p>
+<div class="photo-list"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/RLPVL3Hmbio?si=CcpI9LMNzVUJaIAX" title="YouTube video player" width="560"></iframe></div>
+<p>AIと言っているのは、<br/>
+「テキストと、それを音読したときの音声との組み合わせをデータとしてたくさん学習した機械学習モデル」を使っているからです。<br/>
+細かい説明は省略させてください！</p>
+<h3 id="%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88">音声合成のメリット</h3>
+<p>人の声の録音ではなく音声合成を使う基本的なメリットとしては、以下のようなことが挙げられます。</p>
+<ul>
+<li>
+<p>音源にノイズ（空調の音など）が入らない</p>
+</li>
+<li>
+<p>活舌が良い</p>
+</li>
+<li>
+<p>発話スピードがナレーションとして標準的。コントロールもできる</p>
+</li>
+<li>
+<p>テキストデータの形式で入力するので、別の作業をしている間に音声ファイルを自動作成できる</p>
+</li>
+<li>
+<p>抑揚がつけられる</p>
+<ul>
+<li>ただし、モデルの出力そのままだと不自然な部分が残ることはあります</li>
+</ul>
+</li>
+<li>
+<p>何度でも楽に録り直せる</p>
+<ul>
+<li>例えば、仕事で担当者が変わっても同じ声でナレーション内容を編集できる、みたいなのはメリットですね</li>
+</ul>
+</li>
+</ul>
+<p>加えて、プログラムから動かしたり言語モデルと組み合わせたりすることで、例えば会話できるロボットを作れたりみたいなメリットも出てくると思います。<br/>
+（実際、既にそのような使われ方もしていますね！）</p>
+<h2 id="section3">商用利用について</h2>
+<p>COEIROINKと今回利用した音声モデルの規約について紹介します。</p>
+<h3 id="%E3%82%BD%E3%83%95%E3%83%88coeiroink%E3%81%AE%E8%A6%8F%E7%B4%84">ソフト(COEIROINK)の規約</h3>
+<p><a href="https://coeiroink.com/terms" rel="noopener noreferrer" target="_blank">利用規約</a>が公式サイトに掲載されています。<br/>
+2024年4月時点では、以下の通りでした。</p>
+<ul>
+<li>
+<p>ソフト自体は、法人においても無料で商用利用できる</p>
+</li>
+<li>
+<p>音声モデルは個別に確認が必要</p>
+<ul>
+<li>追加の利用制限がある音声モデルもあるし、追加規約がないモデルもある</li>
+</ul>
+</li>
+</ul>
+<p>ただし、規約が将来的に変更される可能性はあります。<br/>
+簡潔でわかりやすい規約なので、利用開始前には一度読んでくださいね。</p>
+<h3 id="%E4%BB%8A%E5%9B%9E%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E9%9F%B3%E5%A3%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E8%A6%8F%E7%B4%84">今回利用した音声モデルの規約</h3>
+<p><code>Al声優・金苗</code> と <code>Al声優・朱花</code> という2つの音声モデルを使ってみました！<br/>
+公式サイトは<a href="https://aiseiyou.com/" rel="noopener noreferrer" target="_blank">こちら</a>です。<br/>
+利用規約は公式サイトに記載されていて、クレジット表記が必要とのことです（2024年4月時点）。<br/>
+つまり、動画の端っことかに以下のように書く必要があるということですね。</p>
+<ul>
+<li>
+<p>COEIROINK:Al声優・金苗</p>
+</li>
+<li>
+<p>COEIROINK:Al声優・朱花</p>
+</li>
+</ul>
+<p>音声モデルごとに規約は異なるので、都度確認するようにしてくださいね！</p>
+<h2 id="section4">初期設定</h2>
+<p>今回は <code>COEIROINK_CPU_v.2.3.4(Windows)</code> と <code>Al声優・金苗</code> 、 <code>Al声優・朱花</code> を使う場合について紹介します。<br/>
+初期設定でやることは3つです。</p>
+<ol>
+<li>
+<p>必要なファイルをダウンロードする</p>
+</li>
+<li>
+<p>ソフトをインストールする</p>
+</li>
+<li>
+<p>フォルダ構成を整える</p>
+</li>
+</ol>
+<p>バージョンとかは変わっていくと思うので、必要に応じていい感じに読み替えてもらえるとありがたいです～</p>
+<h3 id="1-%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B">1. 必要なファイルをダウンロードする</h3>
+<ul>
+<li>
+<p>ソフトのダウンロード</p>
+<ul>
+<li>
+<p><a href="https://coeiroink.com/download" rel="noopener noreferrer" target="_blank">COEIROINK公式のダウンロードページ</a>の「ダウンロード」と書いてある場所から、<code>COEIROINK_CPU_v.2.3.4(Windows)</code> ダウンロードします。</p>
+</li>
+<li>
+<p>BOOTHからでもDropBoxからでも大丈夫です。</p>
+</li>
+<li>
+<p>Macユーザの方やGPU積んでて使いたい方は、別のファイルをクリックしてください～</p>
+</li>
+</ul>
+</li>
+<li>
+<p>音声モデルのダウンロード</p>
+<ul>
+<li>
+<p><a href="https://coeiroink.com/download#:~:text=v.2.3.4(Mac)-,%E9%9F%B3,%E3%83%89,-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E4%B8%8A%E3%81%A7" rel="noopener noreferrer" target="_blank">先ほどの公式ダウンロードページの下の方</a>にいくと、「音声ダウンロード」と書いている場所があります。</p>
+</li>
+<li>
+<p>その中から <code>AI声優-金苗-v.1.3.0</code> 、 <code>AI声優-朱花-v.1.1.0</code> みたいなものを探してダウンロードします。</p>
+</li>
+<li>
+<p>バージョンは基本的に新しいものを選べばよいと思います。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>ダウンロードされた3つのzipファイルの解凍</p>
+<ul>
+<li>
+<p>それぞれ別々に解凍します。</p>
+</li>
+<li>
+<p>解凍する場所はどこでも大丈夫です。</p>
+</li>
+<li>
+<p>ファイル名はおそらくこんな感じです。</p>
+<ul>
+<li>
+<p><code>COEIROINK WIN_CPU_V.2.3.4.zip</code></p>
+</li>
+<li>
+<p><code>d1143ac1-c486-4273-92ef-a30938d01b91.zip</code></p>
+</li>
+<li>
+<p><code>d41bcbd9-f4a9-4e10-b000-7a431568dd01.zip</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-%E3%82%BD%E3%83%95%E3%83%88%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B">2. ソフトをインストールする</h3>
+<ul>
+<li>
+<p>インストーラの実行</p>
+<ul>
+<li>
+<p>解凍された<strong>COEIROINK WIN_CPU_V.2.3.4</strong>フォルダを開きます。</p>
+</li>
+<li>
+<p><code>COEIROINK WIN_CPU_V.2.3.4.exe</code> を左ダブルクリックして実行します。</p>
+</li>
+<li>
+<p>そうすると、コマンドプロンプトが開いてインストールが始まります。</p>
+</li>
+<li>
+<p>インストールが終わると、<code>COEIROINK WIN_CPU_V.2.3.4.exe</code>と同じフォルダ階層に<code>COEIROINK WIN_CPU_V.2.3.4</code>というフォルダが現れます。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%A7%8B%E6%88%90%E3%82%92%E6%95%B4%E3%81%88%E3%82%8B">3. フォルダ構成を整える</h3>
+<p>手順2.までで、<strong>COEIROINK WIN_CPU_V.2.3.4</strong>フォルダの中身は以下のようになっていると思います。<br/>
+（フォルダを<strong>太字</strong>で、ファイルを<code>オレンジ</code>で表記しています）</p>
+<br/>
+<ul>
+<li>
+<p><strong>COEIROINK WIN_CPU_V.2.3.4</strong></p>
+<ul>
+<li>
+<p><code>COEIROINK_WIN_CPU_v.2.3.4.7z.001</code></p>
+</li>
+<li>
+<p><code>COEIROINK_WIN_CPU_v.2.3.4.exe</code></p>
+</li>
+<li>
+<p><strong>COEIROINK_WIN_CPU_v.2.3.4</strong></p>
+<ul>
+<li><code>COEIROINKv2.exe</code></li>
+<li><strong>engine</strong></li>
+<li><strong>speaker_info</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>この中の<strong>speaker_info</strong>フォルダに、解凍した音声モデルのフォルダを入れます。<br/>
+<strong>speaker_info</strong>の中身は、最初は以下のようになっていると思います。</p>
+<br/>
+<ul>
+<li>
+<p><strong>speaker_info</strong></p>
+<ul>
+<li>
+<p><strong>つくよみちゃん</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>..., などなど（他にもいくつかありますが割愛）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>この「つくよみちゃん」というのがデフォルトで入っている音声モデルです。<br/>
+なので、<strong>つくよみちゃん</strong>フォルダと同じような構成になるように、解凍した2つのフォルダを入れます。<br/>
+入れた後の<strong>speaker_info</strong>の中身はこんな感じになります。</p>
+<br/>
+<ul>
+<li>
+<p><strong>speaker_info</strong></p>
+<ul>
+<li>
+<p><strong>つくよみちゃん</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>..., などなど</li>
+</ul>
+</li>
+<li>
+<p><strong>d1143ac1-c486-4273-92ef-a30938d01b91</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>..., などなど</li>
+</ul>
+</li>
+<li>
+<p><strong>d41bcbd9-f4a9-4e10-b000-7a431568dd01</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>..., などなど</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>これで初期設定は完了です！　お疲れ様でした！</p>
+<h2 id="section5">基本的な使い方</h2>
+<ul>
+<li>ソフトの起動
+<ul>
+<li><code>COEIROINKv2.exe</code>を実行すればソフトが起動します。
+<ul>
+<li><code>COEIROINK_WIN_CPU_v.2.3.4.exe</code>ではないので注意してください！</li>
+<li>ショートカットを作ってデスクトップとかにおいておけば便利かなと思います。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本操作
+<ul>
+<li>図作ったので貼っておきます！（クリックで拡大できます）</li>
+</ul>
+</li>
+</ul>
+<p><div class="photo-list"><a href="../contents/img/coeiroink01.png"  data-lightbox="group" data-title="COEIROINKの基本的な使い方" alt="">
+                                   <img src="../contents/img/coeiroink01.png" height="250px">
+                                </a>
+                             </div></p>
+<h2 id="section6">まとめ</h2>
+<p>COEIROINKで音声合成する方法を具体的に紹介しました。<br/>
+ぜひ使ってみてくださいね！</p>
+
+                </div>
+                
+                
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+            </div>
+            <div id="right-sidebar">
+
+
+                <!-- 広告の部分は表示されるようになってから調整する -->
+
+
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    
+    
+    
+    </div>
+    <script src="../includes/clipboard-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+  </body>
+</html>
