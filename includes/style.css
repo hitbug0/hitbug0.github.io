@@ -448,6 +448,12 @@ header .link:hover{
     display: block;
 }
 
+iframe{
+    width: 400px;
+    height: 225px;
+} 
+
+
 
 
 #left-sidebar h1 {
@@ -513,6 +519,10 @@ header   .page-list { display:block;}
     @media only screen and (max-width : 767px){
         header   .page-list { display:none;}
         #center{ flex: 1; margin: 0 auto; /* 画面左揃えで配置 */}
+        iframe{
+            width: 320px;
+            height:180px;
+        } 
         #wrapper .page-list { display:block;}
         #right-sidebar, #hidden-right-sidebar { display:none;}
         #left-sidebar, #hidden-left-sidebar { display:none;}

@@ -36,7 +36,7 @@
 
 Tomo Drum CH. さんの動画でも「ここだけは外れませんでした」とのことです。笑  
 
-<iframe width="400" height="225" src="https://www.youtube.com/embed/2KZwzuoUyY0?si=NMsJUuet698p5XM0&amp;start=330" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/2KZwzuoUyY0?si=NMsJUuet698p5XM0&amp;start=330" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ## 回すためにやったことは？

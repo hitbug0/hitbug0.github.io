@@ -41,9 +41,9 @@
     - よくある不具合がリストアップされていて、これに該当する場合はまず試せばよさそうです
     - 機器側の不具合多めのラインナップという印象です
     
-2. [ルンバ相談室](https://www.youtube.com/playlist?list=PLwHGLclWEkXjSXZm-EMxhxWGOb0wyYeg8)
+2. [ルンバ相談室(iRobot公式YouTube)](https://www.youtube.com/playlist?list=PLwHGLclWEkXjSXZm-EMxhxWGOb0wyYeg8)
+    - iRobot Japan がルンバの不具合全般についての動画を公開しています
     - こちらも機器側の不具合多めのラインナップという印象です
-    - iRobot Japan がルンバの不具合全般について動画を公開しています
     - 動画で見るほうがわかりやすいという方にはおすすめです
 
 3.  エラーコードでググる
