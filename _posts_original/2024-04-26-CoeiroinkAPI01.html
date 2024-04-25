@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024-04-26-CoeiroinkAPI01.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="coeiroink-v2-api-%E3%82%92%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6python%E3%81%A7%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F">COEIROINK v2 API をつかってPythonで音声合成してみた</h1>
+<p><a href="::tags::%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90,COEIROINK,Python"></a></p>
+<hr>
+<p>COEIROINKという音声合成ソフトを、Pythonから実行してみました。<br>
+そのときの方法と結果を具体的に紹介します。<br>
+コードは<a href="https://github.com/hitbug0/basic-codes-coeiroink-api">GitHub</a>にもアップしているので見てみてくださいね！</p>
+<h2 id="%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8B%E3%81%93%E3%81%A8">この記事でわかること</h2>
+<p>この記事ではCOEIROINK (v2)をPythonから動かすときの具体的な手順とコード(例)について紹介します。<br>
+COEIROINKの概要やその利用規約、そもそもAI音声合成とは何かみたいなことは<a href="./2024-04-25-CoeiroinkGUI.html">前回の記事</a>を読んでみてください～</p>
+<h2 id="%E6%89%8B%E9%A0%86">手順</h2>
+<p>最小限のコードで実行する場合は、準備含めて以下のステップになります。<br>
+毎回やるのは 2., 5., 6. です。<br>
+...めんどくさくない？　という人は<a href="#section5">便利なスクリプト</a>も併せてご覧ください～</p>
+<ol>
+<li>
+<p>Pythonおよびそのライブラリをインストールする（初回のみ）</p>
+<ul>
+<li>Pythonをインストールします。
+<ul>
+<li>バージョンについて、自分は3.10ですが、たぶん3.6以降であればOKかと思います</li>
+</ul>
+</li>
+<li><code>requests</code>と<code>pydub</code>をpipでインストールします</li>
+<li><code>json</code>は標準ライブラリなので、Pythonが入っていればインストール不要です</li>
+</ul>
+</li>
+<li>
+<p>COEIROINKをGUIで使える状態にして、起動する</p>
+<ul>
+<li><a href="./2024-04-25-CoeiroinkGUI.html/#section4">前回の記事</a>に方法を書いてます</li>
+</ul>
+</li>
+<li>
+<p>以下の<code>check_speaker_info.py</code>を実行し、結果をメモしておく（モデル追加時のみ）</p>
+</li>
+<li>
+<p><code>check_speaker_info.py</code>の実行結果に応じて、<code>text2audio.py</code>の<code>SPEAKER_INFO</code>を書き換える</p>
+</li>
+<li>
+<p>音声にしたい会話内容を<code>input.txt</code>に書く</p>
+</li>
+<li>
+<p><code>text2audio.py</code>を実行する</p>
+</li>
+</ol>
+<h2 id="%E3%82%B3%E3%83%BC%E3%83%89">コード</h2>
+<p>AI声優-朱花とAI声優-金苗の会話をtxtファイルから自動作成します。<br>
+以下の3つのファイルを使います。</p>
+<ul>
+<li>
+<p><code>check_speaker_info.py</code>（モデル追加時のみ）</p>
+<ul>
+<li>このコードを実行することで、音声モデル(<code>speaker</code>)の情報と、話し方(<code>style</code>)の情報が取得できます。</li>
+<li>ここで取得した情報をプログラムで指定します。</li>
+<li>実行するディレクトリはどこでも大丈夫です。</li>
+</ul>
+</li>
+<li>
+<p><code>text2audio.py</code></p>
+<ul>
+<li><code>input.txt</code>に書かれた会話を音声ファイルに変換するコードです</li>
+<li><code>check_speaker_info.py</code>の出力結果に応じてSPEAKER_INFOを書き換えてくださいね</li>
+</ul>
+</li>
+<li>
+<p><code>input.txt</code></p>
+<ul>
+<li>「音声モデル名: セリフ」の形式で書くようにしています</li>
+<li>音声モデルを追加するときは、音声モデル名をプログラムと連動させるようにしてくださいね</li>
+</ul>
+</li>
+</ul>
+<p>それぞれの中身は以下の通りです。<br>
+<code>text2audio.py</code>の機能は最低限なので、ここからカスタマイズしていってください！</p>
+<h3 id="checkspeakerinfopy">check_speaker_info.py</h3>
+<p>このコードを実行することで、音声モデル(<code>speaker</code>)の情報と、話し方(<code>style</code>)の情報が取得できます。<br>
+ここで取得した情報をプログラムで指定します。
+実行するディレクトリはどこでも大丈夫です。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> json
+<span class="hljs-keyword">import</span> requests
+
+<span class="hljs-comment"># やり取りするローカルサーバ</span>
+URL = <span class="hljs-string">"http://localhost:50032/"</span>
+
+<span class="hljs-comment"># スピーカーの情報を一覧表示</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_speaker_info</span><span class="hljs-params">()</span>:</span>
+    response = requests.get(URL+<span class="hljs-string">"v1/speakers"</span>)
+    speakers = response.json()
+    <span class="hljs-keyword">for</span> speaker <span class="hljs-keyword">in</span> speakers:
+        print(<span class="hljs-string">"\n"</span>+<span class="hljs-string">"="</span>*<span class="hljs-number">30</span>)
+        print(<span class="hljs-string">f"name: <span class="hljs-subst">{speaker[<span class="hljs-string">'speakerName'</span>]}</span>\nid:   <span class="hljs-subst">{speaker[<span class="hljs-string">'speakerUuid'</span>]}</span>"</span>)
+        styles = speaker[<span class="hljs-string">'styles'</span>]
+        print(<span class="hljs-string">'styles:'</span>)
+        <span class="hljs-keyword">for</span> style <span class="hljs-keyword">in</span> styles:
+            print(<span class="hljs-string">f"     <span class="hljs-subst">{style[<span class="hljs-string">'styleId'</span>]:&gt;<span class="hljs-number">4</span>}</span> : <span class="hljs-subst">{style[<span class="hljs-string">'styleName'</span>]}</span>"</span>)
+
+check_speaker_info()
+</div></code></pre>
+<p>以下が実行結果例です。</p>
+<pre class="hljs"><code><div>==============================
+name: AI声優-朱花
+<span class="hljs-attr">id</span>:   d1143ac1-c486<span class="hljs-number">-4273</span><span class="hljs-number">-92</span>ef-a30938d01b91
+<span class="hljs-attr">styles</span>:
+       <span class="hljs-number">50</span> : のーまるv2
+
+==============================
+name: AI声優-金苗
+<span class="hljs-attr">id</span>:   d41bcbd9-f4a9<span class="hljs-number">-4e10</span>-b000<span class="hljs-number">-7</span>a431568dd01
+<span class="hljs-attr">styles</span>:
+      <span class="hljs-number">100</span> : のーまる
+      <span class="hljs-number">101</span> : 愉悦 Aタイプ
+      <span class="hljs-number">103</span> : 愉悦 Bタイプ
+      <span class="hljs-number">102</span> : 喜び
+
+==============================
+name: つくよみちゃん
+<span class="hljs-attr">id</span>:   <span class="hljs-number">3</span>c37646f<span class="hljs-number">-3881</span><span class="hljs-number">-5374</span><span class="hljs-number">-2</span>a83<span class="hljs-number">-149267990</span>abc
+<span class="hljs-attr">styles</span>:
+        <span class="hljs-number">0</span> : れいせい
+</div></code></pre>
+<h3 id="inputtxt%E4%BE%8B%E3%81%A7%E3%81%99">input.txt（例です）</h3>
+<pre class="hljs"><code><div>ayaka: 今日はいい天気だね～
+<span class="hljs-attr">ayaka</span>: そうだ！　お姉ちゃん、外に行こうよ！
+<span class="hljs-attr">kanae</span>: うーん、でもちょっと寒くない？
+</div></code></pre>
+<h3 id="text2audiopy">text2audio.py</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> json
+<span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">from</span> pydub <span class="hljs-keyword">import</span> AudioSegment, playback
+
+<span class="hljs-comment"># やり取りするローカルサーバ</span>
+URL = <span class="hljs-string">"http://localhost:50032/"</span>
+
+<span class="hljs-comment"># 音声モデルの情報</span>
+<span class="hljs-comment"># 音声モデル名: [音声モデル(speaker)のid, 話し方(style)のid]</span>
+SPEAKER_INFO = {
+    <span class="hljs-string">"kanae"</span>: [<span class="hljs-string">'d41bcbd9-f4a9-4e10-b000-7a431568dd01'</span>, <span class="hljs-string">'100'</span>], <span class="hljs-comment"># AI声優-金苗</span>
+    <span class="hljs-string">"ayaka"</span>: [<span class="hljs-string">'d1143ac1-c486-4273-92ef-a30938d01b91'</span>, <span class="hljs-string">'50'</span> ], <span class="hljs-comment"># AI声優-朱花</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_wav</span><span class="hljs-params">(text, speed_scale, speaker_info)</span>:</span>
+    <span class="hljs-comment"># 音声モデルを使ってtextからwavを生成する関数</span>
+    speaker_uuid, style_id = speaker_info
+    response = requests.post(
+        URL+<span class="hljs-string">"v1/predict"</span>,
+        json={
+            <span class="hljs-string">"speakerUuid"</span>: speaker_uuid,
+            <span class="hljs-string">"styleId"</span>: style_id,
+            <span class="hljs-string">"text"</span>: text,
+            <span class="hljs-string">"speedScale"</span>: speed_scale
+            }
+        )
+    
+    <span class="hljs-keyword">if</span> response.content==<span class="hljs-string">b'Internal Server Error'</span>:
+        print(<span class="hljs-string">'Internal Server Error'</span>)
+    
+    <span class="hljs-keyword">return</span> response.content
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">play_wav</span><span class="hljs-params">(wav)</span>:</span>
+    <span class="hljs-comment"># wavを再生する関数</span>
+    playback.play(
+        AudioSegment(
+            wav,
+            sample_width=<span class="hljs-number">2</span>, 
+            frame_rate=<span class="hljs-number">44100</span>, 
+            channels=<span class="hljs-number">1</span>
+            )
+        )
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">write_wav_file</span><span class="hljs-params">(file_path, audio_data, sample_width=<span class="hljs-number">2</span>, sample_rate=<span class="hljs-number">44100</span>, channels=<span class="hljs-number">1</span>)</span>:</span>
+    <span class="hljs-comment"># wavを書き出す関数</span>
+    <span class="hljs-comment"># file_path: 書き出すファイルのパス</span>
+    <span class="hljs-comment"># audio_data: 書き出す音声データ（バイナリ形式の文字列）</span>
+    <span class="hljs-comment"># sample_width: サンプルのビット幅（バイト数）デフォルトは2（16bit）</span>
+    <span class="hljs-comment"># sample_rate: サンプルレート デフォルトは44100Hz</span>
+    <span class="hljs-comment"># channels: チャンネル数 デフォルトは1（ステレオ）</span>
+    audio_segment = AudioSegment(audio_data, sample_width=sample_width, frame_rate=sample_rate, channels=channels)
+    <span class="hljs-comment"># wavファイルとして保存</span>
+    audio_segment.export(file_path, format=<span class="hljs-string">"wav"</span>)
+
+<span class="hljs-comment"># メイン処理</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">text2audio</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># テキストファイルの読み込み</span>
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">"input.txt"</span>, <span class="hljs-string">"r"</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> file:
+        <span class="hljs-comment"># ファイルの各行をリストとして読み込む</span>
+        lines = file.readlines()
+
+    speed_scale = <span class="hljs-number">1.0</span> <span class="hljs-comment"># 発話速度</span>
+    
+    <span class="hljs-comment"># 音声合成</span>
+    audio_data = <span class="hljs-string">b''</span>
+    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> lines:
+        speaker, text = line.split(<span class="hljs-string">":"</span>)
+        w0 = make_wav(text, speed_scale, SPEAKER_INFO[speaker])
+        <span class="hljs-comment"># _ = play_wav(w0) # 一つずつ再生する場合は使う</span>
+        audio_data += w0
+
+    <span class="hljs-comment"># 連結した音声の出力</span>
+    play_wav(audio_data) <span class="hljs-comment"># 再生</span>
+    write_wav_file(<span class="hljs-string">"output.wav"</span>, audio_data) <span class="hljs-comment"># 保存</span>
+
+text2audio()
+</div></code></pre>
+<h2 id="%E7%B5%90%E6%9E%9C">結果</h2>
+<p>上記のコードを実行した結果を貼っておきます。</p>
+<p>＜●●●●●youtube●●●●●＞</p>
+<p>少しイントネーションの不自然さは残りますが、無料で気軽に使えるものの割には本当にすごいなぁと思います。<br>
+物足りない方は、もっと調整していくヒントを次の章に書いたので見ていってくださいね！</p>
+<h2 id="%E4%BE%BF%E5%88%A9%E3%81%AA%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">便利なスクリプト</h2>
+<p>あまりにも手動操作が多いので、以下3つのスクリプトで少し便利にしました。<br>
+手順はこんな感じになりました。</p>
+<ol>
+<li>
+<p><code>start.bat</code>を実行する</p>
+<ul>
+<li>
+<p>COEIROINKが自動で起動する</p>
+</li>
+<li>
+<p>apiのドキュメントのページも自動で開く</p>
+<ul>
+<li>プログラムを改良したい人はここを参考にしてください！　ちょっとわかりにくいですが...</li>
+</ul>
+</li>
+<li>
+<p><code>check_speaker_info.py</code>も自動で実行される</p>
+<ul>
+<li>モデル追加時はこの出力に応じて<code>text2audio.py</code>の<code>SPEAKER_INFO</code>を書き換える</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>音声にしたい会話内容を<code>input.txt</code>に書く</p>
+</li>
+<li>
+<p><code>run.bat</code>を実行する</p>
+<ul>
+<li><code>text2audio.py</code>が自動で実行される</li>
+</ul>
+</li>
+</ol>
+<p>以下のようなフォルダ構成を前提としていますのでご注意くださいね。<br>
+（スクリプトはフォルダに入れてまとめておくのがすっきりしてよいと思います。）</p>
+<br>
+<ul>
+<li><strong>scripts</strong>
+<ul>
+<li><code>text2audio.py</code></li>
+<li><code>check_speaker_info.py</code></li>
+<li><code>connect.ps1</code></li>
+</ul>
+</li>
+<li><code>input.txt</code></li>
+<li><code>run.bat</code></li>
+<li><code>start.bat</code></li>
+</ul>
+<br>
+<h3 id="startbat">start.bat</h3>
+<p><code>COEIROINKv2.exe</code>のパスを正しいものに置き換える必要があるので、<br>
+使う前に2行目を書き換えてくださいね！</p>
+<pre class="hljs"><code><div>@<span class="hljs-built_in">echo</span> off
+<span class="hljs-built_in">start</span> C:\Users\xxxxxxxxxxxxx\COEIROINKv2.exe
+powershell -ExecutionPolicy Bypass -File "./scripts/connect.ps1"
+python ./scripts/check_speaker_info.py
+<span class="hljs-built_in">pause</span>
+</div></code></pre>
+<h3 id="connectps1">connect.ps1</h3>
+<p><code>start.bat</code>の実行時に呼び出すファイルです。<br>
+ローカルサーバと通信できるようになったらChromeでそのページを開くスクリプトです。<br>
+Google Chromeのパスが違う場合は最後から2行目を書き換えてください！</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$maxAttempts</span> = <span class="hljs-number">100</span>
+<span class="hljs-variable">$waitTimeSeconds</span> = <span class="hljs-number">0.5</span>
+
+<span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">1</span>; <span class="hljs-variable">$i</span> <span class="hljs-operator">-le</span> <span class="hljs-variable">$maxAttempts</span>; <span class="hljs-variable">$i</span>++) {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-variable">$response</span> = <span class="hljs-built_in">Invoke-WebRequest</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">"http://localhost:50032/docs"</span> <span class="hljs-literal">-Method</span> Head
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$response</span>.StatusCode <span class="hljs-operator">-eq</span> <span class="hljs-number">200</span>) {
+            <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"HTTP connection successful: HTTP status code 200 OK"</span>
+            <span class="hljs-keyword">break</span>
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"HTTP connection succeeded, but the HTTP status code is not 200."</span>
+        }
+    } <span class="hljs-keyword">catch</span> {
+        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">"waiting for HTTP connection..."</span>
+    } <span class="hljs-keyword">finally</span> {
+        <span class="hljs-built_in">Start-Sleep</span> <span class="hljs-literal">-Seconds</span> <span class="hljs-variable">$waitTimeSeconds</span>
+    }
+}
+
+<span class="hljs-variable">$chromePath</span> = <span class="hljs-string">"C:\Program Files\Google\Chrome\Application\chrome.exe"</span>
+<span class="hljs-built_in">Start-Process</span> <span class="hljs-literal">-FilePath</span> <span class="hljs-variable">$chromePath</span> <span class="hljs-literal">-ArgumentList</span> <span class="hljs-string">"http://localhost:50032/docs"</span>
+</div></code></pre>
+<h3 id="runbat">run.bat</h3>
+<p><code>text2audio.py</code>を実行するためのbatファイルです。</p>
+<pre class="hljs"><code><div>python ./scripts/text2audio.py
+<span class="hljs-built_in">pause</span>
+</div></code></pre>
+<h2 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h2>
+<p>COEIROINKをPythonから実行する際の方法と結果を具体的に紹介しました。<br>
+追々もう少し応用的なところもいじってみたいと思います。</p>
+
+</body>
+</html>
