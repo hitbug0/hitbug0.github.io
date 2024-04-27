@@ -32,9 +32,9 @@ C:\Users\xxx
 - [ソースコード](https://gitlab.com/nfriend/tree-online)も公開されています。
 
 ### [directory-structure-diagram](https://github.com/hitbug0/directory-structure-diagram)
-- ローカル環境でこのPythonコードを実行すると、いい感じの図(`directory_structure.txt`)を出してくれます。
+- 中身の構成を知りたいディレクトリでこのPythonコードを実行すると、いい感じの図(`directory_structure.txt`)を出してくれます。
 - すでにフォルダやその中身がある場合に有効です。
-- 会社の業務で使うときとかはローカルなので安心ですし、自分でやるべき操作はプログラムの実行だけなのでお手軽だと思います。
+- 会社の業務で使うときとかはローカルで処理が完結するので安心ですし、自分でやるべき操作はプログラムの実行だけなのでお手軽だと思います。
 
 - 他のプログラムにも楽に組み込めると思います。
 
