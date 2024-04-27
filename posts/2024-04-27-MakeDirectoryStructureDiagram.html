@@ -36,7 +36,7 @@
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
-    <title>ディレクトリ構成図を作る方法（Pythonコードもあるよ） | hitbug</title>
+    <title>ディレクトリ構成図を簡単に作る方法（Pythonコードもあるよ） | hitbug</title>
     <meta name="tag" content="RPA">
 <meta name="tag" content="Python">
 
@@ -77,12 +77,12 @@
           : 'default'
     });
   </script>
-<h1 id="%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90%E5%9B%B3%E3%82%92%E4%BD%9C%E3%82%8B%E6%96%B9%E6%B3%95python%E3%82%B3%E3%83%BC%E3%83%89%E3%82%82%E3%81%82%E3%82%8B%E3%82%88">ディレクトリ構成図を作る方法（Pythonコードもあるよ）</h1>
+<h1 id="%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90%E5%9B%B3%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB%E4%BD%9C%E3%82%8B%E6%96%B9%E6%B3%95python%E3%82%B3%E3%83%BC%E3%83%89%E3%82%82%E3%81%82%E3%82%8B%E3%82%88">ディレクトリ構成図を簡単に作る方法（Pythonコードもあるよ）</h1>
 <p><a href="::tags::RPA,Python" rel="noopener noreferrer" target="_blank"></a></p>
 <hr/>
 <p>ディレクトリ構成図を作る方法について、場面に応じて2通り紹介します。</p>
 <h2 id="section1">この記事でわかること</h2>
-<p>以下のような図を簡単に作る方法がわかります。</p>
+<p>以下のようなディレクトリ構成図（フォルダ構成の図）を簡単に作る方法がわかります。</p>
 <div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div>C:\Users\xxx
  ├── aa
  │    ├── aa
@@ -152,6 +152,7 @@
 <p>以上です！</p>
 <h3 id="%E3%82%B3%E3%83%BC%E3%83%89">コード</h3>
 <h4 id="directory-structure-diagrampy">directory-structure-diagram.py</h4>
+<p>図における枝の長さやスペースの明け具合は、冒頭の<code>NUM_INDENTS</code>, <code>BRANCH</code>, <code>LEAF</code> あたりをいじれば変えることができます。</p>
 <div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> os
 
 NUM_INDENTS = <span class="hljs-number">1</span>

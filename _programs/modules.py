@@ -40,6 +40,10 @@ def replace_and_write(text, replaced_markers, replace_contents, output_file_name
 
 
 def format_tag(tag):
+    # 数字始まりの場合は先頭に文字列を追加する
+    if tag[0].isdigit():
+        tag =  "about" + tag
+
     # tagに記号やスペースがある場合はハイフンに置き換える
     return tag.replace('.','-').replace('_','-').replace(' ','-').replace(',','-')
 
