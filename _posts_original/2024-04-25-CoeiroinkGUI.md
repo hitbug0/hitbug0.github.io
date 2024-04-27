@@ -1,4 +1,4 @@
-# COEIROINKでAI音声合成する方法（V2対応）【簡単＆無料＆商用利用可】
+# COEIROINKでAI音声合成する方法（v2対応）【簡単＆無料＆商用利用可】
 [](::tags::音声合成,COEIROINK)
 
 ---
@@ -18,7 +18,6 @@ COEIROINKで音声合成する方法を具体的に紹介します。
 - COEIROINKの使い方（具体的に）
     - 初期設定
     - 基本的な使い方
-
 
 ## まえおき
 ### AI音声合成って何？
@@ -174,6 +173,23 @@ COEIROINKと今回利用した音声モデルの規約について紹介しま�
 <br>
 
 これで初期設定は完了です！　お疲れ様でした！
+
+
+
+### 公認音声モデルの楽なインストール方法について（2024/04/27追記）
+「AI声優シリーズ」のボイスモデルはCOEIROINK公認モデルなので、モデルを個別にダウンロードせずともCOEIROINK上から直接インストールできるそうです！  
+（運営の青トキエ様より教えていただきました、ありがとうございます！）  
+これを踏まえると、最も楽なインストール方法は以下の通りかと思います。  
+- ソフト自体のインストール : このページ記載の方法
+
+- 音声モデルのインストール
+    - COEIROINK公認モデルの場合 : ツイートの方法
+
+    - COEIROINK非公認モデルの場合 : このページ記載の方法
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ブログ拝見しました！「AI声優シリーズ」のボイスモデルはCOEIROINK公認モデルなので、モデルを個別にダウンロードせずともCOEIROINK上から直接インストールできたりします！<br>こちらの方が簡単なので連絡いたしました<br>(すでにご存じでしたらすみません…) <a href="https://t.co/9NzqJiMqGW">pic.twitter.com/9NzqJiMqGW</a></p>&mdash; AI声優-/運営・青トキエ (@aotokie) <a href="https://twitter.com/aotokie/status/1783462483329765810?ref_src=twsrc%5Etfw">April 25, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 
 ## 基本的な使い方
 - ソフトの起動
