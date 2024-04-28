@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-04-24-RoombaTroubleShootingBF0B12.html" />
+    <meta property="og:title" content="ルンバのエラーでハマった 【接続できませんでした (BF0B12)】" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="ルンバj7+を使っていて、正攻法では解決しないエラーにぶち当たったので紹介します。
+        エラーコードは「接続できませんでした (BF0B12)」で、症状は「アプリとルンバがほとんど通信できなくなる」です。
+        結局サポートセンターに電話しましたが、それでも30分間解決策がつかめなかったという中々の強敵具合でした..." />
+    
+    <title>ルンバのエラーでハマった 【接続できませんでした (BF0B12)】 | hitbug</title>
+    <meta name="tag" content="%E3%83%AB%E3%83%B3%E3%83%90">
+    <meta name="description" content="ルンバj7+を使っていて、正攻法では解決しないエラーにぶち当たったので紹介します。
+        エラーコードは「接続できませんでした (BF0B12)」で、症状は「アプリとルンバがほとんど通信できなくなる」です。
+        結局サポートセンターに電話しましたが、それでも30分間解決策がつかめなかったという中々の強敵具合でした..." />
+
     <!-- 共通: 基本設定-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css">
-    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
 
     <!-- 共通: フォントの設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
 
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
 
     <!-- 共通: Google AdSenseの設定-->
-    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
@@ -35,13 +54,7 @@
     <!-- 共通: コード表示とコピーの設定-->
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
-    <title>ルンバのエラーでハマった 【接続できませんでした (BF0B12)】 | hitbug</title>
-    <meta name="tag" content="%E3%83%AB%E3%83%B3%E3%83%90">
-
   </head>
-
-
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
@@ -56,10 +69,10 @@
                     <h1>In this article</h1>
                     <ul>
                         <li><a href="#section1">この記事でわかること</a></li>
-<li><a href="#section2">結論</a></li>
-<li><a href="#section3">他の不具合の対処法を調べる方法</a></li>
-<li><a href="#section4">おまけ</a></li>
-<li><a href="#section5">まとめ</a></li>
+                        <li><a href="#section2">結論</a></li>
+                        <li><a href="#section3">他の不具合の対処法を調べる方法</a></li>
+                        <li><a href="#section4">おまけ</a></li>
+                        <li><a href="#section5">まとめ</a></li>
                     </ul>
                 </div>
                 <br>
@@ -68,6 +81,8 @@
             </div>
             <div id="center">
                 <div class="text">
+
+
                     
 <script>
     mermaid.initialize({
@@ -78,7 +93,7 @@
     });
   </script>
 <h1 id="%E3%83%AB%E3%83%B3%E3%83%90%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%A7%E3%83%8F%E3%83%9E%E3%81%A3%E3%81%9F-%E6%8E%A5%E7%B6%9A%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93%E3%81%A7%E3%81%97%E3%81%9F-bf0b12">ルンバのエラーでハマった 【接続できませんでした (BF0B12)】</h1>
-<p><a href="::tags::%E3%83%AB%E3%83%B3%E3%83%90" rel="noopener noreferrer" target="_blank"></a></p>
+<p></p>
 <hr/>
 <p>ルンバj7+を使っていて、正攻法では解決しないエラーにぶち当たったので紹介します。<br/>
 エラーコードは「接続できませんでした (BF0B12)」で、症状は「アプリとルンバがほとんど通信できなくなる」です。<br/>
@@ -165,36 +180,26 @@
 また、他の不具合の場合も含めて、対処法を調べる順番としてよさそうなものを紹介しました。<br/>
 同じエラーに遭遇した人の参考になればと思います。</p>
 
+
+                    
                 </div>
-                
-                
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="right-sidebar">
-
-
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
-
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
-        
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
-    
-    
-    
     </div>
-    <script src="../includes/clipboard-script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
 </html>

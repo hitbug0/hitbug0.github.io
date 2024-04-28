@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-04-25-CoeiroinkGUI.html" />
+    <meta property="og:title" content="COEIROINKでAI音声合成する方法（v2対応）【簡単＆無料＆商用利用可】" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="COEIROINKで音声合成する方法を具体的に紹介します。
+        無料、簡単な初期設定、直感的な操作、商用利用可(※条件付き)、など、非常におすすめのソフトです！
+        （商用利用に関しては早合点しないでちゃんと記事読んでね。あと、将来的に規約変わるかもだから、使うタイミングでもう一回確認してね）" />
+    
+    <title>COEIROINKでAI音声合成する方法（v2対応）【簡単＆無料＆商用利用可】 | hitbug</title>
+    <meta name="tag" content="%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90">
+    <meta name="tag" content="COEIROINK">
+    <meta name="description" content="COEIROINKで音声合成する方法を具体的に紹介します。
+        無料、簡単な初期設定、直感的な操作、商用利用可(※条件付き)、など、非常におすすめのソフトです！
+        （商用利用に関しては早合点しないでちゃんと記事読んでね。あと、将来的に規約変わるかもだから、使うタイミングでもう一回確認してね）" />
+
     <!-- 共通: 基本設定-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css">
-    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
 
     <!-- 共通: フォントの設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
 
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
 
     <!-- 共通: Google AdSenseの設定-->
-    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
@@ -35,14 +55,7 @@
     <!-- 共通: コード表示とコピーの設定-->
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
-    <title>COEIROINKでAI音声合成する方法（v2対応）【簡単＆無料＆商用利用可】 | hitbug</title>
-    <meta name="tag" content="%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90">
-<meta name="tag" content="COEIROINK">
-
   </head>
-
-
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
@@ -57,11 +70,11 @@
                     <h1>In this article</h1>
                     <ul>
                         <li><a href="#section1">この記事でわかること</a></li>
-<li><a href="#section2">まえおき</a></li>
-<li><a href="#section3">商用利用について</a></li>
-<li><a href="#section4">初期設定</a></li>
-<li><a href="#section5">基本的な使い方</a></li>
-<li><a href="#section6">まとめ</a></li>
+                        <li><a href="#section2">まえおき</a></li>
+                        <li><a href="#section3">商用利用について</a></li>
+                        <li><a href="#section4">初期設定</a></li>
+                        <li><a href="#section5">基本的な使い方</a></li>
+                        <li><a href="#section6">まとめ</a></li>
                     </ul>
                 </div>
                 <br>
@@ -70,6 +83,8 @@
             </div>
             <div id="center">
                 <div class="text">
+
+
                     
 <script>
     mermaid.initialize({
@@ -80,7 +95,7 @@
     });
   </script>
 <h1 id="coeiroink%E3%81%A7ai%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95v2%E5%AF%BE%E5%BF%9C%E7%B0%A1%E5%8D%98%EF%BC%86%E7%84%A1%E6%96%99%EF%BC%86%E5%95%86%E7%94%A8%E5%88%A9%E7%94%A8%E5%8F%AF">COEIROINKでAI音声合成する方法（v2対応）【簡単＆無料＆商用利用可】</h1>
-<p><a href="::tags::%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90,COEIROINK" rel="noopener noreferrer" target="_blank"></a></p>
+<p></p>
 <hr/>
 <p>COEIROINKで音声合成する方法を具体的に紹介します。<br/>
 無料、簡単な初期設定、直感的な操作、商用利用可(※条件付き)、など、非常におすすめのソフトです！<br/>
@@ -395,36 +410,26 @@
 <p>COEIROINKで音声合成する方法を具体的に紹介しました。<br/>
 ぜひ使ってみてくださいね！</p>
 
+
+                    
                 </div>
-                
-                
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="right-sidebar">
-
-
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
-
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
-        
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
-    
-    
-    
     </div>
-    <script src="../includes/clipboard-script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
 </html>

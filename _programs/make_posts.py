@@ -60,7 +60,7 @@ def analyze_sections(html_code):
         new_section_values += [f"""<h2 id="section{index+1}">{section_text}</h2>"""]
         sections += [f"""<li><a href="#section{index+1}">{section_text}</a></li>"""]
     
-    sections = '\n'.join(sections)
+    sections = '\n                        '.join(sections)
     return (old_section_values, new_section_values, sections)
 
 
@@ -213,6 +213,21 @@ def wrap_sns_elements(html):
     # 変更を適用したHTMLを返す
     return str(soup)
 
+
+def extract_abstract(soup):
+    description = ""
+    start_tag_found = False
+    for element in soup.find_all(['hr', 'h2', 'p']):
+        if element.name == 'hr':
+            start_tag_found = True
+            continue
+        if start_tag_found:
+            if element.name == 'h2':
+                break
+            description += element.get_text()
+    return description.replace('<br>','\n').replace('\n','\n        ')
+
+
 def make_post(post_template, input_file_path, output_dir):
     """
     1つの記事HTMLファイルを作成する関数。
@@ -239,11 +254,13 @@ def make_post(post_template, input_file_path, output_dir):
     
     # <a href="::tags::*">を抽出(inputファイルでタグを記していた箇所)
     old_tags = soup.find('a', href=lambda href: href and href.startswith('::tags::'))
-    
+    old_tags.extract() # 表示用のコードからは除外する
+
     # tagsの文字列を抽出し、出力用に整形
     tags_values = old_tags['href'].replace('::tags::', '').split(',')
     tags  = [f"<meta name=\"tag\" content=\"{tag}\">" for tag in tags_values]
-    tags  = '\n'.join(tags)
+    tags  = '\n    '.join(tags)
+
     
     body = str(soup.find('body')).replace('<body>', '').replace('</body>', '') # <body>タグで囲まれた範囲のコードを抽出
     old_img_codes, new_img_codes = analyze_img_info(body)
@@ -252,9 +269,13 @@ def make_post(post_template, input_file_path, output_dir):
     body = add_blank_links(body)
     body = wrap_sns_elements(body)
     
+
+    thumbnail = """https://avatars.githubusercontent.com/u/166343381?v=4?s=400"""
+    description = extract_abstract(soup)
+
     replace_and_write(post_template, 
-                     ['::body::','::date::','::title::', str(old_tags), '::tags::', '::sections::'] + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
-                     [   body,      date,      title,               '',    tags,       sections   ] + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
+                     ['::filename::','::thumbnail::', '::body::','::date::','::description::','::description::','::title::','::title::', '::tags::', '::sections::'] + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
+                     [   file_name,     thumbnail,       body,      date,      description,      description,      title,      title,       tags,       sections   ] + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
                      os.path.join(output_dir, file_name))
 
 

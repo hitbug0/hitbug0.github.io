@@ -48,6 +48,21 @@ def format_tag(tag):
     return tag.replace('.','-').replace('_','-').replace(' ','-').replace(',','-')
 
 
+def extract_abstract_for_index(soup):
+    # 要約の取得
+    abstract = ""
+    center_div = soup.find('div', id='center')
+    if center_div:
+        text_div = center_div.find('div', class_='text')
+        if text_div:
+            h1_tag = text_div.find('h1')
+            h2_tag = text_div.find('h2')
+            if h1_tag and h2_tag:
+                abstract = text_div.text[text_div.text.index(h1_tag.text) + len(h1_tag.text):text_div.text.index(h2_tag.text)]
+                abstract = remove_newlines(abstract).replace('\n','<br>')
+    return abstract
+
+
 def collect_articles_info():
     """
     記事の情報を集約する関数。
@@ -77,16 +92,7 @@ def collect_articles_info():
                     tags.append(tag_content)
             
             # 要約の取得
-            abstract = ""
-            center_div = soup.find('div', id='center')
-            if center_div:
-                text_div = center_div.find('div', class_='text')
-                if text_div:
-                    h1_tag = text_div.find('h1')
-                    h2_tag = text_div.find('h2')
-                    if h1_tag and h2_tag:
-                        abstract = text_div.text[text_div.text.index(h1_tag.text) + len(h1_tag.text):text_div.text.index(h2_tag.text)]
-                        abstract = remove_newlines(abstract).replace('\n','<br>')
+            abstract = extract_abstract_for_index(soup)
             
             # データに追加
             data.append([file_name, title, date, month, tags, abstract])

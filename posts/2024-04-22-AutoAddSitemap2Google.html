@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-04-22-AutoAddSitemap2Google.html" />
+    <meta property="og:title" content="Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります）" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="Pythonで画面操作を自動化する方法を紹介します。
+        今回の題材は「Google Search ConsoleにXMLファイルを登録する」ですが、
+        他の場面でも、例えば「過去の偉人が作ったソフトで毎回同じ操作が必要...」みたいなときに使える方法だと思います。
+        （最近のWindowsを前提にしているので、他のOSや古めのWindowsでは動作しないと思います。ご注意ください...！）" />
+    
+    <title>Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります） | hitbug</title>
+    <meta name="tag" content="RPA">
+    <meta name="tag" content="Python">
+    <meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
+    <meta name="description" content="Pythonで画面操作を自動化する方法を紹介します。
+        今回の題材は「Google Search ConsoleにXMLファイルを登録する」ですが、
+        他の場面でも、例えば「過去の偉人が作ったソフトで毎回同じ操作が必要...」みたいなときに使える方法だと思います。
+        （最近のWindowsを前提にしているので、他のOSや古めのWindowsでは動作しないと思います。ご注意ください...！）" />
+
     <!-- 共通: 基本設定-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css">
-    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
 
     <!-- 共通: フォントの設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
 
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
 
     <!-- 共通: Google AdSenseの設定-->
-    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
@@ -35,15 +58,7 @@
     <!-- 共通: コード表示とコピーの設定-->
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
-    <title>Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります） | hitbug</title>
-    <meta name="tag" content="RPA">
-<meta name="tag" content="Python">
-<meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
-
   </head>
-
-
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
@@ -58,12 +73,12 @@
                     <h1>In this article</h1>
                     <ul>
                         <li><a href="#section1">この記事でわかる事</a></li>
-<li><a href="#section2">何を使ったら自動化できるの？</a></li>
-<li><a href="#section3">どんな操作を自動化できるの？</a></li>
-<li><a href="#section4">今回はどういう操作を自動化したの？</a></li>
-<li><a href="#section5">具体的なコードは？</a></li>
-<li><a href="#section6">実行結果はどんな感じ？</a></li>
-<li><a href="#section7">まとめ</a></li>
+                        <li><a href="#section2">何を使ったら自動化できるの？</a></li>
+                        <li><a href="#section3">どんな操作を自動化できるの？</a></li>
+                        <li><a href="#section4">今回はどういう操作を自動化したの？</a></li>
+                        <li><a href="#section5">具体的なコードは？</a></li>
+                        <li><a href="#section6">実行結果はどんな感じ？</a></li>
+                        <li><a href="#section7">まとめ</a></li>
                     </ul>
                 </div>
                 <br>
@@ -72,6 +87,8 @@
             </div>
             <div id="center">
                 <div class="text">
+
+
                     
 <script>
     mermaid.initialize({
@@ -82,7 +99,7 @@
     });
   </script>
 <h1 id="python%E3%81%A7%E7%94%BB%E9%9D%A2%E6%93%8D%E4%BD%9C%E3%82%92%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91%E3%81%AE%E8%89%B2%E8%A9%B0%E3%82%81%E5%90%88%E3%82%8F%E3%81%9B%E3%82%B3%E3%83%BC%E3%83%89%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99">Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります）</h1>
-<p><a href="::tags::RPA,Python,Web%E5%88%B6%E4%BD%9C" rel="noopener noreferrer" target="_blank"></a></p>
+<p></p>
 <hr/>
 <p>Pythonで画面操作を自動化する方法を紹介します。<br/>
 今回の題材は「Google Search ConsoleにXMLファイルを登録する」ですが、<br/>
@@ -393,36 +410,26 @@ Pythonで画面操作を自動化する方法を紹介しました。<br/>
 みたいなときに使える方法だと思います。<br/>
 私自身仕事で何度か使っていますので、使えそうな場面があったらぜひ使ってみてください～</p>
 
+
+                    
                 </div>
-                
-                
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="right-sidebar">
-
-
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
-
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
-        
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
-    
-    
-    
     </div>
-    <script src="../includes/clipboard-script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
 </html>

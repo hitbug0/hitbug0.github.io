@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-04-27-MakeDirectoryStructureDiagram.html" />
+    <meta property="og:title" content="ディレクトリ構成図を簡単に作る方法（Pythonコードもあるよ）" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="ディレクトリ構成図を作る方法について、場面に応じて2通り紹介します。" />
+    
+    <title>ディレクトリ構成図を簡単に作る方法（Pythonコードもあるよ） | hitbug</title>
+    <meta name="tag" content="RPA">
+    <meta name="tag" content="Python">
+    <meta name="description" content="ディレクトリ構成図を作る方法について、場面に応じて2通り紹介します。" />
+
     <!-- 共通: 基本設定-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css">
-    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
 
     <!-- 共通: フォントの設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
 
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
 
     <!-- 共通: Google AdSenseの設定-->
-    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
@@ -35,14 +51,7 @@
     <!-- 共通: コード表示とコピーの設定-->
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
-    <title>ディレクトリ構成図を簡単に作る方法（Pythonコードもあるよ） | hitbug</title>
-    <meta name="tag" content="RPA">
-<meta name="tag" content="Python">
-
   </head>
-
-
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
@@ -57,9 +66,9 @@
                     <h1>In this article</h1>
                     <ul>
                         <li><a href="#section1">この記事でわかること</a></li>
-<li><a href="#section2">2通りの方法</a></li>
-<li><a href="#section3">方法2について</a></li>
-<li><a href="#section4">まとめ</a></li>
+                        <li><a href="#section2">2通りの方法</a></li>
+                        <li><a href="#section3">方法2について</a></li>
+                        <li><a href="#section4">まとめ</a></li>
                     </ul>
                 </div>
                 <br>
@@ -68,6 +77,8 @@
             </div>
             <div id="center">
                 <div class="text">
+
+
                     
 <script>
     mermaid.initialize({
@@ -78,7 +89,7 @@
     });
   </script>
 <h1 id="%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90%E5%9B%B3%E3%82%92%E7%B0%A1%E5%8D%98%E3%81%AB%E4%BD%9C%E3%82%8B%E6%96%B9%E6%B3%95python%E3%82%B3%E3%83%BC%E3%83%89%E3%82%82%E3%81%82%E3%82%8B%E3%82%88">ディレクトリ構成図を簡単に作る方法（Pythonコードもあるよ）</h1>
-<p><a href="::tags::RPA,Python" rel="noopener noreferrer" target="_blank"></a></p>
+<p></p>
 <hr/>
 <p>ディレクトリ構成図を作る方法について、場面に応じて2通り紹介します。</p>
 <h2 id="section1">この記事でわかること</h2>
@@ -211,36 +222,26 @@ output_directory_structure(current_directory)
 <p>ディレクトリ構成図を作る方法について、場面に応じて良さげな方法を2通り紹介しました。<br/>
 お役に立てば嬉しいです～</p>
 
+
+                    
                 </div>
-                
-                
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="right-sidebar">
-
-
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
-
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
-        
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
-    
-    
-    
     </div>
-    <script src="../includes/clipboard-script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
 </html>

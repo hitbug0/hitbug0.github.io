@@ -1,9 +1,9 @@
 python ./_programs/make_posts.py
 python ./_programs/make_index.py
-python ./_programs/make_sort_by_date.py
-python ./_programs/make_sitemap.py
 rem python ./_programs/add_ad_to_posts.py
+rem python ./_programs/make_sort_by_date.py
 
+python ./_programs/make_sitemap.py
 
 rem set port number
 set port=8080

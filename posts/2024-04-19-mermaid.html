@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-04-19-mermaid.html" />
+    <meta property="og:title" content="【mermaid】markdownのドキュメントに図を描く方法" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="markdownファイル内にテキストで図を描く方法についての記事です。
+        図はmermaidという記法を使って作成します。
+        HTML形式で出力もできて、結構便利で私は仕事で使ったりもしています。" />
+    
+    <title>【mermaid】markdownのドキュメントに図を描く方法 | hitbug</title>
+    <meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
+    <meta name="tag" content="mermaid">
+    <meta name="tag" content="markdown">
+    <meta name="tag" content="VSCode">
+    <meta name="description" content="markdownファイル内にテキストで図を描く方法についての記事です。
+        図はmermaidという記法を使って作成します。
+        HTML形式で出力もできて、結構便利で私は仕事で使ったりもしています。" />
+
     <!-- 共通: 基本設定-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css">
-    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
 
     <!-- 共通: フォントの設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
 
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
 
     <!-- 共通: Google AdSenseの設定-->
-    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
@@ -35,16 +57,7 @@
     <!-- 共通: コード表示とコピーの設定-->
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
-    <title>【mermaid】markdownのドキュメントに図を描く方法 | hitbug</title>
-    <meta name="tag" content="Web%E5%88%B6%E4%BD%9C">
-<meta name="tag" content="mermaid">
-<meta name="tag" content="markdown">
-<meta name="tag" content="VSCode">
-
   </head>
-
-
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
@@ -59,11 +72,11 @@
                     <h1>In this article</h1>
                     <ul>
                         <li><a href="#section1">この記事でわかること</a></li>
-<li><a href="#section2">mermaidとは？</a></li>
-<li><a href="#section3">基礎的な書き方は？</a></li>
-<li><a href="#section4">色とか変えられる？ → Yes</a></li>
-<li><a href="#section5">VSCodeでmermaidを使う場合の具体的な方法</a></li>
-<li><a href="#section6">まとめ</a></li>
+                        <li><a href="#section2">mermaidとは？</a></li>
+                        <li><a href="#section3">基礎的な書き方は？</a></li>
+                        <li><a href="#section4">色とか変えられる？ → Yes</a></li>
+                        <li><a href="#section5">VSCodeでmermaidを使う場合の具体的な方法</a></li>
+                        <li><a href="#section6">まとめ</a></li>
                     </ul>
                 </div>
                 <br>
@@ -72,6 +85,8 @@
             </div>
             <div id="center">
                 <div class="text">
+
+
                     
 <script>
     mermaid.initialize({
@@ -82,7 +97,7 @@
     });
   </script>
 <h1 id="mermaidmarkdown%E3%81%AE%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AB%E5%9B%B3%E3%82%92%E6%8F%8F%E3%81%8F%E6%96%B9%E6%B3%95">【mermaid】markdownのドキュメントに図を描く方法</h1>
-<p><a href="::tags::Web%E5%88%B6%E4%BD%9C,mermaid,markdown,VSCode" rel="noopener noreferrer" target="_blank"></a></p>
+<p></p>
 <hr/>
 <p>markdownファイル内にテキストで図を描く方法についての記事です。<br/>
 図はmermaidという記法を使って作成します。<br/>
@@ -316,36 +331,26 @@ graph LR;
 <p>markdownファイル内にテキストで図を描くためのmermaidという記法について紹介しました。<br/>
 結構便利で私は仕事で使ったりもしているので、是非使ってみてください～</p>
 
+
+                    
                 </div>
-                
-                
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="right-sidebar">
-
-
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
-
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
-        
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
-    
-    
-    
     </div>
-    <script src="../includes/clipboard-script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
 </html>

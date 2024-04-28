@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<!-- 写真が切り替わる設定 -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        var setImg = '#photo';
+        var fadeSpeed = 1700;
+        var switchDelay = 8000;
+
+        $(setImg).children('img').css({opacity:'0'});
+        $(setImg + ' img:first').stop().animate({opacity:'1',zIndex:'20'},fadeSpeed);
+
+        setInterval(function(){
+            $(setImg + ' :first-child').animate({opacity:'0'},fadeSpeed).next('img').animate({opacity:'1'},fadeSpeed).end().appendTo(setImg);
+        },switchDelay);
+    });
+</script>
+
+  <head>
+  </head>
+  <body>
+    
+    <div id="wrapper">
+        <div id="main">
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+  </body>
+</html>

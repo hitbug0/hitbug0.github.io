@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<!-- 写真が切り替わる設定 -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
-<script>
-    $(function(){
-        var setImg = '#photo';
-        var fadeSpeed = 1700;
-        var switchDelay = 8000;
-
-        $(setImg).children('img').css({opacity:'0'});
-        $(setImg + ' img:first').stop().animate({opacity:'1',zIndex:'20'},fadeSpeed);
-
-        setInterval(function(){
-            $(setImg + ' :first-child').animate({opacity:'0'},fadeSpeed).next('img').animate({opacity:'1'},fadeSpeed).end().appendTo(setImg);
-        },switchDelay);
-    });
-</script>
-
-  <head>
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:url" content="https://hitbug0.github.io/sort-by-date.html" />
+    <meta property="og:type" content="blog" />
+    <meta property="og:title" content="hitbug" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="脈絡なくいろんな技術について書いてます。" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+    
     <!-- 共通: 基本設定-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css">
-    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
     
     <!-- 共通: フォントの設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
     
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
     
     <!-- 共通: Google AdSenseの設定-->
-    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
     
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
@@ -51,45 +43,49 @@
     </script>
 
     <!-- iPhoneデバイスの設定-->
-    <link rel="manifest" href="./manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="../contents/icon/icon-180x180.png">
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="../contents/icon/icon-180x180.png" />
     
     <!-- Androidデバイスのアイコン設定 挙動未確認
-    <meta name="theme-color" content="#ffffff">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Web App">
-    <link rel="icon" sizes="192x192" href="../contents/icon/icon.png">
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Web App" />
+    <link rel="icon" sizes="192x192" href="../contents/icon/icon.png" />
     -->
     
-    <style>#posts-2024-04{scroll-margin-top: 65px;}</style>
+    <style>
+        #posts-2024-04{scroll-margin-top: 65px;}
+    </style>
     
     <title>hitbug</title>
+    <meta name="description" content="脈絡なくいろんな技術について書いてます。" />
+    <meta name="tags" content="技術ブログ" />
 
+    <meta name="google-site-verification" content="TJCHPcHRdnW1en1SZA8VzYhxPgwmhHbypPxtDNueqqs" />
   </head>
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
     <script>$(function(){$('header').load('../includes/header.html');});</script>
-    
     <div id="wrapper">
         <div id="main">
             <div id="hidden-left-sidebar"></div>
             <div id="left-sidebar">
                 <div id="left-sidebar-tags" class="text"></div>
-                <script>$(function(){$('#left-sidebar-tags').load('../includes/month.html');});</script>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-index.html');});</script>
             </div>
             <div id="center">
                 <div class="text">
+                    
                     <h1 id="posts-title">新着順の記事リスト</h1>
                     <p></p>
                     <hr/>
                     <p>全記事を新着順で並べています。<br>
                         <a href="../">タグごとにまとめたページはこちら</a>
                     </p>
-                    
-                    <a class="tags" href="#posts-2024-04">2024 - 04</a>
+<a class="tags" href="#posts-2024-04">2024 - 04</a>
 <br>
 <br>
 <br><h1 id="posts-2024-04">2024 - 04（12 件）</h1>
@@ -211,11 +207,9 @@ markdownファイル内にテキストで図を描く方法についての記事
 <div class="metadata-abstract"><p>
 GitHub Pagesで無料個人ブログを作ってみました！<br>この記事では、このブログサイトの仕組みやメリットについて大まかに紹介します。<br>具体的な個々の機能については追々Web制作関連の記事でアップしていきます！<br>コードはGitHubに置いてあるので、使えそうだったらぜひ流用してください～
 </p></div><br><br>
-                    
                 </div>
             </div>
             <div id="right-sidebar">
-                
                 
 
             </div>
@@ -226,13 +220,12 @@ GitHub Pagesで無料個人ブログを作ってみました！<br>この記事�
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
-        
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
     </div>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
 </html>

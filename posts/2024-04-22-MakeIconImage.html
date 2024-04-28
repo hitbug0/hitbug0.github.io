@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-04-22-MakeIconImage.html" />
+    <meta property="og:title" content="簡単な画像処理コードをChatGPTに作ってもらった" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="手書きの絵をスキャンしたけど、いい感じの画像編集ソフト持ってないし編集できない...
+        そんな人(ぼくです)のために、ChatGPTで画像編集のPythonコードを作成する方法を紹介します。
+        今回は、このサイトのアイコン画像を作成した時の方法を題材にします。" />
+    
+    <title>簡単な画像処理コードをChatGPTに作ってもらった | hitbug</title>
+    <meta name="tag" content="%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86">
+    <meta name="tag" content="ChatGPT">
+    <meta name="description" content="手書きの絵をスキャンしたけど、いい感じの画像編集ソフト持ってないし編集できない...
+        そんな人(ぼくです)のために、ChatGPTで画像編集のPythonコードを作成する方法を紹介します。
+        今回は、このサイトのアイコン画像を作成した時の方法を題材にします。" />
+
     <!-- 共通: 基本設定-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css">
-    <link rel="icon" href="../contents/icon/icon_black_tr.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
 
     <!-- 共通: フォントの設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
 
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
 
     <!-- 共通: Google AdSenseの設定-->
-    <meta name="google-adsense-account" content="ca-pub-5830432592137126">
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
@@ -35,14 +55,7 @@
     <!-- 共通: コード表示とコピーの設定-->
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
-    <title>簡単な画像処理コードをChatGPTに作ってもらった | hitbug</title>
-    <meta name="tag" content="%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86">
-<meta name="tag" content="ChatGPT">
-
   </head>
-
-
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
@@ -57,9 +70,9 @@
                     <h1>In this article</h1>
                     <ul>
                         <li><a href="#section1">今回やろうとしている画像編集操作は？</a></li>
-<li><a href="#section2">ChatGPTにどんなふうにお願いした？</a></li>
-<li><a href="#section3">余談</a></li>
-<li><a href="#section4">まとめ</a></li>
+                        <li><a href="#section2">ChatGPTにどんなふうにお願いした？</a></li>
+                        <li><a href="#section3">余談</a></li>
+                        <li><a href="#section4">まとめ</a></li>
                     </ul>
                 </div>
                 <br>
@@ -68,6 +81,8 @@
             </div>
             <div id="center">
                 <div class="text">
+
+
                     
 <script>
     mermaid.initialize({
@@ -78,7 +93,7 @@
     });
   </script>
 <h1 id="%E7%B0%A1%E5%8D%98%E3%81%AA%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92chatgpt%E3%81%AB%E4%BD%9C%E3%81%A3%E3%81%A6%E3%82%82%E3%82%89%E3%81%A3%E3%81%9F">簡単な画像処理コードをChatGPTに作ってもらった</h1>
-<p><a href="::tags::%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86,ChatGPT" rel="noopener noreferrer" target="_blank"></a></p>
+<p></p>
 <hr/>
 <p>手書きの絵をスキャンしたけど、いい感じの画像編集ソフト持ってないし編集できない...<br/>
 そんな人(ぼくです)のために、ChatGPTで画像編集のPythonコードを作成する方法を紹介します。<br/>
@@ -138,36 +153,26 @@ d.save("icon_white.png")
 <p>いい感じの画像編集ソフトを持ってない人のために、ChatGPTで画像編集のPythonコードを作成する方法を紹介しました。<br/>
 何かの参考になればいいなと思います。</p>
 
+
+                    
                 </div>
-                
-                
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="right-sidebar">
-
-
                 <!-- 広告の部分は表示されるようになってから調整する -->
-
-
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
-
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
-        
         <!-- 共通: フッタ -->
         <footer></footer>
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
-    
-    
-    
     </div>
-    <script src="../includes/clipboard-script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
 </html>

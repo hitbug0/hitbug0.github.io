@@ -2,6 +2,15 @@ from collections import Counter
 from urllib.parse import unquote
 from modules import replace_and_write, collect_articles_info, format_tag, GOOGLE_AD
 
+index_introduction = """
+                    <h1 id="posts-title">今までの投稿</h1>
+                    <p></p>
+                    <hr/>
+                    <p>脈絡なくいろんな技術について書いてます。<br>タグごとに古いもの順でまとめています。<br>
+                        <a href="../sort-by-date.html">新着順の記事リストはこちら</a>
+                    </p>
+"""
+
 
 def make_index_page():
     """
@@ -55,8 +64,8 @@ def make_index_page():
         article_info += "<br><br>"
 
     # 各タグ欄(各章)へのリンク押下時の挙動を設定するstyleコードの作成
-    style = f"""<style>#{', #'.join([tag_info[1] for tag_info in tag_info_list])}""".replace('%', '\%')
-    style += """{scroll-margin-top: 65px;}</style>"""
+    style = f"""<style>\n        #{', #'.join([tag_info[1] for tag_info in tag_info_list])}""".replace('%', '\%')
+    style += """{scroll-margin-top: 65px;}\n    </style>"""
 
     # テンプレートの読み込み
     with open('./_templates/index-temp.html', 'r', encoding='utf-8') as f:
@@ -65,7 +74,7 @@ def make_index_page():
         tags_template = f.read()
 
     # 置換と出力
-    replace_and_write(index_template, ['::articles::', '::style::'], [tag_buttons + article_info, style], 'index.html')
+    replace_and_write(index_template, ['::URL::', '::articles::', '::style::'], ["", index_introduction + tag_buttons + article_info, style], 'index.html')
     replace_and_write(tags_template,  ['::sections::'],              [tags_for_index], './includes/tags-index.html')
     replace_and_write(tags_template,  ['::sections::'],              [tags_for_posts], './includes/tags-post.html')
 
