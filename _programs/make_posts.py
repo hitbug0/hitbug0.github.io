@@ -274,8 +274,8 @@ def make_post(post_template, input_file_path, output_dir):
     description = extract_abstract(soup)
 
     replace_and_write(post_template, 
-                     ['::filename::','::thumbnail::', '::body::','::date::','::description::','::description::','::title::','::title::', '::tags::', '::sections::'] + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
-                     [   file_name,     thumbnail,       body,      date,      description,      description,      title,      title,       tags,       sections   ] + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
+                     ['::filename::','::thumbnail::', '::body::','::filename::','::filename::','::date::','::description::','::description::','::title::','::title::', '::tags::', '::sections::'] + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
+                     [   file_name,     thumbnail,       body,      file_name,     file_name,     date,      description,      description,      title,      title,       tags,       sections   ] + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
                      os.path.join(output_dir, file_name))
 
 
