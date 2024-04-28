@@ -33,9 +33,9 @@ def make_index_page():
 
     # タグリスト(左サイドバー)のコードを作成する
     tags_for_index = [f"""<li><a href="#{tag_info[1]}">{tag_info[2]}</a></li>""" for tag_info in tag_info_list]
-    tags_for_index = '\n'.join(tags_for_index)
+    tags_for_index = '\n    '.join(tags_for_index)
     tags_for_posts = [f"""<li><a href="../#{tag_info[1]}">{tag_info[2]}</a></li>""" for tag_info in tag_info_list]
-    tags_for_posts = '\n'.join(tags_for_posts)
+    tags_for_posts = '\n    '.join(tags_for_posts)
 
     # indexページの冒頭に表示するタグボタンを作成する
     tag_buttons = [f"""<a class="tags" href="#{tag_info[1]}">{tag_info[2]}</a>""" for tag_info in tag_info_list]
@@ -75,8 +75,8 @@ def make_index_page():
 
     # 置換と出力
     replace_and_write(index_template, ['::URL::', '::articles::', '::style::'], ["", index_introduction + tag_buttons + article_info, style], 'index.html')
-    replace_and_write(tags_template,  ['::sections::'],              [tags_for_index], './includes/tags-index.html')
-    replace_and_write(tags_template,  ['::sections::'],              [tags_for_posts], './includes/tags-post.html')
+    replace_and_write(tags_template,  ['::listname::', '::sections::'],         ["Tags", tags_for_index], './includes/tags-index.html')
+    replace_and_write(tags_template,  ['::listname::', '::sections::'],         ["Tags", tags_for_posts], './includes/tags-post.html')
 
 
 make_index_page()

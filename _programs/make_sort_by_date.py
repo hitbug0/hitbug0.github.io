@@ -32,7 +32,7 @@ def make_sortbydate_page():
     
     # monthリスト(左サイドバー)のコードを作成する
     months_for_sortbydate = [f"""<li><a href="#{month_info[1]}">{month_info[0]}</a></li>""" for month_info in month_info_list]
-    months_for_sortbydate = '\n'.join(months_for_sortbydate)
+    months_for_sortbydate = '\n    '.join(months_for_sortbydate)
     
     # sortbydateページの冒頭に表示するmonthボタンを作成する
     month_buttons = [f"""<a class="tags" href="#{month_info[1]}">{month_info[0]}</a>""" for month_info in month_info_list]
@@ -67,13 +67,13 @@ def make_sortbydate_page():
     # テンプレートの読み込み
     with open('./_templates/index-temp.html', 'r', encoding='utf-8') as f:
         sortbydate_template = f.read()
-    with open('./_templates/months-temp.html', 'r', encoding='utf-8') as f:
+    with open('./_templates/tags-temp.html', 'r', encoding='utf-8') as f:
         months_template = f.read()
     
     # 置換と出力
     out_name = 'sort-by-date.html'
     replace_and_write(sortbydate_template, ['::URL::', '::articles::', '::style::'], [out_name, index_introduction + month_buttons + article_info, style], out_name)
-    replace_and_write(months_template,  ['::sections::'],              [months_for_sortbydate], './includes/month.html')
+    replace_and_write(months_template,     ['::listname::', '::sections::'],         ['Months', months_for_sortbydate], './includes/month.html')
 
 
 
