@@ -99,7 +99,7 @@ def analyze_img_info(html_code):
     for info, height in zip(info_list, height_list):
         new_code = """<div class="photo-list">"""
         for i_ in info:
-            new_code += f"""<a href="../contents/img/{i_[0]}"  data-lightbox="group" data-title="{i_[1]}" alt="">
+            new_code += f"""<a href="../contents/img/{i_[0]}" data-lightbox="group" data-title="{i_[1]}" alt="{i_[1]}">
                                    <img src="../contents/img/{i_[0]}" height="{height}">
                                 </a>
                              """

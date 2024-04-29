@@ -74,7 +74,7 @@ def make_index_page():
         tags_template = f.read()
 
     # 置換と出力
-    replace_and_write(index_template, ['::URL::', '::articles::', '::style::'], ["", index_introduction + tag_buttons + article_info, style], 'index.html')
+    replace_and_write(index_template, ['::tagfilename::', '::URL::', '::articles::', '::style::'], ['tags-index.html', '', index_introduction + tag_buttons + article_info, style], 'index.html')
     replace_and_write(tags_template,  ['::listname::', '::sections::'],         ["Tags", tags_for_index], './includes/tags-index.html')
     replace_and_write(tags_template,  ['::listname::', '::sections::'],         ["Tags", tags_for_posts], './includes/tags-post.html')
 

@@ -31,7 +31,7 @@ VSCodeはMarkdownの編集にも適しており、拡張機能として以下の
 （Windows10での手順を記載していますので、Mac等の方ぜんぜん違ったらごめんなさい！）
 
 1. VSCodeをインストールする
-    - [ダウンロードページ](https://code.visualstudio.com/download)でインストーラをダウンロード
+    - [VSCodeのダウンロードページ](https://code.visualstudio.com/download)でインストーラをダウンロード
         - OSに合ったインストーラを選ぶ
     - ダウンロードしたインストーラを実行する
 

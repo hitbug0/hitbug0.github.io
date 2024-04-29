@@ -24,7 +24,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../includes/style.css" />
-    <link rel="icon" href="../contents/icon/icon_black_tr.png" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
 
     <!-- 共通: フォントの設定-->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
@@ -108,8 +108,8 @@
 <h2 id="section1">今回やろうとしている画像編集操作は？</h2>
 <p>この手書きの絵を白黒逆にして、元々白だった部分を透過画像にしたい！というのを題材にしようと思います。<br/>
 実際にこのサイトのアイコン画像を作るときにやったことです。</p>
-<p><div class="photo-list"><a href="../contents/img/icon_black.png"  data-lightbox="group" data-title="かわいいアイコンの絵" alt="">
-                                   <img src="../contents/img/icon_black.png" height="250px">
+<p><div class="photo-list"><a href="../contents/img/hitbug-icon.png" data-lightbox="group" data-title="かわいいアイコンの絵" alt="かわいいアイコンの絵">
+                                   <img src="../contents/img/hitbug-icon.png" height="250px">
                                 </a>
                              </div></p>
 <h2 id="section2">ChatGPTにどんなふうにお願いした？</h2>
@@ -123,7 +123,8 @@
 4. cにおいて黒い領域を透過色に変更し、dと定義する
 5. dを icon_white.png として出力する
 </div></code></pre></div></div>
-<p>すると、<a href="https://chat.openai.com/share/18dcb15d-6e59-46b4-9348-519cb11f740b" rel="noopener noreferrer" target="_blank">1回のお願いでちゃんと動くコードを返してくれました</a>。<br/>
+<p>すると、1回のお願いでちゃんと動くコードを返してくれました。<br/>
+<a href="https://chat.openai.com/share/18dcb15d-6e59-46b4-9348-519cb11f740b" rel="noopener noreferrer" target="_blank">こちらがその時のやり取りになります</a>。<br/>
 プログラムをイメージした日本語を書くと精度上がりますね。</p>
 <div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div>from PIL import Image
 

@@ -248,8 +248,8 @@ header .link:hover{
 }
 #center, #left-sidebar, #right-sidebar {
     padding-bottom: 50px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
     overflow-y: auto; /* コンテンツがサイドバーの高さを超える場合にスクロール可能にする */
 }
 #left-sidebar, #right-sidebar{
@@ -288,9 +288,6 @@ header .link:hover{
 }
 
 
-#main .text{
-    padding:0 10px;
-}
 #main h1 {
     font-size: 1.2rem;
 }
@@ -428,26 +425,15 @@ header .link:hover{
 #center .photo-list a{
     display: block;
     border-radius: 0px;
-	background-color: rgba(210, 210, 210, 0);
+	background-color: transparent;
 }
 #center .photo-list a:hover{
-	background-color: rgba(210, 210, 210, 0);
+	background-color: transparent;
 }
 #center .photo-list a img{
     border-radius: 3px;
 }
 
-
-#center .post-list{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px;
-}
-#center .post-list a{
-    display: block;
-}
 
 iframe{
     width: 400px;
@@ -502,13 +488,14 @@ footer{
 
 .floating-button {
     position: fixed;
-    bottom: 20px; /* 画面下部からの距離を調整 */
-    right: 20px; /* 画面右端からの距離を調整 */
+    bottom: 25px; /* 画面下部からの距離を調整 */
+    right: 25px; /* 画面右端からの距離を調整 */
     z-index: 9999; /* 必要に応じて他の要素の上に表示されるようにz-indexを設定 */
 }
+
 .twitter-share-button-img{
-    height: 30px;
-    width: 30px;
+    height: 27px;
+    width: 27px;
 }
 
 header   .page-list { display:block;}
@@ -528,7 +515,6 @@ header   .page-list { display:block;}
     }
     #hidden-left-sidebar {flex: 0.25;}
     #right-sidebar, #hidden-right-sidebar { display:none;}
-    .for-phone, .hm-trigger, .floating-button { display:none; }
 
     @media only screen and (max-width : 767px){
         header   .page-list { display:none;}
@@ -536,11 +522,16 @@ header   .page-list { display:block;}
         iframe{
             width: 320px;
             height:180px;
-        } 
+        }
+        .twitter-share-button-img{
+            height: 40px;
+            width: 40px;
+        }
         #wrapper .page-list { display:block;}
         #right-sidebar, #hidden-right-sidebar { display:none;}
         #left-sidebar, #hidden-left-sidebar { display:none;}
         .for-phone, .hm-trigger, .floating-button { display:block;}
+        
     }
 }
 

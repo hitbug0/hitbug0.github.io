@@ -29,7 +29,7 @@
 フットボードとチェーンを固定するネジです。画像参照。  
 ::img{
     file{
-        drumpedal_screw.jpg: フットボードとチェーンを固定するネジ(まるつけたところ);
+        stuck-screw-of-drum-pedal.jpg: フットボードとチェーンを固定するネジ(まるつけたところ);
     }
     height: 250px;
 }::
@@ -83,8 +83,8 @@ DWの代理店がRolandにかわってから程ないということもあり、
 
 ::img{
     file{
-        drumpedal_report.png: 修理報告書(主要部分抜粋);
-        drumpedal_swivelpad.jpg: スウィベルパッド;
+        maintenance-report-of-drum-pedal.png: ペダルの修理報告書(主要部分抜粋);
+        swivel-pad-of-drum-pedal.jpg: スウィベルパッド;
     }
     height: 250px;
 }::
@@ -95,8 +95,8 @@ DWの代理店がRolandにかわってから程ないということもあり、
 
 ::img{
     file{
-        drumpedal_after1.jpg: メンテ後ペダル(拡大);
-        drumpedal_after2.jpg: メンテ後ペダル(全体);
+        drum-pedal-after-maintenance-1.jpg: メンテ後ペダル(拡大);
+        drum-pedal-after-maintenance-2.jpg: メンテ後ペダル(全体);
     }
     height: 250px;
 }::

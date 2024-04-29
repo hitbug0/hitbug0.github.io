@@ -5,12 +5,12 @@
 
 COEIROINKという音声合成ソフトを、Pythonから実行してみました。  
 そのときの方法と結果を具体的に紹介します。  
-コードは[GitHub](https://github.com/hitbug0/basic-codes-coeiroink-api)にもアップしているので見てみてくださいね！
+コードはGitHubにも[basic-codes-coeiroink-api](https://github.com/hitbug0/basic-codes-coeiroink-api)としてアップしているので見てみてくださいね！
 
 
 ## この記事でわかること
 この記事ではCOEIROINK (v2)をPythonから動かすときの具体的な手順とコード(例)について紹介します。  
-COEIROINKの概要やその利用規約、そもそもAI音声合成とは何かみたいなことは[前回の記事](./2024-04-25-CoeiroinkGUI.html)を読んでみてください～  
+COEIROINKの概要やその利用規約、そもそもAI音声合成とは何かみたいなことは[前回のCOEIROINKの記事](./2024-04-25-CoeiroinkGUI.html)を読んでみてください～  
 
 
 ## 手順
@@ -24,7 +24,7 @@ COEIROINKの概要やその利用規約、そもそもAI音声合成とは何か
     - `json`は標準ライブラリなので、Pythonが入っていればインストール不要です
 1. COEIROINKをGUIで使える状態にして、起動する
 
-    - [前回の記事](./2024-04-25-CoeiroinkGUI.html/#section4)に方法を書いてます
+    - [前回のCOEIROINKの記事](./2024-04-25-CoeiroinkGUI.html/#section4)に方法を書いてます
 1. 以下の`check_speaker_info.py`を実行し、結果をメモしておく（モデル追加時のみ）
 1. `check_speaker_info.py`の実行結果に応じて、`text2audio.py`の`SPEAKER_INFO`を書き換える
 1. 音声にしたい会話内容を`input.txt`に書く

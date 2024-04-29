@@ -14,7 +14,7 @@
 
 ::img{
     file{
-        icon_black.png: かわいいアイコンの絵;
+        hitbug-icon.png: かわいいアイコンの絵;
     }
     height: 250px;
 }::
@@ -31,7 +31,8 @@
 4. cにおいて黒い領域を透過色に変更し、dと定義する
 5. dを icon_white.png として出力する
 ```
-すると、[1回のお願いでちゃんと動くコードを返してくれました](https://chat.openai.com/share/18dcb15d-6e59-46b4-9348-519cb11f740b)。  
+すると、1回のお願いでちゃんと動くコードを返してくれました。  
+[こちらがその時のやり取りになります](https://chat.openai.com/share/18dcb15d-6e59-46b4-9348-519cb11f740b)。  
 プログラムをイメージした日本語を書くと精度上がりますね。
 ```
 from PIL import Image

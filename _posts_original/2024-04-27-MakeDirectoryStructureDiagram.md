@@ -32,6 +32,7 @@ C:\Users\xxx
 - [ソースコード](https://gitlab.com/nfriend/tree-online)も公開されています。
 
 ### [directory-structure-diagram](https://github.com/hitbug0/directory-structure-diagram)
+- 私が書きました！
 - 中身の構成を知りたいディレクトリでこのPythonコードを実行すると、いい感じの図(`directory_structure.txt`)を出してくれます。
 - すでにフォルダやその中身がある場合に有効です。
 - 会社の業務で使うときとかはローカルで処理が完結するので安心ですし、自分でやるべき操作はプログラムの実行だけなのでお手軽だと思います。
@@ -45,7 +46,7 @@ C:\Users\xxx
 1. Pythonをインストールする
     - バージョンについて：自分は `3.10` ですが、`3.6` 以降ならたぶん大丈夫
 
-1. [GitHubにアップしているコード](https://github.com/hitbug0/directory-structure-diagram)をダウンロードする
+1. GitHub上の[directory-structure-diagram](https://github.com/hitbug0/directory-structure-diagram)のコードをダウンロードする
 1. `directory-structure-diagram.py` と `run.bat` を、中身の構成を知りたいディレクトリに配置する
 1. `run.bat`を実行する
     - あるいは `directory-structure-diagram.py` を実行するでも大丈夫です（batファイルは楽に操作するためだけのものなので）

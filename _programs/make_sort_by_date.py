@@ -68,12 +68,12 @@ def make_sortbydate_page():
     with open('./_templates/index-temp.html', 'r', encoding='utf-8') as f:
         sortbydate_template = f.read()
     with open('./_templates/tags-temp.html', 'r', encoding='utf-8') as f:
-        months_template = f.read()
+        tags_template = f.read()
     
     # 置換と出力
     out_name = 'sort-by-date.html'
-    replace_and_write(sortbydate_template, ['::URL::', '::articles::', '::style::'], [out_name, index_introduction + month_buttons + article_info, style], out_name)
-    replace_and_write(months_template,     ['::listname::', '::sections::'],         ['Months', months_for_sortbydate], './includes/month.html')
+    replace_and_write(sortbydate_template, ['::tagfilename::', '::URL::', '::articles::', '::style::'], ['month.html', out_name, index_introduction + month_buttons + article_info, style], out_name)
+    replace_and_write(tags_template,       ['::listname::', '::sections::'],        ['Months', months_for_sortbydate], './includes/month.html')
 
 
 

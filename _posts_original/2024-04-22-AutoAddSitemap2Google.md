@@ -180,6 +180,15 @@ win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) # ウィンドウを最
     - `sitemap3.png` (送信完了のポップアップを閉じるボタン)が表示されたら、これをクリックする
     - 少し待ってから`F5`キーを押す
 
+自動操作のトリガーにした画像は以下です。
+::img{
+    file{
+        sitemap1.png: sitemap1.png (ページ内の文字列の画像);
+        sitemap2.png: sitemap2.png (送信ボタン);
+        sitemap3.png: sitemap3.png (ポップアップを閉じるボタン);
+    }
+    height: 80px;
+}::
 
 ## 具体的なコードは？
 こんな感じです！  
