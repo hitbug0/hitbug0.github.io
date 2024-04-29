@@ -495,8 +495,8 @@ footer{
 }
 
 .twitter-share-button-img{
-    height: 27px;
-    width: 27px;
+    height: 28px;
+    width: 28px;
 }
 
 header   .page-list { display:block;}
@@ -592,8 +592,8 @@ header   .page-list { display:block;}
 .hm-trigger{
 	position:fixed;
     z-index: 9999;/*トリガを最前面に*/
-	top:10px;
-	right: 10px;
+	top:6px;
+	right: 14px;
 	cursor: pointer;
     width: 50px;
     height:50px;
