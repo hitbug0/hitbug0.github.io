@@ -188,13 +188,14 @@ header ul {
 
 header .text {
     font-size: 20px;
-    text-align: left; /* 左端に配置 */
 	letter-spacing: 0.06em;
+    color: white;
 }
 
-header .container {
+header .title-container {
     display: flex;
     align-items: center; /* 上下中央に配置 */
+    margin-bottom: 9px;
 }
 
 header .link {
