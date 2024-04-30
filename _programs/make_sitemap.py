@@ -26,21 +26,13 @@ def make_sitemap():
     メイン処理。
     sitemap.xmlに記載すべきファイルの情報を収集し、sitemap.xmlの形式に整え、出力する。
     """
-    
-    sitemap = []
-    
-    # index.htmlに対する処理
-    lastmod = get_last_modified_time("index.html") # 最終更新日時を取得
-    sitemap.append(f"<url>\n  <loc>{ROOT_URL}</loc>\n  <lastmod>{lastmod}</lastmod>\n</url>\n") # sitemap.xmlへの記載内容に追加
-    
-    # sort-by-date.htmlに対する処理
-    lastmod = get_last_modified_time("sort-by-date.html") # 最終更新日時を取得
-    sitemap.append(f"<url>\n  <loc>{ROOT_URL}sort-by-date.html</loc>\n  <lastmod>{lastmod}</lastmod>\n</url>\n") # sitemap.xmlへの記載内容に追加
-    
+    files = ["index.html", "sort-by-date.html", "index-en.html", "sort-by-date-en.html"] + glob.glob("posts/*.html") + glob.glob("posts-en/*.html")
+
     # postディレクトリ内のHTMLファイルに対する処理
-    for file_path in glob.glob("posts/*.html"):
-        lastmod = get_last_modified_time(file_path) # 最終更新日時を取得
-        encoded_file_name = quote(os.path.basename(file_path))  # URLエンコーディング
+    sitemap = []
+    for file in files:
+        lastmod = get_last_modified_time(file) # 最終更新日時を取得
+        encoded_file_name = quote(os.path.basename(file))  # URLエンコーディング
         sitemap.append(f"<url>\n  <loc>{ROOT_URL}posts/{encoded_file_name}</loc>\n  <lastmod>{lastmod}</lastmod>\n</url>\n") # sitemap.xmlへの記載内容に追加
     
     # sitemap.xmlを出力する
