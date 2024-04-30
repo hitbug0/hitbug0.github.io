@@ -1,3 +1,4 @@
+echo off
 python ./_programs/make_posts.py
 python ./_programs/make_index.py
 python ./_programs/make_sort_by_date.py
@@ -17,3 +18,5 @@ powershell -command "& {Start-Sleep -Seconds 0.2}"
 
 rem Opening http://localhost:%port%/ in Chrome
 start chrome.exe http://localhost:%port%/
+
+pause

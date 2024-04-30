@@ -63,15 +63,17 @@ def extract_abstract_for_index(soup):
     return abstract
 
 
-def collect_articles_info():
+def collect_articles_info(search_key):
     """
     記事の情報を集約する関数。
     より具体的には、postディレクトリ内のhtmlファイルを解析し、各ファイル(=各記事)の中からsort-by-date.html等で表示すべき情報を抽出する関数。
+    Args:
+        search_key (str): 情報収集対象の記事の検索キー
     Returns:
-        df: 記事情報をまとめたpandas DataFrame。 
+        df: 記事情報をまとめたpandas DataFrame
     """
     data = []
-    for file_path in glob.glob("posts/20*.html"):
+    for file_path in glob.glob(search_key):
         file_name = os.path.splitext(os.path.basename(file_path))[0] # ファイル名を取得
         date = ' - '.join(file_name.split('-')[:3]) # ファイル名から日付を取得
         month = ' - '.join(file_name.split('-')[:2])

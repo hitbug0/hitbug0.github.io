@@ -1,5 +1,5 @@
 # 簡単な画像処理コードをChatGPTに作ってもらった
-[](::tags::画像処理,ChatGPT)
+::tags{画像処理,ChatGPT}::
 
 ---
 

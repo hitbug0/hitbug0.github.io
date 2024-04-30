@@ -1,5 +1,5 @@
 # GitHub Pagesでブログ作った。投稿時の処理の自動化とかもした
-[](::tags::Web制作,GitHubPages)
+::tags{Web制作,GitHub Pages}::
 
 ---
 

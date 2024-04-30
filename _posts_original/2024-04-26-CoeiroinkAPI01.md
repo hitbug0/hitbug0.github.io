@@ -1,5 +1,5 @@
 # COEIROINK v2 API をつかってPythonで音声合成してみた
-[](::tags::音声合成,COEIROINK,Python)
+::tags{音声合成,COEIROINK,Python}::
 
 ---
 

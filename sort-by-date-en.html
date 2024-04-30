@@ -1,46 +1,37 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head prefix="og: https://ogp.me/ns#">
-    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hitbug0.github.io/sort-by-date-en.html" />
+    <meta property="og:type" content="blog" />
+    <meta property="og:title" content="hitbug" />
     <meta property="og:site_name" content="hitbug" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="I write about various technologies without any particular context." />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@hitbug0" />
-
-    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-04-16-デバッグ用2.html" />
-    <meta property="og:title" content="デバッグ用2" />
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
-    <meta property="og:description" content="表示確認用のページです
-        表示確認用のページです" />
     
-    <title>デバッグ用2 | hitbug</title>
-    <meta name="tag" content="h-o g e">
-    <meta name="tag" content="hoge">
-    <meta name="tag" content="Python">
-    <meta name="description" content="表示確認用のページです
-        表示確認用のページです" />
-
     <!-- 共通: 基本設定-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../includes/style.css" />
     <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
-
+    
     <!-- 共通: フォントの設定-->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
-
+    
     <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
-
+    
     <!-- 共通: Google AdSenseの設定-->
     <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
         crossorigin="anonymous">
     </script>
-
+    
     <!-- 共通: Google Analyticsの設定-->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
@@ -51,68 +42,70 @@
     gtag('config', 'G-2NP6QCR05Z');
     </script>
 
-    <!-- 共通: コード表示とコピーの設定-->
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <!-- iPhoneデバイスの設定-->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="../contents/icon/hitbug-180x180.png">
+    
+    <!-- Androidデバイスのアイコン設定 挙動未確認
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web App">
+    <link rel="icon" sizes="192x192" href="../contents/icon/hitbug-192x192.png">
+     -->
+    
+    <style>
+        #{scroll-margin-top: 65px;}
+    </style>
+    
+    <title>hitbug</title>
+    <meta name="description" content="I write about various technologies without any particular context." />
+    <meta name="tags" content="技術ブログ" />
+
+    <meta name="google-site-verification" content="TJCHPcHRdnW1en1SZA8VzYhxPgwmhHbypPxtDNueqqs" />
   </head>
   <body>
     <!-- 共通: ヘッダ -->
     <header></header>
-    <script>$(function(){$('header').load('../includes/header.html');});</script>
-
+    <script>$(function(){$('header').load('../includes/header-en.html');});</script>
     <div id="wrapper">
         <div id="main">
-            <!-- コンテンツ -->
             <div id="hidden-left-sidebar"></div>
             <div id="left-sidebar">
                 <div id="left-share">
                     <h1 class="text">Share!</h1>
-                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts/2024-04-16-デバッグ用2.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
-                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
                     </a>
                 </div>
                 <br>
-                <div class="text">
-                    <h1>In this article</h1>
-                    <ul>
-                        <li><a href="#section1">xyzあいうえお</a></li>
-                    </ul>
-                </div>
-                <br>
                 <div id="left-sidebar-tags" class="text"></div>
-                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/month.html');});</script>
             </div>
             <div id="center">
                 <div class="text">
-
-
                     
-<script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h1 id="%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E7%94%A82">デバッグ用2</h1>
-<p></p>
-<hr/>
-<p>表示確認用のページです<br/>
-表示確認用のページです</p>
-<h2 id="section1">xyzあいうえお</h2>
-<p>aaa <code>hoge</code> bbb</p>
+                    <h1 id="posts-title">Latest Articles</h1>
+                    <p></p>
+                    <hr/>
+                    <p>All articles sorted by date here.<br><br>
+                        <a href="../index-en.html">Browse by tag</a><br><br>
+                    </p>
 
-
+<br>
+<br>
 
                 </div>
-                <!-- 広告の部分は表示されるようになってから調整する -->
             </div>
             <div id="right-sidebar">
-                <!-- 広告の部分は表示されるようになってから調整する -->
+                
+
             </div>
             <div id="hidden-right-sidebar"></div>
         </div>
+
+        
         <!-- 共通: ハンバーガーメニュー -->
         <div id="hamburger-menu"></div>
         <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
@@ -121,7 +114,7 @@
         <script>$(function(){$('footer').load('../includes/footer.html');});</script>
     </div>
     <div class="floating-button">
-        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts/2024-04-16-デバッグ用2.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/&text="  class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
             <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
         </a>
     </div>
@@ -129,5 +122,4 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
   </script>
-  <script src="../includes/clipboard-script.js"></script>
 </html>

@@ -1,5 +1,5 @@
 # XMLサイトマップの作成をChatGPTに自動化してもらった
-[](::tags::Web制作,Python,ChatGPT,RPA)
+::tags{Web制作,Python,ChatGPT,RPA}::
 
 ---
 

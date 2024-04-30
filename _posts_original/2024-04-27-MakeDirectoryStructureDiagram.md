@@ -1,5 +1,5 @@
 # ディレクトリ構成図を簡単に作る方法（Pythonコードもあるよ）
-[](::tags::RPA,Python)
+::tags{RPA,Python}::
 
 ---
 

@@ -1,5 +1,5 @@
 # COEIROINKでAI音声合成する方法（v2対応）【簡単＆無料＆商用利用可】
-[](::tags::音声合成,COEIROINK)
+::tags{音声合成,COEIROINK}::
 
 ---
 

@@ -1,5 +1,5 @@
 # Pythonで画面操作を自動化してみた（初心者向けの色々詰め合わせコードあります）
-[](::tags::RPA,Python,Web制作)
+::tags{RPA,Python,Web制作}::
 
 ---
 

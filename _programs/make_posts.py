@@ -64,6 +64,32 @@ def analyze_sections(html_code):
     return (old_section_values, new_section_values, sections)
 
 
+def analyze_tags_info(html_code):
+    """
+    HTMLコード内の::tags{*}::の内容を分析し、置換すべき箇所と置換後のHTMLコードを作成する関数。
+    
+    Args:
+        html_code (str): タグ情報を含むHTMLコード。
+    
+    Returns:
+        old_codes (list): 置換対象のタグブロックの文字列のリスト。
+        new_codes (list): 修正されたタグブロックのHTML文字列のリスト。
+    """
+    
+    old_codes = ['::tags::'] # ここをmetaのtagに置き換える
+
+    # ::tags{***}::を抽出
+    old_codes += [re.findall(r'(::tags{.*?}::)', html_code, re.DOTALL)[0]] # ""::tags{" と "}::" を含める。ここを消す
+    tags       =  re.findall(r'::tags{(.*?)}::', html_code, re.DOTALL)[0] # ""::tags{" と "}::" を含めない
+    
+    # tagsを出力用に整形
+    new_code  = [f"<meta name=\"tag\" content=\"{tag}\">" for tag in tags.split(',')]
+    new_code  = '\n    '.join(new_code)
+    new_codes = [new_code, ""]
+    
+    return (old_codes, new_codes)
+
+
 def analyze_img_info(html_code):
     """
     HTMLコード内の::img{*}::の内容を分析し、置換すべき箇所と置換後のHTMLコードを作成する関数。
@@ -228,7 +254,7 @@ def extract_abstract(soup):
     return description.replace('<br>','\n').replace('\n','\n        ')
 
 
-def make_post(post_template, input_file_path, output_dir):
+def make_post(post_template, input_file_path, output_dir, language):
     """
     1つの記事HTMLファイルを作成する関数。
     
@@ -242,6 +268,7 @@ def make_post(post_template, input_file_path, output_dir):
         input_html = f.read()
     
     file_name = os.path.basename(input_file_path) # ファイル名(拡張子あり)を取得
+    print(f"    {file_name}")
     date = '-'.join(file_name.split('-')[:3]) # ファイル名から日付を取得
     
     # BeautifulSoupでパース
@@ -249,18 +276,9 @@ def make_post(post_template, input_file_path, output_dir):
     
     title = soup.find('body').find('h1').get_text() # <h1>タグで囲まれた文字列を抽出
     
+    old_tag_codes, new_tag_codes = analyze_tags_info(input_html)
     old_code_blocks, new_code_blocks = analyze_code_blocks(input_html) # コードブロックの置き換え前後箇所特定
     old_section_codes, new_section_codes, sections = analyze_sections(input_html) # セクションのid変更と左サイドバーにおけるリストの作成
-    
-    # <a href="::tags::*">を抽出(inputファイルでタグを記していた箇所)
-    old_tags = soup.find('a', href=lambda href: href and href.startswith('::tags::'))
-    old_tags.extract() # 表示用のコードからは除外する
-
-    # tagsの文字列を抽出し、出力用に整形
-    tags_values = old_tags['href'].replace('::tags::', '').split(',')
-    tags  = [f"<meta name=\"tag\" content=\"{tag}\">" for tag in tags_values]
-    tags  = '\n    '.join(tags)
-
     
     body = str(soup.find('body')).replace('<body>', '').replace('</body>', '') # <body>タグで囲まれた範囲のコードを抽出
     old_img_codes, new_img_codes = analyze_img_info(body)
@@ -274,13 +292,13 @@ def make_post(post_template, input_file_path, output_dir):
     description = extract_abstract(soup)
 
     replace_and_write(post_template, 
-                     ['::filename::','::thumbnail::', '::body::','::filename::','::filename::','::date::','::description::','::description::','::title::','::title::', '::tags::', '::sections::'] + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
-                     [   file_name,     thumbnail,       body,      file_name,     file_name,     date,      description,      description,      title,      title,       tags,       sections   ] + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
+                     ['::language::', '::filename::','::thumbnail::', '::body::','::filename::','::filename::','::date::','::description::','::description::','::title::','::title::', '::sections::'] + ['::directory::']*3   + old_tag_codes + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
+                     [   language,       file_name,     thumbnail,       body,      file_name,     file_name,     date,      description,      description,      title,      title,       sections   ] + DIRECTORY[language]*3 + new_tag_codes + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
                      os.path.join(output_dir, file_name))
 
 
 
-def make_posts(input_dir, output_dir, post_template):
+def make_posts(input_dir, output_dir, post_template, language):
     """
     複数の記事HTMLファイルを作成する関数。
     
@@ -290,10 +308,13 @@ def make_posts(input_dir, output_dir, post_template):
         post_template (str): ポストのテンプレートHTMLコード。
     """
     
+    print(f"directory: {input_dir}")
     input_files = glob.glob(os.path.join(input_dir, '*.html')) # input_dir内のhtmlファイルを検索
     for input_file_path in input_files:
         # htmlファイルを読み込み
-        make_post(post_template, input_file_path, output_dir)
+        make_post(post_template, input_file_path, output_dir, language)
+    
+    print("\n"+"="*40)
 
 def main():
     """
@@ -308,8 +329,18 @@ def main():
     # カレントディレクトリの取得
     base_dir = os.getcwd()
     
-    # メイン処理
-    make_posts(base_dir+"\\_posts_original", base_dir+"\\posts", post_template) # _posts_original -> posts
-    make_posts(base_dir+"\\_posts_original\\for_debug", base_dir+"\\for_debug", post_template) # for_debug
+    print("="*50)
+    print("="*18+"  make posts  "+"="*18)
+    print("="*50)
 
+    # メイン処理
+    make_posts(base_dir+"\\_posts_original",    base_dir+"\\posts",    post_template, "ja") # _posts_original -> posts
+    make_posts(base_dir+"\\_posts_original_en", base_dir+"\\posts_en", post_template, "en") # in English
+    make_posts(base_dir+"\\_posts_original\\for_debug", base_dir+"\\for_debug", post_template, "ja") # for_debug
+    print("\n")
+
+DIRECTORY = {
+    "ja": ["posts"],
+    "en": ["posts_en"]
+}
 main()
