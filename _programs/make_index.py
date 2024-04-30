@@ -86,8 +86,8 @@ def make_index_page(df, config):
     # 置換と出力
     main_contents = config["introduction"] + tag_buttons + article_info
     replace_and_write(index_template, 
-                      ['::tagfilename::',          '::headerfilename::',       '::language::',     '::URL::',     '::description::',     '::description::',     '::articles::', '::style::'], 
-                      [config["tag file name"][0], config["header file name"], config["language"], config["url"], config["description"], config["description"], main_contents,  style], 
+                      ['::tagfilename::',          '::headerfilename::',       '::language::',     '::URL::',     '::description::',    '::articles::', '::style::'], 
+                      [config["tag file name"][0], config["header file name"], config["language"], config["url"], config["description"], main_contents,  style], 
                       config["output file name"])
 
 

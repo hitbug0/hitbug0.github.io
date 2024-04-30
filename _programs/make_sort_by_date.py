@@ -85,8 +85,8 @@ def make_sortbydate_page(df, config):
     # 置換と出力
     main_contents = config["introduction"] + month_buttons + article_info
     replace_and_write(sortbydate_template, 
-                      ['::tagfilename::',       '::language::',     '::URL::',                  '::headerfilename::',       '::description::',     '::description::',    '::articles::', '::style::'], 
-                      ['./includes/month.html', config["language"], config["output file name"], config["header file name"], config["description"], config["description"], main_contents,  style], 
+                      ['::tagfilename::',       '::language::',     '::URL::',                  '::headerfilename::',       '::description::',     '::articles::', '::style::'], 
+                      ['./includes/month.html', config["language"], config["output file name"], config["header file name"], config["description"], main_contents,  style], 
                       config["output file name"])
 
 

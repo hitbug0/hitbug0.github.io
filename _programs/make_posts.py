@@ -292,8 +292,8 @@ def make_post(post_template, input_file_path, output_dir, language):
     description = extract_abstract(soup)
 
     replace_and_write(post_template, 
-                     ['::language::', '::filename::','::thumbnail::', '::body::','::filename::','::filename::','::date::','::description::','::description::','::title::','::title::', '::sections::'] + ['::directory::']*3   + old_tag_codes + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
-                     [   language,       file_name,     thumbnail,       body,      file_name,     file_name,     date,      description,      description,      title,      title,       sections   ] + DIRECTORY[language]*3 + new_tag_codes + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
+                     ['::language::', '::filename::','::thumbnail::', '::body::','::date::','::description::','::title::', '::sections::','::directory::']     + old_tag_codes + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
+                     [   language,       file_name,     thumbnail,       body,      date,      description,      title,       sections   ,DIRECTORY[language]] + new_tag_codes + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
                      os.path.join(output_dir, file_name))
 
 
@@ -340,7 +340,7 @@ def main():
     print("\n")
 
 DIRECTORY = {
-    "ja": ["posts"],
-    "en": ["posts_en"]
+    "ja": "posts",
+    "en": "posts_en"
 }
 main()

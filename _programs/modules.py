@@ -32,7 +32,7 @@ def replace_and_write(text, replaced_markers, replace_contents, output_file_name
     
     # 置換
     for m,c in zip(replaced_markers, replace_contents):
-        text = text.replace(m, c, 1) # mをcで1回だけ置換
+        text = text.replace(m, c) # mをcで置換
     
     # 出力
     with open(output_file_name, 'w', encoding='utf-8') as f:
