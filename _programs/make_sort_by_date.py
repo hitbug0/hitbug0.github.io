@@ -4,7 +4,7 @@ from modules import replace_and_write, collect_articles_info, format_tag, GOOGLE
 
 
 
-def make_months(df):
+def make_months(df, month_file_name):
     """
     メイン処理。
     このコードでやっていることは2つ。
@@ -28,7 +28,7 @@ def make_months(df):
         tags_template = f.read()
     
     # 置換と出力
-    replace_and_write(tags_template, ['::listname::', '::sections::'], ['Months', months_for_sortbydate], './includes/month.html')
+    replace_and_write(tags_template, ['::listname::', '::sections::'], ['Months', months_for_sortbydate], month_file_name)
 
 
 
@@ -78,6 +78,12 @@ def make_sortbydate_page(df, config):
     style = f"""<style>\n        #{', #'.join([month_info[1] for month_info in month_info_list])}""".replace('%', '\%')
     style += """{scroll-margin-top: 65px;}\n    </style>"""
     
+    # hreflangの設定（sort-by-date）
+    hreflang = """
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/sort-by-date.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/sort-by-date-en.html" />
+    """
+
     # テンプレートの読み込み
     with open('./_templates/index-temp.html', 'r', encoding='utf-8') as f:
         sortbydate_template = f.read()
@@ -85,8 +91,8 @@ def make_sortbydate_page(df, config):
     # 置換と出力
     main_contents = config["introduction"] + month_buttons + article_info
     replace_and_write(sortbydate_template, 
-                      ['::tagfilename::',       '::language::',     '::URL::',                  '::headerfilename::',       '::description::',     '::articles::', '::style::'], 
-                      ['./includes/month.html', config["language"], config["output file name"], config["header file name"], config["description"], main_contents,  style], 
+                      ['::hreflang::', '::tagfilename::',     '::language::',     '::URL::',                  '::headerfilename::',       '::description::', '::articles::', '::style::'], 
+                      [hreflang, config["tag file name"], config["language"], config["output file name"], config["header file name"], config["description"], main_contents,  style], 
                       config["output file name"])
 
 
@@ -114,7 +120,7 @@ CONFIG = {
         "url":           "",
         "description":   "脈絡なくいろんな技術について書いてます。",
         "introduction":  INTRODUCTION_JA,
-        "tag file name": ['./includes/tags-index.html', './includes/tags-post.html'],
+        "tag file name": './includes/month.html',
         "header file name": './includes/header.html',
         "article dir":    "posts",
         "output file name": 'sort-by-date.html',
@@ -125,7 +131,7 @@ CONFIG = {
         "url":           "index-en.html",
         "description":   "I write about various technologies without any particular context.",
         "introduction":  INTRODUCTION_EN,
-        "tag file name": ['./includes/tags-index-en.html', './includes/tags-post-en.html'],
+        "tag file name": './includes/month-en.html',
         "header file name": './includes/header-en.html',
         "article dir":    "posts_en",
         "output file name": 'sort-by-date-en.html',
@@ -139,8 +145,7 @@ print("="*50)
 for lang in ["ja", "en"]:
     search_key = CONFIG[lang]["article dir"]+"/20*.html"
     df = collect_articles_info(search_key)
-    make_months(df)
+    make_months(df, CONFIG[lang]["tag file name"])
     make_sortbydate_page(df, CONFIG[lang])
-
 
 print("\n")

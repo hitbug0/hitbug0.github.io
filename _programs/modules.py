@@ -2,9 +2,32 @@ import re
 import os
 import glob
 import pandas as pd
+from datetime import datetime
 from bs4 import BeautifulSoup
 
 GOOGLE_AD = """"""
+
+def get_modified_time(f):
+    return datetime.fromtimestamp(os.path.getmtime(f)).isoformat()
+
+def get_modified_files():
+    df = pd.read_csv("./_programs/last_modified_time.csv")
+
+    # 新規作成分
+    all_articles = set(glob.glob("_posts_original_en/20*.html")+glob.glob("_posts_original/20*.html"))
+    modified_files = list(all_articles-set(df["FileName"]))
+
+    # 更新分
+    for _, row in df.iterrows():
+        if os.path.exists(row["FileName"]):
+            if row["DateTime"] != get_modified_time(row["FileName"]):
+                modified_files += [row["FileName"]]
+    
+    return modified_files
+
+def is_exist_modified(lst):
+    return bool(set(get_modified_files()) & set(lst))
+
 
 def remove_newlines(text):
     """

@@ -2,7 +2,7 @@ import os
 import re
 import glob
 from bs4 import BeautifulSoup
-from modules import remove_newlines, replace_and_write
+from modules import remove_newlines, replace_and_write, is_exist_modified
 
 
 def analyze_code_blocks(html_code):
@@ -222,6 +222,7 @@ def add_blank_links(html_code):
     # 更新されたHTMLを文字列として返す
     return str(soup)
 
+
 def wrap_sns_elements(html):
     # BeautifulSoupを使ってHTMLを解析
     soup = BeautifulSoup(html, 'html.parser')
@@ -287,15 +288,18 @@ def make_post(post_template, input_file_path, output_dir, language):
     body = add_blank_links(body)
     body = wrap_sns_elements(body)
     
+    hreflang = f"""
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/{file_name}" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/{file_name}" />
+    """
 
     thumbnail = """https://avatars.githubusercontent.com/u/166343381?v=4?s=400"""
     description = extract_abstract(soup)
 
     replace_and_write(post_template, 
-                     ['::language::', '::filename::','::thumbnail::', '::body::','::date::','::description::','::title::', '::sections::','::directory::']     + old_tag_codes + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
-                     [   language,       file_name,     thumbnail,       body,      date,      description,      title,       sections   ,DIRECTORY[language]] + new_tag_codes + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
+                     ['::hreflang::', '::language::', '::filename::','::thumbnail::', '::body::','::date::','::description::','::title::', '::sections::','::directory::']     + old_tag_codes + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
+                     [   hreflang,       language,       file_name,     thumbnail,       body,      date,      description,      title,       sections   ,DIRECTORY[language]] + new_tag_codes + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
                      os.path.join(output_dir, file_name))
-
 
 
 def make_posts(input_dir, output_dir, post_template, language):
@@ -307,14 +311,18 @@ def make_posts(input_dir, output_dir, post_template, language):
         output_dir (str): 出力先ディレクトリのパス。
         post_template (str): ポストのテンプレートHTMLコード。
     """
-    
+    count=0
+    count_all = 0
     print(f"directory: {input_dir}")
     input_files = glob.glob(os.path.join(input_dir, '*.html')) # input_dir内のhtmlファイルを検索
     for input_file_path in input_files:
-        # htmlファイルを読み込み
-        make_post(post_template, input_file_path, output_dir, language)
-    
-    print("\n"+"="*40)
+        count_all+=1
+        if is_exist_modified(['_programs\\modules.py', '_programs\\make_posts.py', '_templates\\post-temp.html', '_posts_'+input_file_path.split('_posts_')[-1]]):
+            make_post(post_template, input_file_path, output_dir, language)
+            count+=1
+    print(f"\nupdated {count}/{count_all} files.")
+    print("="*30)
+
 
 def main():
     """
@@ -338,6 +346,8 @@ def main():
     make_posts(base_dir+"\\_posts_original_en", base_dir+"\\posts_en", post_template, "en") # in English
     make_posts(base_dir+"\\_posts_original\\for_debug", base_dir+"\\for_debug", post_template, "ja") # for_debug
     print("\n")
+
+
 
 DIRECTORY = {
     "ja": "posts",

@@ -1,10 +1,5 @@
 echo off
-python ./_programs/make_posts.py
-python ./_programs/make_index.py
-python ./_programs/make_sort_by_date.py
-rem python ./_programs/add_ad_to_posts.py
-
-python ./_programs/make_sitemap.py
+python ./_programs/update.py
 
 rem set port number
 set port=8080

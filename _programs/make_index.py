@@ -79,6 +79,12 @@ def make_index_page(df, config):
     style = f"""<style>\n        #{', #'.join([tag_info[1] for tag_info in tag_info_list])}""".replace('%', '\%')
     style += """{scroll-margin-top: 65px;}\n    </style>"""
 
+    # hreflangの設定（index）
+    hreflang = """
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/index-en.html" />
+    """
+
     # テンプレートの読み込み
     with open('./_templates/index-temp.html', 'r', encoding='utf-8') as f:
         index_template = f.read()
@@ -86,8 +92,8 @@ def make_index_page(df, config):
     # 置換と出力
     main_contents = config["introduction"] + tag_buttons + article_info
     replace_and_write(index_template, 
-                      ['::tagfilename::',          '::headerfilename::',       '::language::',     '::URL::',     '::description::',    '::articles::', '::style::'], 
-                      [config["tag file name"][0], config["header file name"], config["language"], config["url"], config["description"], main_contents,  style], 
+                      ['::hreflang::', '::tagfilename::',          '::headerfilename::',       '::language::',   '::URL::',     '::description::',    '::articles::', '::style::'], 
+                      [hreflang, config["tag file name"][0], config["header file name"], config["language"], config["url"], config["description"], main_contents,  style], 
                       config["output file name"])
 
 
