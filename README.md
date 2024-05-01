@@ -2,6 +2,7 @@
 [hitbug home page](https://hitbug0.github.io/)
 
 ## ファイル構成
+「`-en`」は各ファイルの英語記事版です。
 
 - **_posts_original**
     - `yyyy-mm-dd-filename.md` : 記事ページのソースファイル
@@ -14,12 +15,14 @@
     - `make_sitemap.py` : サイトマップファイルを作る
     - `add_sitemap_to_google.py` : サイトマップファイルをGoogle Search Consoleに送信する(RPA)
     - `modules.py` : 共通の関数
+    - `update.py` : 更新時に書く機能を呼び出すスクリプト
+    - `last_modified_time.csv` : 最終更新日時を記録したファイル
 - **_templates** : サイト用HTMLファイル作成のためののテンプレートが入っている
     - `index-temp.html`
     - `post-temp.html`
     - `tags-temp.html`
 - **contents**
-    - **icon** : かわいいアイコン画像が入っている
+    - **icon** : アイコン画像が入っている
     - **img** : 記事に挿入する画像が入っている
     - **stl** : 記事に挿入する3D形状ファイルが入っている
 - **includes**
@@ -43,7 +46,7 @@
 - `README.md` : このファイル
 - `ads.txt` : Google AdSenseのためのファイル
 - `add_sitemap_to_google.bat` : `add_sitemap_to_google.py`をローカルで実行するためのファイル
-- `run.bat` : _programsのスクリプトをローカルで実行するためのファイル
+- `run.bat` : ページ更新とデバッグ用のファイル（`update.py`を実行してローカルホストでこのページを開く）
 - `sitemap.xml` : SEOのためのサイトマップファイル。スクリプトで自動作成
 
 
