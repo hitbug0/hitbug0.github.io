@@ -6,19 +6,26 @@ from modules import get_modified_time
 
 ROOT_URL = "https://hitbug0.github.io/"
 
+
+def add_code(sitemap, file, url):
+    lastmod = get_modified_time(file).split(".")[0]+"+09:00" # 最終更新日時を取得
+    sitemap.append(f"<url>\n  <loc>{url}</loc>\n  <lastmod>{lastmod}</lastmod>\n</url>\n") # sitemap.xmlへの記載内容に追加
+    return sitemap
+
+
 def make_sitemap():
     """
     メイン処理。
     sitemap.xmlに記載すべきファイルの情報を収集し、sitemap.xmlの形式に整え、出力する。
     """
-    files = ["index.html", "sort-by-date.html", "index-en.html", "sort-by-date-en.html"] + glob.glob("posts/20*.html") + glob.glob("posts_en/20*.html")
-
-    # postディレクトリ内のHTMLファイルに対する処理
-    sitemap = []
+    # index.htmlに対する処理
+    sitemap = add_code([], "index.html", ROOT_URL)
+    
+    # 他のHTMLファイルに対する処理
+    files = ["sort-by-date.html", "index-en.html", "sort-by-date-en.html"] + glob.glob("posts/20*.html") + glob.glob("posts_en/20*.html")
     for file in files:
-        lastmod = get_modified_time(file).split(".")[0]+"+09:00" # 最終更新日時を取得
-        encoded_file_name = quote(file.replace('\\','/'))  # URLエンコーディング
-        sitemap.append(f"<url>\n  <loc>{ROOT_URL}{encoded_file_name}</loc>\n  <lastmod>{lastmod}</lastmod>\n</url>\n") # sitemap.xmlへの記載内容に追加
+        url = ROOT_URL + quote(file.replace('\\','/'))  # URLエンコーディング
+        sitemap = add_code(sitemap, file, url)
     
     # sitemap.xmlを出力する
     with open('sitemap.xml', "w") as f:
