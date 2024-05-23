@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-19-Markdown2Html.html" />
+    <meta property="og:title" content="How to Convert Markdown to HTML in VSCode" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="With VSCode, you can automatically convert Markdown files to HTML. In this article, I will briefly touch on the significance of automatic conversion and the benefits of using VSCode, followed by a detailed explanation of how to use it." />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-19-Markdown2Html.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-19-Markdown2Html.html" />
+    
+    
+    <title>How to Convert Markdown to HTML in VSCode | hitbug</title>
+    <meta name="tag" content="Web Development">
+    <meta name="tag" content=" HTML">
+    <meta name="tag" content=" markdown">
+    <meta name="tag" content=" VSCode">
+    <meta name="description" content="With VSCode, you can automatically convert Markdown files to HTML. In this article, I will briefly touch on the significance of automatic conversion and the benefits of using VSCode, followed by a detailed explanation of how to use it." />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-19-Markdown2Html.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">The Significance of Automatic Conversion from Markdown to HTML</a></li>
+                        <li><a href="#section2">Benefits of Using VSCode</a></li>
+                        <li><a href="#section3">How to Use It</a></li>
+                        <li><a href="#section4">Conclusion</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="how-to-convert-markdown-to-html-in-vscode">How to Convert Markdown to HTML in VSCode</h1>
+<p></p>
+<hr/>
+<p>With VSCode, you can automatically convert Markdown files to HTML. In this article, I will briefly touch on the significance of automatic conversion and the benefits of using VSCode, followed by a detailed explanation of how to use it.</p>
+<h2 id="section1">The Significance of Automatic Conversion from Markdown to HTML</h2>
+<p>Markdown is a simple way to write structured documents, offering the following advantages:</p>
+<ul>
+<li>You can write it almost anywhere, anytime.</li>
+<li>No need to worry about layout or style.</li>
+<li>Various platforms like GitHub and Qiita can nicely convert and display it.</li>
+<li>Being plain text, it allows for version control.</li>
+</ul>
+<p>However, when using it as a web page or displaying it in a browser, HTML files are typically used instead of Markdown files. Therefore, being able to automatically convert Markdown to HTML makes it easy to deploy documents created in Markdown as web pages.</p>
+<h2 id="section2">Benefits of Using VSCode</h2>
+<p>VSCode is a flexible and highly extensible text editor available for various environments such as Windows, macOS, and Linux. It is also well-suited for editing Markdown and can add the following features as extensions:</p>
+<ul>
+<li>Real-time conversion and preview of Markdown to HTML.</li>
+<li>Output of Markdown in HTML format.</li>
+</ul>
+<p>Thus, I believe it is a suitable tool for efficiently editing Markdown and converting it to HTML to quickly create content. (I've tried various other text editors, but VSCode has a great user experience and supports drawing with Mermaid, so I ended up sticking with it.)</p>
+<h2 id="section3">How to Use It</h2>
+<h3 id="initial-setup">Initial Setup</h3>
+<p>Follow these steps to enable the preview and output features in VSCode.<br/>
+(Note: These steps are written for Windows 10. Sorry if it’s different on macOS, etc.!)</p>
+<ol>
+<li>
+<p>Install VSCode</p>
+<ul>
+<li>Download the installer from the <a href="https://code.visualstudio.com/download" rel="noopener noreferrer" target="_blank">VSCode download page</a>.
+<ul>
+<li>Choose the installer appropriate for your OS.</li>
+</ul>
+</li>
+<li>Run the downloaded installer.</li>
+</ul>
+</li>
+<li>
+<p>Install Extensions</p>
+<ul>
+<li>Launch VSCode and open the extension search bar with <code>ctrl+shift+X</code>.</li>
+<li>Search for and install the following extensions by pressing the <code>Install</code> button:
+<ul>
+<li><strong>markdown PDF</strong>
+<ul>
+<li>For outputting functionality.</li>
+</ul>
+</li>
+<li><strong>Markdown Preview Mermaid Support</strong>
+<ul>
+<li>For preview functionality, including diagrams written with Mermaid.</li>
+<li>For more about Mermaid, check out <a href="../posts-en/2024-04-19-mermaid.html">How to Draw Diagrams in Markdown with Mermaid</a>.</li>
+</ul>
+</li>
+<li><strong>Mermaid Markdown Syntax Highlighting</strong>
+<ul>
+<li>For syntax highlighting when writing Mermaid diagrams in Markdown files.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Open a Markdown File</p>
+<ul>
+<li>Change the text file extension to <code>.md</code> and drag and drop it into the VSCode window to open it.</li>
+<li>If a popup appears at this point, it should be fine to click <code>OK</code> (I can't remember what the popup was about).</li>
+</ul>
+</li>
+<li>
+<p>Initial Setup for the Preview Feature</p>
+<ul>
+<li>Press <code>ctrl+K</code> followed by <code>ctrl+T</code>, and select <code>Light Modern</code> from the list that appears.
+<ul>
+<li>The text was not visible with a dark background, if I remember correctly.</li>
+<li>It might be possible that it will display correctly with a dark background in the future.</li>
+</ul>
+</li>
+<li>Click somewhere in the window of the open Markdown file to activate it, then press <code>ctrl+shift+V</code> to display the preview.</li>
+</ul>
+</li>
+<li>
+<p>Initial Setup for the Output Feature</p>
+<ul>
+<li>Open the search bar with <code>ctrl+shift+P</code> and search for <code>Markdown PDF: Export (html)</code>, then left-click on the gear icon.</li>
+<li>Double-click the <code>Keybinding</code> field.</li>
+<li>Press the key you want to use as a shortcut, and confirm with <code>Enter</code>.
+<ul>
+<li>Many keys are already in use by default, so there may be conflicts. <code>ctrl+shift+/</code> seemed to work without conflict.</li>
+</ul>
+</li>
+<li>Click somewhere in the window of the open Markdown file to activate it, then press the shortcut key you set. An HTML file will be output in the same directory as the Markdown file.</li>
+</ul>
+</li>
+</ol>
+<h3 id="regular-usage">Regular Usage</h3>
+<ol>
+<li>Open a Text File
+<ul>
+<li>Drag and drop it into the screen.</li>
+</ul>
+</li>
+<li>Edit the File
+<ul>
+<li>Works like a general text editor.</li>
+</ul>
+</li>
+<li>Display the Preview
+<ul>
+<li>Activate the window of the file you want to preview, then press <code>ctrl+shift+V</code>.
+<ul>
+<li>Alternatively, you can click the magnifying glass icon in the top right of the window to display the preview.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Save the Markdown File
+<ul>
+<li>Press <code>ctrl+S</code>.</li>
+</ul>
+</li>
+<li>Output in HTML Format
+<ul>
+<li>Press the shortcut key set during the initial setup.</li>
+</ul>
+</li>
+</ol>
+<h2 id="section4">Conclusion</h2>
+<p>I introduced the automatic conversion from Markdown to HTML using VSCode. VSCode and Markdown are very user-friendly, so please give them a try!</p>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-19-Markdown2Html.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>

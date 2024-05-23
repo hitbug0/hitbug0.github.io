@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-19-Mermaid.html" />
+    <meta property="og:title" content="How to Draw Diagrams in Markdown Documents with Mermaid" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="This article is about how to draw diagrams in markdown files using text.
+        The diagrams are created using a notation called mermaid.
+        It's pretty convenient as it can also be output in HTML format, and I use it for work too." />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-19-Mermaid.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-19-Mermaid.html" />
+    
+    
+    <title>How to Draw Diagrams in Markdown Documents with Mermaid | hitbug</title>
+    <meta name="tag" content="Web Development">
+    <meta name="tag" content=" mermaid">
+    <meta name="tag" content=" markdown">
+    <meta name="tag" content=" VSCode">
+    <meta name="description" content="This article is about how to draw diagrams in markdown files using text.
+        The diagrams are created using a notation called mermaid.
+        It's pretty convenient as it can also be output in HTML format, and I use it for work too." />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-19-Mermaid.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">What You Will Learn in This Article</a></li>
+                        <li><a href="#section2">What is mermaid?</a></li>
+                        <li><a href="#section3">What Are the Basics of Drawing?</a></li>
+                        <li><a href="#section4">Can You Change Colors? → Yes</a></li>
+                        <li><a href="#section5">Specific Methods for Using mermaid in VSCode</a></li>
+                        <li><a href="#section6">Summary</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="how-to-draw-diagrams-in-markdown-documents-with-mermaid">How to Draw Diagrams in Markdown Documents with Mermaid</h1>
+<p></p>
+<hr/>
+<p>This article is about how to draw diagrams in markdown files using text.<br/>
+The diagrams are created using a notation called mermaid.<br/>
+It's pretty convenient as it can also be output in HTML format, and I use it for work too.</p>
+<h2 id="section1">What You Will Learn in This Article</h2>
+<p>You will learn the overview, benefits, and usage (with examples) of mermaid.</p>
+<ul>
+<li>
+<p>Overview of mermaid</p>
+<ul>
+<li>Notation for drawing diagrams with text in markdown files</li>
+<li>Simple notation allows for various diagrams</li>
+<li>Very user-friendly in many aspects</li>
+<li>Can be output in HTML format with VSCode</li>
+</ul>
+</li>
+<li>
+<p>Basics of how to draw each type of diagram</p>
+</li>
+<li>
+<p>How to change colors (other display styles can also be changed)</p>
+</li>
+<li>
+<p>Specific methods for using mermaid in VSCode</p>
+</li>
+</ul>
+<h2 id="section2">What is mermaid?</h2>
+<p>Mermaid is a tool for drawing diagrams and charts using text. It has the following features:</p>
+<ul>
+<li>
+<p>Simple notation</p>
+<ul>
+<li>Mermaid notation is simple and intuitive</li>
+<li>Anyone can start using it without specialized graphics skills</li>
+</ul>
+</li>
+<li>
+<p>Plain text format</p>
+<ul>
+<li>Can be edited with a regular text editor, making it highly compatible</li>
+<li>Easy to manage versions</li>
+</ul>
+</li>
+<li>
+<p>Can draw various types of diagrams</p>
+<ul>
+<li>Flowcharts, sequence diagrams, Gantt charts, ER diagrams, etc.</li>
+<li>Commands to change colors and other features can be included</li>
+</ul>
+</li>
+<li>
+<p>Automatic layout</p>
+<ul>
+<li>Automatically adjusts the layout of the diagram</li>
+<li>Saves the trouble of manually adjusting the layout, allowing you to focus on the content you want to express</li>
+</ul>
+</li>
+<li>
+<p>Free</p>
+</li>
+</ul>
+<h2 id="section3">What Are the Basics of Drawing?</h2>
+<p>Let's write simple diagrams and their underlying text.<br/>
+Besides these, I think you can also draw customer journeys.</p>
+<h3 id="flowchart">Flowchart</h3>
+<p>Nested elements are okay.<br/>
+Additionally, you can change the flow direction by specifying <code>LR</code> or <code>TB</code> after <code>graph</code>.</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD;
+    A[Start] --&gt; B{Condition};
+    B --&gt;|Condition A true| C[Action A];
+    B --&gt;|Condition A false| D[Action B];
+    C --&gt; E[End];
+    D --&gt; E;
+</div></code></pre>
+<div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div>graph TD;
+    A[Start] --&gt; B{Condition};
+    B --&gt;|Condition A true| C[Action A];
+    B --&gt;|Condition A false| D[Action B];
+    C --&gt; E[End];
+    D --&gt; E;
+</div></code></pre></div></div>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD;
+    A[Start] --&gt; B[Action A];
+    B --&gt; C;
+    B --&gt; D;
+    D --&gt; E[End];
+    subgraph D[Action C]
+        Action C-1--&gt; Action C-2;
+    end
+    subgraph C[Action B]
+        Action B-1--&gt; Action B-2;
+    end
+    Action B-2--&gt; Action C-1;
+</div></code></pre>
+<div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div>graph TD;
+    A[Start] --&gt; B[Action A];
+    B --&gt; C;
+    B --&gt; D;
+    D --&gt; E[End];
+    subgraph D[Action C]
+        Action C<span class="hljs-number">-1</span>--&gt; Action C<span class="hljs-number">-2</span>;
+    end
+    subgraph C[Action B]
+        Action B<span class="hljs-number">-1</span>--&gt; Action B<span class="hljs-number">-2</span>;
+    end
+    Action B<span class="hljs-number">-2</span>--&gt; Action C<span class="hljs-number">-1</span>;
+</div></code></pre></div></div>
+<h3 id="sequence-diagram">Sequence Diagram</h3>
+<p>You can add comments with <code>note</code>, and also represent arrow shapes and execution states.</p>
+<pre><code class="language-mermaid"><div class="mermaid">sequenceDiagram
+    actor User
+    participant Client
+    participant Server
+    User -&gt;&gt;+ Client: Send Request
+    Client -&gt;&gt;+ Server: Process Request
+    note right of Server: hoge
+    Server --)- Client: Send Response
+    Client --)- User: Receive Response
+</div></code></pre>
+<div class="container"><div id="code-content2"><button class="copy-button" data-clipboard-target="#code-content2">Copy</button><pre class="hljs"><code><div>sequenceDiagram
+    actor User
+    participant Client
+    participant Server
+    User -&gt;&gt;+ Client: Send Request
+    Client -&gt;&gt;+ Server: Process Request
+    note right of Server: hoge
+    Server --)- Client: Send Response
+    Client --)- User: Receive Response
+</div></code></pre></div></div>
+<h3 id="gantt-chart">Gantt Chart</h3>
+<pre><code class="language-mermaid"><div class="mermaid">gantt
+    title Example of a Gantt Chart
+    dateFormat  YYYY-MM-DD
+    section Task 1
+    Task 1's Task 1 :done, 2024-04-10, 2024-04-15
+    Task 1's Task 2 :done, 2024-04-15, 2024-04-20
+    section Task 2
+    Task 2's Task 1 :done, 2024-04-18, 2024-04-22
+    Task 2's Task 2 :done, 2024-04-23, 2024-04-25
+</div></code></pre>
+<div class="container"><div id="code-content3"><button class="copy-button" data-clipboard-target="#code-content3">Copy</button><pre class="hljs"><code><div>gantt
+    title Example of a Gantt Chart
+    dateFormat  YYYY-MM-DD
+    section Task <span class="hljs-number">1</span>
+    Task <span class="hljs-number">1</span><span class="hljs-string">'s Task 1 :done, 2024-04-10, 2024-04-15
+    Task 1'</span>s Task <span class="hljs-number">2</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-15</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-20</span>
+    section Task <span class="hljs-number">2</span>
+    Task <span class="hljs-number">2</span><span class="hljs-string">'s Task 1 :done, 2024-04-18, 2024-04-22
+    Task 2'</span>s Task <span class="hljs-number">2</span> :done, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-23</span>, <span class="hljs-number">2024</span><span class="hljs-number">-04</span><span class="hljs-number">-25</span>
+</div></code></pre></div></div>
+<h3 id="er-diagram">ER Diagram</h3>
+<pre><code class="language-mermaid"><div class="mermaid">erDiagram
+    CUSTOMER ||--o{ ORDER : has
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER {
+        string name
+        string address
+        string phone_number
+    }
+    ORDER {
+        string number
+        date    date
+    }
+    LINE-ITEM {
+        number quantity
+        decimal price
+    }
+</div></code></pre>
+<div class="container"><div id="code-content4"><button class="copy-button" data-clipboard-target="#code-content4">Copy</button><pre class="hljs"><code><div>erDiagram
+    CUSTOMER ||--o{ ORDER : has
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER {
+        string name
+        string address
+        string phone_number
+    }
+    ORDER {
+        string number
+        date    date
+    }
+    LINE-ITEM {
+        number quantity
+        decimal price
+    }
+</div></code></pre></div></div>
+<h2 id="section4">Can You Change Colors? → Yes</h2>
+<p>You can change theme and shape colors like this.<br/>
+Of course, for more detailed information, you can check out various sites, starting with <a href="https://zenn.dev/junkawa/articles/zenn-mermaidjs-theme-config" rel="noopener noreferrer" target="_blank">Junkawa's page</a>.</p>
+<h3 id="before-changing">Before Changing</h3>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR;
+    A[Start] --&gt; B{Condition};
+    B --&gt;|Condition A true| C[Action A];
+    B --&gt;|Condition A false| D[Action B];
+    C --&gt; E[End];
+    D --&gt; E;
+</div></code></pre>
+<div class="container"><div id="code-content5"><button class="copy-button" data-clipboard-target="#code-content5">Copy</button><pre class="hljs"><code><div>graph LR;
+    A[Start] --&gt; B{Condition};
+    B --&gt;|Condition A true| C[Action A];
+    B --&gt;|Condition A false| D[Action B];
+    C --&gt; E[End];
+    D --&gt; E;
+</div></code></pre></div></div>
+<h3 id="after-changing">After Changing</h3>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
+graph LR;
+    classDef c1 fill:#eab700,fill-opacity:0.4
+    classDef c2 fill:#eab700,fill-opacity:1
+    A[Start] --&gt; B{Condition}:::c1;
+    B --&gt;|Condition A true| C[Action A];
+    B --&gt;|Condition A false| D[Action B]:::c2;
+    C --&gt; E[End]:::c1;
+    D --&gt; E;
+</div></code></pre>
+<div class="container"><div id="code-content6"><button class="copy-button" data-clipboard-target="#code-content6">Copy</button><pre class="hljs"><code><div>%%{init: {<span class="hljs-string">'theme'</span>:<span class="hljs-string">'neutral'</span>}}%%
+graph LR;
+    classDef c1 fill:<span class="hljs-comment">#eab700,fill-opacity:0.4</span>
+    classDef c2 fill:<span class="hljs-comment">#eab700,fill-opacity:1</span>
+    A[Start] --&gt; B{Condition}:::c1;
+    B --&gt;|Condition A true| C[Action A];
+    B --&gt;|Condition A false| D[Action B]:::c2;
+    C --&gt; E[End]:::c1;
+    D --&gt; E;
+</div></code></pre></div></div>
+<h2 id="section5">Specific Methods for Using mermaid in VSCode</h2>
+<p>You can preview and output using the initial settings and operation methods described in <a href="../posts_en/2024-04-19-markdown2html.html">How to Convert Markdown to HTML in VSCode</a>.</p>
+<h2 id="section6">Summary</h2>
+<p>I introduced the mermaid notation for drawing diagrams with text in markdown files.<br/>
+It's pretty convenient, and I use it for work, so please give it a try!</p>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-19-Mermaid.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>

@@ -7,24 +7,22 @@
     <meta name="twitter:site" content="@hitbug0" />
 
     <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-17-MakeBlogSite.html" />
-    <meta property="og:title" content="GitHub Pagesでブログ作った。投稿時の処理の自動化とかもした" />
+    <meta property="og:title" content="Created a Blog with GitHub Pages: Automated Posting Process" />
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
-    <meta property="og:description" content="GitHub Pagesで無料個人ブログを作ってみました！
-        この記事では、このブログサイトの仕組みやメリットについて大まかに紹介します。
-        具体的な個々の機能については追々Web制作関連の記事でアップしていきます！
-        コードは私のGitHubのページに置いてあるので、使えそうだったらぜひ流用してください～" />
+    <meta property="og:description" content="I made a free personal blog using GitHub Pages!
+        In this article, I'll give an overview of the structure and benefits of this blog site.
+        The code is available on my GitHub page, so feel free to use it if you find it helpful." />
     
     <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-17-MakeBlogSite.html" />
     <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-17-MakeBlogSite.html" />
     
     
-    <title>GitHub Pagesでブログ作った。投稿時の処理の自動化とかもした | hitbug</title>
-    <meta name="tag" content="Web制作">
-    <meta name="tag" content="GitHub Pages">
-    <meta name="description" content="GitHub Pagesで無料個人ブログを作ってみました！
-        この記事では、このブログサイトの仕組みやメリットについて大まかに紹介します。
-        具体的な個々の機能については追々Web制作関連の記事でアップしていきます！
-        コードは私のGitHubのページに置いてあるので、使えそうだったらぜひ流用してください～" />
+    <title>Created a Blog with GitHub Pages: Automated Posting Process | hitbug</title>
+    <meta name="tag" content="Web Development">
+    <meta name="tag" content=" GitHub Pages">
+    <meta name="description" content="I made a free personal blog using GitHub Pages!
+        In this article, I'll give an overview of the structure and benefits of this blog site.
+        The code is available on my GitHub page, so feel free to use it if you find it helpful." />
 
     <!-- 共通: 基本設定-->
     <meta charset="utf-8" />
@@ -82,13 +80,13 @@
                 <div class="text">
                     <h1>In this article</h1>
                     <ul>
-                        <li><a href="#section1">この記事でわかること</a></li>
-                        <li><a href="#section2">このブログサイトの仕組み</a></li>
-                        <li><a href="#section3">この仕組みのメリット</a></li>
-                        <li><a href="#section4">実装した表示機能</a></li>
-                        <li><a href="#section5">記事投稿の省力化(半自動化)</a></li>
-                        <li><a href="#section6">この仕組みを実装した理由</a></li>
-                        <li><a href="#section7">まとめ</a></li>
+                        <li><a href="#section1">What You'll Learn</a></li>
+                        <li><a href="#section2">How This Blog Site Works</a></li>
+                        <li><a href="#section3">Benefits of This System</a></li>
+                        <li><a href="#section4">Implemented Display Features</a></li>
+                        <li><a href="#section5">Streamlining (Semi-Automating) Article Posting</a></li>
+                        <li><a href="#section6">Why I Implemented This System</a></li>
+                        <li><a href="#section7">Conclusion</a></li>
                     </ul>
                 </div>
                 <br>
@@ -108,262 +106,214 @@
           : 'default'
     });
   </script>
-<h1 id="github-pages%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E4%BD%9C%E3%81%A3%E3%81%9F%E6%8A%95%E7%A8%BF%E6%99%82%E3%81%AE%E5%87%A6%E7%90%86%E3%81%AE%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%A8%E3%81%8B%E3%82%82%E3%81%97%E3%81%9F">GitHub Pagesでブログ作った。投稿時の処理の自動化とかもした</h1>
+<h1 id="created-a-blog-with-github-pages-automated-posting-process">Created a Blog with GitHub Pages: Automated Posting Process</h1>
 <p></p>
 <hr/>
-<p>GitHub Pagesで無料個人ブログを作ってみました！<br/>
-この記事では、このブログサイトの仕組みやメリットについて大まかに紹介します。<br/>
-具体的な個々の機能については追々<a href="../#Web%E5%88%B6%E4%BD%9C">Web制作関連の記事</a>でアップしていきます！<br/>
-コードは<a href="https://github.com/hitbug0" rel="noopener noreferrer" target="_blank">私のGitHubのページ</a>に置いてあるので、使えそうだったらぜひ流用してください～</p>
-<h2 id="section1">この記事でわかること</h2>
-<p>このブログサイトの仕組みと、そのメリットがわかります。</p>
+<p>I made a free personal blog using GitHub Pages!<br/>
+In this article, I'll give an overview of the structure and benefits of this blog site.<br/>
+The code is available on <a href="https://github.com/hitbug0" rel="noopener noreferrer" target="_blank">my GitHub page</a>, so feel free to use it if you find it helpful.</p>
+<h2 id="section1">What You'll Learn</h2>
+<p>You'll understand the structure of this blog site and its benefits.</p>
 <ul>
 <li>
-<p>裏方をGitHub Pagesに全部任せており、表示用のファイルだけを編集すればよい感じになっているので、無料だし維持管理が楽</p>
+<p>All backend tasks are handled by GitHub Pages, so you only need to edit the display files, making it free and easy to maintain.</p>
 </li>
 <li>
-<p>記事はmarkdown形式で書けばOK。表示のスタイルはテンプレートに従って自動で整うようになっている</p>
+<p>You can write articles in markdown format. The display style is automatically arranged according to the template.</p>
 </li>
 <li>
-<p>記事内で図の描画(mermaid)や画像/3D形状の表示が可能</p>
+<p>You can include diagrams (mermaid), images, and 3D shapes in your articles.</p>
 <ul>
-<li>画像や3D形状を記事内に表示したい場合も、markdown形式のテキストで指定できる</li>
+<li>Even if you want to display images or 3D shapes in the articles, you can specify them in markdown text.</li>
 </ul>
 </li>
 <li>
-<p>投稿時の処理もほぼ自動化できているので楽</p>
+<p>The posting process is almost fully automated, making it easy.</p>
 <ul>
-<li>ローカルでのPythonスクリプト実行 + VSCode拡張機能　を利用</li>
+<li>Using a Python script locally + VSCode extensions</li>
 </ul>
 </li>
 <li>
-<p>ソースコードは<a href="https://github.com/hitbug0" rel="noopener noreferrer" target="_blank">私のGitHubのページ</a>に置いてある</p>
+<p>The source code is available on <a href="https://github.com/hitbug0" rel="noopener noreferrer" target="_blank">my GitHub page</a>.</p>
 </li>
 </ul>
-<h2 id="section2">このブログサイトの仕組み</h2>
-<p>ホスティングとかは全部<a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages" rel="noopener noreferrer" target="_blank">GitHub Pages</a>に任せていて、ページの中身だけいじればいいようになっています。<br/>
-記事をHTMLとして整形する部分と、記事をタグでまとめたりする部分は、VSCodeの拡張機能とPythonスクリプトの力を借りてローカルで処理しています。<br/>
-静的サイトなので、動的サイト（WordPressとかで作ったサイト）よりも幾分動作が速いかもしれません。</p>
-<h2 id="section3">この仕組みのメリット</h2>
-<p>個人的なお気に入りポイントが4つあります。</p>
-<ul>
-<li>
-<p>サーバーレンタルとかドメイン取得とかしていないので管理が楽</p>
-</li>
-<li>
-<p>Markdownで記事書いてから、ちょいちょいと操作すれば記事を投稿できる</p>
-</li>
-<li>
-<p>維持費無料</p>
-</li>
-<li>
-<p>広告収入得られる（はず。貼れば）</p>
-</li>
-</ul>
-<h2 id="section4">実装した表示機能</h2>
-<p>ブログとして必要最低限（？）の機能を実装しました。<br/>
-個々の機能については追々<a href="../#Web%E5%88%B6%E4%BD%9C">Web制作関連の記事</a>でアップしていきます！</p>
+<h2 id="section2">How This Blog Site Works</h2>
+<p>All hosting is handled by <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages" rel="noopener noreferrer" target="_blank">GitHub Pages</a>, so you only need to tweak the content of the pages.<br/>
+The parts that format the articles as HTML and group them by tags are processed locally with VSCode extensions and Python scripts.<br/>
+Since it's a static site, it may run a bit faster than dynamic sites (like those made with WordPress).</p>
+<h2 id="section3">Benefits of This System</h2>
+<p>Here are my four favorite points.</p>
 <ul>
 <li>
-<p>記事のタグ管理</p>
+<p>No need to rent a server or acquire a domain, making it easy to manage.</p>
 </li>
 <li>
-<p>コードブロック＆コピーボタン</p>
+<p>You can write articles in Markdown and publish them with a few simple steps.</p>
 </li>
 <li>
-<p>mermaidでの作図 : VSCodeの拡張機能を <s>リバースエンジニアリングしました</s> 参考にしました！</p>
+<p>No maintenance costs.</p>
 </li>
 <li>
-<p>画像の表示</p>
-</li>
-<li>
-<p>3Dモデルの表示 : three.jsを使ってます</p>
-</li>
-<li>
-<p>SNS投稿の埋め込み : 埋め込みコードをmarkdownファイルに貼るだけでOK</p>
-</li>
-<li>
-<p>SNSへのリンク（ウィンドウサイズに応じてハンバーガーメニュー化）</p>
-</li>
-<li>
-<p>かわいいアイコン</p>
+<p>You can earn ad revenue (potentially, if you add ads).</p>
 </li>
 </ul>
-<h2 id="section5">記事投稿の省力化(半自動化)</h2>
-<p>上で書いた表示機能を全部いちいちHTMLで書くのは骨が折れるし、サイトマップ登録とかもポチポチやっていくのが面倒...<br/>
-というわけで、Pythonのスクリプトで主に以下3つの機能を自動化しました。<br/>
-個々のコードについては追々<a href="../#Web%E5%88%B6%E4%BD%9C">Web制作関連の記事</a>でアップしていきます！</p>
+<h2 id="section4">Implemented Display Features</h2>
+<p>I've implemented the minimum (or maybe more) features necessary for a blog.<br/>
+I'll upload specific details about each feature in related <a href="../index-en.html#Web-Development">web development articles</a> as I go along!</p>
+<ul>
+<li>Tag management for articles</li>
+<li>Code blocks &amp; copy button</li>
+<li>Diagram creation with mermaid: ~Reverse engineered~ Referenced VSCode extensions!</li>
+<li>Image display</li>
+<li>3D model display: Using three.js</li>
+<li>Embedded SNS posts: Just paste the embed code into the markdown file</li>
+<li>Links to SNS (turns into a hamburger menu depending on window size)</li>
+<li>Cute icons</li>
+</ul>
+<h2 id="section5">Streamlining (Semi-Automating) Article Posting</h2>
+<p>Manually writing all the display features in HTML and registering the sitemap can be tedious...<br/>
+So, I automated the following three main functions with Python scripts.</p>
 <ol>
 <li>
-<p><strong>記事ファイルの形式変換</strong>（markdown → HTML)</p>
+<p><strong>Converting article files</strong> (Markdown → HTML)</p>
 <ul>
-<li>
-<p>コードブロックへコピーボタンを自動追加</p>
-</li>
-<li>
-<p>画像や3D形状の情報をHTMLで読めるコードに変換</p>
-</li>
-<li>
-<p>以下についてはVSCode拡張機能を利用</p>
+<li>Automatically adds copy buttons to code blocks</li>
+<li>Converts image and 3D shape information to HTML-readable code</li>
+<li>Uses VSCode extensions for the following:
 <ul>
-<li>mermaidのコードを図に変換</li>
-<li>コードブロックの言語を指定し、シンタックスハイライトを追加</li>
+<li>Converts mermaid code to diagrams</li>
+<li>Specifies the language of code blocks and adds syntax highlighting</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>記事リストページへの記事情報の反映</strong></p>
+<p><strong>Reflecting article information on the article list page</strong></p>
 <ul>
-<li>
-<p>記事情報を表データにする</p>
-</li>
-<li>
-<p>表データをもとに、タグごとに記事情報（日付、タイトル、イントロ、タグ）を並べる</p>
-</li>
+<li>Turns article information into tabular data</li>
+<li>Based on the tabular data, arranges article information (date, title, intro, tags) by tags</li>
 </ul>
 </li>
 <li>
-<p><strong>サイトマップの作成と自動登録</strong></p>
+<p><strong>Creating and automatically registering the sitemap</strong></p>
 <ul>
-<li>
-<p>XMLサイトマップを作成する</p>
-</li>
-<li>
-<p>Google Search Consoleにサイトマップを登録する</p>
-</li>
+<li>Creates an XML sitemap</li>
+<li>Registers the sitemap with Google Search Console</li>
 </ul>
 </li>
 </ol>
-<h3 id="%E6%93%8D%E4%BD%9C%E6%89%8B%E9%A0%86">操作手順</h3>
-<p>自動化した結果、投稿時の処理がすごく楽になりました。
-ちょいちょいっとクリックしたりキーを押すだけです。書くのを含めて5ステップ！<br/>
-さらにめんどくさがりの人は、以下のようにすれば3ステップになります。</p>
+<h3 id="operation-procedure">Operation Procedure</h3>
+<p>Thanks to automation, the posting process has become much easier.
+A few clicks or keystrokes, and it's done. Just 5 steps, including writing!<br/>
+For those who want it even simpler, you can reduce it to 3 steps by:</p>
 <ul>
-<li>
-<p>表示内容確認を飛ばす</p>
-</li>
-<li>
-<p>GitHubへコミットする操作をmake_html.batに書く</p>
-</li>
+<li>Skipping the display content confirmation</li>
+<li>Writing the commit to GitHub operation into make_html.bat</li>
 </ul>
-<p>※ <strong><a href="../">このサイトのトップページ</a>も含めて自動で更新</strong>される仕組みです。</p>
+<p>※ <strong>The homepage of this site is automatically updated as well.</strong></p>
 <pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
 graph TB;
 
-cc("ステップ1<br/>記事を書く") --mdファイル--&gt; 
-dd["ステップ2<br/>VSCodeでHTML化<br/>(ショートカットキー一発！)"] --HTMLファイル(記事の材料)--&gt; 
+cc("Step 1<br/>Write an article") --md file--&gt; 
+dd["Step 2<br/>Convert to HTML with VSCode<br/>(One shortcut key!)"] --HTML file (article material)--&gt; 
 tr1
-subgraph tr[ステップ3　　run.batを実行　　　　　　　 _]
-    tr1["make_posts.pyで<br/>記事ページ作成"] --HTMLファイル(記事)--&gt; 
-    tr2["make_index.pyで<br/>インデックスページ作成"] --HTMLファイル(インデックス)--&gt; yy
-    tr1 --HTMLファイル(記事)--&gt; yy
-    xx("ローカルホストの<br/>起動") --&gt; yy["Chromeで開く"]
+subgraph tr[_　　Step 3: Execute run.bat]
+    tr1["Create article page<br/>with make_posts.py"] --HTML file (article)--&gt; 
+    tr2["Create index page<br/>with make_index.py"] --HTML file (index)--&gt; yy
+    tr1 --HTML file (article)--&gt; yy
+    xx("Start local server") --&gt; yy["Open in Chrome"]
 end
 
-yy --&gt; aa["ステップ4<br/>表示内容確認<br/>(optional)"]
-aa --&gt; ff["ステップ5<br/>GitHubへコミット"]
---&gt; bb("GitHub Pagesにより自動でページ更新")
+yy --&gt; aa["Step 4<br/>Confirm display content<br/>(optional)"]
+aa --&gt; ff["Step 5<br/>Commit to GitHub"]
+--&gt; bb("Automatic page update by GitHub Pages")
 </div></code></pre>
-<h2 id="section6">この仕組みを実装した理由</h2>
-<h3 id="github-pages%E3%81%8C%E8%B6%85%E4%BE%BF%E5%88%A9">GitHub Pagesが超便利</h3>
-<p>無料でWebページを公開する方法を調べる中で<a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages" rel="noopener noreferrer" target="_blank">GitHub Pages</a>なるものがあるということを知りました。（2年前）<br/>
-その後2年ほど、なんだか忙しくなって作りかけのコードを放置していましたが、少し時間ができたので再度ブログにチャレンジしようと思い再び重い腰を上げました。</p>
-<h3 id="jekyll%E6%8C%AB%E6%8A%98%E3%81%97%E3%81%9F">Jekyll挫折した</h3>
-<p>以前作りかけたコードを開き、、、そっ閉じし、楽に書く方法を探した末に<a href="https://jekyllrb-ja.github.io/" rel="noopener noreferrer" target="_blank">Jekyll</a>なるものを知りました。<br/>
-Jekyllの特徴をChatGPTに聞くと以下のように返ってきます。</p>
+<h2 id="section6">Why I Implemented This System</h2>
+<h3 id="github-pages-is-super-convenient">GitHub Pages is Super Convenient</h3>
+<p>While researching ways to publish web pages for free, I learned about <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages" rel="noopener noreferrer" target="_blank">GitHub Pages</a> (two years ago).<br/>
+After being busy and leaving my code unfinished for about two years, I finally had some time and decided to give blogging another shot.</p>
+<h3 id="i-gave-up-on-jekyll">I Gave Up on Jekyll</h3>
+<p>I reopened my unfinished code, quickly closed it, and looked for an easier way, eventually discovering <a href="https://jekyllrb.com/" rel="noopener noreferrer" target="_blank">Jekyll</a>.<br/>
+According to ChatGPT, here are Jekyll's features:</p>
 <ul>
-<li>
-<p>静的サイトジェネレーター</p>
+<li>Static site generator
 <ul>
-<li>Jekyllは静的サイトを生成するためのジェネレーターであり、動的なデータベースやサーバーサイド言語を必要とせず、プレーンなHTML、CSS、JavaScriptファイルを生成します。</li>
+<li>Jekyll is a generator for static sites, creating plain HTML, CSS, and JavaScript files without needing dynamic databases or server-side languages.</li>
 </ul>
 </li>
-<li>
-<p>Markdownサポート</p>
+<li>Markdown support
 <ul>
-<li>Markdown形式でコンテンツを書き、それをHTMLに変換してサイトに組み込むことができます。</li>
-<li>これにより、コンテンツの管理が簡素化されます。</li>
+<li>You can write content in Markdown format, which is then converted to HTML and integrated into your site, simplifying content management.</li>
 </ul>
 </li>
-<li>
-<p>テンプレートエンジン</p>
+<li>Template engine
 <ul>
-<li>Liquidと呼ばれる柔軟なテンプレートエンジンを使用して、再利用可能なテンプレートを作成し、サイトの外観や構造をカスタマイズすることができます。</li>
+<li>Uses a flexible template engine called Liquid to create reusable templates and customize the site's appearance and structure.</li>
 </ul>
 </li>
-<li>
-<p>GitHub Pagesとの統合</p>
+<li>Integration with GitHub Pages
 <ul>
-<li>JekyllはGitHub Pagesにネイティブに統合されており、リポジトリ内のJekyllサイトをホストすることができます。</li>
-<li>これにより、簡単に無料のホスティングとバージョン管理を利用できます。</li>
+<li>Jekyll is natively integrated with GitHub Pages, allowing you to host Jekyll sites in your repository, making it easy to utilize free hosting and version control.</li>
 </ul>
 </li>
-<li>
-<p>プラグインのサポート</p>
+<li>Plugin support
 <ul>
-<li>Jekyllはプラグインアーキテクチャを備えており、機能の拡張が可能です。</li>
-<li>プラグインを使用することで、自動化やカスタマイズが容易になります。</li>
+<li>Jekyll has a plugin architecture, enabling easy automation and customization.</li>
 </ul>
 </li>
-<li>
-<p>シンプルなディレクトリ構造</p>
+<li>Simple directory structure
 <ul>
-<li>Jekyllのディレクトリ構造はシンプルで直感的であり、新しいプロジェクトのセットアップや管理が容易です。</li>
+<li>Jekyll's directory structure is simple and intuitive, making it easy to set up and manage new projects.</li>
 </ul>
 </li>
-<li>
-<p>高速なパフォーマンス</p>
+<li>High performance
 <ul>
-<li>Jekyllが生成するサイトは静的であるため、高速なパフォーマンスを提供します。</li>
-<li>サーバーに負荷をかけることなく、高いスケーラビリティを実現します。</li>
+<li>Jekyll generates static sites, providing high performance without server load and offering high scalability.</li>
 </ul>
 </li>
 </ul>
-<p>よさそう！　ということで使ってみようとしましたが、自分には合いませんでした。</p>
+<p>Sounds great! But when I tried it, it didn't work for me.</p>
 <ul>
-<li>
-<p>後々細かいカスタマイズしたくなったときにめんどくさそう</p>
+<li>Customizing it later seemed like a hassle.
 <ul>
-<li>色々しようとすると色んなタイミングで表示崩れが起きるしデバッグしにくかった(漠然)</li>
+<li>Various display issues occurred at different times, making it difficult to debug (vaguely).</li>
 </ul>
 </li>
-<li>
-<p>個人的には、ほぼMarkdownサポートしかメリット感じない</p>
+<li>Personally, I only felt the benefit of Markdown support.
 <ul>
-<li>Markdownサポートに関しては、batファイルを作っておいて記事投稿する前にローカルで実行すればいいじゃん</li>
-<li>ローカルでスクレイピングをやるような感じですぐスクリプト書けそう</li>
-<li>自分で書いたコードの方が改良しやすそう</li>
-</ul>
-</li>
-</ul>
-<p>というわけで今の方式にしました。<br/>
-Jekyllの他にも似たようなのがあるようですが、代替手段思いついたので特に調べてません。（清々しい表情）</p>
-<h2 id="section7">まとめ</h2>
-<p>このブログサイトの仕組みやメリットについて大まかに紹介しました。</p>
-<ul>
-<li>
-<p>裏方をGitHub Pagesに全部任せており、表示用のファイルだけを編集すればよい感じになっているので、無料だし維持管理が楽</p>
-</li>
-<li>
-<p>記事はmarkdown形式で書けばOK。テンプレートに従って表示のスタイルは自動で整うようになっている。</p>
-</li>
-<li>
-<p>記事内で図の描画(mermaid)や画像/3D形状の表示が可能</p>
-<ul>
-<li>画像や3D形状を記事内に表示したい場合も、markdown形式のテキストで指定できる</li>
-</ul>
-</li>
-<li>
-<p>投稿時の処理もほぼ自動化できているので楽</p>
-<ul>
-<li>ローカルでのPythonスクリプト実行 + VSCode拡張機能　を利用</li>
+<li>For Markdown support, I thought it would be better to create a bat file and run it locally before posting articles.</li>
+<li>It seemed easy to write a script for local scraping.</li>
+<li>I thought it would be easier to improve the code I wrote myself.</li>
 </ul>
 </li>
 </ul>
-<p>具体的な個々の機能については追々<a href="../#Web%E5%88%B6%E4%BD%9C">Web制作関連の記事</a>でアップしていきます！<br/>
-コードは<a href="https://github.com/hitbug0" rel="noopener noreferrer" target="_blank">私のGitHubのページ</a>に置いてあるので、使えそうだったらぜひ流用してください～<br/>
-（style.cssは殴り書き状態なので、追々きれいにしようと思います...）</p>
+<p>So, I went with the current method.<br/>
+There seem to be other similar options besides Jekyll, but I came up with an alternative, so I didn't research them further.</p>
+<h2 id="section7">Conclusion</h2>
+<p>I provided an overview of the structure and benefits of this blog site.</p>
+<ul>
+<li>
+<p>All backend tasks are handled by GitHub Pages, so you only need to edit the display files, making it free and easy to maintain.</p>
+</li>
+<li>
+<p>You can write articles in markdown format, and the display style is automatically arranged according to the template.</p>
+</li>
+<li>
+<p>You can include diagrams (mermaid), images, and 3D shapes in your articles.</p>
+<ul>
+<li>Even if you want to display images or 3D shapes in the articles, you can specify them in markdown text.</li>
+</ul>
+</li>
+<li>
+<p>The posting process is almost fully automated, making it easy.</p>
+<ul>
+<li>Using a Python script locally + VSCode extensions</li>
+</ul>
+</li>
+</ul>
+<p>I'll upload specific details about each feature in related <a href="../index-en.html#Web-Development">web development articles</a> as I go along!<br/>
+The code is available on <a href="https://github.com/hitbug0" rel="noopener noreferrer" target="_blank">my GitHub page</a>, so feel free to use it if you find it helpful.<br/>
+(style.css is currently a bit messy, but I'll clean it up eventually...)</p>
 
 
 

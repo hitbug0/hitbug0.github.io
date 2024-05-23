@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024-04-25-CoeiroinkGUI.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="how-to-synthesize-ai-voices-with-coeiroink-v2-compatible-easy-free-and-commercial-use-allowed">How to Synthesize AI Voices with COEIROINK (v2 Compatible) [Easy, Free, and Commercial Use Allowed]</h1>
+<p>::tags{Voice Synthesis, COEIROINK}::</p>
+<hr>
+<p>This guide will show you how to synthesize voices using COEIROINK.<br>
+It's a highly recommended software that is free, easy to set up, intuitive to use, and can be used for commercial purposes (under certain conditions).<br>
+(For commercial use, make sure to read the entire article. Also, check the terms again when you use it, as they might change in the future.)</p>
+<h2 id="what-youll-learn-from-this-article">What You'll Learn from This Article</h2>
+<p>If you're only interested in the usage instructions, jump to <a href="#section4">Initial Setup</a>.<br>
+If you want to learn about the API, check out the <a href="./2024-04-26-CoeiroinkAPI01.html">article about COEIROINK's API</a>.</p>
+<ul>
+<li>What AI voice synthesis is (briefly)</li>
+<li>Benefits of using voice synthesis</li>
+<li>Commercial use (as of April 2024)</li>
+<li>How to use COEIROINK (detailed)
+<ul>
+<li>Initial setup</li>
+<li>Basic usage</li>
+</ul>
+</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<h3 id="what-is-ai-voice-synthesis">What is AI Voice Synthesis?</h3>
+<p>AI voice synthesis is a technology that uses AI to create voice from text data.<br>
+Here’s an example of the kind of voice you can create.</p>
+<iframe src="https://www.youtube.com/embed/RLPVL3Hmbio?si=CcpI9LMNzVUJaIAX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>By &quot;AI,&quot; we mean a machine learning model that has learned from a large amount of data, combining text and the corresponding spoken voice.<br>
+I’ll skip the detailed explanation!</p>
+<h3 id="benefits-of-voice-synthesis">Benefits of Voice Synthesis</h3>
+<p>Using voice synthesis instead of recording human voices has several advantages:</p>
+<ul>
+<li>No noise in the audio source (such as air conditioning sounds)</li>
+<li>Clear articulation</li>
+<li>Standard narration speed, which can be controlled</li>
+<li>Voice files can be automatically created from text data while you work on other tasks</li>
+<li>Ability to add intonation
+<ul>
+<li>However, the output may still have some unnatural parts</li>
+</ul>
+</li>
+<li>Easy to re-record as many times as needed
+<ul>
+<li>For example, you can edit the narration with the same voice even if the person in charge changes</li>
+</ul>
+</li>
+</ul>
+<p>Additionally, by integrating it with programs or language models, you can create robots that can converse, for example.<br>
+(Some applications already use it this way!)</p>
+<h2 id="about-commercial-use">About Commercial Use</h2>
+<p>Here are the terms of use for COEIROINK and the voice models used in this guide.</p>
+<h3 id="software-coeiroink-terms">Software (COEIROINK) Terms</h3>
+<p>The <a href="https://coeiroink.com/terms">COEIROINK Terms of Use</a> are posted on the official website.<br>
+As of April 2024, the terms are as follows:</p>
+<ul>
+<li>The software itself can be used commercially for free, even by corporations</li>
+<li>Voice models need to be checked individually
+<ul>
+<li>Some voice models have additional usage restrictions, while others do not</li>
+</ul>
+</li>
+</ul>
+<p>However, the terms may change in the future.<br>
+The terms are clear and easy to understand, so please read them before starting to use the software.</p>
+<h3 id="terms-for-the-voice-models-used-in-this-guide">Terms for the Voice Models Used in This Guide</h3>
+<p>I used two voice models, <code>AI Voice Actor - Kinnae (Al声優・金苗)</code> and <code>AI Voice Actor - Akahana (Al声優・朱花)</code>.<br>
+You can find the terms of use on the <a href="https://aiseiyou.com/">AI Voice Actor official website</a>.<br>
+According to the terms as of April 2024, credit notation is required.<br>
+This means you need to include the following in a corner of your video:</p>
+<ul>
+<li>COEIROINK:Al声優・金苗</li>
+<li>COEIROINK:Al声優・朱花</li>
+</ul>
+<p>The terms vary by voice model, so please check them each time you use a new one!</p>
+<h2 id="initial-setup">Initial Setup</h2>
+<p>This guide will cover how to set up <code>COEIROINK_CPU_v.2.3.4 (Windows)</code> with <code>AI Voice Actor - Kinnae</code> and <code>AI Voice Actor - Akahana</code>.<br>
+There are three main steps for the initial setup:</p>
+<ol>
+<li>Download the necessary files</li>
+<li>Install the software</li>
+<li>Organize the folder structure</li>
+</ol>
+<p>Versions might change over time, so adjust as needed.</p>
+<h3 id="1-download-the-necessary-files">1. Download the Necessary Files</h3>
+<ul>
+<li>
+<p>Download the software</p>
+<ul>
+<li>
+<p>From the <a href="https://coeiroink.com/download">official COEIROINK download page</a>, download <code>COEIROINK_CPU_v.2.3.4 (Windows)</code> from the &quot;Download&quot; section.</p>
+</li>
+<li>
+<p>You can use either BOOTH or DropBox.</p>
+</li>
+<li>
+<p>Mac users or those with GPUs can download different files as needed.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Download the voice models</p>
+<ul>
+<li>
+<p>Go to the <a href="https://coeiroink.com/download#:~:text=v.2.3.4(Mac)-,%E9%9F%B3,%E3%83%89%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E4%B8%8A%E3%81%A7">lower part of the COEIROINK official download page</a> and find the section labeled &quot;Voice Download.&quot;</p>
+</li>
+<li>
+<p>Download <code>AI Voice Actor - Kinnae v.1.3.0</code> and <code>AI Voice Actor - Akahana v.1.1.0</code>.</p>
+</li>
+<li>
+<p>Generally, choose the latest version available.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Extract the three downloaded zip files separately.</p>
+<ul>
+<li>You can extract them anywhere.</li>
+<li>The file names will likely be:
+<ul>
+<li><code>COEIROINK_WIN_CPU_v.2.3.4.zip</code></li>
+<li><code>d1143ac1-c486-4273-92ef-a30938d01b91.zip</code></li>
+<li><code>d41bcbd9-f4a9-4e10-b000-7a431568dd01.zip</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-install-the-software">2. Install the Software</h3>
+<ul>
+<li>
+<p>Run the installer</p>
+<ul>
+<li>Open the extracted <strong>COEIROINK WIN_CPU_V.2.3.4</strong> folder.</li>
+<li>Double-click <code>COEIROINK_WIN_CPU_V.2.3.4.exe</code> to run it.</li>
+<li>A command prompt will open, and the installation will begin.</li>
+<li>Once the installation is complete, a folder named <code>COEIROINK_WIN_CPU_V.2.3.4</code> will appear at the same level as <code>COEIROINK_WIN_CPU_V.2.3.4.exe</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-organize-the-folder-structure">3. Organize the Folder Structure</h3>
+<p>After step 2, the contents of the <strong>COEIROINK WIN_CPU_V.2.3.4</strong> folder should look like this:<br>
+(Folders in <strong>bold</strong>, files in <code>orange</code>)</p>
+<br>
+<ul>
+<li>
+<p><strong>COEIROINK WIN_CPU_V.2.3.4</strong></p>
+<ul>
+<li>
+<p><code>COEIROINK_WIN_CPU_v.2.3.4.7z.001</code></p>
+</li>
+<li>
+<p><code>COEIROINK_WIN_CPU_v.2.3.4.exe</code></p>
+</li>
+<li>
+<p><strong>COEIROINK_WIN_CPU_v.2.3.4</strong></p>
+<ul>
+<li><code>COEIROINKv2.exe</code></li>
+<li><strong>engine</strong></li>
+<li><strong>speaker_info</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<p>Place the extracted voice model folders into the <strong>speaker_info</strong> folder.<br>
+Initially, <strong>speaker_info</strong> should contain the following:</p>
+<br>
+<ul>
+<li>
+<p><strong>speaker_info</strong></p>
+<ul>
+<li>
+<p><strong>Tsukuyomi-chan</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<p>&quot;Tsukuyomi-chan&quot; is the default voice model.<br>
+So, place the two extracted folders here, similar to the <strong>Tsukuyomi-chan</strong> structure.<br>
+After adding the two folders, the <strong>speaker_info</strong> folder should look like this:</p>
+<br>
+<ul>
+<li>
+<p><strong>speaker_info</strong></p>
+<ul>
+<li>
+<p><strong>Tsukuyomi-chan</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+<li>
+<p><strong>d1143ac1-c486-4273-92ef-a30938d01b91</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+<li>
+<p><strong>d41bcbd9-f4a9-4e10-b000-7a431568dd01</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<p>That's it for the initial setup! Well done!</p>
+<h3 id="easy-installation-method-for-official-voice-models-added-on-20240427">Easy Installation Method for Official Voice Models (Added on 2024/04/27)</h3>
+<p>The voice models in the &quot;AI Voice Actor Series&quot; are officially recognized by COEIROINK, so you can install them directly from COEIROINK without downloading them individually!<br>
+(Thanks to AoTokie from the management team for letting me know!)<br>
+Considering this, the easiest installation method is as follows:</p>
+<ul>
+<li>Install the software: follow the method described on this page</li>
+<li>Install voice models:
+<ul>
+<li>For official COEIROINK models: use the method from the tweet</li>
+<li>For non-official COEIROINK models: follow the method described on this page</li>
+</ul>
+</li>
+</ul>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ブログ拝見しました！「AI声優シリーズ」のボイスモデルはCOEIROINK公認モデルなので、モデルを個別にダウンロードせずともCOEIROINK上から直接インストールできたりします！<br>こちらの方が簡単なので連絡いたしました<br>(すでにご存じでしたらすみません…) <a href="https://t.co/9NzqJiMqGW">pic.twitter.com/
+<p>9NzqJiMqGW</a></p>— AI声優-/運営・青トキエ (@aotokie) <a href="https://twitter.com/aotokie/status/1783462483329765810?ref_src=twsrc%5Etfw">April 25, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<h2 id="basic-usage">Basic Usage</h2>
+<ul>
+<li>Start the software
+<ul>
+<li>Run <code>COEIROINKv2.exe</code> to start the software.
+<ul>
+<li>Note that it is not <code>COEIROINK_WIN_CPU_v.2.3.4.exe</code>.</li>
+<li>Creating a shortcut and placing it on the desktop might be convenient.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Basic operations
+<ul>
+<li>Here’s a diagram showing the basic operations! (Click to enlarge)</li>
+</ul>
+</li>
+</ul>
+<p>::img{
+file{
+how-to-use-coeiroink.png: Basic Usage of COEIROINK;
+}
+height: 250px;
+}::</p>
+<h2 id="summary">Summary</h2>
+<p>I have provided a detailed guide on how to synthesize voices using COEIROINK.<br>
+Give it a try!</p>
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-25-CoeiroinkGUI.html" />
+    <meta property="og:title" content="How to Synthesize AI Voices with COEIROINK (v2 Compatible) [Easy, Free, and Commercial Use Allowed]" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="This guide will show you how to synthesize voices using COEIROINK.
+        It's a highly recommended software that is free, easy to set up, intuitive to use, and can be used for commercial purposes (under certain conditions).
+        (For commercial use, make sure to read the entire article. Also, check the terms again when you use it, as they might change in the future.)" />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-25-CoeiroinkGUI.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-25-CoeiroinkGUI.html" />
+    
+    
+    <title>How to Synthesize AI Voices with COEIROINK (v2 Compatible) [Easy, Free, and Commercial Use Allowed] | hitbug</title>
+    <meta name="tag" content="Voice Synthesis">
+    <meta name="tag" content=" COEIROINK">
+    <meta name="description" content="This guide will show you how to synthesize voices using COEIROINK.
+        It's a highly recommended software that is free, easy to set up, intuitive to use, and can be used for commercial purposes (under certain conditions).
+        (For commercial use, make sure to read the entire article. Also, check the terms again when you use it, as they might change in the future.)" />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-25-CoeiroinkGUI.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">What You'll Learn from This Article</a></li>
+                        <li><a href="#section2">Introduction</a></li>
+                        <li><a href="#section3">About Commercial Use</a></li>
+                        <li><a href="#section4">Initial Setup</a></li>
+                        <li><a href="#section5">Basic Usage</a></li>
+                        <li><a href="#section6">Summary</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="how-to-synthesize-ai-voices-with-coeiroink-v2-compatible-easy-free-and-commercial-use-allowed">How to Synthesize AI Voices with COEIROINK (v2 Compatible) [Easy, Free, and Commercial Use Allowed]</h1>
+<p></p>
+<hr/>
+<p>This guide will show you how to synthesize voices using COEIROINK.<br/>
+It's a highly recommended software that is free, easy to set up, intuitive to use, and can be used for commercial purposes (under certain conditions).<br/>
+(For commercial use, make sure to read the entire article. Also, check the terms again when you use it, as they might change in the future.)</p>
+<h2 id="section1">What You'll Learn from This Article</h2>
+<p>If you're only interested in the usage instructions, jump to <a href="#section4">Initial Setup</a>.<br/>
+If you want to learn about the API, check out the <a href="./2024-04-26-CoeiroinkAPI01.html">article about COEIROINK's API</a>.</p>
+<ul>
+<li>What AI voice synthesis is (briefly)</li>
+<li>Benefits of using voice synthesis</li>
+<li>Commercial use (as of April 2024)</li>
+<li>How to use COEIROINK (detailed)
+<ul>
+<li>Initial setup</li>
+<li>Basic usage</li>
+</ul>
+</li>
+</ul>
+<h2 id="section2">Introduction</h2>
+<h3 id="what-is-ai-voice-synthesis">What is AI Voice Synthesis?</h3>
+<p>AI voice synthesis is a technology that uses AI to create voice from text data.<br/>
+Here’s an example of the kind of voice you can create.</p>
+<div class="photo-list"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/RLPVL3Hmbio?si=CcpI9LMNzVUJaIAX" title="YouTube video player"></iframe></div>
+<p>By "AI," we mean a machine learning model that has learned from a large amount of data, combining text and the corresponding spoken voice.<br/>
+I’ll skip the detailed explanation!</p>
+<h3 id="benefits-of-voice-synthesis">Benefits of Voice Synthesis</h3>
+<p>Using voice synthesis instead of recording human voices has several advantages:</p>
+<ul>
+<li>No noise in the audio source (such as air conditioning sounds)</li>
+<li>Clear articulation</li>
+<li>Standard narration speed, which can be controlled</li>
+<li>Voice files can be automatically created from text data while you work on other tasks</li>
+<li>Ability to add intonation
+<ul>
+<li>However, the output may still have some unnatural parts</li>
+</ul>
+</li>
+<li>Easy to re-record as many times as needed
+<ul>
+<li>For example, you can edit the narration with the same voice even if the person in charge changes</li>
+</ul>
+</li>
+</ul>
+<p>Additionally, by integrating it with programs or language models, you can create robots that can converse, for example.<br/>
+(Some applications already use it this way!)</p>
+<h2 id="section3">About Commercial Use</h2>
+<p>Here are the terms of use for COEIROINK and the voice models used in this guide.</p>
+<h3 id="software-coeiroink-terms">Software (COEIROINK) Terms</h3>
+<p>The <a href="https://coeiroink.com/terms" rel="noopener noreferrer" target="_blank">COEIROINK Terms of Use</a> are posted on the official website.<br/>
+As of April 2024, the terms are as follows:</p>
+<ul>
+<li>The software itself can be used commercially for free, even by corporations</li>
+<li>Voice models need to be checked individually
+<ul>
+<li>Some voice models have additional usage restrictions, while others do not</li>
+</ul>
+</li>
+</ul>
+<p>However, the terms may change in the future.<br/>
+The terms are clear and easy to understand, so please read them before starting to use the software.</p>
+<h3 id="terms-for-the-voice-models-used-in-this-guide">Terms for the Voice Models Used in This Guide</h3>
+<p>I used two voice models, <code>AI Voice Actor - Kinnae (Al声優・金苗)</code> and <code>AI Voice Actor - Akahana (Al声優・朱花)</code>.<br/>
+You can find the terms of use on the <a href="https://aiseiyou.com/" rel="noopener noreferrer" target="_blank">AI Voice Actor official website</a>.<br/>
+According to the terms as of April 2024, credit notation is required.<br/>
+This means you need to include the following in a corner of your video:</p>
+<ul>
+<li>COEIROINK:Al声優・金苗</li>
+<li>COEIROINK:Al声優・朱花</li>
+</ul>
+<p>The terms vary by voice model, so please check them each time you use a new one!</p>
+<h2 id="section4">Initial Setup</h2>
+<p>This guide will cover how to set up <code>COEIROINK_CPU_v.2.3.4 (Windows)</code> with <code>AI Voice Actor - Kinnae</code> and <code>AI Voice Actor - Akahana</code>.<br/>
+There are three main steps for the initial setup:</p>
+<ol>
+<li>Download the necessary files</li>
+<li>Install the software</li>
+<li>Organize the folder structure</li>
+</ol>
+<p>Versions might change over time, so adjust as needed.</p>
+<h3 id="1-download-the-necessary-files">1. Download the Necessary Files</h3>
+<ul>
+<li>
+<p>Download the software</p>
+<ul>
+<li>
+<p>From the <a href="https://coeiroink.com/download" rel="noopener noreferrer" target="_blank">official COEIROINK download page</a>, download <code>COEIROINK_CPU_v.2.3.4 (Windows)</code> from the "Download" section.</p>
+</li>
+<li>
+<p>You can use either BOOTH or DropBox.</p>
+</li>
+<li>
+<p>Mac users or those with GPUs can download different files as needed.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Download the voice models</p>
+<ul>
+<li>
+<p>Go to the <a href="https://coeiroink.com/download#:~:text=v.2.3.4(Mac)-,%E9%9F%B3,%E3%83%89%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E4%B8%8A%E3%81%A7" rel="noopener noreferrer" target="_blank">lower part of the COEIROINK official download page</a> and find the section labeled "Voice Download."</p>
+</li>
+<li>
+<p>Download <code>AI Voice Actor - Kinnae v.1.3.0</code> and <code>AI Voice Actor - Akahana v.1.1.0</code>.</p>
+</li>
+<li>
+<p>Generally, choose the latest version available.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Extract the three downloaded zip files separately.</p>
+<ul>
+<li>You can extract them anywhere.</li>
+<li>The file names will likely be:
+<ul>
+<li><code>COEIROINK_WIN_CPU_v.2.3.4.zip</code></li>
+<li><code>d1143ac1-c486-4273-92ef-a30938d01b91.zip</code></li>
+<li><code>d41bcbd9-f4a9-4e10-b000-7a431568dd01.zip</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-install-the-software">2. Install the Software</h3>
+<ul>
+<li>
+<p>Run the installer</p>
+<ul>
+<li>Open the extracted <strong>COEIROINK WIN_CPU_V.2.3.4</strong> folder.</li>
+<li>Double-click <code>COEIROINK_WIN_CPU_V.2.3.4.exe</code> to run it.</li>
+<li>A command prompt will open, and the installation will begin.</li>
+<li>Once the installation is complete, a folder named <code>COEIROINK_WIN_CPU_V.2.3.4</code> will appear at the same level as <code>COEIROINK_WIN_CPU_V.2.3.4.exe</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-organize-the-folder-structure">3. Organize the Folder Structure</h3>
+<p>After step 2, the contents of the <strong>COEIROINK WIN_CPU_V.2.3.4</strong> folder should look like this:<br/>
+(Folders in <strong>bold</strong>, files in <code>orange</code>)</p>
+<br/>
+<ul>
+<li>
+<p><strong>COEIROINK WIN_CPU_V.2.3.4</strong></p>
+<ul>
+<li>
+<p><code>COEIROINK_WIN_CPU_v.2.3.4.7z.001</code></p>
+</li>
+<li>
+<p><code>COEIROINK_WIN_CPU_v.2.3.4.exe</code></p>
+</li>
+<li>
+<p><strong>COEIROINK_WIN_CPU_v.2.3.4</strong></p>
+<ul>
+<li><code>COEIROINKv2.exe</code></li>
+<li><strong>engine</strong></li>
+<li><strong>speaker_info</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>Place the extracted voice model folders into the <strong>speaker_info</strong> folder.<br/>
+Initially, <strong>speaker_info</strong> should contain the following:</p>
+<br/>
+<ul>
+<li>
+<p><strong>speaker_info</strong></p>
+<ul>
+<li>
+<p><strong>Tsukuyomi-chan</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>"Tsukuyomi-chan" is the default voice model.<br/>
+So, place the two extracted folders here, similar to the <strong>Tsukuyomi-chan</strong> structure.<br/>
+After adding the two folders, the <strong>speaker_info</strong> folder should look like this:</p>
+<br/>
+<ul>
+<li>
+<p><strong>speaker_info</strong></p>
+<ul>
+<li>
+<p><strong>Tsukuyomi-chan</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+<li>
+<p><strong>d1143ac1-c486-4273-92ef-a30938d01b91</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+<li>
+<p><strong>d41bcbd9-f4a9-4e10-b000-7a431568dd01</strong></p>
+<ul>
+<li><strong>model</strong></li>
+<li><strong>icons</strong></li>
+<li>... (and a few other items)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>That's it for the initial setup! Well done!</p>
+<h3 id="easy-installation-method-for-official-voice-models-added-on-20240427">Easy Installation Method for Official Voice Models (Added on 2024/04/27)</h3>
+<p>The voice models in the "AI Voice Actor Series" are officially recognized by COEIROINK, so you can install them directly from COEIROINK without downloading them individually!<br/>
+(Thanks to AoTokie from the management team for letting me know!)<br/>
+Considering this, the easiest installation method is as follows:</p>
+<ul>
+<li>Install the software: follow the method described on this page</li>
+<li>Install voice models:
+<ul>
+<li>For official COEIROINK models: use the method from the tweet</li>
+<li>For non-official COEIROINK models: follow the method described on this page</li>
+</ul>
+</li>
+</ul>
+<div class="photo-list"><blockquote class="twitter-tweet"><p dir="ltr" lang="ja">ブログ拝見しました！「AI声優シリーズ」のボイスモデルはCOEIROINK公認モデルなので、モデルを個別にダウンロードせずともCOEIROINK上から直接インストールできたりします！<br/>こちらの方が簡単なので連絡いたしました<br/>(すでにご存じでしたらすみません…) <a href="https://t.co/9NzqJiMqGW" rel="noopener noreferrer" target="_blank">pic.twitter.com/
+<p>9NzqJiMqGW</p></a></p>— AI声優-/運営・青トキエ (@aotokie) <a href="https://twitter.com/aotokie/status/1783462483329765810?ref_src=twsrc%5Etfw" rel="noopener noreferrer" target="_blank">April 25, 2024</a></blockquote></div> <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
+<h2 id="section5">Basic Usage</h2>
+<ul>
+<li>Start the software
+<ul>
+<li>Run <code>COEIROINKv2.exe</code> to start the software.
+<ul>
+<li>Note that it is not <code>COEIROINK_WIN_CPU_v.2.3.4.exe</code>.</li>
+<li>Creating a shortcut and placing it on the desktop might be convenient.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Basic operations
+<ul>
+<li>Here’s a diagram showing the basic operations! (Click to enlarge)</li>
+</ul>
+</li>
+</ul>
+<p><div class="photo-list"><a href="../contents/img/how-to-use-coeiroink.png" data-lightbox="group" data-title="BasicUsageofCOEIROINK" alt="BasicUsageofCOEIROINK">
+                                   <img src="../contents/img/how-to-use-coeiroink.png" height="250px">
+                                </a>
+                             </div></p>
+<h2 id="section6">Summary</h2>
+<p>I have provided a detailed guide on how to synthesize voices using COEIROINK.<br/>
+Give it a try!</p>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-25-CoeiroinkGUI.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>

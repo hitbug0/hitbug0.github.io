@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-22-MakeIconImage.html" />
+    <meta property="og:title" content="I Asked ChatGPT to Create Simple Image Processing Code" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="I scanned a hand-drawn picture, but I don't have any good image editing software, so I can't edit it...
+        For people like me, here's a way to create Python code for image editing using ChatGPT.
+        This time, I'll use the method I used to create the icon image for this site as an example." />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-22-MakeIconImage.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-22-MakeIconImage.html" />
+    
+    
+    <title>I Asked ChatGPT to Create Simple Image Processing Code | hitbug</title>
+    <meta name="tag" content="Image Processing">
+    <meta name="tag" content=" ChatGPT">
+    <meta name="description" content="I scanned a hand-drawn picture, but I don't have any good image editing software, so I can't edit it...
+        For people like me, here's a way to create Python code for image editing using ChatGPT.
+        This time, I'll use the method I used to create the icon image for this site as an example." />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-22-MakeIconImage.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">What Image Editing Operation Are We Trying to Do This Time?</a></li>
+                        <li><a href="#section2">How Did You Ask ChatGPT?</a></li>
+                        <li><a href="#section3">Side Note</a></li>
+                        <li><a href="#section4">Summary</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="i-asked-chatgpt-to-create-simple-image-processing-code">I Asked ChatGPT to Create Simple Image Processing Code</h1>
+<p></p>
+<hr/>
+<p>I scanned a hand-drawn picture, but I don't have any good image editing software, so I can't edit it...<br/>
+For people like me, here's a way to create Python code for image editing using ChatGPT.<br/>
+This time, I'll use the method I used to create the icon image for this site as an example.</p>
+<h2 id="section1">What Image Editing Operation Are We Trying to Do This Time?</h2>
+<p>We'll use the task of inverting the black-and-white colors of a hand-drawn picture and making the originally white parts transparent.<br/>
+This is what I actually did to create the icon image for this site.</p>
+<p><div class="photo-list"><a href="../contents/img/hitbug-icon.png" data-lightbox="group" data-title="Cuteicondrawing" alt="Cuteicondrawing">
+                                   <img src="../contents/img/hitbug-icon.png" height="250px">
+                                </a>
+                             </div></p>
+<h2 id="section2">How Did You Ask ChatGPT?</h2>
+<p>I asked like this:</p>
+<div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div>Please create Python code using Pillow to perform the following processing.
+
+# Processing
+1. Load the image (icon_black.png) and define it as a.
+2. Binarize a using a threshold of 150 for brightness and define it as b.
+3. Invert the black-and-white colors of b and define it as c.
+4. Change the black areas in c to transparent and define it as d.
+5. Output d as icon_white.png.
+</div></code></pre></div></div>
+<p>Then, it returned working code in one request.<br/>
+<a href="https://chat.openai.com/share/18dcb15d-6e59-46b4-9348-519cb11f740b" rel="noopener noreferrer" target="_blank">Here is the conversation we had</a>.<br/>
+Writing Japanese that conveys the image of the program increases accuracy.</p>
+<div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div>from PIL import Image
+
+# Load the image
+a = Image.open("icon_black.png")
+
+# Binarize the image
+b = a.convert("L").point(lambda x: 255 if x &gt; 150 else 0, mode='1')
+
+# Invert the black-and-white colors
+c = Image.eval(b, lambda x: 255 - x)
+
+# Change the black areas to transparent
+d = c.convert("RGBA")
+data = d.getdata()
+new_data = []
+for item in data:
+    # Change the black areas to transparent
+    if item[0] == 0 and item[1] == 0 and item[2] == 0:
+        new_data.append((255, 255, 255, 0))
+    else:
+        new_data.append(item)
+d.putdata(new_data)
+
+# Output the image
+d.save("icon_white.png")
+</div></code></pre></div></div>
+<p>But what if you don't know terms like brightness or binarization?<br/>
+I think I'll write an article for those people in the future.</p>
+<h2 id="section3">Side Note</h2>
+<p>I once used a paid image processing software for work <s>because I had to</s>, and I remember that almost everything could be implemented quickly with Python.<br/>
+Knowing the terms and implementation can save you quite a bit!</p>
+<h2 id="section4">Summary</h2>
+<p>For those who don't have good image editing software, I introduced a method to create Python code for image editing using ChatGPT.<br/>
+I hope it serves as a reference for someone.</p>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-22-MakeIconImage.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>

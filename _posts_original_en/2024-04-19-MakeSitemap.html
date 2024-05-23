@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024-04-19-MakeSitemap.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="automating-xml-sitemap-creation-with-chatgpt">Automating XML Sitemap Creation with ChatGPT</h1>
+<p>::tags{Web Development, Python, ChatGPT, RPA}::</p>
+<hr>
+<p>To ensure my blog appears in Google searches, it's necessary to register an XML sitemap. However, manually updating this file every time I update a post is a hassle... So, I had ChatGPT write a script to automatically update the XML sitemap for me.</p>
+<h2 id="what-you-will-learn-in-this-article">What You Will Learn in This Article</h2>
+<p>You will learn the following:</p>
+<ul>
+<li>Overview of XML sitemaps</li>
+<li>How to have ChatGPT write a Python script (as an example)</li>
+<li>Code for automatic XML sitemap generation</li>
+</ul>
+<h2 id="what-is-the-xml-sitemap">What is the XML Sitemap</h2>
+<p>Here is an overview:</p>
+<ul>
+<li>Data associated with an individual website.
+<ul>
+<li>It’s website-wide, not page-specific.</li>
+</ul>
+</li>
+<li>A file that describes the information on the pages of a website in a format that search engines can read.
+<ul>
+<li>Format = XML (eXtensible Markup Language)</li>
+</ul>
+</li>
+<li>Contains information about all the pages on the website, including URLs, update frequency, and importance.
+<ul>
+<li>However, not all information is strictly required.</li>
+</ul>
+</li>
+<li>Using this improves the website's SEO, allowing users to find information on the website more quickly.</li>
+</ul>
+<p>XML sitemaps are typically named something like <code>sitemap.xml</code>.</p>
+<h2 id="how-was-the-code-written-chatgpt">How Was the Code Written?: ChatGPT</h2>
+<p>The Python code for automatic XML sitemap generation was written by ChatGPT.<br>
+<a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b">Here is the conversation with ChatGPT</a> during that process.</p>
+<ol>
+<li>
+<p>Asking for an example format of an XML sitemap.</p>
+</li>
+<li>
+<p>Requesting the code creation:</p>
+<ul>
+<li>Asking, &quot;Please write code in Python that does the following: ...&quot;</li>
+</ul>
+</li>
+<li>
+<p>Requesting fine-tuning:</p>
+<ul>
+<li>
+<p>Asking to format the last modification date as &quot;yyyy-mm-ddTHH:MM:SS+09:00&quot;.</p>
+</li>
+<li>
+<p>Including <code>index.html</code> in the sitemap.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Notably, <a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b#:~:text=Please%20add%20the%20following%20feature%20to%20this%20code%3A%0A%0A%2D%20Include%20index.html%20(which%20is%20not%20in%20the%20posts%20directory%2C%20but%20is%20in%20the%20same%20directory%20as%20the%20Python%20script)%20in%20the%20sitemap."><strong>even when I accidentally sent an incomplete instruction, ChatGPT was able to understand the intent</strong></a> — this was quite surprising!</p>
+<h2 id="the-final-code-looks-like">the Final Code Looks Like</h2>
+<p>Here is the final code provided by ChatGPT. By changing the part of the code where it says <code>https://example.com</code>, it can be used by almost anyone. It worked perfectly for my needs.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> glob
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> urllib.parse
+<span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_last_modified_time</span><span class="hljs-params">(file_path)</span>:</span>
+    <span class="hljs-string">"""
+    Get the last modified time of a file.
+    """</span>
+    modified_time = os.path.getmtime(file_path)
+    <span class="hljs-keyword">return</span> datetime.utcfromtimestamp(modified_time)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_sitemap</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">"""
+    Generate sitemap.xml based on the files in the 'posts' directory.
+    """</span>
+    <span class="hljs-comment"># Get the last modified date of index.html</span>
+    index_last_modified = get_last_modified_time(<span class="hljs-string">'index.html'</span>)
+
+    files = glob.glob(<span class="hljs-string">'posts/*.html'</span>)
+    
+    urls = []
+    <span class="hljs-keyword">for</span> file_path <span class="hljs-keyword">in</span> files:
+        file_name = os.path.basename(file_path)
+        last_modified = get_last_modified_time(file_path)
+        encoded_file_name = urllib.parse.quote(file_name)
+        urls.append((encoded_file_name, last_modified))
+
+    sitemap_content = <span class="hljs-string">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">'&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;\n'</span>
+    
+    <span class="hljs-comment"># Add index.html to the sitemap</span>
+    index_last_modified_str = index_last_modified.strftime(<span class="hljs-string">'%Y-%m-%dT%H:%M:%S+09:00'</span>)
+    sitemap_content += <span class="hljs-string">f'   &lt;url&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">f'      &lt;loc&gt;https://example.com/index.html&lt;/loc&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">f'      &lt;lastmod&gt;<span class="hljs-subst">{index_last_modified_str}</span>&lt;/lastmod&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">f'   &lt;/url&gt;\n'</span>
+    
+    <span class="hljs-keyword">for</span> file_name, last_modified <span class="hljs-keyword">in</span> urls:
+        last_modified_str = last_modified.strftime(<span class="hljs-string">'%Y-%m-%dT%H:%M:%S+09:00'</span>)
+        sitemap_content += <span class="hljs-string">f'   &lt;url&gt;\n'</span>
+        sitemap_content += <span class="hljs-string">f'      &lt;loc&gt;https://example.com/<span class="hljs-subst">{file_name}</span>&lt;/loc&gt;\n'</span>
+        sitemap_content += <span class="hljs-string">f'      &lt;lastmod&gt;<span class="hljs-subst">{last_modified_str}</span>&lt;/lastmod&gt;\n'</span>
+        sitemap_content += <span class="hljs-string">f'   &lt;/url&gt;\n'</span>
+    
+    sitemap_content += <span class="hljs-string">'&lt;/urlset&gt;'</span>
+    
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'sitemap.xml'</span>, <span class="hljs-string">'w'</span>) <span class="hljs-keyword">as</span> sitemap_file:
+        sitemap_file.write(sitemap_content)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    generate_sitemap()
+</div></code></pre>
+<h2 id="bonus">Bonus</h2>
+<p>If you save the above code as <code>generate_sitemap.py</code> in a <code>programs</code> folder, you can create a batch file in the same directory as the <code>programs</code> folder to run the script just by double-clicking the batch file.</p>
+<pre class="hljs"><code><div>python ./programs/generate_sitemap.py
+</div></code></pre>
+<h2 id="summary">Summary</h2>
+<p>In this article, we covered the following:</p>
+<ul>
+<li>Overview of XML sitemaps</li>
+<li>How to have ChatGPT write a Python script (as an example)</li>
+<li>Code for automatic XML sitemap generation</li>
+</ul>
+<p>I was particularly surprised when ChatGPT understood my intention even when I accidentally sent an incomplete instruction...!<br>
+I hope this will be helpful for those looking to automate tasks or use ChatGPT in similar ways.</p>
+
+</body>
+</html>

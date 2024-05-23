@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-26-threejs.html" />
+    <meta property="og:title" content="[three.js] How to Display 3D Models on a Web Page" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="Here's a quick guide to displaying 3D models on your web page, complete with sample code. We'll use three.js. This guide is for those who want to try it out without needing to master all its features." />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-26-threejs.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-26-threejs.html" />
+    
+    
+    <title>[three.js] How to Display 3D Models on a Web Page | hitbug</title>
+    <meta name="tag" content="3D">
+    <meta name="tag" content=" three.js">
+    <meta name="tag" content=" JavaScript">
+    <meta name="tag" content=" Web Development">
+    <meta name="description" content="Here's a quick guide to displaying 3D models on your web page, complete with sample code. We'll use three.js. This guide is for those who want to try it out without needing to master all its features." />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-26-threejs.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">What You Will Learn</a></li>
+                        <li><a href="#section2">Method</a></li>
+                        <li><a href="#section3">Sample Code Overview</a></li>
+                        <li><a href="#section4">Summary</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="threejs-how-to-display-3d-models-on-a-web-page">[three.js] How to Display 3D Models on a Web Page</h1>
+<p></p>
+<hr/>
+<p>Here's a quick guide to displaying 3D models on your web page, complete with sample code. We'll use <a href="https://threejs.org/" rel="noopener noreferrer" target="_blank">three.js</a>. This guide is for those who want to try it out without needing to master all its features.</p>
+<h2 id="section1">What You Will Learn</h2>
+<ul>
+<li>How to use three.js (partially) to display and rotate 3D models (STL files) in HTML</li>
+<li>How to change the color and default viewing angle of 3D models</li>
+<li>In other words, how to achieve the following</li>
+</ul>
+<p><div class="model-container" id="chain-0"></div></p>
+<h2 id="section2">Method</h2>
+<p>First, follow these steps to confirm the display:</p>
+<ol>
+<li>Download the <a href="https://github.com/hitbug0/example-of-threejs" rel="noopener noreferrer" target="_blank">three.js sample code</a> from GitHub</li>
+<li>Run <code>run.bat</code></li>
+</ol>
+<p><code>run.bat</code> sets up a local server and opens the page in Chrome.<br/>
+You might see a warning, but it's a safe file, so don't worry!</p>
+<div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div><span class="hljs-built_in">set</span> port=<span class="hljs-number">8080</span>
+<span class="hljs-built_in">start</span> <span class="hljs-built_in">cmd</span> /c "python -m http.server <span class="hljs-variable">%port%</span>"
+powershell -command "&amp; {<span class="hljs-built_in">Start</span>-Sleep -Seconds <span class="hljs-number">0</span>.<span class="hljs-number">2</span>}"
+<span class="hljs-built_in">start</span> chrome.exe http://localhost:<span class="hljs-variable">%port%</span>/
+</div></code></pre></div></div>
+<p>If it works, check the code and make various edits.<br/>
+That's all!</p>
+<h2 id="section3">Sample Code Overview</h2>
+<p>Here's a brief explanation.</p>
+<h3 id="file-structure">File Structure</h3>
+<ul>
+<li>
+<p><strong>includes</strong></p>
+<ul>
+<li><strong>three.js</strong>: Script for displaying 3D models. <a href="https://threejs.org/" rel="noopener noreferrer" target="_blank">three.js official page</a></li>
+<li><code>display-3dmodel.js</code>: Script to call three.js</li>
+<li><code>style.css</code>: Style file</li>
+</ul>
+</li>
+<li>
+<p><strong>stl</strong>: Folder to store 3D shape files (sample data included by default)</p>
+</li>
+<li>
+<p><code>index.html</code>: Example HTML file</p>
+</li>
+<li>
+<p><code>README.md</code>: This file</p>
+</li>
+<li>
+<p><code>run.bat</code>: File to open index.html locally</p>
+</li>
+</ul>
+<h3 id="indexhtml">index.html</h3>
+<p>The <code>OBJ_INFO</code> in the <code>&lt;script&gt;</code> after <code>&lt;body&gt;</code> contains settings for the 3D shape files.<br/>
+The settings are commented within the code below.<br/>
+For color variations, you can use the colors specified in the <code>name2colorValue</code> function in <code>display-3dmodel.js</code>.<br/>
+To add more colors, modify this function or improve it to your liking!</p>
+<ul>
+<li>Red</li>
+<li>Pink</li>
+<li>Orange</li>
+<li>Yellow</li>
+<li>Green</li>
+<li>Blue</li>
+<li>White</li>
+<li>Gray</li>
+<li>Black</li>
+</ul>
+<p>The display target can be specified like <code>&lt;div class="model-container" id="chain-1"&gt;</code>.</p>
+<div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../includes/style.css"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Display 3D model | hitbug<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"wrapper"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Display 3D Model<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"model-container"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"chain-1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"model-container"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"milk_crown-2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+        <span class="hljs-keyword">const</span> OBJ_INFO = [
+            [
+                <span class="hljs-string">'../stl/chain.stl'</span>,    <span class="hljs-comment">/* Path to the shape file */</span>
+                [<span class="hljs-string">'chain-1'</span>],           <span class="hljs-comment">/* ID of the target div */</span>
+                [[<span class="hljs-number">0</span>, <span class="hljs-number">-300</span>, <span class="hljs-number">150</span>]],      <span class="hljs-comment">/* Camera position coordinates [x, y, z] */</span>
+                [[<span class="hljs-string">'orange'</span>, <span class="hljs-string">'white'</span>]], <span class="hljs-comment">/* Shape and background color */</span>
+                [<span class="hljs-number">1</span>, <span class="hljs-number">10000</span>]             <span class="hljs-comment">/* Zoom in/out limit distance */</span>
+            ],
+            [
+                <span class="hljs-string">'../stl/milk_crown.stl'</span>,
+                [<span class="hljs-string">'milk_crown-2'</span>],
+                [[<span class="hljs-number">100</span>, <span class="hljs-number">-300</span>, <span class="hljs-number">150</span>]],
+                [[<span class="hljs-string">'rainbow'</span>, <span class="hljs-string">'white'</span>]],
+                [<span class="hljs-number">1</span>, <span class="hljs-number">10000</span>]
+            ],
+        ];
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../includes/display-3dmodel.js"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre></div></div>
+<h3 id="the-essential-part-of-stylecss">The Essential Part of style.css</h3>
+<p>The <code>style.css</code> in the <a href="https://github.com/hitbug0/example-of-threejs" rel="noopener noreferrer" target="_blank">three.js sample code</a> contains some code to adjust the display, but the minimal version is as follows:</p>
+<div class="container"><div id="code-content2"><button class="copy-button" data-clipboard-target="#code-content2">Copy</button><pre class="hljs"><code><div><span class="hljs-selector-class">.model-container</span> {
+    <span class="hljs-attribute">justify-content</span>: center;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f8f8</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#cccccc</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">600px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">1000px</span>;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">20px</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">overflow</span>: hidden;
+    <span class="hljs-attribute">position</span>: relative;
+}
+</div></code></pre></div></div>
+<h2 id="section4">Summary</h2>
+<p>I've introduced how to quickly display 3D models on a web page with actual code.<br/>
+It's a good start to try it out.<br/>
+I hope you find it helpful!</p>
+<script>
+                       const OBJ_INFO=[
+                           [
+                               '../contents/stl/chain.stl',
+                               ['chain-0'],
+                               [[0, -300, 150]],
+                               [['orange', 'white']],
+                               [1, 1000]
+                           ],
+                       ];
+                    </script>
+<script async="" src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+<script src="../includes/display-3dmodel.js" type="module"></script>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-26-threejs.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>

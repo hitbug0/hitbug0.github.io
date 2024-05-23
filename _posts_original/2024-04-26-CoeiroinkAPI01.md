@@ -10,7 +10,7 @@ COEIROINKという音声合成ソフトを、Pythonから実行してみまし�
 
 ## この記事でわかること
 この記事ではCOEIROINK (v2)をPythonから動かすときの具体的な手順とコード(例)について紹介します。  
-COEIROINKの概要やその利用規約、そもそもAI音声合成とは何かみたいなことは[前回のCOEIROINKの記事](./2024-04-25-CoeiroinkGUI.html)を読んでみてください～  
+COEIROINKの概要やその利用規約、そもそもAI音声合成とは何かみたいなことは[前回のCOEIROINKの記事](./posts/2024-04-25-CoeiroinkGUI.html)を読んでみてください～  
 
 
 ## 手順
@@ -196,8 +196,7 @@ text2audio()
 ## 結果
 上記のコードを実行した結果を貼っておきます。  
 
-＜●●●●●youtube●●●●●＞
-
+<iframe src="https://www.youtube.com/embed/ObrSrKgrjMQ?si=VvjUSx0-2EsiLsob" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 少しイントネーションの不自然さは残りますが、無料で気軽に使えるものの割には本当にすごいなぁと思います。  
 物足りない方は、もっと調整していくヒントを次の章に書いたので見ていってくださいね！

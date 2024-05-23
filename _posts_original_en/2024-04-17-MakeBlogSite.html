@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024-04-17-MakeBlogSite.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="created-a-blog-with-github-pages-automated-posting-process">Created a Blog with GitHub Pages: Automated Posting Process</h1>
+<p>::tags{Web Development, GitHub Pages}::</p>
+<hr>
+<p>I made a free personal blog using GitHub Pages!<br>
+In this article, I'll give an overview of the structure and benefits of this blog site.<br>
+The code is available on <a href="https://github.com/hitbug0">my GitHub page</a>, so feel free to use it if you find it helpful.</p>
+<h2 id="what-youll-learn">What You'll Learn</h2>
+<p>You'll understand the structure of this blog site and its benefits.</p>
+<ul>
+<li>
+<p>All backend tasks are handled by GitHub Pages, so you only need to edit the display files, making it free and easy to maintain.</p>
+</li>
+<li>
+<p>You can write articles in markdown format. The display style is automatically arranged according to the template.</p>
+</li>
+<li>
+<p>You can include diagrams (mermaid), images, and 3D shapes in your articles.</p>
+<ul>
+<li>Even if you want to display images or 3D shapes in the articles, you can specify them in markdown text.</li>
+</ul>
+</li>
+<li>
+<p>The posting process is almost fully automated, making it easy.</p>
+<ul>
+<li>Using a Python script locally + VSCode extensions</li>
+</ul>
+</li>
+<li>
+<p>The source code is available on <a href="https://github.com/hitbug0">my GitHub page</a>.</p>
+</li>
+</ul>
+<h2 id="how-this-blog-site-works">How This Blog Site Works</h2>
+<p>All hosting is handled by <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a>, so you only need to tweak the content of the pages.<br>
+The parts that format the articles as HTML and group them by tags are processed locally with VSCode extensions and Python scripts.<br>
+Since it's a static site, it may run a bit faster than dynamic sites (like those made with WordPress).</p>
+<h2 id="benefits-of-this-system">Benefits of This System</h2>
+<p>Here are my four favorite points.</p>
+<ul>
+<li>
+<p>No need to rent a server or acquire a domain, making it easy to manage.</p>
+</li>
+<li>
+<p>You can write articles in Markdown and publish them with a few simple steps.</p>
+</li>
+<li>
+<p>No maintenance costs.</p>
+</li>
+<li>
+<p>You can earn ad revenue (potentially, if you add ads).</p>
+</li>
+</ul>
+<h2 id="implemented-display-features">Implemented Display Features</h2>
+<p>I've implemented the minimum (or maybe more) features necessary for a blog.<br>
+I'll upload specific details about each feature in related <a href="../index-en.html#Web-Development">web development articles</a> as I go along!</p>
+<ul>
+<li>Tag management for articles</li>
+<li>Code blocks &amp; copy button</li>
+<li>Diagram creation with mermaid: ~Reverse engineered~ Referenced VSCode extensions!</li>
+<li>Image display</li>
+<li>3D model display: Using three.js</li>
+<li>Embedded SNS posts: Just paste the embed code into the markdown file</li>
+<li>Links to SNS (turns into a hamburger menu depending on window size)</li>
+<li>Cute icons</li>
+</ul>
+<h2 id="streamlining-semi-automating-article-posting">Streamlining (Semi-Automating) Article Posting</h2>
+<p>Manually writing all the display features in HTML and registering the sitemap can be tedious...<br>
+So, I automated the following three main functions with Python scripts.</p>
+<ol>
+<li>
+<p><strong>Converting article files</strong> (Markdown → HTML)</p>
+<ul>
+<li>Automatically adds copy buttons to code blocks</li>
+<li>Converts image and 3D shape information to HTML-readable code</li>
+<li>Uses VSCode extensions for the following:
+<ul>
+<li>Converts mermaid code to diagrams</li>
+<li>Specifies the language of code blocks and adds syntax highlighting</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Reflecting article information on the article list page</strong></p>
+<ul>
+<li>Turns article information into tabular data</li>
+<li>Based on the tabular data, arranges article information (date, title, intro, tags) by tags</li>
+</ul>
+</li>
+<li>
+<p><strong>Creating and automatically registering the sitemap</strong></p>
+<ul>
+<li>Creates an XML sitemap</li>
+<li>Registers the sitemap with Google Search Console</li>
+</ul>
+</li>
+</ol>
+<h3 id="operation-procedure">Operation Procedure</h3>
+<p>Thanks to automation, the posting process has become much easier.
+A few clicks or keystrokes, and it's done. Just 5 steps, including writing!<br>
+For those who want it even simpler, you can reduce it to 3 steps by:</p>
+<ul>
+<li>Skipping the display content confirmation</li>
+<li>Writing the commit to GitHub operation into make_html.bat</li>
+</ul>
+<p>※ <strong>The homepage of this site is automatically updated as well.</strong></p>
+<pre><code class="language-mermaid"><div class="mermaid">%%{init: {'theme':'neutral'}}%%
+graph TB;
+
+cc("Step 1<br>Write an article") --md file--> 
+dd["Step 2<br>Convert to HTML with VSCode<br>(One shortcut key!)"] --HTML file (article material)--> 
+tr1
+subgraph tr[_　　Step 3: Execute run.bat]
+    tr1["Create article page<br>with make_posts.py"] --HTML file (article)--> 
+    tr2["Create index page<br>with make_index.py"] --HTML file (index)--> yy
+    tr1 --HTML file (article)--> yy
+    xx("Start local server") --> yy["Open in Chrome"]
+end
+
+yy --> aa["Step 4<br>Confirm display content<br>(optional)"]
+aa --> ff["Step 5<br>Commit to GitHub"]
+--> bb("Automatic page update by GitHub Pages")
+</div></code></pre>
+<h2 id="why-i-implemented-this-system">Why I Implemented This System</h2>
+<h3 id="github-pages-is-super-convenient">GitHub Pages is Super Convenient</h3>
+<p>While researching ways to publish web pages for free, I learned about <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a> (two years ago).<br>
+After being busy and leaving my code unfinished for about two years, I finally had some time and decided to give blogging another shot.</p>
+<h3 id="i-gave-up-on-jekyll">I Gave Up on Jekyll</h3>
+<p>I reopened my unfinished code, quickly closed it, and looked for an easier way, eventually discovering <a href="https://jekyllrb.com/">Jekyll</a>.<br>
+According to ChatGPT, here are Jekyll's features:</p>
+<ul>
+<li>Static site generator
+<ul>
+<li>Jekyll is a generator for static sites, creating plain HTML, CSS, and JavaScript files without needing dynamic databases or server-side languages.</li>
+</ul>
+</li>
+<li>Markdown support
+<ul>
+<li>You can write content in Markdown format, which is then converted to HTML and integrated into your site, simplifying content management.</li>
+</ul>
+</li>
+<li>Template engine
+<ul>
+<li>Uses a flexible template engine called Liquid to create reusable templates and customize the site's appearance and structure.</li>
+</ul>
+</li>
+<li>Integration with GitHub Pages
+<ul>
+<li>Jekyll is natively integrated with GitHub Pages, allowing you to host Jekyll sites in your repository, making it easy to utilize free hosting and version control.</li>
+</ul>
+</li>
+<li>Plugin support
+<ul>
+<li>Jekyll has a plugin architecture, enabling easy automation and customization.</li>
+</ul>
+</li>
+<li>Simple directory structure
+<ul>
+<li>Jekyll's directory structure is simple and intuitive, making it easy to set up and manage new projects.</li>
+</ul>
+</li>
+<li>High performance
+<ul>
+<li>Jekyll generates static sites, providing high performance without server load and offering high scalability.</li>
+</ul>
+</li>
+</ul>
+<p>Sounds great! But when I tried it, it didn't work for me.</p>
+<ul>
+<li>Customizing it later seemed like a hassle.
+<ul>
+<li>Various display issues occurred at different times, making it difficult to debug (vaguely).</li>
+</ul>
+</li>
+<li>Personally, I only felt the benefit of Markdown support.
+<ul>
+<li>For Markdown support, I thought it would be better to create a bat file and run it locally before posting articles.</li>
+<li>It seemed easy to write a script for local scraping.</li>
+<li>I thought it would be easier to improve the code I wrote myself.</li>
+</ul>
+</li>
+</ul>
+<p>So, I went with the current method.<br>
+There seem to be other similar options besides Jekyll, but I came up with an alternative, so I didn't research them further.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I provided an overview of the structure and benefits of this blog site.</p>
+<ul>
+<li>
+<p>All backend tasks are handled by GitHub Pages, so you only need to edit the display files, making it free and easy to maintain.</p>
+</li>
+<li>
+<p>You can write articles in markdown format, and the display style is automatically arranged according to the template.</p>
+</li>
+<li>
+<p>You can include diagrams (mermaid), images, and 3D shapes in your articles.</p>
+<ul>
+<li>Even if you want to display images or 3D shapes in the articles, you can specify them in markdown text.</li>
+</ul>
+</li>
+<li>
+<p>The posting process is almost fully automated, making it easy.</p>
+<ul>
+<li>Using a Python script locally + VSCode extensions</li>
+</ul>
+</li>
+</ul>
+<p>I'll upload specific details about each feature in related <a href="../index-en.html#Web-Development">web development articles</a> as I go along!<br>
+The code is available on <a href="https://github.com/hitbug0">my GitHub page</a>, so feel free to use it if you find it helpful.<br>
+(style.css is currently a bit messy, but I'll clean it up eventually...)</p>
+
+</body>
+</html>

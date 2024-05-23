@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-19-MakeSitemap.html" />
+    <meta property="og:title" content="Automating XML Sitemap Creation with ChatGPT" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="To ensure my blog appears in Google searches, it's necessary to register an XML sitemap. However, manually updating this file every time I update a post is a hassle... So, I had ChatGPT write a script to automatically update the XML sitemap for me." />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-19-MakeSitemap.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-19-MakeSitemap.html" />
+    
+    
+    <title>Automating XML Sitemap Creation with ChatGPT | hitbug</title>
+    <meta name="tag" content="Web Development">
+    <meta name="tag" content=" Python">
+    <meta name="tag" content=" ChatGPT">
+    <meta name="tag" content=" RPA">
+    <meta name="description" content="To ensure my blog appears in Google searches, it's necessary to register an XML sitemap. However, manually updating this file every time I update a post is a hassle... So, I had ChatGPT write a script to automatically update the XML sitemap for me." />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-19-MakeSitemap.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">What You Will Learn in This Article</a></li>
+                        <li><a href="#section2">What is the XML Sitemap</a></li>
+                        <li><a href="#section3">How Was the Code Written?: ChatGPT</a></li>
+                        <li><a href="#section4">the Final Code Looks Like</a></li>
+                        <li><a href="#section5">Bonus</a></li>
+                        <li><a href="#section6">Summary</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="automating-xml-sitemap-creation-with-chatgpt">Automating XML Sitemap Creation with ChatGPT</h1>
+<p></p>
+<hr/>
+<p>To ensure my blog appears in Google searches, it's necessary to register an XML sitemap. However, manually updating this file every time I update a post is a hassle... So, I had ChatGPT write a script to automatically update the XML sitemap for me.</p>
+<h2 id="section1">What You Will Learn in This Article</h2>
+<p>You will learn the following:</p>
+<ul>
+<li>Overview of XML sitemaps</li>
+<li>How to have ChatGPT write a Python script (as an example)</li>
+<li>Code for automatic XML sitemap generation</li>
+</ul>
+<h2 id="section2">What is the XML Sitemap</h2>
+<p>Here is an overview:</p>
+<ul>
+<li>Data associated with an individual website.
+<ul>
+<li>It’s website-wide, not page-specific.</li>
+</ul>
+</li>
+<li>A file that describes the information on the pages of a website in a format that search engines can read.
+<ul>
+<li>Format = XML (eXtensible Markup Language)</li>
+</ul>
+</li>
+<li>Contains information about all the pages on the website, including URLs, update frequency, and importance.
+<ul>
+<li>However, not all information is strictly required.</li>
+</ul>
+</li>
+<li>Using this improves the website's SEO, allowing users to find information on the website more quickly.</li>
+</ul>
+<p>XML sitemaps are typically named something like <code>sitemap.xml</code>.</p>
+<h2 id="section3">How Was the Code Written?: ChatGPT</h2>
+<p>The Python code for automatic XML sitemap generation was written by ChatGPT.<br/>
+<a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b" rel="noopener noreferrer" target="_blank">Here is the conversation with ChatGPT</a> during that process.</p>
+<ol>
+<li>
+<p>Asking for an example format of an XML sitemap.</p>
+</li>
+<li>
+<p>Requesting the code creation:</p>
+<ul>
+<li>Asking, "Please write code in Python that does the following: ..."</li>
+</ul>
+</li>
+<li>
+<p>Requesting fine-tuning:</p>
+<ul>
+<li>
+<p>Asking to format the last modification date as "yyyy-mm-ddTHH:MM:SS+09:00".</p>
+</li>
+<li>
+<p>Including <code>index.html</code> in the sitemap.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Notably, <a href="https://chat.openai.com/share/f60f65b1-b84a-4189-96b1-c6b175bae28b#:~:text=Please%20add%20the%20following%20feature%20to%20this%20code%3A%0A%0A%2D%20Include%20index.html%20(which%20is%20not%20in%20the%20posts%20directory%2C%20but%20is%20in%20the%20same%20directory%20as%20the%20Python%20script)%20in%20the%20sitemap." rel="noopener noreferrer" target="_blank"><strong>even when I accidentally sent an incomplete instruction, ChatGPT was able to understand the intent</strong></a> — this was quite surprising!</p>
+<h2 id="section4">the Final Code Looks Like</h2>
+<p>Here is the final code provided by ChatGPT. By changing the part of the code where it says <code>https://example.com</code>, it can be used by almost anyone. It worked perfectly for my needs.</p>
+<div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> glob
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> urllib.parse
+<span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_last_modified_time</span><span class="hljs-params">(file_path)</span>:</span>
+    <span class="hljs-string">"""
+    Get the last modified time of a file.
+    """</span>
+    modified_time = os.path.getmtime(file_path)
+    <span class="hljs-keyword">return</span> datetime.utcfromtimestamp(modified_time)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generate_sitemap</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">"""
+    Generate sitemap.xml based on the files in the 'posts' directory.
+    """</span>
+    <span class="hljs-comment"># Get the last modified date of index.html</span>
+    index_last_modified = get_last_modified_time(<span class="hljs-string">'index.html'</span>)
+
+    files = glob.glob(<span class="hljs-string">'posts/*.html'</span>)
+    
+    urls = []
+    <span class="hljs-keyword">for</span> file_path <span class="hljs-keyword">in</span> files:
+        file_name = os.path.basename(file_path)
+        last_modified = get_last_modified_time(file_path)
+        encoded_file_name = urllib.parse.quote(file_name)
+        urls.append((encoded_file_name, last_modified))
+
+    sitemap_content = <span class="hljs-string">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">'&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;\n'</span>
+    
+    <span class="hljs-comment"># Add index.html to the sitemap</span>
+    index_last_modified_str = index_last_modified.strftime(<span class="hljs-string">'%Y-%m-%dT%H:%M:%S+09:00'</span>)
+    sitemap_content += <span class="hljs-string">f'   &lt;url&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">f'      &lt;loc&gt;https://example.com/index.html&lt;/loc&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">f'      &lt;lastmod&gt;<span class="hljs-subst">{index_last_modified_str}</span>&lt;/lastmod&gt;\n'</span>
+    sitemap_content += <span class="hljs-string">f'   &lt;/url&gt;\n'</span>
+    
+    <span class="hljs-keyword">for</span> file_name, last_modified <span class="hljs-keyword">in</span> urls:
+        last_modified_str = last_modified.strftime(<span class="hljs-string">'%Y-%m-%dT%H:%M:%S+09:00'</span>)
+        sitemap_content += <span class="hljs-string">f'   &lt;url&gt;\n'</span>
+        sitemap_content += <span class="hljs-string">f'      &lt;loc&gt;https://example.com/<span class="hljs-subst">{file_name}</span>&lt;/loc&gt;\n'</span>
+        sitemap_content += <span class="hljs-string">f'      &lt;lastmod&gt;<span class="hljs-subst">{last_modified_str}</span>&lt;/lastmod&gt;\n'</span>
+        sitemap_content += <span class="hljs-string">f'   &lt;/url&gt;\n'</span>
+    
+    sitemap_content += <span class="hljs-string">'&lt;/urlset&gt;'</span>
+    
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'sitemap.xml'</span>, <span class="hljs-string">'w'</span>) <span class="hljs-keyword">as</span> sitemap_file:
+        sitemap_file.write(sitemap_content)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:
+    generate_sitemap()
+</div></code></pre></div></div>
+<h2 id="section5">Bonus</h2>
+<p>If you save the above code as <code>generate_sitemap.py</code> in a <code>programs</code> folder, you can create a batch file in the same directory as the <code>programs</code> folder to run the script just by double-clicking the batch file.</p>
+<div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div>python ./programs/generate_sitemap.py
+</div></code></pre></div></div>
+<h2 id="section6">Summary</h2>
+<p>In this article, we covered the following:</p>
+<ul>
+<li>Overview of XML sitemaps</li>
+<li>How to have ChatGPT write a Python script (as an example)</li>
+<li>Code for automatic XML sitemap generation</li>
+</ul>
+<p>I was particularly surprised when ChatGPT understood my intention even when I accidentally sent an incomplete instruction...!<br/>
+I hope this will be helpful for those looking to automate tasks or use ChatGPT in similar ways.</p>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-19-MakeSitemap.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2024-04-22-AutoAddSitemap2Google.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="automating-screen-operations-with-python-includes-various-code-snippets-for-beginners">Automating Screen Operations with Python (Includes Various Code Snippets for Beginners)</h1>
+<p>::tags{RPA, Python, Web Development}::</p>
+<hr>
+<p>This article introduces methods to automate screen operations with Python.<br>
+The example used here is &quot;Registering an XML file with Google Search Console,&quot; but these methods can be applied to other scenarios as well, such as &quot;performing the same operation repeatedly with software created by historical figures.&quot;<br>
+(Note: These methods are based on recent versions of Windows, so they may not work on other operating systems or older versions of Windows. Please be aware of this...!)</p>
+<h2 id="what-you-will-learn-from-this-article">What You Will Learn from This Article</h2>
+<ul>
+<li>How to automate screen operations with Python
+<ul>
+<li>Basic commands</li>
+<li>Handy functions</li>
+</ul>
+</li>
+<li>Automation Example: Automating the process of registering an XML sitemap with Google Search Console
+<ul>
+<li>Step-by-step procedure</li>
+<li>Code for automation</li>
+<li>Execution results (video)</li>
+</ul>
+</li>
+</ul>
+<h2 id="what-tools-are-used-for-automation">What Tools Are Used for Automation?</h2>
+<p>Various operations can be automated with Python.<br>
+In this article, the following libraries were used.<br>
+While these libraries alone can achieve quite a bit, there are many other useful libraries out there.</p>
+<ul>
+<li><strong>PyAutoGUI</strong>
+<ul>
+<li>Automates GUI operations such as mouse movement and clicks, and keyboard inputs.</li>
+</ul>
+</li>
+<li><strong>pyperclip</strong>
+<ul>
+<li>Allows reading and writing to the clipboard.</li>
+</ul>
+</li>
+<li><strong>subprocess</strong>
+<ul>
+<li>Can start external processes and manipulate their input/output.</li>
+<li>Especially useful for executing command prompt operations within Python.</li>
+<li>It's a standard Python library, so no separate installation is required.</li>
+</ul>
+</li>
+<li><strong>win32gui, win32con, win32api</strong>
+<ul>
+<li>Allows access to Windows GUI elements and system resources.</li>
+</ul>
+</li>
+<li><strong>time</strong>
+<ul>
+<li>Provides functionalities such as obtaining the current time, pausing execution (sleep), performance measurement, converting time expressions, and performing time arithmetic.</li>
+<li>It's a standard Python library, so no separate installation is required.</li>
+</ul>
+</li>
+</ul>
+<p>Here are the installation commands.<br>
+Note that <code>win32***</code> libraries are bundled and installed with <code>pywin32</code>!</p>
+<pre class="hljs"><code><div>pip install pyperclip
+pip install pyautogui
+pip install pywin32
+</div></code></pre>
+<h2 id="what-operations-can-be-automated">What Operations Can Be Automated?</h2>
+<p>Here are some simple specific examples of the automation code used in this article.<br>
+These are just a few examples, but there are many other things you can automate!</p>
+<h3 id="pressing-keys">Pressing Keys</h3>
+<p>With PyAutoGUI, you can automate the pressing of one or more keys.<br>
+There are many other keys you can press, so feel free to explore further!</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+
+pa.hotkey(<span class="hljs-string">'alt'</span>,<span class="hljs-string">'d'</span>) <span class="hljs-comment"># Focus the URL input field in Google Chrome</span>
+pa.hotkey(<span class="hljs-string">'f5'</span>) <span class="hljs-comment"># Refresh the page in the browser</span>
+</div></code></pre>
+<h3 id="typing-text">Typing Text</h3>
+<p>You can use PyAutoGUI and pyperclip to type text.<br>
+To avoid issues with switching between Japanese/English input modes, it's better to use the &quot;copy to clipboard and paste&quot; method.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+<span class="hljs-keyword">import</span> pyperclip
+
+pyperclip.copy(<span class="hljs-string">"hoge, hoge"</span>) <span class="hljs-comment"># Copy text to clipboard</span>
+pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>) <span class="hljs-comment"># Paste the text</span>
+</div></code></pre>
+<h3 id="locating-an-image-on-the-screen-and-clicking">Locating an Image on the Screen and Clicking</h3>
+<p>PyAutoGUI can search for images on the screen.<br>
+If found, it returns the center coordinates of the image's location.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+
+position_im = pa.locateOnScreen(img, confidence=<span class="hljs-number">0.8</span>)
+</div></code></pre>
+<p>In this example, I defined a <code>wait_disp</code> function to wait for an image to appear.<br>
+Here's how it's used:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wait_disp</span><span class="hljs-params">(img, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># Waits for an image to appear on the screen. Returns the image's location if found.</span>
+    dt = <span class="hljs-number">0.5</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(wait_time/dt)):
+        position_im = pa.locateOnScreen(img, confidence=<span class="hljs-number">0.8</span>)
+        <span class="hljs-keyword">if</span> position_im:
+            <span class="hljs-keyword">return</span> position_im
+        <span class="hljs-keyword">else</span>:
+            time.sleep(dt)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+position_im = wait_disp(<span class="hljs-string">'./hoge.png'</span>) <span class="hljs-comment"># Search for hoge.png on the screen</span>
+pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>) <span class="hljs-comment"># Left-click the center of hoge.png</span>
+</div></code></pre>
+<h3 id="launching-applications">Launching Applications</h3>
+<p>You can use subprocess to launch specified applications.<br>
+For example, you can start Google Chrome with the following code.</p>
+<pre class="hljs"><code><div>chrome_path = <span class="hljs-string">"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"</span>
+subprocess.Popen(chrome_path)
+</div></code></pre>
+<h3 id="adjusting-application-display-positionscreen-maximizing-etc">Adjusting Application Display Position/Screen, Maximizing, etc.</h3>
+<p>Using win32gui, win32con, and win32api, you can adjust the display state of applications.<br>
+Sometimes, you may need to specify the window size if the buttons to be displayed are not visible in a small window.<br>
+I'll skip the detailed explanation here!</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> win32gui
+<span class="hljs-keyword">import</span> win32con
+<span class="hljs-keyword">import</span> win32api
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chrome_window</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Retrieves the handle of the most recently opened Chrome window.</span>
+    chrome_windows = []
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">enum_handler</span><span class="hljs-params">(hwnd, lParam)</span>:</span>
+        <span class="hljs-keyword">if</span> win32gui.IsWindowVisible(hwnd) <span class="hljs-keyword">and</span> <span class="hljs-string">'chrome'</span> <span class="hljs-keyword">in</span> win32gui.GetWindowText(hwnd).lower():
+            chrome_windows.append(hwnd)
+    win32gui.EnumWindows(enum_handler, <span class="hljs-literal">None</span>)
+    <span class="hljs-keyword">return</span> chrome_windows[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> chrome_windows <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move_to_main_screen</span><span class="hljs-params">(hwnd, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># Switches the display monitor to the main device.</span>
+    dt = <span class="hljs-number">0.5</span>
+    n = wait_time/dt
+    count=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> count&lt;=n:
+        monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(hwnd, win32con.MONITOR_DEFAULTTONEAREST))
+        main_monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY))
+        <span class="hljs-keyword">if</span> monitor_info[<span class="hljs-string">'Device'</span>] == main_monitor_info[<span class="hljs-string">'Device'</span>]:
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># Switch the monitor displaying hwnd</span>
+            win32gui.MoveWindow(hwnd, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">500</span>, <span class="hljs-number">500</span>, <span class="hljs-literal">True</span>) <span class="hljs-comment"># Position the window at 500*500 from the top left corner</span>
+            time.sleep(dt)
+            count +=<span class="hljs-number">1</span>
+
+<span class="hljs-comment"># Adjusting the display window</span>
+chrome_window = <span class="hljs-literal">None</span>
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> chrome_window:
+    chrome_window = get_chrome_window()
+    time.sleep(<span class="hljs-number">0.5</span>)
+
+move_to_main_screen(chrome_window) <span class="hljs-comment"># Open in the main screen</span>
+time.sleep(<span class="hljs-number">0.5</span>)
+
+win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># Maximize the window</span>
+</div></code></pre>
+<h2 id="what-operations-are-automated-this-time">What Operations Are Automated This Time?</h2>
+<p>This time, the operation being automated is the registration of an XML sitemap with Google Search Console.<br>
+Specifically, the operation involves the following steps:</p>
+<ol>
+<li>
+<p>Launch Google Chrome</p>
+</li>
+<li>
+<p>Adjust the display window</p>
+<ul>
+<li>Open in the main window</li>
+<li>Maximize the window</li>
+</ul>
+</li>
+<li>
+<p>Enter the Google Search Console URL in the URL field of Google Chrome and press the <code>Enter</code> key</p>
+</li>
+<li>
+<p>Confirm that the Google Search Console page has opened</p>
+<ul>
+<li>Find <code>sitemap1.png</code> on the screen</li>
+</ul>
+</li>
+<li>
+<p>Enter the file name (sitemap.xml) in the specified field</p>
+<ul>
+<li>After clicking <code>sitemap1.png</code> to focus on the input field, press the <code>Tab</code> key</li>
+<li>Copy the file name to the clipboard and paste it into the input field</li>
+</ul>
+</li>
+<li>
+<p>Click the submit button (<code>sitemap2.png</code>)</p>
+</li>
+<li>
+<p>Confirm that the submission process is complete and refresh the page</p>
+<ul>
+<li>When <code>sitemap3.png</code> (the button to close the submission completion popup) appears, click it</li>
+<li>Wait for a moment and then press the <code>F5</code> key</li>
+</ul>
+</li>
+</ol>
+<p>Here are the images used as triggers for the automated operations.
+::img{
+file{
+sitemap1.png: sitemap1.png (Image of text on the page);
+sitemap2.png: sitemap2.png (Submit button);
+sitemap3.png: sitemap3.png (Button to close the popup);
+}
+height: 80px;
+}::</p>
+<h2 id="what-does-the-code-look-like">What Does the Code Look Like?</h2>
+<p>Here's the code!<br>
+At the very least, replace the URL at the beginning with your own!</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pyautogui <span class="hljs-keyword">as</span> pa
+<span class="hljs-keyword">import</span> pyperclip
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> subprocess
+<span class="hljs-keyword">import</span> win32gui
+<span class="hljs-keyword">import</span> win32con
+<span class="hljs-keyword">import</span> win32api
+
+URL = <span class="hljs-string">"https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fhitbug0.github.io%2F"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wait_disp</span><span class="hljs-params">(img, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># Waits for an image to appear on the screen. Returns the image's location if found.</span>
+    dt = <span class="hljs-number">0.5</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(int(wait_time/dt)):
+        position_im = pa.locateOnScreen(img, confidence=<span class="hljs-number">0.8</span>)
+        <span class="hljs-keyword">if</span> position_im:
+            <span class="hljs-keyword">return</span> position_im
+        <span class="hljs-keyword">else</span>:
+            time.sleep(dt)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chrome_window</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Retrieves the handle of the most recently opened Chrome window.</span>
+    chrome_windows = []
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">enum_handler</span><span class="hljs-params">(hwnd, lParam)</span>:</span>
+        <span class="hljs-keyword">if</span> win32gui.IsWindowVisible(hwnd) <span class="hljs-keyword">and</span> <span class="hljs-string">'chrome'</span> <span class="hljs-keyword">in</span> win32gui.GetWindowText(hwnd).lower():
+            chrome_windows.append(hwnd)
+    win32gui.EnumWindows(enum_handler, <span class="hljs-literal">None</span>)
+    <span class="hljs-keyword">return</span> chrome_windows[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> chrome_windows <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">move_to_main_screen</span><span class="hljs-params">(hwnd, wait_time=<span class="hljs-number">10</span>)</span>:</span>
+    <span class="hljs-comment"># Switches the display monitor to the main device.</span>
+    dt = <span class="hljs-number">0.5</span>
+    n = wait_time/dt
+    count=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> count&lt;=n:
+        monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow
+
+(hwnd, win32con.MONITOR_DEFAULTTONEAREST))
+        main_monitor_info = win32api.GetMonitorInfo(win32api.MonitorFromWindow(<span class="hljs-number">0</span>, win32con.MONITOR_DEFAULTTOPRIMARY))
+        <span class="hljs-keyword">if</span> monitor_info[<span class="hljs-string">'Device'</span>] == main_monitor_info[<span class="hljs-string">'Device'</span>]:
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># Switch the monitor displaying hwnd</span>
+            win32gui.MoveWindow(hwnd, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">500</span>, <span class="hljs-number">500</span>, <span class="hljs-literal">True</span>) <span class="hljs-comment"># Position the window at 500*500 from the top left corner</span>
+            time.sleep(dt)
+            count +=<span class="hljs-number">1</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Execute command to launch Google Chrome</span>
+    chrome_path = <span class="hljs-string">"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"</span>
+    subprocess.Popen(chrome_path)
+    
+    <span class="hljs-comment"># Adjust the display window</span>
+    time.sleep(<span class="hljs-number">0.5</span>)  <span class="hljs-comment"># Wait time for Chrome to launch</span>
+    chrome_window = <span class="hljs-literal">None</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> chrome_window:
+        chrome_window = get_chrome_window()
+        time.sleep(<span class="hljs-number">0.5</span>)
+    
+    move_to_main_screen(chrome_window) <span class="hljs-comment"># Open in the main screen</span>
+    time.sleep(<span class="hljs-number">0.5</span>)
+    
+    win32gui.ShowWindow(chrome_window, win32con.SW_MAXIMIZE) <span class="hljs-comment"># Maximize the window</span>
+    time.sleep(<span class="hljs-number">0.5</span>)
+    
+    <span class="hljs-comment"># Enter URL</span>
+    pa.hotkey(<span class="hljs-string">'alt'</span>,<span class="hljs-string">'d'</span>)
+    time.sleep(<span class="hljs-number">2</span>)
+    pyperclip.copy(URL)
+    pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    pa.hotkey(<span class="hljs-string">'enter'</span>)
+
+    <span class="hljs-comment"># Find and click sitemap1.png on the screen</span>
+    time.sleep(<span class="hljs-number">0.05</span>)
+    position_im = wait_disp(<span class="hljs-string">'./contents/img/sitemap1.png'</span>)
+    pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>)
+    
+    <span class="hljs-comment"># Enter file name and submit</span>
+    pa.hotkey(<span class="hljs-string">'tab'</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    pyperclip.copy(<span class="hljs-string">"sitemap.xml"</span>)
+    pa.hotkey(<span class="hljs-string">'ctrl'</span>,<span class="hljs-string">'v'</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    position_im = wait_disp(<span class="hljs-string">'./contents/img/sitemap2.png'</span>)
+    pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>)
+    
+    <span class="hljs-comment"># Refresh page after submission is complete</span>
+    position_im = wait_disp(<span class="hljs-string">'./contents/img/sitemap3.png'</span>, wait_time=<span class="hljs-number">40</span>)
+    time.sleep(<span class="hljs-number">0.05</span>)
+    pa.click(position_im, button=<span class="hljs-string">'left'</span>, clicks=<span class="hljs-number">1</span>)
+    time.sleep(<span class="hljs-number">1</span>)
+    pa.hotkey(<span class="hljs-string">'f5'</span>)
+
+main()
+</div></code></pre>
+<h2 id="what-does-the-execution-result-look-like">What Does the Execution Result Look Like?</h2>
+<p>I'll upload a video soon!</p>
+<h2 id="summary">Summary</h2>
+<p>Using the example of &quot;registering an XML file with Google Search Console,&quot; I introduced a method to automate screen operations with Python.<br>
+This method can be useful in scenarios like &quot;performing the same operation repeatedly with software created by historical figures.&quot;<br>
+I have personally used this method for work several times, so if you find it useful, please give it a try!</p>
+
+</body>
+</html>

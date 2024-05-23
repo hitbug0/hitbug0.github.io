@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts_en/2024-04-27-MakeDirectoryStructureDiagram.html" />
+    <meta property="og:title" content="How to Easily Create a Directory Structure Diagram (Includes Python Code)" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="This article introduces two methods for creating a directory structure diagram, depending on the situation." />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-04-27-MakeDirectoryStructureDiagram.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-04-27-MakeDirectoryStructureDiagram.html" />
+    
+    
+    <title>How to Easily Create a Directory Structure Diagram (Includes Python Code) | hitbug</title>
+    <meta name="tag" content="RPA">
+    <meta name="tag" content=" Python">
+    <meta name="description" content="This article introduces two methods for creating a directory structure diagram, depending on the situation." />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-27-MakeDirectoryStructureDiagram.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">What You Will Learn</a></li>
+                        <li><a href="#section2">Two Methods</a></li>
+                        <li><a href="#section3">About Method 2</a></li>
+                        <li><a href="#section4">Summary</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="how-to-easily-create-a-directory-structure-diagram-includes-python-code">How to Easily Create a Directory Structure Diagram (Includes Python Code)</h1>
+<p></p>
+<hr/>
+<p>This article introduces two methods for creating a directory structure diagram, depending on the situation.</p>
+<h2 id="section1">What You Will Learn</h2>
+<p>You'll learn how to easily create directory structure diagrams (folder structure diagrams) like the following:</p>
+<div class="container"><div id="code-content0"><button class="copy-button" data-clipboard-target="#code-content0">Copy</button><pre class="hljs"><code><div>C:\Users\xxx
+ ├── aa
+ │    ├── aa
+ │    ├── bb
+ │    │    └── cc
+ │    ├── dd
+ │    │    ├── ee
+ │    │    │    └── ff
+ │    │    └── gg
+ │    │         ├── hh
+ │    │         └── ii
+ │    └── jj
+ ├── kk
+ └── ll
+</div></code></pre></div></div>
+<h2 id="section2">Two Methods</h2>
+<h3 id="tree"><a href="https://tree.nathanfriend.io/" rel="noopener noreferrer" target="_blank">Tree</a></h3>
+<ul>
+<li>
+<p>By entering the directory structure as text on this web page, it converts it into a nice text-based diagram.</p>
+</li>
+<li>
+<p>Useful if the folder does not yet exist.</p>
+</li>
+<li>
+<p>The <a href="https://gitlab.com/nfriend/tree-online" rel="noopener noreferrer" target="_blank">source code</a> is also available.</p>
+</li>
+</ul>
+<h3 id="directory-structure-diagram"><a href="https://github.com/hitbug0/directory-structure-diagram" rel="noopener noreferrer" target="_blank">directory-structure-diagram</a></h3>
+<ul>
+<li>
+<p>Written by me!</p>
+</li>
+<li>
+<p>Running this Python code in the directory whose structure you want to know produces a nice diagram (<code>directory_structure.txt</code>).</p>
+</li>
+<li>
+<p>Useful if the folder and its contents already exist.</p>
+</li>
+<li>
+<p>Ideal for company tasks since processing is completed locally, and the only action required is running the program.</p>
+</li>
+<li>
+<p>Can be easily integrated into other programs.</p>
+</li>
+</ul>
+<h2 id="section3">About Method 2</h2>
+<p>Since I wrote the code, here's a brief introduction.</p>
+<h3 id="how-to-use">How to Use</h3>
+<ol>
+<li>
+<p>Install Python</p>
+<ul>
+<li>Version: I use <code>3.10</code>, but anything <code>3.6</code> or later should work.</li>
+</ul>
+</li>
+<li>
+<p>Download the code from GitHub's <a href="https://github.com/hitbug0/directory-structure-diagram" rel="noopener noreferrer" target="_blank">directory-structure-diagram</a></p>
+</li>
+<li>
+<p>Place <code>directory-structure-diagram.py</code> and <code>run.bat</code> in the directory whose structure you want to know</p>
+</li>
+<li>
+<p>Run <code>run.bat</code></p>
+<ul>
+<li>Alternatively, you can run <code>directory-structure-diagram.py</code> (the bat file is just for convenience)</li>
+</ul>
+</li>
+</ol>
+<p>That's it!</p>
+<h3 id="code">Code</h3>
+<h4 id="directory-structure-diagrampy">directory-structure-diagram.py</h4>
+<p>You can change the branch length and spacing in the diagram by adjusting <code>NUM_INDENTS</code>, <code>BRANCH</code>, and <code>LEAF</code> at the beginning of the code.</p>
+<div class="container"><div id="code-content1"><button class="copy-button" data-clipboard-target="#code-content1">Copy</button><pre class="hljs"><code><div><span class="hljs-keyword">import</span> os
+
+NUM_INDENTS = <span class="hljs-number">1</span>
+BRANCH = <span class="hljs-string">" "</span>*NUM_INDENTS + <span class="hljs-string">"├── "</span>
+LEAF   = <span class="hljs-string">" "</span>*NUM_INDENTS + <span class="hljs-string">"└── "</span>
+LINE   = <span class="hljs-string">" "</span>*NUM_INDENTS + <span class="hljs-string">"│   "</span>
+SPACE  = <span class="hljs-string">" "</span>*NUM_INDENTS + <span class="hljs-string">"    "</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_line</span><span class="hljs-params">(lst)</span>:</span>
+    result = <span class="hljs-string">""</span>
+    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> lst:
+        <span class="hljs-keyword">if</span> item == <span class="hljs-number">0</span>:
+            result += SPACE
+        <span class="hljs-keyword">elif</span> item == <span class="hljs-number">1</span>:
+            result += LINE
+    <span class="hljs-keyword">return</span> result
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_branch</span><span class="hljs-params">(item, depth, shape=BRANCH)</span>:</span>
+    <span class="hljs-keyword">return</span> make_line(depth) + shape + item + <span class="hljs-string">"\n"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">explore_directory</span><span class="hljs-params">(directory, depth=[])</span>:</span>
+    result = <span class="hljs-string">""</span>
+    items = os.listdir(directory)
+    items.sort()
+    <span class="hljs-keyword">for</span> index, item <span class="hljs-keyword">in</span> enumerate(items):
+        path = os.path.join(directory, item)
+        <span class="hljs-keyword">if</span> os.path.isdir(path):
+            <span class="hljs-keyword">if</span> index == len(items) - <span class="hljs-number">1</span>:
+                result += make_branch(item, depth, shape=LEAF)
+                add_depth = <span class="hljs-number">0</span>
+            <span class="hljs-keyword">else</span>:
+                result += make_branch(item, depth)
+                add_depth = <span class="hljs-number">1</span>
+            result += explore_directory(path, depth + [add_depth])
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">if</span> index == len(items) - <span class="hljs-number">1</span>:
+                result += make_branch(item, depth, shape=LEAF)
+                depth = depth[:<span class="hljs-number">-1</span>]+[<span class="hljs-number">0</span>]
+            <span class="hljs-keyword">else</span>:
+                result += make_branch(item, depth)
+    <span class="hljs-keyword">return</span> result
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">output_directory_structure</span><span class="hljs-params">(directory)</span>:</span>
+    structure = explore_directory(directory)
+    <span class="hljs-keyword">with</span> open(<span class="hljs-string">"directory_structure.txt"</span>, <span class="hljs-string">"w"</span>, encoding=<span class="hljs-string">"utf-8"</span>) <span class="hljs-keyword">as</span> file:
+        file.write(directory + <span class="hljs-string">"\n"</span>)
+        file.write(structure)
+
+current_directory = os.getcwd()
+output_directory_structure(current_directory)
+</div></code></pre></div></div>
+<h4 id="runbat">run.bat</h4>
+<div class="container"><div id="code-content2"><button class="copy-button" data-clipboard-target="#code-content2">Copy</button><pre class="hljs"><code><div>python directory-structure-diagram.py
+</div></code></pre></div></div>
+<h2 id="section4">Summary</h2>
+<p>I introduced two methods for creating directory structure diagrams, suitable for different situations.<br/>
+I hope you find this helpful!</p>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts_en/2024-04-27-MakeDirectoryStructureDiagram.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>

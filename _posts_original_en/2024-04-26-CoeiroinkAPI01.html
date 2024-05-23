@@ -365,91 +365,91 @@ code {
           : 'default'
     });
   </script>
-<h1 id="coeiroink-v2-api-%E3%82%92%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6python%E3%81%A7%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F">COEIROINK v2 API をつかってPythonで音声合成してみた</h1>
-<p>::tags{音声合成,COEIROINK,Python}::</p>
+<h1 id="trying-voice-synthesis-with-coeiroink-v2-api-in-python">Trying Voice Synthesis with COEIROINK v2 API in Python</h1>
+<p>::tags{Voice Synthesis, COEIROINK, Python}::</p>
 <hr>
-<p>COEIROINKという音声合成ソフトを、Pythonから実行してみました。<br>
-そのときの方法と結果を具体的に紹介します。<br>
-コードはGitHubにも<a href="https://github.com/hitbug0/basic-codes-coeiroink-api">basic-codes-coeiroink-api</a>としてアップしているので見てみてくださいね！</p>
-<h2 id="%E3%81%93%E3%81%AE%E8%A8%98%E4%BA%8B%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8B%E3%81%93%E3%81%A8">この記事でわかること</h2>
-<p>この記事ではCOEIROINK (v2)をPythonから動かすときの具体的な手順とコード(例)について紹介します。<br>
-COEIROINKの概要やその利用規約、そもそもAI音声合成とは何かみたいなことは<a href="./posts/2024-04-25-CoeiroinkGUI.html">前回のCOEIROINKの記事</a>を読んでみてください～</p>
-<h2 id="%E6%89%8B%E9%A0%86">手順</h2>
-<p>最小限のコードで実行する場合は、準備含めて以下のステップになります。<br>
-毎回やるのは 2., 5., 6. です。<br>
-...めんどくさくない？　という人は<a href="#section5">便利なスクリプト</a>も併せてご覧ください～</p>
+<p>I tried running the COEIROINK voice synthesis software from Python.<br>
+I'll specifically introduce the methods and results from that attempt.<br>
+The code is also uploaded on GitHub as <a href="https://github.com/hitbug0/basic-codes-coeiroink-api">basic-codes-coeiroink-api</a>, so feel free to check it out!</p>
+<h2 id="what-you-will-learn-from-this-article">What You Will Learn from This Article</h2>
+<p>In this article, I'll introduce specific steps and example code for running COEIROINK (v2) from Python.<br>
+For an overview of COEIROINK, its terms of use, and what AI voice synthesis is, check out my <a href="./2024-04-25-CoeiroinkGUI.html">previous COEIROINK article</a>.</p>
+<h2 id="steps">Steps</h2>
+<p>If you want to execute with minimal code, follow these steps including the preparation.<br>
+You only need to do steps 2, 5, and 6 each time.<br>
+If you think this is too much hassle, check out the <a href="#section5">handy scripts</a>.</p>
 <ol>
 <li>
-<p>Pythonおよびそのライブラリをインストールする（初回のみ）</p>
+<p>Install Python and its libraries (only once)</p>
 <ul>
-<li>Pythonをインストールします。
+<li>Install Python.
 <ul>
-<li>バージョンについて、自分は3.10ですが、たぶん3.6以降であればOKかと思います</li>
+<li>I use version 3.10, but anything from 3.6 onwards should work.</li>
 </ul>
 </li>
-<li><code>requests</code>と<code>pydub</code>をpipでインストールします</li>
-<li><code>json</code>は標準ライブラリなので、Pythonが入っていればインストール不要です</li>
-</ul>
-</li>
-<li>
-<p>COEIROINKをGUIで使える状態にして、起動する</p>
-<ul>
-<li><a href="./2024-04-25-CoeiroinkGUI.html/#section4">前回のCOEIROINKの記事</a>に方法を書いてます</li>
+<li>Install <code>requests</code> and <code>pydub</code> via pip.</li>
+<li><code>json</code> is a standard library, so no need to install it if Python is already installed.</li>
 </ul>
 </li>
 <li>
-<p>以下の<code>check_speaker_info.py</code>を実行し、結果をメモしておく（モデル追加時のみ）</p>
+<p>Set up COEIROINK in a usable state via the GUI and start it.</p>
+<ul>
+<li>The method is described in my <a href="./posts_2024-04-25-CoeiroinkGUI.html/#section4">previous COEIROINK article</a>.</li>
+</ul>
 </li>
 <li>
-<p><code>check_speaker_info.py</code>の実行結果に応じて、<code>text2audio.py</code>の<code>SPEAKER_INFO</code>を書き換える</p>
+<p>Run the <code>check_speaker_info.py</code> script and note the results (only when adding new models).</p>
 </li>
 <li>
-<p>音声にしたい会話内容を<code>input.txt</code>に書く</p>
+<p>Based on the <code>check_speaker_info.py</code> execution results, update <code>SPEAKER_INFO</code> in <code>text2audio.py</code>.</p>
 </li>
 <li>
-<p><code>text2audio.py</code>を実行する</p>
+<p>Write the conversation content you want to convert to audio in <code>input.txt</code>.</p>
+</li>
+<li>
+<p>Run <code>text2audio.py</code>.</p>
 </li>
 </ol>
-<h2 id="%E3%82%B3%E3%83%BC%E3%83%89">コード</h2>
-<p>AI声優-朱花とAI声優-金苗の会話をtxtファイルから自動作成します。<br>
-以下の3つのファイルを使います。</p>
+<h2 id="code">Code</h2>
+<p>Automatically create a conversation between AI Voice Actor Ayaka and AI Voice Actor Kanae from a text file.<br>
+We'll use the following three files.</p>
 <ul>
 <li>
-<p><code>check_speaker_info.py</code>（モデル追加時のみ）</p>
+<p><code>check_speaker_info.py</code> (only when adding new models)</p>
 <ul>
-<li>このコードを実行することで、音声モデル(<code>speaker</code>)の情報と、話し方(<code>style</code>)の情報が取得できます。</li>
-<li>ここで取得した情報をプログラムで指定します。</li>
-<li>実行するディレクトリはどこでも大丈夫です。</li>
+<li>This script retrieves information about the voice models (<code>speaker</code>) and their speaking styles (<code>style</code>).</li>
+<li>Specify the obtained information in your program.</li>
+<li>You can run this script from any directory.</li>
 </ul>
 </li>
 <li>
 <p><code>text2audio.py</code></p>
 <ul>
-<li><code>input.txt</code>に書かれた会話を音声ファイルに変換するコードです</li>
-<li><code>check_speaker_info.py</code>の出力結果に応じてSPEAKER_INFOを書き換えてくださいね</li>
+<li>Converts the conversation written in <code>input.txt</code> into an audio file.</li>
+<li>Update <code>SPEAKER_INFO</code> based on the output from <code>check_speaker_info.py</code>.</li>
 </ul>
 </li>
 <li>
 <p><code>input.txt</code></p>
 <ul>
-<li>「音声モデル名: セリフ」の形式で書くようにしています</li>
-<li>音声モデルを追加するときは、音声モデル名をプログラムと連動させるようにしてくださいね</li>
+<li>Written in the format &quot;Voice Model Name: Dialogue.&quot;</li>
+<li>When adding voice models, ensure the voice model names match those in the program.</li>
 </ul>
 </li>
 </ul>
-<p>それぞれの中身は以下の通りです。<br>
-<code>text2audio.py</code>の機能は最低限なので、ここからカスタマイズしていってください！</p>
+<p>Here are the contents of each file.<br>
+The functionality of <code>text2audio.py</code> is minimal, so customize it as needed!</p>
 <h3 id="checkspeakerinfopy">check_speaker_info.py</h3>
-<p>このコードを実行することで、音声モデル(<code>speaker</code>)の情報と、話し方(<code>style</code>)の情報が取得できます。<br>
-ここで取得した情報をプログラムで指定します。
-実行するディレクトリはどこでも大丈夫です。</p>
+<p>This script retrieves information about the voice models (<code>speaker</code>) and their speaking styles (<code>style</code>).<br>
+Specify the obtained information in your program.<br>
+You can run this script from any directory.</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">import</span> json
 <span class="hljs-keyword">import</span> requests
 
-<span class="hljs-comment"># やり取りするローカルサーバ</span>
+<span class="hljs-comment"># Local server for communication</span>
 URL = <span class="hljs-string">"http://localhost:50032/"</span>
 
-<span class="hljs-comment"># スピーカーの情報を一覧表示</span>
+<span class="hljs-comment"># List speaker information</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_speaker_info</span><span class="hljs-params">()</span>:</span>
     response = requests.get(URL+<span class="hljs-string">"v1/speakers"</span>)
     speakers = response.json()
@@ -463,29 +463,29 @@ URL = <span class="hljs-string">"http://localhost:50032/"</span>
 
 check_speaker_info()
 </div></code></pre>
-<p>以下が実行結果例です。</p>
+<p>Here is an example output.</p>
 <pre class="hljs"><code><div>==============================
-name: AI声優-朱花
+name: AI Voice Actor Ayaka
 <span class="hljs-attr">id</span>:   d1143ac1-c486<span class="hljs-number">-4273</span><span class="hljs-number">-92</span>ef-a30938d01b91
 <span class="hljs-attr">styles</span>:
-       <span class="hljs-number">50</span> : のーまるv2
+       <span class="hljs-number">50</span> : normalv2
 
 ==============================
-name: AI声優-金苗
+name: AI Voice Actor Kanae
 <span class="hljs-attr">id</span>:   d41bcbd9-f4a9<span class="hljs-number">-4e10</span>-b000<span class="hljs-number">-7</span>a431568dd01
 <span class="hljs-attr">styles</span>:
-      <span class="hljs-number">100</span> : のーまる
-      <span class="hljs-number">101</span> : 愉悦 Aタイプ
-      <span class="hljs-number">103</span> : 愉悦 Bタイプ
-      <span class="hljs-number">102</span> : 喜び
+      <span class="hljs-number">100</span> : normal
+      <span class="hljs-number">101</span> : joy A type
+      <span class="hljs-number">103</span> : joy B type
+      <span class="hljs-number">102</span> : happiness
 
 ==============================
-name: つくよみちゃん
+name: Tsukuyomi-chan
 <span class="hljs-attr">id</span>:   <span class="hljs-number">3</span>c37646f<span class="hljs-number">-3881</span><span class="hljs-number">-5374</span><span class="hljs-number">-2</span>a83<span class="hljs-number">-149267990</span>abc
 <span class="hljs-attr">styles</span>:
-        <span class="hljs-number">0</span> : れいせい
+        <span class="hljs-number">0</span> : calm
 </div></code></pre>
-<h3 id="inputtxt%E4%BE%8B%E3%81%A7%E3%81%99">input.txt（例です）</h3>
+<h3 id="inputtxt-example">input.txt (example)</h3>
 <pre class="hljs"><code><div>ayaka: 今日はいい天気だね～
 <span class="hljs-attr">ayaka</span>: そうだ！　お姉ちゃん、外に行こうよ！
 <span class="hljs-attr">kanae</span>: うーん、でもちょっと寒くない？
@@ -495,18 +495,18 @@ name: つくよみちゃん
 <span class="hljs-keyword">import</span> requests
 <span class="hljs-keyword">from</span> pydub <span class="hljs-keyword">import</span> AudioSegment, playback
 
-<span class="hljs-comment"># やり取りするローカルサーバ</span>
+<span class="hljs-comment"># Local server for communication</span>
 URL = <span class="hljs-string">"http://localhost:50032/"</span>
 
-<span class="hljs-comment"># 音声モデルの情報</span>
-<span class="hljs-comment"># 音声モデル名: [音声モデル(speaker)のid, 話し方(style)のid]</span>
+<span class="hljs-comment"># Voice model information</span>
+<span class="hljs-comment"># Voice model name: [voice model (speaker) id, speaking style (style) id]</span>
 SPEAKER_INFO = {
-    <span class="hljs-string">"kanae"</span>: [<span class="hljs-string">'d41bcbd9-f4a9-4e10-b000-7a431568dd01'</span>, <span class="hljs-string">'100'</span>], <span class="hljs-comment"># AI声優-金苗</span>
-    <span class="hljs-string">"ayaka"</span>: [<span class="hljs-string">'d1143ac1-c486-4273-92ef-a30938d01b91'</span>, <span class="hljs-string">'50'</span> ], <span class="hljs-comment"># AI声優-朱花</span>
+    <span class="hljs-string">"kanae"</span>: [<span class="hljs-string">'d41bcbd9-f4a9-4e10-b000-7a431568dd01'</span>, <span class="hljs-string">'100'</span>], <span class="hljs-comment"># AI Voice Actor Kanae</span>
+    <span class="hljs-string">"ayaka"</span>: [<span class="hljs-string">'d1143ac1-c486-4273-92ef-a30938d01b91'</span>, <span class="hljs-string">'50'</span> ], <span class="hljs-comment"># AI Voice Actor Ayaka</span>
 }
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">make_wav</span><span class="hljs-params">(text, speed_scale, speaker_info)</span>:</span>
-    <span class="hljs-comment"># 音声モデルを使ってtextからwavを生成する関数</span>
+    <span class="hljs-comment"># Function to generate wav from text using the voice model</span>
     speaker_uuid, style_id = speaker_info
     response = requests.post(
         URL+<span class="hljs-string">"v1/predict"</span>,
@@ -518,13 +518,13 @@ SPEAKER_INFO = {
             }
         )
     
-    <span class="hljs-keyword">if</span> response.content==<span class="hljs-string">b'Internal Server Error'</span>:
+    <span class="hljs-keyword">if</span> response.content == <span class="hljs-string">b'Internal Server Error'</span>:
         print(<span class="hljs-string">'Internal Server Error'</span>)
     
     <span class="hljs-keyword">return</span> response.content
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">play_wav</span><span class="hljs-params">(wav)</span>:</span>
-    <span class="hljs-comment"># wavを再生する関数</span>
+    <span class="hljs-comment"># Function to play wav</span>
     playback.play(
         AudioSegment(
             wav,
@@ -536,80 +536,80 @@ SPEAKER_INFO = {
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">write_wav_file</span><span class="hljs-params">(file_path, audio_data, sample_width=<span class="hljs-number">2</span>, sample_rate=<span class="hljs-number">44100</span>, channels=<span class="hljs-number">1</span>)</span>:</span>
-    <span class="hljs-comment"># wavを書き出す関数</span>
-    <span class="hljs-comment"># file_path: 書き出すファイルのパス</span>
-    <span class="hljs-comment"># audio_data: 書き出す音声データ（バイナリ形式の文字列）</span>
-    <span class="hljs-comment"># sample_width: サンプルのビット幅（バイト数）デフォルトは2（16bit）</span>
-    <span class="hljs-comment"># sample_rate: サンプルレート デフォルトは44100Hz</span>
-    <span class="hljs-comment"># channels: チャンネル数 デフォルトは1（ステレオ）</span>
+    <span class="hljs-comment"># Function to write wav file</span>
+    <span class="hljs-comment"># file_path: Path to save the file</span>
+    <span class="hljs-comment"># audio_data: Audio data to save (binary string)</span>
+    <span class="hljs-comment"># sample_width: Sample bit width (byte size) default is 2 (16bit)</span>
+    <span class="hljs-comment"># sample_rate: Sample rate default is 44100Hz</span>
+    <span class="hljs-comment"># channels: Number of channels default is 1 (mono)</span>
     audio_segment = AudioSegment(audio_data, sample_width=sample_width, frame_rate=sample_rate, channels=channels)
-    <span class="hljs-comment"># wavファイルとして保存</span>
+    <span class="hljs-comment"># Save as wav file</span>
     audio_segment.export(file_path, format=<span class="hljs-string">"wav"</span>)
 
-<span class="hljs-comment"># メイン処理</span>
+<span class="hljs-comment"># Main process</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">text2audio</span><span class="hljs-params">()</span>:</span>
-    <span class="hljs-comment"># テキストファイルの読み込み</span>
+    <span class="hljs-comment"># Read text file</span>
     <span class="hljs-keyword">with</span> open(<span class="hljs-string">"input.txt"</span>, <span class="hljs-string">"r"</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> file:
-        <span class="hljs-comment"># ファイルの各行をリストとして読み込む</span>
+        <span class="hljs-comment"># Read each line as a list</span>
         lines = file.readlines()
 
-    speed_scale = <span class="hljs-number">1.0</span> <span class="hljs-comment"># 発話速度</span>
+    speed_scale = <span class="hljs-number">1.0</span> <span class="hljs-comment"># Speaking speed</span>
     
-    <span class="hljs-comment"># 音声合成</span>
+    <span class="hljs-comment"># Voice synthesis</span>
     audio_data = <span class="hljs-string">b''</span>
     <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> lines:
         speaker, text = line.split(<span class="hljs-string">":"</span>)
         w0 = make_wav(text, speed_scale, SPEAKER_INFO[speaker])
-        <span class="hljs-comment"># _ = play_wav(w0) # 一つずつ再生する場合は使う</span>
+        <span class="hljs-comment"># _ = play_wav(w0) # Use this to play each part individually</span>
         audio_data += w0
 
-    <span class="hljs-comment"># 連結した音声の出力</span>
-    play_wav(audio_data) <span class="hljs-comment"># 再生</span>
-    write_wav_file(<span class="hljs-string">"output.wav"</span>, audio_data) <span class="hljs-comment"># 保存</span>
+    <span class="hljs-comment"># Output concatenated audio</span>
+    play_wav(audio_data) <span class="hljs-comment"># Play</span>
+    write_wav_file(<span class="hljs-string">"output.wav"</span>, audio_data) <span class="hljs-comment"># Save</span>
 
 text2audio()
 </div></code></pre>
-<h2 id="%E7%B5%90%E6%9E%9C">結果</h2>
-<p>上記のコードを実行した結果を貼っておきます。</p>
+<h2 id="results">Results</h2>
+<p>Here are the results of running the above code.</p>
 <iframe src="https://www.youtube.com/embed/ObrSrKgrjMQ?si=VvjUSx0-2EsiLsob" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<p>少しイントネーションの不自然さは残りますが、無料で気軽に使えるものの割には本当にすごいなぁと思います。<br>
-物足りない方は、もっと調整していくヒントを次の章に書いたので見ていってくださいね！</p>
-<h2 id="%E4%BE%BF%E5%88%A9%E3%81%AA%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">便利なスクリプト</h2>
-<p>あまりにも手動操作が多いので、以下3つのスクリプトで少し便利にしました。<br>
-手順はこんな感じになりました。</p>
+<p>The intonation may still be a bit unnatural, but considering it's free and easy to use, it's pretty impressive.<br>
+If you find it insufficient, I've included hints for further adjustments in the next section, so take a look!</p>
+<h2 id="handy-scripts">Handy Scripts</h2>
+<p>There are too many manual operations, so I've made things a bit easier with these three scripts.<br>
+The procedure is now as follows:</p>
 <ol>
 <li>
-<p><code>start.bat</code>を実行する</p>
+<p>Run <code>start.bat</code>.</p>
 <ul>
 <li>
-<p>COEIROINKが自動で起動する</p>
+<p>COEIROINK will start automatically.</p>
 </li>
 <li>
-<p>apiのドキュメントのページも自動で開く</p>
+<p>The API documentation page will also open automatically.</p>
 <ul>
-<li>プログラムを改良したい人はここを参考にしてください！　ちょっとわかりにくいですが...</li>
+<li>If you want to improve the program, refer to this! It might be a bit hard to understand...</li>
 </ul>
 </li>
 <li>
-<p><code>check_speaker_info.py</code>も自動で実行される</p>
+<p><code>check_speaker_info.py</code> will also run automatically.</p>
 <ul>
-<li>モデル追加時はこの出力に応じて<code>text2audio.py</code>の<code>SPEAKER_INFO</code>を書き換える</li>
+<li>When adding models, update <code>SPEAKER_INFO</code> in <code>text2audio.py</code> based on this output.</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p>音声にしたい会話内容を<code>input.txt</code>に書く</p>
+<p>Write the conversation content you want to convert to audio in <code>input.txt</code>.</p>
 </li>
 <li>
-<p><code>run.bat</code>を実行する</p>
+<p>Run <code>run.bat</code>.</p>
 <ul>
-<li><code>text2audio.py</code>が自動で実行される</li>
+<li><code>text2audio.py</code> will run automatically.</li>
 </ul>
 </li>
 </ol>
-<p>以下のようなフォルダ構成を前提としていますのでご注意くださいね。<br>
-（スクリプトはフォルダに入れてまとめておくのがすっきりしてよいと思います。）</p>
+<p>Please note that this assumes the following folder structure.<br>
+(It's neat to keep the scripts organized in a folder.)</p>
 <br>
 <ul>
 <li><strong>scripts</strong>
@@ -625,18 +625,20 @@ text2audio()
 </ul>
 <br>
 <h3 id="startbat">start.bat</h3>
-<p><code>COEIROINKv2.exe</code>のパスを正しいものに置き換える必要があるので、<br>
-使う前に2行目を書き換えてくださいね！</p>
+<p>You need to replace the path of <code>COEIROINKv2.exe</code> with the correct one,<br>
+so make sure to edit the second line before using it!</p>
 <pre class="hljs"><code><div>@<span class="hljs-built_in">echo</span> off
 <span class="hljs-built_in">start</span> C:\Users\xxxxxxxxxxxxx\COEIROINKv2.exe
-powershell -ExecutionPolicy Bypass -File "./scripts/connect.ps1"
+powershell -ExecutionPolicy Bypass -File "./scripts
+
+/connect.ps1"
 python ./scripts/check_speaker_info.py
 <span class="hljs-built_in">pause</span>
 </div></code></pre>
 <h3 id="connectps1">connect.ps1</h3>
-<p><code>start.bat</code>の実行時に呼び出すファイルです。<br>
-ローカルサーバと通信できるようになったらChromeでそのページを開くスクリプトです。<br>
-Google Chromeのパスが違う場合は最後から2行目を書き換えてください！</p>
+<p>A file called by <code>start.bat</code>.<br>
+This script will open the page in Chrome once the local server is ready for communication.<br>
+If the path to Google Chrome is different, edit the second-to-last line.</p>
 <pre class="hljs"><code><div><span class="hljs-variable">$maxAttempts</span> = <span class="hljs-number">100</span>
 <span class="hljs-variable">$waitTimeSeconds</span> = <span class="hljs-number">0.5</span>
 
@@ -660,13 +662,13 @@ Google Chromeのパスが違う場合は最後から2行目を書き換えてく
 <span class="hljs-built_in">Start-Process</span> <span class="hljs-literal">-FilePath</span> <span class="hljs-variable">$chromePath</span> <span class="hljs-literal">-ArgumentList</span> <span class="hljs-string">"http://localhost:50032/docs"</span>
 </div></code></pre>
 <h3 id="runbat">run.bat</h3>
-<p><code>text2audio.py</code>を実行するためのbatファイルです。</p>
+<p>A batch file to execute <code>text2audio.py</code>.</p>
 <pre class="hljs"><code><div>python ./scripts/text2audio.py
 <span class="hljs-built_in">pause</span>
 </div></code></pre>
-<h2 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h2>
-<p>COEIROINKをPythonから実行する際の方法と結果を具体的に紹介しました。<br>
-追々もう少し応用的なところもいじってみたいと思います。</p>
+<h2 id="summary">Summary</h2>
+<p>I introduced specific methods and results for running COEIROINK from Python.<br>
+In the future, I plan to explore more advanced applications.</p>
 
 </body>
 </html>
