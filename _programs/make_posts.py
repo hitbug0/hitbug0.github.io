@@ -296,7 +296,7 @@ def make_post(post_template, input_file_path, output_dir, language):
     thumbnail = """https://avatars.githubusercontent.com/u/166343381?v=4?s=400"""
     description = extract_abstract(soup)
 
-    include_files_old = ['::headerfilename::','::hamburgermenufilename::', '::tagfilename::']
+    include_files_old = ['::hamburgermenufilename::', '::headerfilename::','::tagfilename::']
     include_files_new = [
         "./includes/hamburger-menu.html",
         "./includes/header.html",
