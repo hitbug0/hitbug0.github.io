@@ -296,9 +296,23 @@ def make_post(post_template, input_file_path, output_dir, language):
     thumbnail = """https://avatars.githubusercontent.com/u/166343381?v=4?s=400"""
     description = extract_abstract(soup)
 
+    include_files_old = ['::headerfilename::','::hamburgermenufilename::', '::tagfilename::']
+    include_files_new = [
+        "./includes/hamburger-menu.html",
+        "./includes/header.html",
+        "./includes/tags-post.html"
+    ]
+    if language == "en":
+        include_files_new = [
+            "./includes/hamburger-menu-en.html",
+            "./includes/header-en.html",
+            "./includes/tags-post-en.html"
+        ]
+
+
     replace_and_write(post_template, 
-                     ['::hreflang::', '::language::', '::filename::','::thumbnail::', '::body::','::date::','::description::','::title::', '::sections::','::directory::']     + old_tag_codes + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
-                     [   hreflang,       language,       file_name,     thumbnail,       body,      date,      description,      title,       sections   ,DIRECTORY[language]] + new_tag_codes + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
+                     ['::hreflang::', '::language::', '::filename::', '::thumbnail::', '::body::','::date::','::description::','::title::', '::sections::','::directory::']     + include_files_old + old_tag_codes + old_code_blocks + old_section_codes + old_img_codes + old_stl_codes, 
+                     [   hreflang,       language,       file_name,      thumbnail,       body,      date,      description,      title,       sections   ,DIRECTORY[language]] + include_files_new + new_tag_codes + new_code_blocks + new_section_codes + new_img_codes + new_stl_codes,
                      os.path.join(output_dir, file_name))
 
 

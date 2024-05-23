@@ -91,8 +91,8 @@ def make_sortbydate_page(df, config):
     # 置換と出力
     main_contents = config["introduction"] + month_buttons + article_info
     replace_and_write(sortbydate_template, 
-                      ['::hreflang::', '::tagfilename::',     '::language::',     '::URL::',                  '::headerfilename::',       '::description::', '::articles::', '::style::'], 
-                      [hreflang, config["tag file name"], config["language"], config["output file name"], config["header file name"], config["description"], main_contents,  style], 
+                      ['::hreflang::', '::tagfilename::',     '::language::',     '::URL::',                  '::headerfilename::',        '::hamburgermenufilename::',       '::description::', '::articles::', '::style::'], 
+                      [hreflang, config["tag file name"], config["language"], config["output file name"], config["header file name"], config["hamburgermenu file name"], config["description"], main_contents,  style], 
                       config["output file name"])
 
 
@@ -122,6 +122,7 @@ CONFIG = {
         "introduction":  INTRODUCTION_JA,
         "tag file name": './includes/month.html',
         "header file name": './includes/header.html',
+        "hamburgermenu file name": './includes/hamburger-menu.html',
         "article dir":    "posts",
         "output file name": 'sort-by-date.html',
         "top page url": ""
@@ -133,6 +134,7 @@ CONFIG = {
         "introduction":  INTRODUCTION_EN,
         "tag file name": './includes/month-en.html',
         "header file name": './includes/header-en.html',
+        "hamburgermenu file name": './includes/hamburger-menu-en.html',
         "article dir":    "posts_en",
         "output file name": 'sort-by-date-en.html',
         "top page url": "/index-en.html"
@@ -149,3 +151,4 @@ for lang in ["ja", "en"]:
     make_sortbydate_page(df, CONFIG[lang])
 
 print("\n")
+

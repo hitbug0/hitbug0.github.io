@@ -3,7 +3,7 @@ from urllib.parse import unquote
 from modules import replace_and_write, collect_articles_info, format_tag, GOOGLE_AD
 
 
-def make_tags(df, output_file_names):
+def make_tags(df, output_file_names, url):
     """
     メイン処理。
     tags-temp.htmlに記事ファイル情報を組み込むことでtags-*.htmlを作成する
@@ -21,7 +21,7 @@ def make_tags(df, output_file_names):
     # タグリスト(左サイドバー)のコードを作成する
     tags_for_index = [f"""<li><a href="#{tag_info[1]}">{tag_info[2]}</a></li>""" for tag_info in tag_info_list]
     tags_for_index = '\n    '.join(tags_for_index)
-    tags_for_posts = [f"""<li><a href="../#{tag_info[1]}">{tag_info[2]}</a></li>""" for tag_info in tag_info_list]
+    tags_for_posts = [f"""<li><a href="../{url}#{tag_info[1]}">{tag_info[2]}</a></li>""" for tag_info in tag_info_list]
     tags_for_posts = '\n    '.join(tags_for_posts)
 
     # テンプレートの読み込み
@@ -92,8 +92,8 @@ def make_index_page(df, config):
     # 置換と出力
     main_contents = config["introduction"] + tag_buttons + article_info
     replace_and_write(index_template, 
-                      ['::hreflang::', '::tagfilename::',          '::headerfilename::',       '::language::',   '::URL::',     '::description::',    '::articles::', '::style::'], 
-                      [hreflang, config["tag file name"][0], config["header file name"], config["language"], config["url"], config["description"], main_contents,  style], 
+                      ['::hreflang::', '::tagfilename::',         '::headerfilename::',       '::hamburgermenufilename::',       '::language::',   '::URL::',     '::description::',    '::articles::', '::style::'], 
+                      [hreflang, config["tag file name"][0], config["header file name"], config["hamburgermenu file name"], config["language"], config["url"], config["description"], main_contents,  style], 
                       config["output file name"])
 
 
@@ -124,6 +124,7 @@ CONFIG = {
         "introduction":  INTRODUCTION_JA,
         "tag file name": ['./includes/tags-index.html', './includes/tags-post.html'],
         "header file name": './includes/header.html',
+        "hamburgermenu file name": './includes/hamburger-menu.html',
         "article dir":    "posts",
         "output file name": 'index.html'
     },
@@ -134,6 +135,7 @@ CONFIG = {
         "introduction":  INTRODUCTION_EN,
         "tag file name": ['./includes/tags-index-en.html', './includes/tags-post-en.html'],
         "header file name": './includes/header-en.html',
+        "hamburgermenu file name": './includes/hamburger-menu-en.html',
         "article dir":    "posts_en",
         "output file name": 'index-en.html'
     },
@@ -146,7 +148,7 @@ print("="*50)
 for lang in ["ja", "en"]:
     search_key = CONFIG[lang]["article dir"]+"/20*.html"
     df = collect_articles_info(search_key)
-    make_tags(df, CONFIG[lang]["tag file name"])
+    make_tags(df, CONFIG[lang]["tag file name"], CONFIG[lang]["url"])
     make_index_page(df, CONFIG[lang])
 
 print("\n")
