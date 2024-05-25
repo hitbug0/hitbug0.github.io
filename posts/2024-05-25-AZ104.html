@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head prefix="og: https://ogp.me/ns#">
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="hitbug" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@hitbug0" />
+
+    <meta property="og:url" content="https://hitbug0.github.io/posts/2024-05-25-AZ104.html" />
+    <meta property="og:title" content="AZ-900資格もクラウド実務経験もなしでAZ-104に2週間で合格できたので、なぜ合格できたかを考える" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/166343381?v=4?s=400" />
+    <meta property="og:description" content="先日、AZ-104という資格試験を受験しました。
+        タイトなスケジュールでしたが何とか合格できたので、うまくいった要因を考えてみたいと思います。" />
+    
+    <link rel="alternate" hreflang="ja" href="https://hitbug0.github.io/posts/2024-05-25-AZ104.html" />
+    <link rel="alternate" hreflang="en" href="https://hitbug0.github.io/posts_en/2024-05-25-AZ104.html" />
+    
+    
+    <title>AZ-900資格もクラウド実務経験もなしでAZ-104に2週間で合格できたので、なぜ合格できたかを考える | hitbug</title>
+    <meta name="tag" content="Azure">
+    <meta name="tag" content=" 資格">
+    <meta name="description" content="先日、AZ-104という資格試験を受験しました。
+        タイトなスケジュールでしたが何とか合格できたので、うまくいった要因を考えてみたいと思います。" />
+
+    <!-- 共通: 基本設定-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../includes/style.css" />
+    <link rel="icon" href="../contents/icon/hitbug-black-transparent.png" />
+
+    <!-- 共通: フォントの設定-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" crossorigin="anonymous" />
+
+    <!-- 共通: lightbox (ウェブサイト上で画像や動画を拡大表示するためのポップアップウィンドウ) の設定-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" crossorigin="anonymous"></script>
+
+    <!-- 共通: Google AdSenseの設定-->
+    <meta name="google-adsense-account" content="ca-pub-5830432592137126" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5830432592137126"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- 共通: Google Analyticsの設定-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NP6QCR05Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2NP6QCR05Z');
+    </script>
+
+    <!-- 共通: コード表示とコピーの設定-->
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- 共通: ヘッダ -->
+    <header></header>
+    <script>$(function(){$('header').load('../includes/header.html');});</script>
+
+    <div id="wrapper">
+        <div id="main">
+            <!-- コンテンツ -->
+            <div id="hidden-left-sidebar"></div>
+            <div id="left-sidebar">
+                <div id="left-share">
+                    <h1 class="text">Share!</h1>
+                    <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts/2024-05-25-AZ104.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+                        <img  class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+                    </a>
+                </div>
+                <br>
+                <div class="text">
+                    <h1>In this article</h1>
+                    <ul>
+                        <li><a href="#section1">想定読者</a></li>
+                        <li><a href="#section2">AZ-104について</a></li>
+                        <li><a href="#section3">状況</a></li>
+                        <li><a href="#section4">合格できた要因</a></li>
+                        <li><a href="#section5">感想</a></li>
+                        <li><a href="#section6">まとめ</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div id="left-sidebar-tags" class="text"></div>
+                <script>$(function(){$('#left-sidebar-tags').load('../includes/tags-post.html');});</script>
+            </div>
+            <div id="center">
+                <div class="text">
+
+
+                    
+<script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="az-900%E8%B3%87%E6%A0%BC%E3%82%82%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E5%AE%9F%E5%8B%99%E7%B5%8C%E9%A8%93%E3%82%82%E3%81%AA%E3%81%97%E3%81%A7az-104%E3%81%AB2%E9%80%B1%E9%96%93%E3%81%A7%E5%90%88%E6%A0%BC%E3%81%A7%E3%81%8D%E3%81%9F%E3%81%AE%E3%81%A7%E3%81%AA%E3%81%9C%E5%90%88%E6%A0%BC%E3%81%A7%E3%81%8D%E3%81%9F%E3%81%8B%E3%82%92%E8%80%83%E3%81%88%E3%82%8B">AZ-900資格もクラウド実務経験もなしでAZ-104に2週間で合格できたので、なぜ合格できたかを考える</h1>
+<p></p>
+<hr/>
+<p>先日、AZ-104という資格試験を受験しました。<br/>
+タイトなスケジュールでしたが何とか合格できたので、うまくいった要因を考えてみたいと思います。</p>
+<h2 id="section1">想定読者</h2>
+<p>以下のような方には、勉強の戦略として参考になるかもしれません。<br/>
+試験=AZ-104試験です。</p>
+<ul>
+<li>試験が近づいてきたが勉強が進められていない人</li>
+<li>試験が近づいてきたが体調が悪い人</li>
+<li>昇給目的などで、AZ-900を飛ばしてAZ-104を取りたいと思っている人</li>
+<li>試験に落ちた人</li>
+</ul>
+<p>また、以下のような人にも向けて書いてます。</p>
+<ul>
+<li>Udemyの模試(後述)を受けて点数が取れずにへこんでいる人
+<ul>
+<li>自分の前日夜の模試得点率は53%でした。元気出してね！</li>
+</ul>
+</li>
+</ul>
+<h2 id="section2">AZ-104について</h2>
+<p>AZ-104試験はMicrosoft Azureの中級レベルの認定試験で、クラウドサービスの実装や管理、運用、監視に関する知識が問われます。<br/>
+<a href="https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/az-104" rel="noopener noreferrer" target="_blank">Microsoftの公式ページ</a>によると、2024年5月現在の試験の概要は以下の通りです。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>試験場所</td>
+<td>テストセンターor自宅</td>
+</tr>
+<tr>
+<td>試験時間</td>
+<td>120分</td>
+</tr>
+<tr>
+<td>問題数</td>
+<td>40~60問</td>
+</tr>
+<tr>
+<td>合格基準</td>
+<td>700点 / 1000点</td>
+</tr>
+<tr>
+<td>合否結果</td>
+<td>試験終了直後に表示</td>
+</tr>
+<tr>
+<td>受験料</td>
+<td>¥21,103</td>
+</tr>
+<tr>
+<td>出題形式</td>
+<td>Azure ID とガバナンスを管理する (20 から 25%)<br/> ストレージを実装して管理する (15 - 20%)<br/>Azure のコンピューティング リソースのデプロイと管理 (20 から 25%)<br/>仮想ネットワークを実装および管理する (15 から 20%)<br/>Azure リソースの監視と管理 (10 - 15%)</td>
+</tr>
+<tr>
+<td>出題形式</td>
+<td>単一選択、複数選択、ケーススタディ</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="section3">状況</h2>
+<p>勉強開始前～受験後までの状況をざっくりまとめます。</p>
+<h3 id="%E5%8B%89%E5%BC%B7%E9%96%8B%E5%A7%8B%E5%89%8D">勉強開始前</h3>
+<p>こんな感じの人物です</p>
+<ul>
+<li>
+<p>IT企業勤務1年くらい</p>
+</li>
+<li>
+<p>応用情報技術者試験には合格済み</p>
+</li>
+<li>
+<p>クラウドの実務経験と知識なし</p>
+</li>
+</ul>
+<h3 id="%E5%8B%89%E5%BC%B7%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB">勉強スケジュール</h3>
+<p>元々は1カ月かける予定でしたが、色々あってあまり期間を取れませんでした。<br/>
+結局、通算14日間、43時間くらい勉強しました。</p>
+<table>
+<thead>
+<tr>
+<th>日付</th>
+<th>勉強内容と所要時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>30~22日前</strong></td>
+<td>試験に申し込んで参考書を購入するも、「GWにやればいいや！」と勉強ゼロ</td>
+</tr>
+<tr>
+<td><strong>21~17日前</strong></td>
+<td>GW初日から体調を壊す。勉強ゼロ</td>
+</tr>
+<tr>
+<td><strong>16-14日前</strong></td>
+<td><a href="https://www.udemy.com/course/azure-az900-learn/" rel="noopener noreferrer" target="_blank">UdemyのAZ-900合格講座</a>: 計11h</td>
+</tr>
+<tr>
+<td><strong>13日前</strong></td>
+<td>再度体調壊し勉強ゼロ</td>
+</tr>
+<tr>
+<td><strong>12~8日前</strong></td>
+<td><a href="https://www.udemy.com/course/azure-az104-learn/" rel="noopener noreferrer" target="_blank">UdemyのAZ-104合格講座</a>: 計6h</td>
+</tr>
+<tr>
+<td></td>
+<td>書籍 <a href="https://www.amazon.co.jp/dp/4865943080" rel="noopener noreferrer" target="_blank">合格対策Microsoft認定試験AZ-104</a>: 計2h, 途中まで</td>
+</tr>
+<tr>
+<td><strong>7~6日前</strong></td>
+<td>ディズニーランドへ行き勉強ゼロ。体調は良くなった</td>
+</tr>
+<tr>
+<td><strong>5~1日前</strong></td>
+<td>書籍 <a href="https://www.amazon.co.jp/dp/4865943080" rel="noopener noreferrer" target="_blank">合格対策Microsoft認定試験AZ-104</a>: 計15h, 完了</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://www.udemy.com/course/30az-104-microsoft-azure-administrator240/" rel="noopener noreferrer" target="_blank">Udemyの模擬試験問題集</a>: 計8h, 模試は3/5セット完了</td>
+</tr>
+<tr>
+<td><strong>当日</strong></td>
+<td>書籍とUdemyの問題集の見直し: 計2h</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>※Udemy教材の正式名称は以下です</p>
+<ul>
+<li>
+<p>UdemyのAZ-900合格講座: <a href="https://www.udemy.com/course/azure-az900-learn/" rel="noopener noreferrer" target="_blank">【AZ-900合格講座】Azureを基礎からしっかりと学びたい方へ</a></p>
+</li>
+<li>
+<p>UdemyのAZ-104合格講座: <a href="https://www.udemy.com/course/azure-az104-learn/" rel="noopener noreferrer" target="_blank">【AZ-104合格講座】動画での解説とポイントを通じ、AZ-104合格に必要な知識を効率的に身につけよう</a></p>
+</li>
+<li>
+<p>Udemyの模擬試験問題集: <a href="https://www.udemy.com/course/30az-104-microsoft-azure-administrator240/" rel="noopener noreferrer" target="_blank">受講生30万講師のAZ-104: Microsoft Azure Administrator模擬試験問題集（400問）</a></p>
+</li>
+</ul>
+<h3 id="%E7%B5%90%E6%9E%9C">結果</h3>
+<p>763点でなんとか合格できました。</p>
+<p><div class="photo-list"><a href="../contents/img/az-104.png" data-lightbox="group" data-title="合格！わーい" alt="合格！わーい">
+                                   <img src="../contents/img/az-104.png" height="250px">
+                                </a>
+                             </div></p>
+<h2 id="section4">合格できた要因</h2>
+<p>成功要因と思われることを3つ挙げます。</p>
+<ol>
+<li>
+<p>簡単＆わかりやすい教材から勉強した</p>
+</li>
+<li>
+<p>動画教材は、自分の言葉で整理しながら視聴した</p>
+</li>
+<li>
+<p>試験で見直しをした</p>
+</li>
+</ol>
+<h3 id="1-%E7%B0%A1%E5%8D%98%EF%BC%86%E3%82%8F%E3%81%8B%E3%82%8A%E3%82%84%E3%81%99%E3%81%84%E6%95%99%E6%9D%90%E3%81%8B%E3%82%89%E5%8B%89%E5%BC%B7%E3%81%97%E3%81%9F">1. 簡単＆わかりやすい教材から勉強した</h3>
+<p>まず、書籍はなんとなく1冊持っておきたかったので、書籍同士で比較して選びました。<br/>
+比較したときの基準はこんな感じです。</p>
+<ul>
+<li>
+<p>レビュー</p>
+<ul>
+<li>説明が丁寧そうか</li>
+<li>試験範囲がカバーされていそうか</li>
+</ul>
+</li>
+<li>
+<p>ページ数、章立て</p>
+<ul>
+<li>多すぎないか</li>
+<li>構成がいい感じそうか</li>
+</ul>
+</li>
+<li>
+<p>模試問題の有無</p>
+<ul>
+<li>あるほうが良い</li>
+</ul>
+</li>
+</ul>
+<p>そのうえで、手元にある教材たちとそのレビューをざっとチェックして、簡単なもの＆(自分にとって)頭に入ってきやすそうなものから勉強することにしました。<br/>
+理由は以下です。</p>
+<ul>
+<li>余計に周回する時間はないので、基礎から固めるのが得策だと思ったため</li>
+<li>体調が万全でないため</li>
+<li>わかりにくい記載で時間と集中力を削られるべきでないため</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>教材</th>
+<th>形式</th>
+<th>難易度</th>
+<th>わかりやすさ<br/>(※主観です)</th>
+<th>順序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.amazon.co.jp/dp/4865943080" rel="noopener noreferrer" target="_blank">合格対策Microsoft認定試験AZ-104</a></td>
+<td>書籍</td>
+<td>やや易</td>
+<td>〇</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.udemy.com/course/azure-az900-learn/" rel="noopener noreferrer" target="_blank">UdemyのAZ-900合格講座</a></td>
+<td>動画</td>
+<td>非常に易</td>
+<td>◎</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.udemy.com/course/azure-az104-learn/" rel="noopener noreferrer" target="_blank">UdemyのAZ-104合格講座</a></td>
+<td>動画</td>
+<td>易</td>
+<td>〇</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.udemy.com/course/30az-104-microsoft-azure-administrator240/" rel="noopener noreferrer" target="_blank">Udemyの模擬試験問題集</a></td>
+<td>Web問題集</td>
+<td>難</td>
+<td>△</td>
+<td>4</td>
+</tr>
+<tr>
+<td><a href="https://learn.microsoft.com/ja-jp/" rel="noopener noreferrer" target="_blank">Microsoft Learn</a></td>
+<td>Webページ</td>
+<td>不明</td>
+<td>×</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>比較結果として動画教材を優先するのがよさそうな感じになりましたが、以下の点でも動画を優先してよかったと思います。</p>
+<ul>
+<li>所要時間が見積もりやすく、進捗をコントロールしやすい</li>
+<li>体調が万全でないため、(姿勢として)寝ていても学習しやすい</li>
+</ul>
+<p><a href="https://learn.microsoft.com/ja-jp/" rel="noopener noreferrer" target="_blank">Microsoft Learn</a>は、教材ごとに記載内容が矛盾する点のみ、最新の仕様を確認するために利用することにしました。<br/>
+また、他のブログにもよく書かれている通り「やっぱり実機触るのが分かりやすい！」と思うのですが、今回は試験までの時間対効果を優先して<strong>AZ-900の動画教材におけるデモだけにとどめる</strong>ことにしました。</p>
+<h3 id="2-%E5%8B%95%E7%94%BB%E6%95%99%E6%9D%90%E3%81%AF%E8%87%AA%E5%88%86%E3%81%AE%E8%A8%80%E8%91%89%E3%81%A7%E6%95%B4%E7%90%86%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89%E8%A6%96%E8%81%B4%E3%81%97%E3%81%9F">2. 動画教材は、自分の言葉で整理しながら視聴した</h3>
+<p>動画教材で学習する際、TwitterやLINEの1人グループを使って自分の言葉で整理しアウトプットするようにしました。<br/>
+これにより以下のメリットがあったと思います。</p>
+<ul>
+<li>「ただ聞き続けるだけだと集中力が持たず、寝る」を防げた</li>
+<li>メモを何度か見返すことで記憶が定着しやすくなり、動画教材を見直す時間を削減できた</li>
+<li>思考が整理され、構造化して理解するのに役立った</li>
+</ul>
+<div class="photo-list"><blockquote class="twitter-tweet"><p dir="ltr" lang="ja">可用性セット<br/>•障害ドメインと更新ドメインから構成される<br/>•障害ドメインは3つまで、更新ドメインは20まで(更新タイミングはいくらでも分割可能<br/>•同一の可用性セットの中に複数仮想マシンを設置→可用性99.95以上<br/>•可用性ゾーンより古い仕組み。今は可用性ゾーンで設定する方が楽<a href="https://twitter.com/hashtag/AZ900?src=hash&amp;ref_src=twsrc%5Etfw" rel="noopener noreferrer" target="_blank">#AZ900</a></p>— hitbug (@hitbug0) <a href="https://twitter.com/hitbug0/status/1785600996489802138?ref_src=twsrc%5Etfw" rel="noopener noreferrer" target="_blank">May 1, 2024</a></blockquote></div> <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
+<h3 id="3-%E8%A9%A6%E9%A8%93%E3%81%A7%E8%A6%8B%E7%9B%B4%E3%81%97%E3%82%92%E3%81%97%E3%81%9F">3. 試験で見直しをした</h3>
+<p>当たり前といえば当たり前ですが、AZ-104では以下2点の理由から特に効果が出やすいのではと感じました。</p>
+<ol>
+<li><strong>日本語の翻訳が若干怪しい部分がある</strong>
+<ul>
+<li>最初の方の問題は難しく感じるが、最後の方になると目が慣れてくる</li>
+</ul>
+</li>
+<li><strong>仕様の理解を問うためにあえてぼかして書いている問題がある</strong>
+<ul>
+<li>1周目が終わって余裕のある心境で読むと正しく理解しやすい</li>
+</ul>
+</li>
+</ol>
+<p>時間に余裕がある試験なので見直し時間確保のために急いで解く必要はないと思いますが、1周目が終わって疲れていてもきちんと見直しをすると良いことがあるかもしれません。</p>
+<h2 id="section5">感想</h2>
+<p>Udemyの模試は予想より難易度が高く、見直しに時間がかかったので3/5セットしかできませんでした。<br/>
+これを完璧にすれば得点はかなり上がっただろうなぁと思います。<br/>
+試験から1週間経って既に記憶が薄れつつありますが、
+実務で扱うタイミングや資格更新のタイミングでは残りの模試も解けるようになっておきたいですね～</p>
+<h2 id="section6">まとめ</h2>
+<p>AZ-104にタイトなスケジュールでも何とか合格するためのヒントを紹介しました。<br/>
+受験しようと思っている方の参考になればと思います！</p>
+
+
+
+                </div>
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="right-sidebar">
+                <!-- 広告の部分は表示されるようになってから調整する -->
+            </div>
+            <div id="hidden-right-sidebar"></div>
+        </div>
+        <!-- 共通: ハンバーガーメニュー -->
+        <div id="hamburger-menu"></div>
+        <script>$(function(){$('#hamburger-menu').load('../includes/hamburger-menu.html');});</script>
+        <!-- 共通: フッタ -->
+        <footer></footer>
+        <script>$(function(){$('footer').load('../includes/footer.html');});</script>
+    </div>
+    <div class="floating-button">
+        <a href="https://twitter.com/intent/tweet?url=https://hitbug0.github.io/posts/2024-05-25-AZ104.html&text=" class="twitter-share-button" data-show-count="false" rel="noopener noreferrer" target="_blank">
+            <img class="twitter-share-button-img" src="../contents/icon/x.png" alt="logo of x">
+        </a>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=">
+  </script>
+  <script src="../includes/clipboard-script.js"></script>
+</html>
